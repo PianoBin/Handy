@@ -90,13 +90,14 @@ def handMovements(frame):
 fingerCounter = 0
 badFingerCounter = 0
 
-def fingerPointing():
-	global fingerCounter
+def fingerPointing(frame):
+	global fingerCounter, badFingerCounter
 	oneFinger = False
 	multiFingers = False
 	finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
 	for hand in frame.hands:
 		for finger in hand.fingers:
+			print "finger extended is {}".format(finger.is_extended) 
 			if finger.is_extended and not oneFinger:
 				oneFinger = True 
 			elif finger.is_extended and oneFinger:
@@ -117,13 +118,18 @@ def displayResults():
 	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
 
-    global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
-    print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
-    print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
-    print 'yaw average angle left: %f' % (yaw_angle_left/angle_count_left)
-    print 'yaw average angle right: %f' % (yaw_angle_right/angle_count_right)
-    print 'pitch average angle left: %f' % (pitch_angle_left/angle_count_left)
-    print 'pitch average angle right: %f' % (pitch_angle_right/angle_count_right)
+	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
+	print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
+	print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
+	print 'yaw average angle left: %f' % (yaw_angle_left/angle_count_left)
+	print 'yaw average angle right: %f' % (yaw_angle_right/angle_count_right)
+	print 'pitch average angle left: %f' % (pitch_angle_left/angle_count_left)
+	print 'pitch average angle right: %f' % (pitch_angle_right/angle_count_right)
+
+	global fingerCounter, badFingerCounter
+	print 'fingerCount is {}'.format(fingerCounter)
+	print 'badFingerCounter is {}'.format(badFingerCounter)
+	print 'percent of bad finger pointing {}'.format((badFingerCounter/fingerCounter) * 100)
 
 
 startTime = 0
@@ -161,6 +167,7 @@ class LeapEventListener(Leap.Listener):
 
         handMovements(frame)
         hand_placement(frame)
+        fingerPointing(frame)
 
     def on_exit(self, controller):
         print "Exited"
