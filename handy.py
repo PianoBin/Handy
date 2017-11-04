@@ -11,7 +11,7 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 class LeapEventListener(Leap.Listener):
 
-    count = 0
+    global count = 0
     def on_init(self, controller):
         print "Initialized"
     def on_connect(self, controller):
