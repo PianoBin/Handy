@@ -35,7 +35,7 @@ hands_in_frame_counter = 0
 def hand_in_frames(frame):
     global frame_counter, hands_in_frame_counter
     frame_counter += 1
-    for hands in frame:
+    for hands in frames:
         hands_in_frame_counter += 1
 
 def hand_placement(frame):
