@@ -8,129 +8,13 @@
               integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
               crossorigin="anonymous"></script>
 <title>Hands Don't Lie</title>
-
-
-<canvas id="myChart" width="100" height="100"></canvas>
-<script>
-    var theData = {
-        datasets: [{
-            data: [10, 20, 30],
-            backgroundColor: [
-                    'rgb(255, 0, 0)',
-                    'rgb(255, 255, 0)',
-                    'rgb(0, 0, 255)'
-        ]
-        }],
-
-        labels: [
-            'Red',
-            'Yellow',
-            'Blue'
-        ]
-    };
-
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myDoughnutChart = new Chart(ctx, {
-    type: 'doughnut',
-    data: theData,
-    options: {
-            responsive: true,
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Doughnut Chart'
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
-            }
-        }
-    });
-    /*var randomScalingFactor = function() {
-        return Math.round(Math.random() * 100);
-    };
-
-    var config = {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-                backgroundColor: [
-                    window.chartColors.red,
-                    window.chartColors.orange,
-                    window.chartColors.yellow,
-                    window.chartColors.green,
-                    window.chartColors.blue,
-                ],
-                label: 'Dataset 1'
-            }],
-            labels: [
-                "Red",
-                "Orange",
-                "Yellow",
-                "Green",
-                "Blue"
-            ]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Doughnut Chart'
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
-            }
-        }
-    };
-
-    window.onload = function() {
-        var ctx = document.getElementById("chart-area").getContext("2d");
-        window.myDoughnut = new Chart(ctx, config);
-    };*/
-    /*$(document).ready(function(){
-    var ctx = $("#mycanvas").get(0).getContext("2d");
-
-    var data = [
-      {
-        value: 10,
-        color: "cornflowerblue",
-        highlight:"lightskyblue",
-        label: "X Speed"
-      },
-      {
-        value: 20,
-        color: "lightgreen",
-        highlight: "yellowgreen",
-        label: "Y Speed"
-      },
-      {
-        value: 30,
-        color: "orange",
-        highlight: "darkorange",
-        label: "CSS"
-      }
-    ];
-
-    var chart = new Chart(ctx).Doughnut(data)
-});*/
-</script>
 </head>
 <body>
 <h1>Handy</h1>
 <p>The Handy Body-Language Processor</p>
+
+<canvas id="myChart" width="300" height="300"></canvas>
+<canvas id="myChart2" width="300" height="300"></canvas>
 
 <h1>Hand Movement Data</h1>
 <table style="width:100%">
@@ -171,5 +55,68 @@
     <td>{{ sweet_spot }}%</td>
   </tr>
 </table>
+
+<script>
+    var theData = {
+        datasets: [{
+            data: [10, 20, 30],
+            backgroundColor: [
+                    'rgb(255, 0, 0)',
+                    'rgb(255, 255, 0)',
+                    'rgb(0, 0, 255)'
+        ]
+        }],
+
+        labels: [
+            'Red',
+            'Yellow',
+            'Blue'
+        ]
+    };
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: theData,
+    options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'x-speed'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    });
+
+    var ctx = document.getElementById("myChart2").getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: theData,
+    options: {
+            responsive: false,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'y-speed'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    });
+    
+</script>
+
 </body>
 </html>

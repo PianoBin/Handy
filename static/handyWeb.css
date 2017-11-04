@@ -20,3 +20,9 @@ tr:hover{
 body {
 	background: rgb(178, 192, 234);
 }
+
+canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
