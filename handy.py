@@ -215,7 +215,18 @@ def main():
 
 @app.route("/")
 def handy():
-	main()
+	listener = LeapEventListener()
+	controller = Leap.Controller()
+	controller.add_listener(listener)
+	# Keep this process running until Enter is pressed
+	print "Press Enter to quit..."
+	try:
+		sys.stdin.readline()
+	except KeyboardInterrupt:
+		pass
+	finally:
+		# Remove the sample listener when done
+		controller.remove_listener(listener)
 	return render_template('handyWeb.html')
 
 if __name__ == "__main__":
