@@ -21,26 +21,22 @@ zCounterHigh = 0
 
 def hand_placement(frame):
     count = 0
-    hands = frame.hands
-    left = hands.leftmost()
-    right = hands.rightmost()
+    for hand in frame.hands:
+        handType = "Left hand" if hand.is_left else "Right hand"
 
-    normalL = left.palm_normal
-    normalR = right.palm_normal
-    directionL = left.direction
-    directionR = right.direction
+        normal = hand.palm_normal
+        #normalR = right.palm_normal
+        #directionL = left.direction
+        #directionR = right.direction
 
-    Lroll = normalL.yaw * Leap.RAD_TO_DEG
-    Rroll = normalR.yaw * Leap.RAD_TO_DEG
-    Lyaw = directionL.roll * Leap.RAD_TO_DEG
-    Ryaw = directionR.roll * Leap.RAD_TO_DEG
-    Lpitch = directionL.pitch * Leap.RAD_TO_DEG
-    Rpitch = directionR.pitch * Leap.RAD_TO_DEG
+        roll = normal.yaw * Leap.RAD_TO_DEG
+        #Rroll = normalR.yaw * Leap.RAD_TO_DEG
+        #Lyaw = directionL.roll * Leap.RAD_TO_DEG
+        #Ryaw = directionR.roll * Leap.RAD_TO_DEG
+        #Lpitch = directionL.pitch * Leap.RAD_TO_DEG
+        #Rpitch = directionR.pitch * Leap.RAD_TO_DEG
 
-    print "pitch left: %f\npitch right: %f\nroll left: %f\nroll right: %f\nyaw left: %f\nyaw right %f" % (
-        Lpitch, Rpitch,
-        Lroll, Rroll,
-        Lyaw, Ryaw)
+    print "%s roll on the now z-axis: %f", (handType, roll)
 
 def handMovements(frame):
 	for hand in frame.hands:
