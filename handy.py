@@ -128,12 +128,18 @@ def displayResults():
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
 
 	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
+    if abs(pitch_angle_left/angle_count_left) < 40 and abs(pitch_angle_right/angle_count_right) < 40 && abs(roll_angle_left/angle_count_left) > 90 && abs(roll_angle_right/angle_count_right) > 90:
+        print 'Good job! You kept your palms open.\nThis makes you seem approachable to your crowd.'
+    else:
+        print 'Work on keeping your palms more open.\nIt makes you instantly more approachable to your audience.'
+    '''
 	print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
 	print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
 	print 'yaw average angle left: %f' % (yaw_angle_left/angle_count_left)
 	print 'yaw average angle right: %f' % (yaw_angle_right/angle_count_right)
 	print 'pitch average angle left: %f' % (pitch_angle_left/angle_count_left)
 	print 'pitch average angle right: %f' % (pitch_angle_right/angle_count_right)
+    '''
 
 	global fingerCounter, badFingerCounter
 	print 'fingerCount is {}'.format(fingerCounter)
