@@ -66,6 +66,28 @@ def handMovements(frame):
             else:
             	zCounterGood += 1
 
+fingerCounter = 0
+badFingerCounter = 0
+
+def fingerPointing():
+	global fingerCounter
+	oneFinger = False
+	multiFingers = False
+	finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
+	for hand in frame.hands:
+		for finger in hand.fingers:
+			if finger.is_extended and not oneFinger:
+				oneFinger = True 
+			elif finger.is_extended and oneFinger:
+				multiFingers = True 
+			fingerCounter += 1
+		if oneFinger and not multiFingers:
+			badFingerCounter += 1
+		oneFinger = False
+		multiFingers = False
+
+
+
 def displayResults():
 	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
 	print 'moveCounter is {}'.format(moveCounter)
