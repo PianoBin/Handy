@@ -35,8 +35,7 @@ def hand_placement(frame):
         #Ryaw = directionR.roll * Leap.RAD_TO_DEG
         #Lpitch = directionL.pitch * Leap.RAD_TO_DEG
         #Rpitch = directionR.pitch * Leap.RAD_TO_DEG
-
-    print "%s roll on the now z-axis: %f", (handType, roll)
+        print "%s roll on the now z-axis: %f", (handType, roll)
 
 def handMovements(frame):
 	for hand in frame.hands:
