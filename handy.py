@@ -98,16 +98,14 @@ def fingerPointing():
 	for hand in frame.hands:
 		for finger in hand.fingers:
 			if finger.is_extended and not oneFinger:
-				oneFinger = True 
+				oneFinger = True
 			elif finger.is_extended and oneFinger:
-				multiFingers = True 
+				multiFingers = True
 			fingerCounter += 1
 		if oneFinger and not multiFingers:
 			badFingerCounter += 1
 		oneFinger = False
 		multiFingers = False
-
-
 
 def displayResults():
 	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
