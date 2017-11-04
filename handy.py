@@ -11,6 +11,8 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 class LeapEventListener(Leap.Listener):
 
+    def on_init(self, controller):
+        print "Initialized"
     def on_connect(self, controller):
         print "Connected"
         controller.enable_gesture(Leap.Gesture.Type.TYPE_SWIPE)
@@ -25,6 +27,9 @@ class LeapEventListener(Leap.Listener):
         print "Frame available"
         frame = controller.frame()
         #Process frame data
+
+    def on_exit(self, controller):
+        print "Exited"
 
 def main():
 	listener = LeapEventListener
