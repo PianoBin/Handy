@@ -128,12 +128,14 @@ sweetness = ''
 x_speed = 0
 y_speed = 0
 sweet_spot = 0
+x_speed_array = []
+y_speed_array = []
 
 def displayResults():
 
 	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
 	global x_speed_mes, y_speed_mes, openness, message_open, finger_message, sweetness
-	global x_speed, y_speed
+	global x_speed, y_speed, x_speed_array, y_speed_array
 	x_speed = xCounterGood / moveCounter * 100
 	y_speed = yCounterGood / moveCounter * 100
 	if xCounterGood / moveCounter * 100 > 60:
@@ -150,6 +152,14 @@ def displayResults():
 			y_speed_mes = 'A little to slow or not enough movement.'
 		else:
 			y_speed_mes = 'Slow down there cowboy.'
+
+	x_speed_array.append((xCounterSmall/moveCounter) * 100)
+	x_speed_array.append((xCounterGood/moveCounter) * 100)
+	x_speed_array.append(100 - ((xCounterSmall/moveCounter) * 100) - ((xCounterGood/moveCounter) * 100))
+
+	y_speed_array.append((yCounterSmall/moveCounter) * 100)
+	y_speed_array.append((yCounterGood/moveCounter) * 100)
+	y_speed_array.append(100 - ((yCounterSmall/moveCounter) * 100) - ((yCounterGood/moveCounter) * 100))
 	'''
 	print 'moveCounter is {}'.format(moveCounter)
 	print 'xCounterSmall is {}'.format(xCounterSmall)
@@ -271,7 +281,7 @@ def handy():
 	finally:
 		# Remove the sample listener when done
 		controller.remove_listener(listener)
-	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot)
+	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot, x_speed_array=x_speed_array, y_speed_array=y_speed_array)
 
 if __name__ == "__main__":
 	app.run()
