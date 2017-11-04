@@ -26,8 +26,8 @@ pitch_angle_left = 0
 roll_angle_right = 0
 yaw_angle_right = 0
 pitch_angle_right = 0
-angle_count_left = 0
-angle_count_right = 0
+angle_count_left = 1
+angle_count_right = 1
 
 frame_counter = 0
 hands_in_frame_counter = 0
