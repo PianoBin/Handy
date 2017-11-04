@@ -24,12 +24,13 @@ class LeapEventListener(Leap.Listener):
         print "Disconnected"
 
     def on_frame(self, controller):
-        print "Frame available"
         frame = controller.frame()
         #Process frame data
+        print "Timer: " + frame.timestamp * 1000000
 
     def on_exit(self, controller):
         print "Exited"
+        #the method where we return our statistics
 
 def main():
 	listener = LeapEventListener
