@@ -216,6 +216,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-@app.route("/")
+@app.route("/handyWeb/")
 def handy():
 	return "The Handy Body-Language Processor"
