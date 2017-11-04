@@ -1,4 +1,6 @@
 from __future__ import division
+from flask import Flask
+app = Flask(__name__)
 import os, sys, inspect, thread, time, timeit
 src_dir = os.path.dirname(inspect.getfile(inspect.currentframe()))
 # Windows and Linux
@@ -203,3 +205,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+@app.route("/")
+def handy():
+	return "The Handy Body-Language Processor"
