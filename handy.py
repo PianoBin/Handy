@@ -8,12 +8,12 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
-
 class LeapEventListener(Leap.Listener):
 
     global count = 0
     def on_init(self, controller):
         print "Initialized"
+
     def on_connect(self, controller):
         print "Connected"
         controller.enable_gesture(Leap.Gesture.Type.TYPE_SWIPE)
@@ -32,6 +32,7 @@ class LeapEventListener(Leap.Listener):
             count = 0
         else:
             count += 1
+        hand_placement(rame)
 
     def on_exit(self, controller):
         print "Exited"
@@ -50,3 +51,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def hand_placement(self, frame):
+    count = 0
+    hands = frame.hands
+    left = hands.leftmost()
+    right = hands.rightmost()
+
+    normalL = left.normal
+    normalR = right.normalR
+    directionL = left.direction
