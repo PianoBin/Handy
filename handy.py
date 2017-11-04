@@ -79,9 +79,9 @@ class LeapEventListener(Leap.Listener):
 
     def on_connect(self, controller):
         print "Connected"
-        controller.enable_gesture(Leap.Gesture.Type.TYPE_SWIPE)
-        controller.config.set("Gesture.Swipe.MinLength", 200.0)
-        controller.config.save()
+        #controller.enable_gesture(Leap.Gesture.Type.TYPE_SWIPE)
+        #controller.config.set("Gesture.Swipe.MinLength", 200.0)
+        #controller.config.save()
 
     def on_disconnect(self, controller):
         # Note: not dispatched when running in a debugger.
