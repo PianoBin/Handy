@@ -34,14 +34,14 @@ class LeapEventListener(Leap.Listener):
 
 def main():
 	listener = LeapEventListener()
-    controller = Leap.Controller()
-    controller.add_listener(listener)
+	controller = Leap.Controller()
+	controller.add_listener(listener)
     # Keep this process running until Enter is pressed
-    print "Press Enter to quit..."
-    try:
-        sys.stdin.readline()
-    except KeyboardInterrupt:
-        pass
+	print "Press Enter to quit..."
+	try:
+		sys.stdin.readline()
+	except KeyboardInterrupt:
+		pass
 
 if __name__ == "__main__":
     main()
