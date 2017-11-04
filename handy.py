@@ -33,7 +33,7 @@ class LeapEventListener(Leap.Listener):
         #the method where we return our statistics
 
 def main():
-	listener = LeapEventListener
+	listener = LeapEventListener()
     controller = Leap.Controller()
     controller.add_listener(listener)
     # Keep this process running until Enter is pressed
