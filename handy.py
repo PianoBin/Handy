@@ -199,6 +199,7 @@ class LeapEventListener(Leap.Listener):
         displayResults()
         #the method where we return our statistics
 
+'''
 def main():
 	listener = LeapEventListener()
 	controller = Leap.Controller()
@@ -212,6 +213,7 @@ def main():
 	finally:
 		# Remove the sample listener when done
 		controller.remove_listener(listener)
+'''
 
 @app.route("/")
 def handy():
