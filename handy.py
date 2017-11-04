@@ -8,23 +8,48 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
+
+moveCounter = 0
+xCounterSmall = 0
+xCounterGood = 0
+xCounterHigh = 0
+yCounterSmall = 0
+yCounterGood = 0
+yCounterHigh = 0
+zCounterSmall = 0
+zCounterGood = 0
+zCounterHigh = 0
+
 def handMovements(frame):
 	for hand in frame.hands:
 
             handType = "Left hand" if hand.is_left else "Right hand"
 
-            print "  %s, id %d, position: %s" % (
-                handType, hand.id, hand.palm_position)
+            print "  %s, id %d, velocity: %s" % (handType, hand.id, hand.palm_velocity)
 
-            # Get the hand's normal vector and direction
-            normal = hand.palm_normal
-            direction = hand.direction
+            global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
+            moveCounter += 1
+            if abs(hand.palm_velocity.x) < 50:
+            	xCounterSmall += 1
+            elif abs(hand.palm_velocity.x) > 200:
+            	xCounterHigh += 1
+            else:
+            	xCounterGood += 1
 
-            # Calculate the hand's pitch, roll, and yaw angles
-            print "  pitch: %f degrees, roll: %f degrees, yaw: %f degrees" % (
-                direction.pitch * Leap.RAD_TO_DEG,
-                normal.roll * Leap.RAD_TO_DEG,
-                direction.yaw * Leap.RAD_TO_DEG)
+            if abs(hand.palm_velocity.y) < 50:
+            	yCounterSmall += 1
+            elif abs(hand.palm_velocity.y) > 200:
+            	yCounterHigh += 1
+            else:
+            	yCounterGood += 1
+
+            if abs(hand.palm_velocity.z) < 50:
+            	zCounterSmall += 1
+            elif abs(hand.palm_velocity.z) > 200:
+            	zCounterHigh += 1
+            else:
+            	zCounterGood += 1
+
 
 startTime = 0
 beforeTime = 0
