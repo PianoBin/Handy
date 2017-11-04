@@ -8,6 +8,29 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
+def hand_placement(frame):
+    count = 0
+    hands = frame.hands
+    left = hands.leftmost()
+    right = hands.rightmost()
+
+    normalL = left.palm_normal
+    normalR = right.palm_normal
+    directionL = left.direction
+    directionR = right.direction
+
+    Lroll = normalL.yaw * Leap.RAD_TO_DEG
+    Rroll = normalR.yaw * Leap.RAD_TO_DEG
+    Lyaw = directionL.roll * Leap.RAD_TO_DEG
+    Ryaw = directionR.roll * Leap.RAD_TO_DEG
+    Lpitch = directionL.pitch * Leap.RAD_TO_DEG
+    Rpitch = directionR.pitch * Leap.RAD_TO_DEG
+
+    print "pitch left: %f\npitch right: %f\nroll left: %f\nroll right: %f\nyaw left: %f\nyaw right %f" % (
+        Lpitch, Rpitch,
+        Lroll, Rroll,
+        Lyaw, Ryaw)
+
 def handMovements(frame):
 	for hand in frame.hands:
 
@@ -59,7 +82,7 @@ class LeapEventListener(Leap.Listener):
         		print "Elapsed {}".format(int(timeit.default_timer() - startTime))
         		beforeTime = int(timeit.default_timer() - startTime)
 
-        handMovements(frame)
+        hand_placement(frame)
 
     def on_exit(self, controller):
         print "Exited"
@@ -78,13 +101,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-def hand_placement(self, frame):
-    count = 0
-    hands = frame.hands
-    left = hands.leftmost()
-    right = hands.rightmost()
-
-    normalL = left.normal
-    normalR = right.normalR
-    directionL = left.direction
