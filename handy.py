@@ -35,7 +35,7 @@ hands_in_frame_counter = 0
 def hand_in_frames(frame):
     global frame_counter, hands_in_frame_counter
     frame_counter += 1
-    for hands in frame:
+    for hand in frame.hands:
         hands_in_frame_counter += 1
 
 def hand_placement(frame):
@@ -138,8 +138,10 @@ def displayResults():
 	print 'badFingerCounter is {}'.format(badFingerCounter)
 	print 'percent of bad finger pointing {}'.format((badFingerCounter/fingerCounter) * 100)
 
-    global frame_counter, hands_in_frame_counter
-    print 'percentage of time hands are in the sweet spot: %f' % ((hands_in_frame_counter/frame_counter)*100)
+	global frame_counter, hands_in_frame_counter
+	print 'frame_counter is {}'.format(frame_counter)
+	print 'hands_in_frame_counter is {}'.format(hands_in_frame_counter)
+	print 'percentage of time hands are in the sweet spot: %f' % ((hands_in_frame_counter/frame_counter)*100)
 
 
 startTime = 0
