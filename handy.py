@@ -97,7 +97,7 @@ def fingerPointing(frame):
 	finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
 	for hand in frame.hands:
 		for finger in hand.fingers:
-			print "finger extended is {}".format(finger.is_extended) 
+			print "finger extended is {}".format(finger.is_extended)
 			if finger.is_extended and not oneFinger:
 				oneFinger = True
 			elif finger.is_extended and oneFinger:
