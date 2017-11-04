@@ -31,9 +31,9 @@ def hand_placement(frame):
         real_yaw = direction.roll * Leap.RAD_TO_DEG
         real_pitch = direction.pitch * Leap.RAD_TO_DEG
 
-        print "%s roll on the now y-axis: %f", (handType, real_roll)
-        print "%s yaw on the now z-axis: %f", (handType, real_yaw)
-        print "%s pitch on the now x-axis: %f", (handType, real_pitch)
+        print "%s roll on the now y-axis: %f" % (handType, real_roll)
+        print "%s yaw on the now z-axis: %f" % (handType, real_yaw)
+        print "%s pitch on the now x-axis: %f" % (handType, real_pitch)
 
 def handMovements(frame):
 	for hand in frame.hands:
