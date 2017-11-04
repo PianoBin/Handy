@@ -8,6 +8,32 @@
 
 <canvas id="myDoughnutChart" width="200" height="200"></canvas>
 <script>
+
+    var ctx = $("#mycanvas").get(0).getContext("2d");
+
+    var data = [
+      {
+        value: 10,
+        color: "cornflowerblue",
+        highlight:"lightskyblue",
+        label: "X Speed"
+      },
+      {
+        value: 20,
+        color: "lightgreen",
+        highlight: "yellowgreen",
+        label: "Y Speed"
+      },
+      {
+        value: 30,
+        color: "orange",
+        highlight: "darkorange",
+        label: "CSS"
+      }
+    ];
+
+    var chart = new Chart(ctx).Doughnut(data)
+    /*
     var config = {
         type: 'doughnut',
         data = {
@@ -36,11 +62,7 @@
                 animateRotate: true
             }
         }
-    };
-
-
-	var ctx = document.getElementById("chart-area").getContext("2d");
-    var myDoughnutChart = new Chart(ctx, config);
+    };*/
 
 /*
 var myChart = new Chart(ctx, {
