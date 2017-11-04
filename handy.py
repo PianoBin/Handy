@@ -29,6 +29,15 @@ pitch_angle_right = 0
 angle_count_left = 0
 angle_count_right = 0
 
+frame_counter = 0
+hands_in_frame_counter = 0
+
+def hand_in_frames(frame):
+    global frame_counter, hands_in_frame_counter
+    frame_counter += 1
+    for hands in frame:
+        hands_in_frame_counter += 1
+
 def hand_placement(frame):
 
     global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
@@ -129,6 +138,9 @@ def displayResults():
 	print 'badFingerCounter is {}'.format(badFingerCounter)
 	print 'percent of bad finger pointing {}'.format((badFingerCounter/fingerCounter) * 100)
 
+    global frame_counter, hands_in_frame_counter
+    print 'percentage of time hands are in the sweet spot: %f' % ((hands_in_frame_counter/frame_counter)*100)
+
 
 startTime = 0
 beforeTime = 0
@@ -166,6 +178,7 @@ class LeapEventListener(Leap.Listener):
         handMovements(frame)
         hand_placement(frame)
         fingerPointing(frame)
+        hand_in_frames(frame)
 
     def on_exit(self, controller):
         print "Exited"
