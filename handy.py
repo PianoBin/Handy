@@ -106,6 +106,7 @@ class LeapEventListener(Leap.Listener):
         		print "Elapsed {}".format(int(timeit.default_timer() - startTime))
         		beforeTime = int(timeit.default_timer() - startTime)
 
+        handMovements(frame)
         hand_placement(frame)
 
     def on_exit(self, controller):
