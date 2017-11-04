@@ -138,6 +138,8 @@ def displayResults():
 	global x_speed, y_speed, x_speed_array, y_speed_array
 	x_speed = xCounterGood / moveCounter * 100
 	y_speed = yCounterGood / moveCounter * 100
+    x_speed = '{0:.4g}'.format(x_speed)
+    y_speed = '{0:.4g}'.format(y_speed)
 	if xCounterGood / moveCounter * 100 > 60:
 		x_speed_mes = 'Great speed for hand gestures!'
 	else:
@@ -197,6 +199,7 @@ def displayResults():
 
 	global frame_counter, hands_in_frame_counter, sweet_spot
 	sweet_spot = (hands_in_frame_counter/frame_counter)*100
+    sweet_spot = '{0:.4g}'.format(sweet_spot)
 	if sweet_spot > 50:
 		sweetness = 'Well done.'
 	else:
