@@ -27,13 +27,13 @@
   </tr>
   <tr>
     <td>Horizontal Speed</td>
-    <td>The average speed at which your hands moved horizontally.</td>
+    <td>The percentage of time your hands moved at the proper speed horizontally.</td>
     <td>{{ x_speed_mes }}</td>
     <td>{{ x_speed }}%</td>
   </tr>
   <tr>
     <td>Vertical Speed</td>
-    <td>The average speed at which your hands moved vertically.</td>
+    <td>The percentage of time your hands moved at the proper speed vertically.</td>
     <td>{{ y_speed_mes }}</td>
     <td>{{ y_speed }}%</td>
   </tr>
@@ -62,9 +62,9 @@
         datasets: [{
             data: [{{ x_speed_array[0] }}, {{ x_speed_array[1] }}, {{ x_speed_array[2] }}],
             backgroundColor: [
-                    'rgb(255, 0, 0)',
-                    'rgb(255, 255, 0)',
-                    'rgb(0, 0, 255)'
+                    'rgb(231, 76, 60)',
+                    'rgb(0, 188, 212)',
+                    'rgb(0, 230, 118)'
         ]
         }],
 
@@ -79,9 +79,9 @@
         datasets: [{
             data: [{{ y_speed_array[0] }}, {{ y_speed_array[1] }}, {{ y_speed_array[2] }}],
             backgroundColor: [
-                    'rgb(255, 0, 0)',
-                    'rgb(255, 255, 0)',
-                    'rgb(0, 0, 255)'
+                    'rgb(231, 76, 60)',
+                    'rgb(0, 188, 212)',
+                    'rgb(0, 230, 118)'
         ]
         }],
 
