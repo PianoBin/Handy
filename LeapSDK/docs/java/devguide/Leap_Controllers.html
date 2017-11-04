@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecting to the Controller &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Connecting to the Controller &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Tracking Model" href="Leap_Tracking.html" />
     <link rel="prev" title="Using the Tracking API" href="Leap_Guides2.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'java';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Controllers.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -282,6 +283,12 @@ function doneWithSearch(){
 <h1>Connecting to the Controller<a class="headerlink" href="#connecting-to-the-controller" title="Permalink to this headline">¶</a></h1>
 <p>To connect to the Leap Motion device, create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object. The <tt class="docutils literal"><span class="pre">Controller</span></tt> object automatically establishes a connection to the Leap Motion daemon or service which then passes tracking data, in the form of <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> objects to your application.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">Controller</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="o">();</span>
+<span class="c1">// !!!</span>
+<span class="n">assertTrue</span><span class="o">(</span><span class="n">controller</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">Controller_addListener</span><span class="o">()</span>
 </pre></div>
 </div>
 <p>Use the <tt class="docutils literal"><span class="pre">Controller</span></tt> object to get information about the state of the connection and connected hardware and to set connection options for your application.</p>
@@ -308,9 +315,17 @@ has the operating system input focus.</p>
 <h2>Access to Images<a class="headerlink" href="#access-to-images" title="Permalink to this headline">¶</a></h2>
 <p>In order for your application to receive images from the Leap Motion cameras, you must set the <strong>Images</strong> policy. The <strong>Allow Images</strong> setting in the Leap Motion control panel must be checked or the attempt to set the policy is denied. See <a class="reference internal" href="Leap_Images.html"><em>Camera Images</em></a>.</p>
 </div>
+<div class="section" id="enabling-gestures">
+<h2>Enabling Gestures<a class="headerlink" href="#enabling-gestures" title="Permalink to this headline">¶</a></h2>
+<p>To use the built-in gestures, you must enable them first using <a class="reference external" href="../api/Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1ac2ee4e779963f135abccc183ab2f35fb">Controller.enableGesture()</a>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">controller</span><span class="o">.</span><span class="na">enableGesture</span><span class="o">(</span><span class="n">Gesture</span><span class="o">.</span><span class="na">Type</span><span class="o">.</span><span class="na">TYPE_CIRCLE</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Enable only those gestures that your application uses.</p>
+</div>
 <div class="section" id="connection-state">
 <h2>Connection State<a class="headerlink" href="#connection-state" title="Permalink to this headline">¶</a></h2>
-<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id386"><span class="problematic" id="id387">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1afbf4768f0408a85337dbb9f1413d611a">Controller.isConnected()</a> property changes to true.</p>
+<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id395"><span class="problematic" id="id396">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1afbf4768f0408a85337dbb9f1413d611a">Controller.isConnected()</a> property changes to true.</p>
 <p>The isServiceConnected() and isConnected() properties can change while your application is running. You can monitor their values or <a class="reference external" href="ListeningforControllerEvents">listen for events</a> dispatched by the controller when the connection status changes.</p>
 </div>
 <div class="section" id="listening-for-controller-events">
@@ -393,7 +408,7 @@ has the operating system input focus.</p>
 </pre></div>
 </div>
 <p>Each event callback function is invoked on an independent thread created by the Leap Motion library. The tracking data objects created by the library are thread safe, but you must make sure that other application data accessed from the callback function can be safely altered from seprate threads. You can avoid the complications associated with multithreaded applications by polling the <tt class="docutils literal"><span class="pre">Controller</span></tt> for frames and state when convenient for your application instead of using listeners.</p>
-<p><strong>Note:</strong> In Java applications, the use of multiple threads can be problematic. Unfortunately, threads are not reused, so using listeners can add a lot of overhead because of the additional number of thread-related objects created and destroyed every second. (This is true even if you do not implement a callback for the <a href="#id384"><span class="problematic" id="id385">|onFrame|</span></a> event.)</p>
+<p><strong>Note:</strong> In Java applications, the use of multiple threads can be problematic. Unfortunately, threads are not reused, so using listeners can add a lot of overhead because of the additional number of thread-related objects created and destroyed every second. (This is true even if you do not implement a callback for the <a href="#id393"><span class="problematic" id="id394">|onFrame|</span></a> event.)</p>
 </div>
 <div class="section" id="device-types">
 <h2>Device Types<a class="headerlink" href="#device-types" title="Permalink to this headline">¶</a></h2>
@@ -408,8 +423,9 @@ has the operating system input focus.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -418,6 +434,7 @@ has the operating system input focus.</p>
 <li class="toctree-l3"><a class="reference internal" href="#getting-frames">Getting Frames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#foreground-and-background-applications">Foreground and Background Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-to-images">Access to Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-gestures">Enabling Gestures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-state">Connection State</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-for-controller-events">Listening for Controller Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#device-types">Device Types</a></li>
@@ -427,6 +444,9 @@ has the operating system input focus.</p>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id7">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id10">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
@@ -454,7 +474,7 @@ has the operating system input focus.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

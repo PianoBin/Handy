@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API Overview &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>API Overview &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -301,7 +301,7 @@ function doneWithSearch(){
         
   <div class="section" id="api-overview">
 <h1>API Overview<a class="headerlink" href="#api-overview" title="Permalink to this headline">¶</a></h1>
-<p>The Leap Motion system recognizes and tracks hands and fingers. The device operates in an intimate proximity with high precision and tracking frame rate and reports discrete positions and motion.</p>
+<p>The Leap Motion system recognizes and tracks hands, fingers and finger-like tools. The device operates in an intimate proximity with high precision and tracking frame rate and reports discrete positions, gestures, and motion.</p>
 <p>The Leap Motion controller uses optical sensors and infrared light. The sensors are directed along the y-axis &#8211; upward when the controller is in its standard operating position &#8211; and have a field of view of about 150 degrees. The effective range of the Leap Motion Controller extends from approximately 25 to 600 millimeters above the device (1 inch to 2 feet).</p>
 <div class="figure">
 <img alt="devguide/../../../images/Leap_View.jpg" src="devguide/../../../images/Leap_View.jpg" />
@@ -339,7 +339,8 @@ function doneWithSearch(){
 </div>
 <div class="section" id="motion-tracking-data">
 <h2>Motion tracking data<a class="headerlink" href="#motion-tracking-data" title="Permalink to this headline">¶</a></h2>
-<p>As the Leap Motion controller tracks hands and fingers in its field of view, it provides updates as a set &#8211; or frame &#8211; of data. Each <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object representing a frame contains any tracked hands, detailing their properties at a single moment in time. The <tt class="docutils literal"><span class="pre">Frame</span></tt> object is essentially the root of the Leap Motion data model.</p>
+<p>As the Leap Motion controller tracks hands, fingers, and tools in its field of view, it provides updates as a set &#8211; or frame &#8211; of data. Each <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object representing a frame contains lists of tracked entities, such as hands, fingers, and tools, as well as recognized gestures and factors describing the overall motion in the scene. The <tt class="docutils literal"><span class="pre">Frame</span></tt> object is essentially the root of the Leap Motion data model.</p>
+<p>To read more about <tt class="docutils literal"><span class="pre">Frames</span></tt>, see <a class="reference internal" href="Leap_Frames.html"><em>Frames</em></a>.</p>
 <div class="section" id="hands">
 <h3>Hands<a class="headerlink" href="#hands" title="Permalink to this headline">¶</a></h3>
 <p>The hand model provides information about the identity, position, and other characteristics of a detected hand, the arm to which the hand is attached, and lists of the fingers associated with the hand.</p>
@@ -358,10 +359,10 @@ function doneWithSearch(){
 <div class="section" id="fingers">
 <h3>Fingers<a class="headerlink" href="#fingers" title="Permalink to this headline">¶</a></h3>
 <p>The Leap Motion controller provides information about each finger on a hand. If all or part of a finger is not visible, the finger characteristics are estimated based on recent observations and the anatomical model of the hand. Fingers are identified by type name, i.e. <em>thumb</em>, <em>index</em>, <em>middle</em>, <em>ring</em>, and <em>pinky</em>.</p>
-<p>Fingers are represented by the <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> class.</p>
+<p>Fingers are represented by the <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> class, which is a kind of <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> object.</p>
 <div class="figure">
 <img alt="devguide/../../../images/Leap_Finger_Model.png" src="devguide/../../../images/Leap_Finger_Model.png" />
-<p class="caption">Finger <a class="reference external" href="../api/Leap.Finger.html#csharpclass_leap_1_1_finger_1a24f882775081fa8182a7fca2877d7ed6">TipPosition</a> and <a class="reference external" href="../api/Leap.Finger.html#csharpclass_leap_1_1_finger_1a3760f0d03c577bd8a45779cf3f9a46a8">Direction</a> vectors provide the position of a finger tip and the general direction in which a finger is pointing.</p>
+<p class="caption">Finger <a class="reference external" href="../api/Leap.Pointable.html#csharpclass_leap_1_1_pointable_1a24f882775081fa8182a7fca2877d7ed6">TipPosition</a> and <a class="reference external" href="../api/Leap.Pointable.html#csharpclass_leap_1_1_pointable_1a3760f0d03c577bd8a45779cf3f9a46a8">Direction</a> vectors provide the position of a finger tip and the general direction in which a finger is pointing.</p>
 </div>
 <p>A <tt class="docutils literal"><span class="pre">Finger</span></tt> object provides a <a class="reference external" href="../api/Leap.Bone.html"><tt class="docutils literal"><span class="pre">Bone</span></tt></a> object describing the position and orientation of each anatomical finger bone. All fingers contain four bones ordered from base to tip.</p>
 <?xml version="1.0" encoding="utf-8"?>
@@ -1399,6 +1400,86 @@ function doneWithSearch(){
 <p>This model for the thumb does not quite match the standard anatomical naming system. A real thumb has one less bone than the other fingers. However, for ease of programming, the Leap Motion thumb model includes a zero-length metacarpal bone so that the thumb has the same number of bones at the same indexes as the other fingers. As a result the thumb&#8217;s anatomical metacarpal bone is labeled as a proximal phalanx and the anatomical proximal phalanx is labeled as the intermediate phalanx in the Leap Motion finger bone model.</p>
 <p>(Original diagram by <a class="reference external" href="http://commons.wikimedia.org/wiki/File:Scheme_human_hand_bones-en.svg">Marianna Villareal</a>.)</p>
 </div>
+<div class="section" id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h3>
+<p>A tool is an object like a pencil.</p>
+<p>Tools are represented by the <a class="reference external" href="../api/Leap.Tool.html"><tt class="docutils literal"><span class="pre">Tool</span></tt></a> class, which is a kind of <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> object.</p>
+<div class="figure">
+<img alt="devguide/../../../images/Leap_Tool.png" src="devguide/../../../images/Leap_Tool.png" />
+<p class="caption">A tool is longer, thinner, and straighter than a finger.</p>
+</div>
+<p>Only thin, cylindrical objects are tracked as tools.</p>
+<p>Note that as of version 2, tools are independent of hands.</p>
+</div>
+<div class="section" id="gestures">
+<h3>Gestures<a class="headerlink" href="#gestures" title="Permalink to this headline">¶</a></h3>
+<p>The Leap Motion software recognizes certain movement patterns as gestures which could indicate a user intent or command. Gestures are observed for each finger or tool individually. The Leap Motion software reports gestures observed in a frame the in the same way that it reports other motion tracking data like fingers and hands.</p>
+<p>Gestures are represented by the <a class="reference external" href="../api/Leap.Gesture.html"><tt class="docutils literal"><span class="pre">Gesture</span></tt></a> class and its subclasses, <a class="reference external" href="../api/Leap.CircleGesture.html"><tt class="docutils literal"><span class="pre">CircleGesture</span></tt></a>, <a class="reference external" href="../api/Leap.KeyTapGesture.html"><tt class="docutils literal"><span class="pre">KeyTapGesture</span></tt></a>, <a class="reference external" href="../api/Leap.ScreenTapGesture.html"><tt class="docutils literal"><span class="pre">ScreenTapGesture</span></tt></a>, and <a class="reference external" href="../api/Leap.SwipeGesture.html"><tt class="docutils literal"><span class="pre">SwipeGesture</span></tt></a>.</p>
+<p>The following movement patterns are recognized by the Leap Motion software:</p>
+<table>
+    <tr style="height:'300';">
+            <td>
+                            <img src="../../images/Leap_Gesture_Circle.png" />
+
+            </td>
+            <td>
+                            <img src="../../images/Leap_Gesture_Swipe.png" style="min-width:'400'; height:'300';"/>
+
+            </td>
+    </tr>
+    <tr>
+        <td>Circle — A finger tracing a circle.</td><td>Swipe — A long, linear movement of a hand and its fingers.</td>
+    </tr>
+    <tr style="height:'300';">
+            <td>
+                            <img src="../../images/Leap_Gesture_Tap.png" style="min-width:'400'; min-height:'300';"/>
+
+            </td>
+            <td>
+                            <img src="../../images/Leap_Gesture_Tap2.png" style="min-width:'400'; min-height:'300';"/>
+
+            </td>
+    </tr>
+    <tr>
+        <td>Key Tap — A tapping movement by a finger as if tapping a keyboard key.</td><td>Screen Tap — A tapping movement by the finger as if tapping a vertical computer screen.</td>
+    </tr>
+</table>
+<br><p><strong>Important:</strong> before using gestures in your application, you must enable recognition for each gesture you intend to use. The Controller class  has an <cite>enableGesture()</cite> method that you can use to enable recognition for the types of gestures you use.</p>
+</div>
+<div class="section" id="motions">
+<h3>Motions<a class="headerlink" href="#motions" title="Permalink to this headline">¶</a></h3>
+<p>Motions are estimates of the basic types of movements inherent in the change of a user&#8217;s hands over a period of time. Motions include scale, rotation, and translation (change in position).</p>
+<img alt="devguide/../../../images/Motion_Graphic.png" src="devguide/../../../images/Motion_Graphic.png" />
+<p>Motions are computed between two frames. You can get the motion factors for the scene as a whole from a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object. You can also get factors associated with a single hand from a <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> object.</p>
+<p>You can use the reported motion factors to design interactions within your application. For example, instead of tracking the change in position of individual fingers across several frames of data, you could use the scale factor computed between two frames to let the user change the size of an object.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="40%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Motion Type</th>
+<th class="head">Frame</th>
+<th class="head">Hand</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Scale</th>
+<td>Frame scaling reflects the motion of scene objects toward or away from each other. For example, one hand moves closer to the other.</td>
+<td>Hand scaling reflects the change in finger spread.</td>
+</tr>
+<tr class="row-odd"><th class="stub">Rotation</th>
+<td>Frame rotation reflects differential movement of objects within the scene. For example, one hand up and the other down.</td>
+<td>Hand rotation reflects change in the orientation of a single hand.</td>
+</tr>
+<tr class="row-even"><th class="stub">Translation</th>
+<td>Frame translation reflects the average change in position of all objects in the scene. For example, both hands move to the left, up, or forward.</td>
+<td>Hand translation reflects the change in position of that hand.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="sensor-images">
 <h2>Sensor Images<a class="headerlink" href="#sensor-images" title="Permalink to this headline">¶</a></h2>
@@ -1418,19 +1499,16 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -1448,7 +1526,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

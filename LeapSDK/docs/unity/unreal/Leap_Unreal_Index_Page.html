@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Leap Motion Unreal Plugin &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Leap Motion Unreal Plugin &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -219,15 +219,27 @@ function doneWithSearch(){
 <blockquote>
 <div><ul class="simple">
 <li>Leap Motion 2.2+</li>
-<li>Unreal Engine 4.9</li>
+<li>Unreal Engine 4.9 Full Source distribution</li>
 <li>Windows 7, Windows 8 (Mac and Linux not supported at this time)</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The plugin is included with Unreal Engine 4.9. No installation is required.</p>
-<p>In Unreal 4.7, the plugin is only available as part of the Unreal Engine Full Source distribution. To use the plugin in Unreal 4.7, you must download and build Unreal Engine 4.7. Note: The plugin has a bug in Unreal Engine 4.8 that causes hand jitter. We recommend either using Unreal Engine 4.9 or building the 4.7 branch.</p>
+<p>The Plugin is included with Unreal Engine 4.9 Full Source distribution. To get the version of the Unreal Engine containing the plugin, you must download and build Unreal Engine 4.9.</p>
+<p>If you already have access to Epic Games Unreal Engine repository, you can go to: <a class="reference external" href="https://github.com/EpicGames/UnrealEngine">https://github.com/EpicGames/UnrealEngine</a>.</p>
+<p><strong>Important:</strong> You must be logged into Github under the user name associated with your Unreal Engine account to see the Unreal Engine source repository.</p>
+<p>If you have not accessed the Unreal Engine source code before, you need a <a class="reference external" href="http://www.github.com">Github</a>  account linked to your Unreal account:</p>
+<ol class="arabic simple">
+<li>Associate your Github user name with your Unreal account (<a class="reference external" href="https://www.unrealengine.com/settings">https://www.unrealengine.com/settings</a>).</li>
+<li>Accept Unreal&#8217;s invitation to join their Github organization.</li>
+<li>Go to the Epic Games github site: <a class="reference external" href="https://github.com/EpicGames/">https://github.com/EpicGames/</a></li>
+<li>Open the UnrealEngine repository.</li>
+<li>Change to the 4.9 branch.</li>
+<li>Follow the instructions in the Readme file of the Unreal Engine Github repository to download and build the 4.9 branch of engine from source.</li>
+<li>You can double-check that the Leap Motion plugin is present by finding the plugin folder, <tt class="docutils literal"><span class="pre">UnrealEngine\Engine\Plugins\Runtime\LeapMotionController</span></tt> in your checkout github branch.</li>
+</ol>
+<p>Note: The plugin has a bug in Unreal Engine 4.8 that causes hand jitter. We recommend either using the 4.9 branch (or the earlier 4.7 branch).</p>
 </div>
 <div class="section" id="enable-the-plugin">
 <h2>Enable the plugin<a class="headerlink" href="#enable-the-plugin" title="Permalink to this headline">¶</a></h2>
@@ -261,7 +273,11 @@ function doneWithSearch(){
 </ul>
 <p>Leap Motion API features not supported in Blueprints:</p>
 <ul class="simple">
+<li>Tool tracking</li>
+<li>Gestures</li>
+<li>Motion heuristics</li>
 <li>Interaction Box</li>
+<li>Images</li>
 <li>Frame history</li>
 <li>Touch emulation</li>
 <li>Background applications</li>
@@ -279,19 +295,16 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -309,7 +322,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

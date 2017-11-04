@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>InteractionBox &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>InteractionBox &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="Pointable" href="Leap.Pointable.html" />
-    <link rel="prev" title="LeapHand" href="Leap.Hand.html" />
+    <link rel="next" title="KeyTapGesture" href="Leap.KeyTapGesture.html" />
+    <link rel="prev" title="Hand" href="Leap.Hand.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -134,7 +134,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap.Hand.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Pointable.html");
+            window.location.assign("Leap.KeyTapGesture.html");
     }
 
 }
@@ -308,7 +308,7 @@ function doneWithSearch(){
 <dd><p>The InteractionBox class represents a box-shaped region completely
 within the field of view of the Leap Motion controller.</p>
 <p>The interaction box is an axis-aligned rectangular prism and provides
-normalized coordinates for hands and fingers within this box.
+normalized coordinates for hands, fingers, and tools within this box.
 The InteractionBox class can make it easier to map positions in the Leap
 Motion coordinate system to 2D or 3D coordinate systems used for
 application drawing.</p>
@@ -621,8 +621,9 @@ the InteractionBox.valid property.)</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -630,13 +631,18 @@ the InteractionBox.valid property.)</p>
 <li class="toctree-l1"><a class="reference external" href="https://developer.leapmotion.com/downloads/javascript#plugins">LeapJS Plug-ins</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id28">Bone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id33">Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id21">Finger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html#id30">Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html#id54">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id32">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id47">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id38">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id57">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id6">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">InteractionBox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id25">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id9">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
@@ -665,7 +671,7 @@ the InteractionBox.valid property.)</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

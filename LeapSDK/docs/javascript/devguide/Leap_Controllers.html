@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecting to the Controller &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Connecting to the Controller &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Tracking Model" href="Leap_Tracking.html" />
     <link rel="prev" title="Using the Tracking API" href="Leap_Guides2.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'javascript';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Controllers.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -315,10 +316,15 @@ has the operating system input focus.</p>
 <h2>Access to Images<a class="headerlink" href="#access-to-images" title="Permalink to this headline">¶</a></h2>
 <p>JavaScript applications cannot currently receive images from the Leap Motion cameras.</p>
 </div>
+<div class="section" id="enabling-gestures">
+<h2>Enabling Gestures<a class="headerlink" href="#enabling-gestures" title="Permalink to this headline">¶</a></h2>
+<p>To use the built-in gestures, you must enable them using the options passed to <a class="reference external" href="../api/Leap_Classes.html#Leap.loop"><tt class="docutils literal"><span class="pre">Leap.loop()</span></tt></a> or the <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> constructor:</p>
+</div>
 <div class="section" id="connection-state">
 <h2>Connection State<a class="headerlink" href="#connection-state" title="Permalink to this headline">¶</a></h2>
 <p>When you start the <a class="reference external" href="../api/Leap_Classes.html#Leap.loop"><tt class="docutils literal"><span class="pre">Leap.loop()</span></tt></a> (or call <a class="reference external" href="../api/Leap.Controller.html#Controller.connect">Controller.connect()</a> directly), the LeapJS library connects to the LeapMotion service/daemon through a WebSocket. When the connection is established, the <tt class="docutils literal"><span class="pre">Controller</span></tt> dispatches a <a class="reference external" href="../api/Leap.Controller.html#Controller.Event.connect"><tt class="docutils literal"><span class="pre">connect</span></tt></a> event. If the WebSocket becomes disconnected for any reason, the <tt class="docutils literal"><span class="pre">Controller</span></tt> dispatches a <a class="reference external" href="../api/Leap.Controller.html#Controller.Event.disconnect"><tt class="docutils literal"><span class="pre">disconnect</span></tt></a> event.</p>
 <p>If the user plugs in or unplugs the Leap Motion peripheral while your application is running, the <tt class="docutils literal"><span class="pre">Controller</span></tt> dispatches <a class="reference external" href="../api/Leap.Controller.html#Controller.Event.deviceConnected"><tt class="docutils literal"><span class="pre">deviceConnected</span></tt></a> and <a class="reference external" href="../api/Leap.Controller.html#Controller.Event.deviceDisconnected"><tt class="docutils literal"><span class="pre">deviceDisconnected</span></tt></a> events.</p>
+<p>See <a class="reference internal" href="#listening-for-controller-events">Listening for Controller Events</a></p>
 </div>
 <div class="section" id="listening-for-controller-events">
 <h2>Listening for Controller Events<a class="headerlink" href="#listening-for-controller-events" title="Permalink to this headline">¶</a></h2>
@@ -333,8 +339,9 @@ has the operating system input focus.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -343,6 +350,7 @@ has the operating system input focus.</p>
 <li class="toctree-l3"><a class="reference internal" href="#getting-frames">Getting Frames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#foreground-and-background-applications">Foreground and Background Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-to-images">Access to Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-gestures">Enabling Gestures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-state">Connection State</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-for-controller-events">Listening for Controller Events</a></li>
 </ul>
@@ -351,9 +359,11 @@ has the operating system input focus.</p>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html#id482">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id19">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id28">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html#id482">Serializing Tracking Data</a></li>
 </ul>
 </li>
@@ -381,7 +391,7 @@ has the operating system input focus.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

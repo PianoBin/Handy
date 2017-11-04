@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>API Reference &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>API Reference &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
     <link rel="next" title="Arm" href="Leap.Arm.html" />
-    <link rel="prev" title="Runtime Configuration" href="../devguide/Leap_Configuration.html" />
+    <link rel="prev" title="Serializing Tracking Data" href="../devguide/Leap_Serialization.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -157,7 +157,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("../devguide/Leap_Configuration.html");    }
+            window.location.assign("../devguide/Leap_Serialization.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Arm.html");
     }
@@ -315,24 +315,44 @@ function doneWithSearch(){
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="Leap.Arm.html"><em>Arm</em></a></td>
-<td><a class="reference internal" href="Leap.FailedDevice.html"><em>FailedDevice</em></a></td>
-<td><a class="reference internal" href="Leap.InteractionBox.html"><em>InteractionBox</em></a></td>
+<td><a class="reference internal" href="Leap.Gesture.html"><em>Gesture</em></a></td>
+<td><a class="reference internal" href="Leap.Mask.html"><em>Mask</em></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="Leap.Bone.html"><em>Bone</em></a></td>
-<td><a class="reference internal" href="Leap.Finger.html"><em>Finger</em></a></td>
-<td><a class="reference internal" href="Leap.LeapTransform.html"><em>LeapTransform</em></a></td>
+<td><a class="reference internal" href="Leap.GestureList.html"><em>GestureList</em></a></td>
+<td><a class="reference internal" href="Leap.MaskList.html"><em>MaskList</em></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="Leap.Config.html"><em>Config</em></a></td>
-<td><a class="reference internal" href="Leap.Frame.html"><em>LeapFrame</em></a></td>
-<td><a class="reference internal" href="Leap.LeapQuaternion.html"><em>LeapQuaternion</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.CircleGesture.html"><em>CircleGesture</em></a></td>
+<td><a class="reference internal" href="Leap.Hand.html"><em>Hand</em></a></td>
+<td><a class="reference internal" href="Leap.Pointable.html"><em>Pointable</em></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Leap.Controller.html"><em>Controller</em></a></td>
-<td><a class="reference internal" href="Leap.Hand.html"><em>LeapHand</em></a></td>
-<td><a class="reference internal" href="Leap.Vector.html"><em>Vector</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Config.html"><em>Config</em></a></td>
+<td><a class="reference internal" href="Leap.HandList.html"><em>HandList</em></a></td>
+<td><a class="reference internal" href="Leap.PointableList.html"><em>PointableList</em></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="Leap.Device.html"><em>Device</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.Controller.html"><em>Controller</em></a></td>
 <td><a class="reference internal" href="Leap.Image.html"><em>Image</em></a></td>
-<td>&nbsp;</td>
+<td><a class="reference internal" href="Leap.ScreenTapGesture.html"><em>ScreenTapGesture</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Device.html"><em>Device</em></a></td>
+<td><a class="reference internal" href="Leap.ImageList.html"><em>ImageList</em></a></td>
+<td><a class="reference internal" href="Leap.SwipeGesture.html"><em>SwipeGesture</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.DeviceList.html"><em>DeviceList</em></a></td>
+<td><a class="reference internal" href="Leap.InteractionBox.html"><em>InteractionBox</em></a></td>
+<td><a class="reference internal" href="Leap.Tool.html"><em>Tool</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Finger.html"><em>Finger</em></a></td>
+<td><a class="reference internal" href="Leap.KeyTapGesture.html"><em>KeyTapGesture</em></a></td>
+<td><a class="reference internal" href="Leap.ToolList.html"><em>ToolList</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.FingerList.html"><em>FingerList</em></a></td>
+<td><a class="reference internal" href="Leap.Listener.html"><em>Listener</em></a></td>
+<td><a class="reference internal" href="Leap.TrackedQuad.html"><em>TrackedQuad</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Frame.html"><em>Frame</em></a></td>
+<td><a class="reference internal" href="Leap.Matrix.html"><em>Matrix</em></a></td>
+<td><a class="reference internal" href="Leap.Vector.html"><em>Vector</em></a></td>
 </tr>
 </tbody>
 </table>
@@ -346,27 +366,43 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id3">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id3">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.ClockCorrelator.html">ClockCorrelator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id3">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id2">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Constants.html">Convenience Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id2">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Events.html">Controller Events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id2">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id2">Finger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id3">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id3">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id5">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id1">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.LeapTransform.html">LeapTransform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.LeapQuaternion.html">LeapQuaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id1">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -391,7 +427,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

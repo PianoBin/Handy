@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pointable &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Pointable &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="PointableList" href="Leap.PointableList.html" />
     <link rel="prev" title="Matrix" href="Leap.Matrix.html" />
@@ -77,10 +77,12 @@
     var pageAPI = 'cpp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
     hasAPI.python = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -193,11 +195,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/api/Leap.Pointable.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.Pointable.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -286,33 +288,7 @@ function doneWithSearch(){
      column-count:2;
      }
      strong {color:gray;}
-</style><p><strong>Methods:</strong></p>
-<div class="members container">
-<ul class="simple">
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a398664eabda6168d32738ac4fc92577f">Pointable()</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a8cf9153b5f55c95ea44d0e0a3bdc8a75">direction() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a43fd476e22d0607d5caae64402b2cffa">frame() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1aa6736e994b5c12c0394547eba1147478">hand() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a87daef5bdd8501be1f113684cfc61074">id() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a1ed7fc6712c3df546cf4be4e7f6cd17e">invalid()</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a28538a21a1788ca33c2c11102b5c027b">isExtended() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a216198547ba0bc21376818472aa1fd8b">isFinger() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ae4edd5b99b7cea5c821a544973a8f48f">isTool() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a7c7f525adfb7ab1af7df4b0b6b34d4eb">length() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a1f30e62fd522806db3f6d1b48d3d2685">operator!=(const Pointable &amp;) const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a7cec59cd6a5a6883fb83b84bcd6ebf90">operator==(const Pointable &amp;) const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a0eb08fd21d3c4ccb1f9a0f566f122532">stabilizedTipPosition() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a2e8c627e2f2709b42b2ff60d898345c5">timeVisible() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a495779027d8771a7980b3ca08335f017">tipPosition() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ac2cee5b1aa59eaeedbdd8485ba763bdd">tipVelocity() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1adc22c57be56d3de9b8f1344b382c4f33">touchDistance() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526">touchZone() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a49775584c76a5ecbefa51065cadbc304">width() const</a></li>
-</ul>
-</div>
-<div class="line-block" id="cppclass_leap_1_1_pointable">
+</style><div class="line-block" id="cppclass_leap_1_1_pointable">
 <div class="line"><em>class</em> <strong>Leap::Pointable</strong></div>
 </div>
 <blockquote>
@@ -327,10 +303,10 @@ float width = pointable.<a class="reference internal" href="#cppclass_leap_1_1_p
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> position = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1a495779027d8771a7980b3ca08335f017"><em>tipPosition</em></a>();
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> speed = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1ac2cee5b1aa59eaeedbdd8485ba763bdd"><em>tipVelocity</em></a>();
 float <a class="reference internal" href="#cppclass_leap_1_1_pointable_1adc22c57be56d3de9b8f1344b382c4f33"><em>touchDistance</em></a> = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1adc22c57be56d3de9b8f1344b382c4f33"><em>touchDistance</em></a>();
-Leap::Pointable::Zone zone = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526"><em>touchZone</em></a>();
+<a class="reference internal" href="#cppclass_leap_1_1_pointable_1a4e3ed68e1678c0e62d62a69b903720c8"><em>Leap::Pointable::Zone</em></a> zone = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526"><em>touchZone</em></a>();
 </pre>
 </p>
-<p>To provide touch emulation, the Leap Motion software associates a floating touch plane that adapts to the user&#8217;s finger movement and hand posture. The Leap Motion interprets purposeful movements toward this plane as potential touch points.</p>
+<p>To provide touch emulation, the Leap Motion software associates a floating touch plane that adapts to the user&#8217;s finger movement and hand posture. The Leap Motion interprets purposeful movements toward this plane as potential touch points. The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> class reports touch state with the touchZone and touchDistance values.</p>
 <p>Note that <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> objects can be invalid, which means that they do not contain valid tracking data and do not correspond to a physical entity. Invalid <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> objects can be the result of asking for a <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object using an ID from an earlier frame when no <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> objects with that ID exist in the current frame. A <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object created from the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> constructor is also invalid. Test for validity with the <a class="reference internal" href="#cppclass_leap_1_1_pointable_1aac1b70a2ed67ead038c4d3f5ac4d8a81"><em>Pointable::isValid()</em></a> function.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
@@ -338,54 +314,13 @@ Leap::Pointable::Zone zone = pointable.<a class="reference internal" href="#cppc
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_pointable_1a4e3ed68e1678c0e62d62a69b903720c8"></span><strong>Zone enum</strong></p>
-<blockquote>
-<div><p>Defines the values for reporting the state of a <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object in relation to an adaptive touch plane. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">ZONE_NONE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - <p>The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object is too far from the plane to be considered hovering or touching. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">ZONE_HOVERING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - <p>The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object is close to, but not touching the plane. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">ZONE_TOUCHING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - <p>The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> has penetrated the plane. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_pointable_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"></span><div class="line-block">
 <div class="line"><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> <strong>direction</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>The direction in which this finger is pointing. </p>
+<div><p>The direction in which this finger or tool is pointing. </p>
 <p><p><pre class="literal-block">
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> pointingToward = pointable.direction();
 </pre>
@@ -430,7 +365,7 @@ Leap::Pointable::Zone zone = pointable.<a class="reference internal" href="#cppc
 <a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand"><em>Leap::Hand</em></a> attachedHand = pointable.hand();
 </pre>
 </p>
-<p>This function always returns an invalid <a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand"><em>Hand</em></a> object.</p>
+<p>Not that in version 2+, tools are not associated with hands. For tools, this function always returns an invalid <a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand"><em>Hand</em></a> object.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The associated <a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand"><em>Hand</em></a> object, if available; otherwise, an invalid <a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand"><em>Hand</em></a> object is returned. </dd>
@@ -445,7 +380,7 @@ Leap::Pointable::Zone zone = pointable.<a class="reference internal" href="#cppc
 </div>
 </p>
 <blockquote>
-<div><p>A unique ID assigned to this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object, whose value remains the same across consecutive frames while the tracked finger remains visible. </p>
+<div><p>A unique ID assigned to this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object, whose value remains the same across consecutive frames while the tracked finger or tool remains visible. </p>
 <p><p>If tracking is lost (for example, when a finger is occluded by another finger or when it is withdrawn from the Leap Motion <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> field of view), the Leap Motion software may assign a new ID when it detects the entity in a future frame.</p>
 <p><pre class="literal-block">
 int32_t theID = pointable.id();
@@ -468,7 +403,7 @@ int32_t theID = pointable.id();
 </p>
 <blockquote>
 <div><p>Whether or not this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is in an extended posture. </p>
-<p><p>A finger is considered extended if it is extended straight from the hand as if pointing. A finger is not extended when it is bent down and curled towards the palm.</p>
+<p><p>A finger is considered extended if it is extended straight from the hand as if pointing. A finger is not extended when it is bent down and curled towards the palm. Tools are always extended.</p>
 <p><pre class="literal-block">
 int extendedFingers = 0;
 for (int f = 0; f &lt; hand.<a class="reference internal" href="Leap.Hand.html#cppclass_leap_1_1_hand_1a9f871d62c006a2426fc2164f91584ec4"><em>fingers</em></a>().<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a0745638c9967e2ed90bc96c012288c55"><em>count</em></a>(); f++)
@@ -526,7 +461,9 @@ if (pointable.isTool()) {
 </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>false </dd>
+<dd>True, if this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is classified as a tool. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -557,7 +494,7 @@ if( pointable.isValid()) {
 </div>
 </p>
 <blockquote>
-<div><p>The estimated length of the finger in millimeters. </p>
+<div><p>The estimated length of the finger or tool in millimeters. </p>
 <p><p><pre class="literal-block">
 float apparentlength = pointable.length();
 </pre>
@@ -721,6 +658,7 @@ float lifetime = pointable.<a class="reference internal" href="#cppclass_leap_1_
 <blockquote>
 <div><p>A value proportional to the distance between this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object and the adaptive touch plane. </p>
 <p><p><img alt="api/../../../images/Leap_Touch_Plane.png" src="api/../../../images/Leap_Touch_Plane.png" /></p>
+<p>The touch distance is a value in the range [-1, 1]. The value 1.0 indicates the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is at the far edge of the hovering zone. The value 0 indicates the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is just entering the touching zone. A value of -1.0 indicates the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is firmly within the touching zone. Values in between are proportional to the distance from the plane. Thus, the touchDistance of 0.5 indicates that the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is halfway into the hovering zone.</p>
 <p><pre class="literal-block">
 float distance = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1adc22c57be56d3de9b8f1344b382c4f33"><em>touchDistance</em></a>();
 if (distance &gt; 0) {
@@ -730,20 +668,29 @@ if (distance &gt; 0) {
 }
 </pre>
 </p>
+<p>You can use the touchDistance value to modulate visual feedback given to the user as their fingers close in on a touch target, such as a button.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The normalized touch distance of this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526"></span><div class="line-block">
-<div class="line">Zone <strong>touchZone</strong>()</div>
+<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_pointable_1a4e3ed68e1678c0e62d62a69b903720c8"><em>Zone</em></a> <strong>touchZone</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>The current touch zone of this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object. </p>
-<p><p><pre class="literal-block">
+<p><p>The Leap Motion software computes the touch zone based on a floating touch plane that adapts to the user&#8217;s finger movement and hand posture. The Leap Motion software interprets purposeful movements toward this plane as potential touch points. When a <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> moves close to the adaptive touch plane, it enters the &#8220;hovering&#8221; zone. When a <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> reaches or passes through the plane, it enters the &#8220;touching&#8221; zone.</p>
+<p>The possible states are present in the Zone enum of this class:</p>
+<p><strong>Zone.NONE</strong>  The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is outside the hovering zone.</p>
+<p><strong>Zone.HOVERING</strong>  The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is close to, but not touching the touch plane.</p>
+<p><strong>Zone.TOUCHING</strong>  The <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> has penetrated the touch plane.</p>
+<p>The touchDistance value provides a normalized indication of the distance to the touch plane when the <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> is in the hovering or touching zones.</p>
+<p><pre class="literal-block">
 switch (pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526"><em>touchZone</em></a>()) {
     case Leap::Pointable::ZONE_NONE:
         //Handle distant pointable
@@ -763,6 +710,8 @@ switch (pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointab
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The touch zone of this <a class="reference internal" href="#cppclass_leap_1_1_pointable"><em>Pointable</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -772,7 +721,7 @@ switch (pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointab
 </div>
 </p>
 <blockquote>
-<div><p>The estimated width of the finger in millimeters. </p>
+<div><p>The estimated width of the finger or tool in millimeters. </p>
 <p><p><pre class="literal-block">
 float averageThickness = pointable.<a class="reference internal" href="#cppclass_leap_1_1_pointable_1a49775584c76a5ecbefa51065cadbc304"><em>width</em></a>();
 </pre>
@@ -851,6 +800,9 @@ if( pointable != <a class="reference internal" href="#cppclass_leap_1_1_pointabl
 </dl>
 </p>
 </li>
+<li><tt class="first docutils literal"><span class="pre">ZONENONE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">ZONE_NONE</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">ZONEHOVERING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">ZONE_HOVERING</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">ZONETOUCHING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">ZONE_TOUCHING</span></tt> - </li>
 </ul>
 </div></blockquote>
 </div>
@@ -862,8 +814,9 @@ if( pointable != <a class="reference internal" href="#cppclass_leap_1_1_pointabl
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -871,27 +824,36 @@ if( pointable != <a class="reference internal" href="#cppclass_leap_1_1_pointabl
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Pointable</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#touch-zone">Touch Zone</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -916,7 +878,7 @@ if( pointable != <a class="reference internal" href="#cppclass_leap_1_1_pointabl
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

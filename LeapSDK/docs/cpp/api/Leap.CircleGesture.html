@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CircleGesture &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>CircleGesture &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="API Reference" href="Leap_Classes.html" />
+    <link rel="next" title="Config" href="Leap.Config.html" />
+    <link rel="prev" title="Bone" href="Leap.Bone.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,10 +77,12 @@
     var pageAPI = 'cpp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
     hasAPI.python = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -107,33 +112,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/api/Leap.CircleGesture.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Classes.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -152,8 +131,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap.Bone.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap.Config.html");
     }
 
 }
@@ -214,11 +195,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unity/index.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/api/Leap.CircleGesture.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
-      <a href="../../csharp/index.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.CircleGesture.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -238,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -295,13 +276,12 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
   CircleGesture
 </span> -->
         
   <div class="section" id="circlegesture">
 <h1>CircleGesture<a class="headerlink" href="#circlegesture" title="Permalink to this headline">¶</a></h1>
-<p><strong>Notice</strong> Gestures are deprecated in version 3.0 and may not behave the same
-as they did in earlier versions.</p>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -313,12 +293,27 @@ as they did in earlier versions.</p>
 <ul class="simple">
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a16d517296a29cd73027751a4f34b3f61">CircleGesture()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a04aa10e24836223a19d6196fcbc6ad04">CircleGesture(const Gesture &amp;rhs)</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a003d8e2b689e1e80a9d9f5547f26d831">Gesture()</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a90982875b1a1e8b54302e1325de490cd">Gesture(const Gesture &amp;rhs)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a87635814523480d214fb932e00b622ee">center() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1ab6525d8b3efe0b1ddbf99cd8d4cc1dce">classType()</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a43aeae80706c4089acf73e4095891fa5">duration() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1abac9920e8988b2743222ce1729ac6601">durationSeconds() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a43fd476e22d0607d5caae64402b2cffa">frame() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a788e21d8ff5d1f54209e75f14a27110b">hands() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a87daef5bdd8501be1f113684cfc61074">id() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a4788a29ee0630494dbd62bdbcabc8a2c">invalid()</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a1c3501a2e37fb1b352af0f53d067065f">normal() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a7d26edde0f247f1556ebcc6d15053515">operator!=(const Gesture &amp;rhs) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1ae811cd825aca7239e86c5e7314bb7448">operator==(const Gesture &amp;rhs) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a249c63ba650070ad9bbfec7fc497443a">pointable() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a9b73aa8053337ed8d142fc912703e43e">pointables() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1a9ee37f47cac12dd2308c2c0f3cef8b9e">progress() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_circle_gesture_1afe45306f1c8ce176fcf6c80359b2f136">radius() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a3804c9648e6d1325751536cca350f2bf">state() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_gesture_1afbd0fa31db28593e9669c3c56711c0a7">type() const</a></li>
 </ul>
 </div>
 <div class="line-block" id="cppclass_leap_1_1_circle_gesture">
@@ -326,7 +321,60 @@ as they did in earlier versions.</p>
 </div>
 <blockquote>
 <div><p>The <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> classes represents a circular finger movement. </p>
-<p></p>
+<p><p>A circle movement is recognized when the tip of a finger draws a circle within the Leap Motion <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> field of view.</p>
+<p><img alt="api/../../../images/Leap_Gesture_Circle.png" src="api/../../../images/Leap_Gesture_Circle.png" /></p>
+<p><strong>Important:</strong> To use circle gestures in your application, you must enable recognition of the circle gesture. You can enable recognition with:</p>
+<p><pre class="literal-block">
+controller.enableGesture(Leap::Gesture::TYPE_CIRCLE);
+</pre>
+</p>
+<p>Circle gestures are continuous. The <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> objects for the gesture have three possible states:</p>
+<p><strong>State::STATE_START</strong>  The circle gesture has just started. The movement has progressed far enough for the recognizer to classify it as a circle.</p>
+<p><strong>State::STATE_UPDATE</strong>  The circle gesture is continuing.</p>
+<p><strong>State::STATE_STOP</strong>  The circle gesture is finished.</p>
+<p>You can set the minimum radius and minimum arc length required for a movement to be recognized as a circle using the config attribute of a connected <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object. Use the following keys to configure circle recognition:</p>
+<p><table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="15%" />
+<col width="20%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key string</th>
+<th class="head">Value type</th>
+<th class="head">Default value</th>
+<th class="head">Units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gesture.Circle.MinRadius</td>
+<td>float</td>
+<td>5.0</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.Circle.MinArc</td>
+<td>float</td>
+<td>1.5 * pi</td>
+<td>radians</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>The following example demonstrates how to set the circle configuration parameters:</p>
+<p><pre class="literal-block">
+controller.config().setFloat(&quot;Gesture.Circle.MinRadius&quot;, 10.0);
+controller.config().setFloat(&quot;Gesture.Circle.MinArc&quot;, .5);
+controller.config().save();
+</pre>
+</p>
+<p>The <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object must be connected to the Leap Motion service/daemon before setting the configuration parameters.</p>
+<p><dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_circle_gesture_1a87635814523480d214fb932e00b622ee"></span><div class="line-block">
 <div class="line"><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> <strong>center</strong>()</div>
@@ -340,6 +388,8 @@ as they did in earlier versions.</p>
 <dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> The center of the circle in mm from the Leap Motion origin. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </div></blockquote>
@@ -349,7 +399,11 @@ as they did in earlier versions.</p>
 </p>
 <blockquote>
 <div><p>Constructs a new <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> object. </p>
-<p>An uninitialized <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> object is considered invalid. Get valid instances of the <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> class from a <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> object. </p>
+<p>An uninitialized <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> object is considered invalid. Get valid instances of the <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> class from a <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> object. <dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_circle_gesture_1a04aa10e24836223a19d6196fcbc6ad04"></span><div class="line-block">
 <div class="line"> <strong>CircleGesture</strong>(const  <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a>  &amp; rhs)</div>
@@ -364,6 +418,8 @@ if(gesture.type() == Leap::Gesture::TYPE_CIRCLE){
 </pre>
 </p>
 <p><dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">rhs</span></tt> - <p>The <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> instance to specialize. This <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> instance must be a <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>CircleGesture</em></a> object. </p>
@@ -380,7 +436,8 @@ if(gesture.type() == Leap::Gesture::TYPE_CIRCLE){
 </p>
 <blockquote>
 <div><p>Returns the normal vector for the circle being traced. </p>
-<p><p><pre class="literal-block">
+<p><p>If you draw the circle clockwise, the normal vector points in the same general direction as the pointable object drawing the circle. If you draw the circle counterclockwise, the normal points back toward the pointable. If the angle between the normal and the pointable object drawing the circle is less than 90 degrees, then the circle is clockwise.</p>
+<p><pre class="literal-block">
 std::string clockwiseness;
 if (circle.pointable().direction().angleTo(circle.normal()) &lt;= Leap::PI/2) {
     clockwiseness = &quot;clockwise&quot;;
@@ -394,6 +451,8 @@ else
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> the normal vector for the circle being traced </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -411,6 +470,8 @@ else
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd><a class="reference internal" href="Leap.Pointable.html#cppclass_leap_1_1_pointable"><em>Pointable</em></a> A <a class="reference internal" href="Leap.Pointable.html#cppclass_leap_1_1_pointable"><em>Pointable</em></a> object representing the circling finger. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -421,13 +482,17 @@ else
 </p>
 <blockquote>
 <div><p>The number of times the finger tip has traversed the circle. </p>
-<p><p><pre class="literal-block">
+<p><p>Progress is reported as a positive number of the number. For example, a progress value of .5 indicates that the finger has gone halfway around, while a value of 3 indicates that the finger has gone around the the circle three times.</p>
+<p><pre class="literal-block">
 float turns = circle.progress();
 </pre>
 </p>
+<p>Progress starts where the circle gesture began. Since the circle must be partially formed before the Leap Motion software can recognize it, progress will be greater than zero when a circle gesture first appears in the frame.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>float A positive number indicating the gesture progress. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -445,27 +510,8 @@ float diameter = 2 * circle.radius();
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The circle radius in mm. </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-</div></blockquote>
-<em>Public Static Functions</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_circle_gesture_1ab6525d8b3efe0b1ddbf99cd8d4cc1dce"></span><div class="line-block">
-<div class="line">Type <strong>classType</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>The circle gesture type. </p>
-<p><p><pre class="literal-block">
-if(gesture.type() == <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture_1ab6525d8b3efe0b1ddbf99cd8d4cc1dce"><em>Leap::CircleGesture::classType</em></a>()){
-    <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>Leap::CircleGesture</em></a> circleGesture = <a class="reference internal" href="#cppclass_leap_1_1_circle_gesture"><em>Leap::CircleGesture</em></a>(gesture);
-}
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>Type The type value designating a circle gesture. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -480,13 +526,46 @@ if(gesture.type() == <a class="reference internal" href="#cppclass_leap_1_1_circ
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -508,7 +587,7 @@ if(gesture.type() == <a class="reference internal" href="#cppclass_leap_1_1_circ
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

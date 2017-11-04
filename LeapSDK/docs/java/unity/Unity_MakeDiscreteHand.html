@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Creating Your Own Hand Prefabs &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Creating Your Own Hand Prefabs &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -310,7 +310,7 @@ function doneWithSearch(){
 <li>Remove any colliders from the parts of the graphics hand. Otherwise, these will make the colliders in the RigidHand bounce around.</li>
 <li>Generally, you don&#8217;t need parts for both the joints and the bones. They aren&#8217;t really independent of each other, so you can use which ever makes more sense for your hand model. In this tutorial, we will add both just to show how it is done.</li>
 <li>Similarly, your model might not need both metacarpal bones and a palm. The metacarpal bones are enclosed in the palm and don&#8217;t move independently. This tutorial includes both.</li>
-<li>Use real-world sizes for the hand model. The hand and finger scripts do not resize the parts individually. The overall scale is set by scale assigned to the LeapHandController object, but this also affects the range of motion of the hand. The size of the hand at 1:1 should be that of a typical human hand (and remember that the standard unit in Unity is 1 meter).</li>
+<li>Use real-world sizes for the hand model. The hand and finger scripts do not resize the parts individually. The overall scale is set by scale assigned to the HandController object, but this also affects the range of motion of the hand. The size of the hand at 1:1 should be that of a typical human hand (and remember that the standard unit in Unity is 1 meter).</li>
 <li>Very abstract and symmetrical designs, like the one created in this tutorial, can use the same prefab for both right and left hands. Most models, however, will need a different prefab for each hand in order to adjust the local transforms of the hand components properly.</li>
 </ul>
 <p>First, we will create a prefab for the finger and then use that in constructing the hand prefab. To get started, create a new Unity project and import the Leap Motion asset package.</p>
@@ -368,8 +368,10 @@ function doneWithSearch(){
 </ol>
 </div></blockquote>
 </li>
-</ol>
-<ol class="arabic" start="6">
+<li><p class="first">Arrange the bones and joints into a line. This arrangement is for show in the editor view only, but helps identify the parts when you need to make adjustments.</p>
+<img alt="unity/../../../images/unity/Unity_PrefabFinger.jpg" src="unity/../../../images/unity/Unity_PrefabFinger.jpg" />
+<p>Very Important: In this case, only change the transforms of the bone and joint game objects. Never the change the knobs and tubes when arranging the finger. Change the tube or knob transforms only to rotate the graphics objects or arrange multiple components of the same bone relative to each other. Be careful when selecting the bones and joints. If you click an object in the Scene view, Unity will select the Tube or Knob object, not the parent bone or joint.</p>
+</li>
 <li><p class="first">Add the SkeletalFinger script component to the KnobbyFinger object</p>
 </li>
 <li><p class="first">Drag each of the bones and joints you just created to corresponding the bone and joint slots in the script.</p>
@@ -399,8 +401,6 @@ function doneWithSearch(){
 <li><p class="first">Create an empty game object. Name it KnobbyHand.</p>
 </li>
 <li><p class="first">Add the SkeletalHand script component to KnobbyHand.</p>
-</li>
-<li><p class="first">Set the Handedness property of the hand script to &#8220;Left.&#8221; This will need to be changed for the right hand prefab when you add it to the hand pool in the scene &#8211; or you can create unique prefabs for the left and right hands. For now, we want to make the prefab first; then we can copy it for the right hand.</p>
 </li>
 <li><p class="first">Drag 5 KnobyFinger prefabs into the hand. Name them Thumb, Index, Middle, Ring, and Pinky.</p>
 </li>
@@ -442,7 +442,8 @@ function doneWithSearch(){
 </div></blockquote>
 </li>
 <li><p class="first">Add the arm:</p>
-<ol class="arabic simple">
+<blockquote>
+<div><ol class="arabic simple">
 <li>Add an empty game object to KnobbyHand. Name it Arm.</li>
 <li>Add a Cylinder primitive to Arm. Name it Rod.</li>
 <li>Remove the Collider.</li>
@@ -450,33 +451,31 @@ function doneWithSearch(){
 <li>Set the Rod transform scale to (.02, .12, .02).</li>
 <li>Drag Arm to the Forearm slot in the SkeletalHand script.</li>
 </ol>
-<p>The KnobbyHand hierarchy should look like the following:</p>
-<img alt="unity/../../../images/unity/Unity_KnobbyHand_Heirarchy.png" src="unity/../../../images/unity/Unity_KnobbyHand_Heirarchy.png" />
+</div></blockquote>
 </li>
-<li><p class="first">Drag the KnobbyHand to the Asset folder to create a prefab. Rename the prefab, KnobbyHand-Left.</p>
+<li><p class="first">Arrange the parts of the hand as desired. This is only for aesthetics, the positions are overwritten at runtime. Again, only change the transforms that are direct children of the hand, not those of any of the graphics primitives.</p>
+<img alt="unity/../../../images/unity/Unity_PrefabHand.jpg" src="unity/../../../images/unity/Unity_PrefabHand.jpg" />
 </li>
-<li><p class="first">Drag the KnobbyHand to the Asset folder a second tme to create another prefab. Rename this prefab, KnobbyHand-Right.</p>
-</li>
-<li><p class="first">Select the KnobbyHand-Right prefab in the project panel. In the Inspector, chang its Handedness (chirality) setting to &#8220;Right.&#8221;</p>
+<li><p class="first">Drag the KnobbyHand to the Asset folder to create a prefab.</p>
 </li>
 </ol>
+<p>The KnobbyHand hierarchy should look like the following:</p>
+<img alt="unity/../../../images/unity/Unity_KnobbyHand_Heirarchy.png" src="unity/../../../images/unity/Unity_KnobbyHand_Heirarchy.png" />
 </div>
 <div class="section" id="test-your-new-hand">
 <h3>Test Your new Hand<a class="headerlink" href="#test-your-new-hand" title="Permalink to this headline">¶</a></h3>
 <p>To test the hands:</p>
 <ol class="arabic simple">
-<li>Start with the Leap_Hands_Demo_Desktop, which already has a LeapHandController setup.</li>
-<li>Drag your KnobbyHand-Left and KnobbyHand-Right prefabs into the scene under the Camera&gt;HandModels game object.</li>
-<li>You can delete the two CapsuleHand prefabs.</li>
+<li>Add a HandController prefab to the scene so that it’s interaction area is in the camera’s field of view.</li>
+<li>In the Hand Controller Script component, uncheck Separate Left/Right.</li>
+<li>Drag KnobbyHand to the HandGraphics Model slot.</li>
+<li>Make sure that RigidHand is in the Hand Physics Model slot (drag in the prefab, if necessary). You can leave the Tool Model slot empty.</li>
+<li>Play the level and observe the hands.</li>
 </ol>
-<p>4. Select the LeapHandController game object and locate its Hand Pool component.
-3. Drag KnobbyHand-Left to the Left Graphics_Hands model slot (replacing the CapsuleHands-L model).
-4. Drag KnobbyHand-Right to the Right Graphics_Hands Model slot (replacing the CapsuleHands-R model).
-6. Play the level and observe the hands.</p>
 <p>Creating hands is a complicated process and there is a lot that can go wrong. Use the hierarchy view to find the parts of the “live” hand, if one isn’t in the right place. You can pause the game to freeze the live hand so that you can inspect its properties more closely.</p>
 <p>If the RigidHand components, visible in scene view, are jittery or bouncing, make sure that you removed all the collider components from the graphics hand parts.</p>
 <p>If fingers overlap and move under control of a single real finger, check the finger type settings in the SkeletalFinger script components of the fingers.</p>
-<p>If the hand parts are all munged together in a big blob, the primitive scale values are set too large. Remember that in Unity, 1 is 1 meter. A typical hand width is 8.5 centimeters, or .085 in the Unity transform scale value. To make hands larger in a game, scale up the LeapHandController object.</p>
+<p>If the hand parts are all munged together in a big blob, the primitive scale values are set too large. Remember that in Unity, 1 is 1 meter. A typical hand width is 8.5 centimeters, or .085 in the Unity transform scale value. To make hands larger in a game, scale up the HandController object.</p>
 </div>
 </div>
 </div>
@@ -487,8 +486,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -515,7 +515,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

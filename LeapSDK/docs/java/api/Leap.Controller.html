@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Controller &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Device" href="Leap.Device.html" />
     <link rel="prev" title="Config" href="Leap.Config.html" />
@@ -280,8 +280,8 @@ function doneWithSearch(){
   Controller
 </span> -->
         
-  <div class="section" id="id12">
-<h1>Controller<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id17">
+<h1>Controller<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h1>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -299,22 +299,20 @@ function doneWithSearch(){
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aefd686440cfcbb63eb31dd5004ffacfe">devices()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1ac2ee4e779963f135abccc183ab2f35fb">enableGesture(Gesture.Type type, boolean enable)</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a0b727ecd3f7ff90c0c2ae9f38c2bc706">enableGesture(Gesture.Type type)</a></li>
-<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1acb5e9faaa2ec668860e169e5978caf59">failedDevices()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a200d8fd2c880cd7da6a56bdee524409e">frame(int history)</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a927587df126a877842a884f4a536dd8c">frame()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1af5e3f27ace112fa797ea33b855e089df">hasFocus()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a8e938145723e4bf003333106474ac59e">images()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1afbf4768f0408a85337dbb9f1413d611a">isConnected()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aae7b3924a68dab4de6b19328b82a3305">isGestureEnabled(Gesture.Type type)</a></li>
-<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a9cfc516923ff1fa8f395f52fa6ff9927">isPaused()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a36ddadd5c199218f40a4c2d43c5167c3">isPolicySet(Controller.PolicyFlag policy)</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a8c8da1ee11e2a1da2e9b7e16b31279d8">isServiceConnected()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a2072886c5950cbfcb0e6713c20a9330a">now()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a52569d346d251ac88399dafaf62c0e29">policyFlags()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a6d9b8e0d66d35c05b29603e943f9032a">removeListener(Listener listener)</a></li>
-<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a4e31c0456b65ca6501bd1760995952a8">setPaused(boolean pause)</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a272a235782d654778a1873a28f49a794">setPolicy(Controller.PolicyFlag policy)</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1af8981a9ec355b85f3639b372fd80ea62">setPolicyFlags(Controller.PolicyFlag flags)</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a4ce1c0a17e327065aac9f33571fb20c8">trackedQuad()</a></li>
 </ul>
 </div>
 <div class="line-block" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller">
@@ -342,8 +340,8 @@ function doneWithSearch(){
 <div><p>Adds a listener to this <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a>. </p>
 <p><p>The <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a> dispatches Leap Motion events to each associated listener. The order in which listener callback functions are invoked is arbitrary. If you pass a listener to the <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a>&#8216;s constructor function, it is automatically added to the list and can be removed with the <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a6d9b8e0d66d35c05b29603e943f9032a"><em>Controller::removeListener()</em></a> function.</p>
 <p><pre class="literal-block">
-    SampleListener listener = new SampleListener();
-    controller.addListener(listener);
+SampleListener listener = new SampleListener();
+controller.addListener(listener);
 </pre>
 </p>
 <p>The <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a> does not keep a strong reference to the <a class="reference internal" href="Leap.Listener.html#javaclasscom_1_1leapmotion_1_1leap_1_1_listener"><em>Listener</em></a> instance. Ensure that you maintain a reference until the listener is removed from the controller.</p>
@@ -473,13 +471,17 @@ DeviceList connectedLeaps = controller.devices();
 </p>
 <blockquote>
 <div><p>Enables or disables reporting of a specified gesture type. </p>
-<p><p><pre class="literal-block">
+<p><p>By default, all gesture types are disabled. When disabled, gestures of the disabled type are never reported and will not appear in the frame gesture list.</p>
+<p><pre class="literal-block">
 controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
 </pre>
 </p>
+<p>As a performance optimization, only enable recognition for the types of movements that you use in your application.</p>
 <p><dl class="docutils">
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aae7b3924a68dab4de6b19328b82a3305"><em>Controller::isGestureEnabled()</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to enable or disable. Must be a member of the <a class="reference internal" href="Leap.Gesture.html#javaenumcom_1_1leapmotion_1_1leap_1_1_gesture_1_1_type"><em>Gesture::Type</em></a> enumeration. </p>
@@ -498,13 +500,17 @@ controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
 </p>
 <blockquote>
 <div><p>Enables or disables reporting of a specified gesture type. </p>
-<p><p><pre class="literal-block">
+<p><p>By default, all gesture types are disabled. When disabled, gestures of the disabled type are never reported and will not appear in the frame gesture list.</p>
+<p><pre class="literal-block">
 controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
 </pre>
 </p>
+<p>As a performance optimization, only enable recognition for the types of movements that you use in your application.</p>
 <p><dl class="docutils">
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aae7b3924a68dab4de6b19328b82a3305"><em>Controller::isGestureEnabled()</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to enable or disable. Must be a member of the <a class="reference internal" href="Leap.Gesture.html#javaenumcom_1_1leapmotion_1_1leap_1_1_gesture_1_1_type"><em>Gesture::Type</em></a> enumeration. </p>
@@ -513,24 +519,6 @@ controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
 </li>
 </ul>
 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-<p><span class="target" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1acb5e9faaa2ec668860e169e5978caf59"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="Leap.FailedDeviceList.html#javaclasscom_1_1leapmotion_1_1leap_1_1_failed_device_list"><em>FailedDeviceList</em></a> <strong>failedDevices</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>A list of any Leap Motion hardware devices that are physically connected to the client computer, but are not functioning correctly. </p>
-<p><p>The list contains <a class="reference internal" href="Leap.FailedDevice.html#javaclasscom_1_1leapmotion_1_1leap_1_1_failed_device"><em>FailedDevice</em></a> objects containing the pnpID and the reason for failure. No other device information is available.</p>
-<p><pre class="literal-block">
-FailedDeviceList badDevices = controller.failedDevices();
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
 </dl>
 </p>
 </p>
@@ -704,33 +692,14 @@ if(!controller.isGestureEnabled(Gesture.Type.TYPE_SWIPE)){
 <dd>True, if the specified type is enabled; false, otherwise. </dd>
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1ac2ee4e779963f135abccc183ab2f35fb"><em>Controller::enableGesture()</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to check; a member of the <a class="reference internal" href="Leap.Gesture.html#javaenumcom_1_1leapmotion_1_1leap_1_1_gesture_1_1_type"><em>Gesture::Type</em></a> enumeration. </p>
 </li>
 </ul>
 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-<p><span class="target" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a9cfc516923ff1fa8f395f52fa6ff9927"></span><div class="line-block">
-<div class="line">boolean <strong>isPaused</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Reports whether the Leap Motion service is currently paused. </p>
-<p><p><pre class="literal-block">
-if(controller.isPaused()){
-    //Display message to user.
-}
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>True, if the service is paused; false, otherwise. </dd>
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
 </dl>
 </p>
 </p>
@@ -744,7 +713,7 @@ if(controller.isPaused()){
 <p><p>Keep in mind that setting a policy flag is asynchronous, so changes are not effective immediately after calling setPolicyFlag(). In addition, a policy request can be declined by the user. You should always set the policy flags required by your application at startup and check that the policy change request was successful after an appropriate interval.</p>
 <p>If the controller object is not connected to the Leap Motion software, then the default state for the selected policy is returned.</p>
 <p><pre class="literal-block">
-boolean isImagePolicySet = controller.isPolicySet(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_IMAGES);
+Boolean isImagePolicySet = controller.isPolicySet(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_IMAGES);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -826,32 +795,6 @@ controller.removeListener(listenerObject);
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a4e31c0456b65ca6501bd1760995952a8"></span><div class="line-block">
-<div class="line">void <strong>setPaused</strong>(boolean pause)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Pauses or resumes the Leap Motion service. </p>
-<p><p>When the service is paused no applications receive tracking data and the service itself uses minimal CPU time.</p>
-<p>Before changing the state of the service, you must set the POLICY_ALLOW_PAUSE_RESUME using the <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a272a235782d654778a1873a28f49a794"><em>Controller::setPolicy()</em></a> function. Policies must be set every time the application is run.</p>
-<p><pre class="literal-block">
-controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
-controller.setPaused(true);
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">pause</span></tt> - <p>Set true to pause the service; false to resume. </p>
-</li>
-</ul>
-</dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a272a235782d654778a1873a28f49a794"></span><div class="line-block">
 <div class="line">void <strong>setPolicy</strong>(Controller.PolicyFlag policy)</div>
 </div>
@@ -861,7 +804,6 @@ controller.setPaused(true);
 <p><p>A request to change a policy is subject to user approval and a policy can be changed by the user at any time (using the Leap Motion settings dialog). The desired policy flags must be set every time an application runs.</p>
 <p>Policy changes are completed asynchronously and, because they are subject to user approval or system compatibility checks, may not complete successfully. Call <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a36ddadd5c199218f40a4c2d43c5167c3"><em>Controller::isPolicySet()</em></a> after a suitable interval to test whether the change was accepted.</p>
 <p><pre class="literal-block">
-controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_ALLOW_PAUSE_RESUME);
 controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_BACKGROUND_FRAMES);
 controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_IMAGES);
 controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1aeee02f1e6f84f42452208c1bf0bb62cf"><em>Controller</em></a>.PolicyFlag.POLICY_OPTIMIZE_HMD);
@@ -888,6 +830,24 @@ controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmo
 <div><p>This function has been deprecated. </p>
 <p>Use <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a272a235782d654778a1873a28f49a794"><em>setPolicy()</em></a> and <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a1fcd7a57c241ab1aa837c0a15dd157f9"><em>clearPolicy()</em></a> instead. </p>
 </div></blockquote>
+<p><span class="target" id="javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1a4ce1c0a17e327065aac9f33571fb20c8"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.TrackedQuad.html#javaclasscom_1_1leapmotion_1_1leap_1_1_tracked_quad"><em>TrackedQuad</em></a> <strong>trackedQuad</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Note: This class is an experimental API for internal use only. </p>
+<p><p>It may be removed without warning.</p>
+<p>Returns information about the currently detected quad in the scene.</p>
+<p> If no quad is being tracked, then an invalid <a class="reference internal" href="Leap.TrackedQuad.html#javaclasscom_1_1leapmotion_1_1leap_1_1_tracked_quad"><em>TrackedQuad</em></a> is returned. <div class="highlight-python"><div class="highlight"><pre>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>2.2.6 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
 </div></blockquote>
 <p><p id="javaenumcom_1_1leapmotion_1_1leap_1_1_controller_1_1_policy_flag"><em>class</em> <strong>PolicyFlag</strong></p>
 <blockquote>
@@ -896,10 +856,9 @@ controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmo
 <p><strong>POLICY_BACKGROUND_FRAMES</strong>  requests that your application receives frames when it is not the foreground application for user input.</p>
 <p>The background frames policy determines whether an application receives frames of tracking data while in the background. By default, the Leap Motion software only sends tracking data to the foreground application. Only applications that need this ability should request the background frames policy. The &#8220;Allow Background Apps&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
 <p><strong>POLICY_IMAGES</strong>  request that your application receives images from the device cameras. The &#8220;Allow Images&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
-<p>The images policy determines whether an application receives image data from the Leap Motion sensors with each frame of data. By default, this data is not sent. Only applications that use the image data should request this policy.</p>
+<p>The images policy determines whether an application receives image data from the Leap Motion sensors which each frame of data. By default, this data is not sent. Only applications that use the image data should request this policy.</p>
 <p><strong>POLICY_OPTIMIZE_HMD</strong>  request that the tracking be optimized for head-mounted tracking.</p>
 <p>The optimize HMD policy improves tracking in situations where the Leap Motion hardware is attached to a head-mounted display. This policy is not granted for devices that cannot be mounted to an HMD, such as Leap Motion controllers embedded in a laptop or keyboard.</p>
-<p><strong>POLICY_ALLOW_PAUSE_RESUME</strong>  request that the application be allowed to pause and unpause the Leap Motion service.</p>
 <p>Some policies can be denied if the user has disabled the feature on their Leap Motion control panel.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
@@ -907,17 +866,6 @@ controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmo
 </dl>
 </p>
 </p>
-<em>Public Members</em><blockquote>
-<div><p><span class="target" id="javaenumcom_1_1leapmotion_1_1leap_1_1_controller_1_1_policy_flag_1a1acd279e38e7a1c5eca6107b51e6f27b"></span> <strong>POLICY_DEFAULT</strong></p>
-<blockquote>
-<div><p>The default policy. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.0 </dd>
-</dl>
-</p>
-</div></blockquote>
-</div></blockquote>
 </div></blockquote>
 </p>
 </div></blockquote>
@@ -929,33 +877,43 @@ controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmo
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id12">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id14">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id5">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id14">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id17">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id23">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id7">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id3">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id3">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id15">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id30">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id12">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id24">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id4">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id5">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id3">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -980,7 +938,7 @@ controller.setPolicy(<a class="reference internal" href="#javaclasscom_1_1leapmo
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

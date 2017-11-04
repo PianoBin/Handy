@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User Experience Guidelines &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>User Experience Guidelines &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Guidelines" href="Leap_Practices.html" />
+    <link rel="next" title="Application Development" href="../devguide/Leap_Guides.html" />
+    <link rel="prev" title="Application Asset and Marketing Guidelines" href="App_Assets_and_Marketing_Guidelines.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -109,33 +112,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/practices/Leap_UX_Guidelines.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Practices.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -154,8 +131,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("App_Assets_and_Marketing_Guidelines.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("../devguide/Leap_Guides.html");
     }
 
 }
@@ -240,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Practices.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -297,6 +276,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Practices.html" accesskey="U">Guidelines</a>&raquo;
   User Experience Guidelines
 </span> -->
         
@@ -305,7 +285,7 @@ function doneWithSearch(){
 <p>The following user experience guidelines comprise our recommendations to ensure that your Leap-enabled application is easy to learn and use.</p>
 <ul>
 <li><p class="first">Keep in mind that symbology can be difficult to learn and memorize.</p>
-<p><em>Avoid forcing users to learn complex hand moveents or gestures to interact with your application.</em></p>
+<p><em>Avoid forcing users to learn complex hand gestures to interact with your application.</em></p>
 </li>
 <li><p class="first">Instead, draw inspiration from physical interaction and real-world behaviors.</p>
 <p><em>The more physically inspired interactions are, the less training a person needs and the more intuitive and natural your application feels.</em></p>
@@ -319,11 +299,11 @@ function doneWithSearch(){
 <li><p class="first">Concentrate on giving the user dynamic feedback to their actions. The more feedback they have, the more precisely they can interact with your software.</p>
 <p><em>For example, the user will need to know when they are “pushing” a button, but can be more effective if they can see when they are hovering over a button, or how much they are pressing it.</em></p>
 </li>
-<li><p class="first">On screen visuals (such as representations of hands or digital feedback) should be simple, functional, and non-intrusive.</p>
+<li><p class="first">On screen visuals (such as representations of hands, tools, or digital feedback) should be simple, functional, and non-intrusive.</p>
 <p><em>The user should not be distracted from the task by their tools or environment. Decoration should not distract from your purpose.</em></p>
 </li>
 <li><p class="first">Require more deliberate action for destructive or non-reversible acts than for harmless ones.</p>
-<p><em>Subtle movements and gestures should be reserved for subtle actions. Conversely, an act such as closing an application or deleting a file can be a non-reversible event requiring a more deliberate action. Double check with the user when unsure, such as a prompt for confirmation.</em></p>
+<p><em>Subtle gestures should be reserved for subtle actions. Conversely, an act such as closing an application or deleting a file can be a non-reversible event requiring a more deliberate action. Double check with the user when unsure, such as a prompt for confirmation.</em></p>
 </li>
 <li><p class="first">Provide a clear delineation and specific sense of modality between acts of navigation and interaction, unless both are simple or one is handled automatically (or with assistance). Mixing the two in a complex situation can lead to confusion or disorientation.</p>
 <p><em>For example, moving an object while having the user simultaneously position their viewing angle inside a 3D environment is inherently difficult. However, if the viewing angle moves automatically in response to the user&#8217;s movement, then working with the object is easier. Likewise, when navigating a large data set the user will want the view to move easily, but when highlighting a portion of the data the view should remain still.</em></p>
@@ -340,19 +320,22 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
-          </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Practices.html">Guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap_Menu_Design_Guidelines.html">Menu Design Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Orientation_and_Tutorial_Guidelines.html">User Orientation and Tutorial Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="App_Assets_and_Marketing_Guidelines.html">Application Asset and Marketing Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">User Experience Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -370,7 +353,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

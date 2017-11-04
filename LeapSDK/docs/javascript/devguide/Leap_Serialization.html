@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Serializing Tracking Data &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Serializing Tracking Data &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="API Reference" href="../api/Leap_Classes.html" />
     <link rel="prev" title="Camera Images" href="Leap_Images.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'javascript';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Serialization.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -278,38 +279,10 @@ function doneWithSearch(){
   Serializing Tracking Data
 </span> -->
         
-  <div class="section" id="serializing-tracking-data">
-<h1>Serializing Tracking Data<a class="headerlink" href="#serializing-tracking-data" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> class provides methods for serializing the data in a frame as a sequence of bytes. You can pass this sequence of bytes to the deserializer to create a new copy of the original frame.</p>
-<div class="section" id="serializing-a-frame">
-<h2>Serializing a Frame<a class="headerlink" href="#serializing-a-frame" title="Permalink to this headline">¶</a></h2>
-<p>To serialize a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> instance, use <a href="#id491"><span class="problematic" id="id492">|Frame.serialize|_</span></a>.</p>
-<p>The following example serializes a frame and saves it to a file.</p>
-</div>
-<div class="section" id="deserializing-a-frame">
-<h2>Deserializing a Frame<a class="headerlink" href="#deserializing-a-frame" title="Permalink to this headline">¶</a></h2>
-<p>Before you can deserialize <tt class="docutils literal"><span class="pre">Frame</span></tt> data, you must create a Controller object. Accessing images stored in the frame data is not supported at this time. Deserializing data serialized by a different version of the Leap Motion SDK is not officially supported; it may work if there are no data model differences between the two versions.</p>
-<p>To deserialize frame data:</p>
-<ol class="arabic simple">
-<li>Create a <tt class="docutils literal"><span class="pre">Controller</span></tt> instance if one doesn&#8217;t already exist.</li>
-<li>Acquire the data and, if necessary, convert it into the proper data type.</li>
-<li>Create a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object.</li>
-<li>Call the new frame&#8217;s <a href="#id493"><span class="problematic" id="id494">|Frame_deserialize|_</span></a> function.</li>
-</ol>
-<p>Note that the reconstructed data replaces the existing data in the frame. If you use an existing, valid <tt class="docutils literal"><span class="pre">Frame</span></tt> instance, its existing data is replaced; however, any child objects, like hands or fingers, remain valid as long as you maintain a separate reference to them.</p>
-<p>The following example loads data from a file and deserializes it to create a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object.</p>
-</div>
-<div class="section" id="saving-and-loading-multiple-frames">
-<h2>Saving and Loading Multiple Frames<a class="headerlink" href="#saving-and-loading-multiple-frames" title="Permalink to this headline">¶</a></h2>
-<p>If you wish to save several frames to the same file, you will have to devise a way to tell where one frame ends and the next begins. The size of the data can vary from frame-to-frame. The following example illustrates one way to do this, which is to store a 4 byte integer containing the size of the data immediately before the data itself.</p>
-<p>To read the frame data from the saved file, you can then read the first 4 bytes of the file to determine how much data to read to get an entire frame. Simply repeat the process until you reach the end of the file.</p>
-</div>
-</div>
-<div class="section" id="id482">
+  <div class="section" id="id482">
 <h1>Serializing Tracking Data<a class="headerlink" href="#id482" title="Permalink to this headline">¶</a></h1>
 <p>The tracking data coming from the Leap Motion WebSocket server is already in a serialized, JSON format. However, the LeapJS library does not explicitly support deserializing frames out of stream. Instead, you can use the <a class="reference external" href="http://leapmotion.github.io/leapjs-plugins/docs/#playback">Playback plugin</a> to playback tracking data in an application. The plugin source repository also contains an example <a class="reference external" href="https://github.com/leapmotion/leapjs-playback/tree/master/recorder">frame recording utility</a>.</p>
 </div>
-<p>Serialization is not implemented internally in C# at this time. However, since it is now possible to create valid Frame, Hand, and other API objects, it is also feasible for API users to provide their own serialization and deserialization implementations.</p>
 
 
            <!-- get_disqus_sso -->
@@ -317,25 +290,23 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
-          </ul><ul class="current">
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
+          </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Controllers.html">Connecting to the Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Tracking.html">Tracking Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html#id482">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id19">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id28">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Serializing Tracking Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#serializing-a-frame">Serializing a Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deserializing-a-frame">Deserializing a Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#saving-and-loading-multiple-frames">Saving and Loading Multiple Frames</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#id482">Serializing Tracking Data</a></li>
 </ul>
 </li>
@@ -363,7 +334,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

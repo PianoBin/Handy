@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hands &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Hands &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +74,7 @@
     var pageAPI = 'unity';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.python = true;
@@ -217,7 +218,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../csharp/index.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Hand.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -306,10 +307,8 @@ function doneWithSearch(){
 <h2>Getting Hands<a class="headerlink" href="#getting-hands" title="Permalink to this headline">¶</a></h2>
 <p>Get <tt class="docutils literal"><span class="pre">Hand</span></tt> objects from a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a>:</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">();</span> <span class="c1">// controller is a Controller object</span>
-<span class="k">if</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">){</span>
-    <span class="n">List</span><span class="p">&lt;</span><span class="n">Hand</span><span class="p">&gt;</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
-    <span class="n">Hand</span> <span class="n">firstHand</span> <span class="p">=</span> <span class="n">hands</span> <span class="p">[</span><span class="m">0</span><span class="p">];</span>
-<span class="p">}</span>
+<span class="n">HandList</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+<span class="n">Hand</span> <span class="n">firstHand</span> <span class="p">=</span> <span class="n">hands</span> <span class="p">[</span><span class="m">0</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>Or, if you know the ID from a previous frame:</p>
@@ -317,6 +316,14 @@ function doneWithSearch(){
 </pre></div>
 </div>
 <p>You can also get hands by their relative positions in the frame:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">();</span> <span class="c1">// controller is a Controller object</span>
+<span class="n">HandList</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+
+<span class="n">Hand</span> <span class="n">leftmost</span> <span class="p">=</span> <span class="n">hands</span><span class="p">.</span><span class="n">Leftmost</span><span class="p">;</span>
+<span class="n">Hand</span> <span class="n">rightmost</span> <span class="p">=</span> <span class="n">hands</span><span class="p">.</span><span class="n">Rightmost</span><span class="p">;</span>
+<span class="n">Hand</span> <span class="n">frontmost</span> <span class="p">=</span> <span class="n">hands</span><span class="p">.</span><span class="n">Frontmost</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>Note that the the <tt class="docutils literal"><span class="pre">leftmost()</span></tt> and <tt class="docutils literal"><span class="pre">rightmost()</span></tt> functions only identify which hand is farthest to the left or right. Use the <tt class="docutils literal"><span class="pre">Hand</span></tt> <tt class="docutils literal"><span class="pre">isLeft</span></tt> or <tt class="docutils literal"><span class="pre">isRight</span></tt> attribute to tell if a hand object represents a left or a right hand.</p>
 </div>
 <div class="section" id="getting-the-hand-characteristics">
@@ -334,7 +341,7 @@ function doneWithSearch(){
 <p>The hand&#8217;s position is given by its palm position attribute, which provides a vector containing the 3-dimensional coordinates of the palm center point in millimeters from the Leap Motion origin. The hand&#8217;s orientation is given by two vectors: the direction, which points from the palm center towards the fingers, and the palm normal, which points out of the palm, perpendicular to the plane of the hand.</p>
 <p>The movement of the hand is given by the velocity attribute, which is a vector providing the instantaneous motion of the hand in mm/s. You can also get motion factors that translate how a hand has moved between two given frames into translation, rotation, and scaling values.</p>
 <p>The following code snippet illustrates how to get a Hand object from a frame and access its basic attributes:</p>
-<div class="highlight-csharp"><div class="highlight"><pre><span class="n">Hand</span> <span class="n">hand</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="n">Hand</span> <span class="n">hand</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Rightmost</span><span class="p">;</span>
 <span class="n">Vector</span> <span class="n">position</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">PalmPosition</span><span class="p">;</span>
 <span class="n">Vector</span> <span class="n">velocity</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">PalmVelocity</span><span class="p">;</span>
 <span class="n">Vector</span> <span class="n">direction</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Direction</span><span class="p">;</span>
@@ -346,11 +353,21 @@ function doneWithSearch(){
 <p>You can get the fingers associated with a hand as a list or individually using an ID obtained in a previous frame.</p>
 <p>By list:</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="c1">// hand is a Hand object</span>
-<span class="n">List</span><span class="p">&lt;</span><span class="n">Finger</span><span class="p">&gt;</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
+<span class="n">PointableList</span> <span class="n">pointables</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Pointables</span><span class="p">;</span>
+<span class="n">FingerList</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>By ID from a previous frame:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="n">Pointable</span> <span class="n">knownPointable</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Pointable</span> <span class="p">(</span><span class="n">pointableID</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>To get a finger by relative position within the Leap field of view, use the right-, left- and frontmost functions of the matching list class:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="c1">// hand is a Hand object</span>
+<span class="n">Pointable</span> <span class="n">leftPointable</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Pointables</span><span class="p">.</span><span class="n">Leftmost</span><span class="p">;</span>
+<span class="n">Finger</span> <span class="n">rightFinger</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">.</span><span class="n">Rightmost</span><span class="p">;</span>
+<span class="n">Finger</span> <span class="n">frontFinger</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">.</span><span class="n">Frontmost</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>Note that these functions are relative to the Leap Motion origin, not to the hand itself. To get the fingers relative to the hand, you can use the Leap Matrix class to transform the finger positions into the hands frame of reference.</p>
 </div>
 <div class="section" id="computing-the-hand-orientation">
@@ -370,7 +387,7 @@ function doneWithSearch(){
 </div>
 <div class="section" id="transforming-finger-coordinates-into-the-hand-s-frame-of-reference">
 <h2>Transforming Finger Coordinates into the Hand&#8217;s Frame of Reference<a class="headerlink" href="#transforming-finger-coordinates-into-the-hand-s-frame-of-reference" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes it is useful to obtain the coordinates of the fingers of a hand with respect to the hand&#8217;s frame of reference. This lets you sort the fingers spatially and can simplify analysis of finger positions. You can create a transform matrix using the Leap <a class="reference external" href="../api/Leap.Matrix.html"><tt class="docutils literal"><span class="pre">Matrix</span></tt></a> class to transform the finger position and direction coordinates. The hand frame of reference can be usefully defined by the hand&#8217;s <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1af94d6f6f19c7acba0ca3ceec3c911d64">Basis</a> and <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a78b4d8f8df965c03f22912aafb402233">PalmPosition</a>. The Basis orients the x-axis sideways across the hand, the z-axis pointing forward, and the y-axis parallel with the palm normal. The origin of the transform is the PalmPosition.</p>
+<p>Sometimes it is useful to obtain the coordinates of the fingers of a hand with respect to the hand&#8217;s frame of reference. This lets you sort the fingers spatially and can simplify analysis of finger positions. You can create a transform matrix using the Leap <a class="reference external" href="../api/Leap.Matrix.html"><tt class="docutils literal"><span class="pre">Matrix</span></tt></a> class to transform the finger position and direction coordinates. The hand frame of reference can be usefully defined by the hand&#8217;s <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1ae6e994fa39239cd3c745266694cdc0f3">Basis</a> and <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a78b4d8f8df965c03f22912aafb402233">PalmPosition</a>. The Basis orients the x-axis sideways across the hand, the z-axis pointing forward, and the y-axis parallel with the palm normal. The origin of the transform is the PalmPosition.</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">();</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">h</span> <span class="p">&lt;</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">h</span><span class="p">++)</span> <span class="p">{</span>
     <span class="n">Hand</span> <span class="n">leapHand</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span> <span class="p">[</span><span class="n">h</span><span class="p">];</span>
@@ -395,7 +412,15 @@ function doneWithSearch(){
 <h3>Hand Lists<a class="headerlink" href="#hand-lists" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="../api/Leap.HandList.html"><tt class="docutils literal"><span class="pre">HandList</span></tt></a> class acts like a vector-style array and supports iterators. You cannot remove or alter the member objects of a hand lists received from the Leap Motion API, but you can combine lists of the same object type.</p>
 <p>To use an iterator with a list class:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="k">foreach</span> <span class="p">(</span><span class="n">Hand</span> <span class="n">hand</span> <span class="k">in</span> <span class="n">handList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="n">hand</span><span class="p">.</span><span class="n">ToString</span> <span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The <a class="reference external" href="../api/Leap.HandList.html"><tt class="docutils literal"><span class="pre">HandList</span></tt></a> class defines additional functions for getting a member of the list based on its relative position within the Leap coordinate system. These functions include <cite>leftmost()</cite>, <cite>rightmost()</cite>, and <cite>frontmost()</cite>. The following snippet illustrates how to get the hand object furthest to the right:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="n">Hand</span> <span class="n">furthestRight</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Rightmost</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -406,19 +431,16 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -436,7 +458,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

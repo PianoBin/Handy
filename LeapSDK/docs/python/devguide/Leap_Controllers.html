@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecting to the Controller &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Connecting to the Controller &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Tracking Model" href="Leap_Tracking.html" />
     <link rel="prev" title="Using the Tracking API" href="Leap_Guides2.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'python';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Controllers.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -293,7 +294,7 @@ function doneWithSearch(){
 <div class="section" id="foreground-and-background-applications">
 <h2>Foreground and Background Applications<a class="headerlink" href="#foreground-and-background-applications" title="Permalink to this headline">¶</a></h2>
 <p>Ordinarily, the Leap Motion service/daemon only sends tracking data to the application that has the operating system input focus. This prevents applications idling in the background from receiving input intended for another applications.</p>
-<p>If your application runs in the foreground and you want to know whether the service/daemon considers your application to be the foreground application, you can check <a href="#id302"><span class="problematic" id="id303">|Controller.hasFocus|_</span></a> or listen to events dispatched by the controller. The service/daemon gets changes in application focus status directly from the operating system. Note that the Linux operating system does not provide this information, so applications running on Linux always receive tracking data.</p>
+<p>If your application runs in the foreground and you want to know whether the service/daemon considers your application to be the foreground application, you can check <a class="reference external" href="../api/Leap.Controller.html#Leap.Controller.has_focus">Controller.has_focus</a> or listen to events dispatched by the controller. The service/daemon gets changes in application focus status directly from the operating system. Note that the Linux operating system does not provide this information, so applications running on Linux always receive tracking data.</p>
 <p>Note that applications connecting to the Leap Motion service/daemon through the WebSocket server do not automatically start receiving data when they gain the operating system focus. Applications using the WebSocket server must explicitly request focus from the service when they move to the foreground. (The LeapJS JavaScript library does manage the foreground-background transition for you, however.)</p>
 <p>You can tell the controller that your application wants data even when it is in the background using <a class="reference external" href="../api/Leap.Controller.html#Leap.Controller.set_policy">Controller.set_policy()</a>. Set the BACKGROUND_POLICY_FLAG policy for applications such as mouse emulators or operating system controls that need data when they are not the focused application. The <strong>Allow Background Apps</strong> setting in the Leap Motion control panel must be checked or the attempt to set the policy is denied.</p>
 <p>Note that your application does not receive frames if another
@@ -310,10 +311,18 @@ has the operating system input focus.</p>
 <h2>Access to Images<a class="headerlink" href="#access-to-images" title="Permalink to this headline">¶</a></h2>
 <p>In order for your application to receive images from the Leap Motion cameras, you must set the <strong>Images</strong> policy. The <strong>Allow Images</strong> setting in the Leap Motion control panel must be checked or the attempt to set the policy is denied. See <a class="reference internal" href="Leap_Images.html"><em>Camera Images</em></a>.</p>
 </div>
+<div class="section" id="enabling-gestures">
+<h2>Enabling Gestures<a class="headerlink" href="#enabling-gestures" title="Permalink to this headline">¶</a></h2>
+<p>To use the built-in gestures, you must enable them first using <a class="reference external" href="../api/Leap.Controller.html#Leap.Controller.enable_gesture">Controller.enable_gesture()</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">controller</span><span class="o">.</span><span class="n">enable_gesture</span><span class="p">(</span><span class="n">Leap</span><span class="o">.</span><span class="n">Gesture</span><span class="o">.</span><span class="n">TYPE_SWIPE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Enable only those gestures that your application uses.</p>
+</div>
 <div class="section" id="connection-state">
 <h2>Connection State<a class="headerlink" href="#connection-state" title="Permalink to this headline">¶</a></h2>
-<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id304"><span class="problematic" id="id305">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#Leap.Controller.is_connected">Controller.is_connected</a> property changes to true.</p>
-<p>The is_service_connected and is_connected properties can change while your application is running. You can monitor their values or <a class="reference external" href="ListeningforControllerEvents">listen for events</a> dispatched by the controller when the connection status changes.</p>
+<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id412"><span class="problematic" id="id413">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#Leap.Controller.is_connected">Controller.is_connected</a> property changes to true.</p>
+<p>The is_service_connected() and is_connected properties can change while your application is running. You can monitor their values or <a class="reference external" href="ListeningforControllerEvents">listen for events</a> dispatched by the controller when the connection status changes.</p>
 </div>
 <div class="section" id="listening-for-controller-events">
 <h2>Listening for Controller Events<a class="headerlink" href="#listening-for-controller-events" title="Permalink to this headline">¶</a></h2>
@@ -325,34 +334,34 @@ has the operating system input focus.</p>
 <col width="50%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a href="#id306"><span class="problematic" id="id307">|Listener_onConnect|_</span></a></td>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_connect">on_connect()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> connects to the Leap Motion service/daemon and the Leap Motion hardware is attached.</td>
 </tr>
-<tr class="row-even"><td><a href="#id308"><span class="problematic" id="id309">|Listener_onDeviceChange|_</span></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_device_change">on_device_change()</a></td>
 <td>The status of a Leap Motion hardware device changes.</td>
 </tr>
-<tr class="row-odd"><td><a href="#id310"><span class="problematic" id="id311">|Listener_onDisconnect|_</span></a></td>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_disconnect">on_disconnect()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> disconnects from the Leap Motion service/daemon or the Leap Motion hardware is removed.</td>
 </tr>
-<tr class="row-even"><td><a href="#id312"><span class="problematic" id="id313">|Listener_onExit|_</span></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_exit">on_exit()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> object is destroyed.</td>
 </tr>
-<tr class="row-odd"><td><a href="#id314"><span class="problematic" id="id315">|Listener_onFocusGained|_</span></a></td>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_focus_gained">on_focus_gained()</a></td>
 <td>The application has gained operating system input focus and will start receiving tracking data.</td>
 </tr>
-<tr class="row-even"><td><a href="#id316"><span class="problematic" id="id317">|Listener_onFocusLost|_</span></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_focus_lost">on_focus_lost()</a></td>
 <td>The application has lost operating system input focus. The application will stop receiving tracking data unless it has set the <a class="reference external" href="../devguide/Leap_Controllers.html#foreground-and-background-applications">BACKGROUND_FRAMES_POLICY</a>.</td>
 </tr>
-<tr class="row-odd"><td><a href="#id318"><span class="problematic" id="id319">|Listener_onFrame|_</span></a></td>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_frame">on_frame()</a></td>
 <td>A new <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> of tracking data is available.</td>
 </tr>
-<tr class="row-even"><td><a href="#id320"><span class="problematic" id="id321">|Listener_onInit|_</span></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_init">on_init()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> object is initialized.</td>
 </tr>
-<tr class="row-odd"><td><a href="#id322"><span class="problematic" id="id323">|Listener_onServiceConnect|_</span></a></td>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_service_connect">on_service_connect()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> has connected to the Leap Motion service/daemon.</td>
 </tr>
-<tr class="row-even"><td><a href="#id324"><span class="problematic" id="id325">|Listener_onServiceDisconnect|_</span></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Listener.html#Leap.Listener.on_service_disconnect">on_service_disconnect()</a></td>
 <td>The <tt class="docutils literal"><span class="pre">Controller</span></tt> has lost its connection to the Leap Motion service/daemon.</td>
 </tr>
 </tbody>
@@ -400,8 +409,9 @@ has the operating system input focus.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -410,6 +420,7 @@ has the operating system input focus.</p>
 <li class="toctree-l3"><a class="reference internal" href="#getting-frames">Getting Frames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#foreground-and-background-applications">Foreground and Background Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-to-images">Access to Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-gestures">Enabling Gestures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-state">Connection State</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-for-controller-events">Listening for Controller Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#device-types">Device Types</a></li>
@@ -419,6 +430,9 @@ has the operating system input focus.</p>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id13">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id19">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
@@ -446,7 +460,7 @@ has the operating system input focus.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>FingerModel &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>FingerModel &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
-    <link rel="up" title="Leap.Unity Namespace" href="Unity_Classes.html" />
-    <link rel="next" title="RiggedFinger" href="Unity.RiggedFinger.html" />
-    <link rel="prev" title="HandFader" href="Unity.HandFader.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Unity Script Reference" href="Unity_Classes.html" />
+    <link rel="next" title="DebugFinger" href="Unity.DebugFinger.html" />
+    <link rel="prev" title="RigidHand (Physics)" href="Unity.RigidHand.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -106,7 +106,6 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/unity/Unity.FingerModel.html";
             } else {
-                    redirectedLocation ="../api/Leap_Classes.html";
                     redirectedLocation ="Unity_Classes.html";
             }
 
@@ -127,9 +126,9 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Unity.HandFader.html");    }
+            window.location.assign("Unity.RigidHand.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Unity.RiggedFinger.html");
+            window.location.assign("Unity.DebugFinger.html");
     }
 
 }
@@ -186,7 +185,7 @@ function handleKeyInput(e)
 
 <ul>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
     
   </li>
   <li>
@@ -194,27 +193,27 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'cpp'">C++</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'cpp'">C++</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'java'">Java</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'java'">Java</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'python'">Python</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'python'">Python</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -271,40 +270,39 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
-    <a href="../api/Leap_Classes.html" accesskey="U">Unity Scripting Reference</a>&raquo;
-    <a href="Unity_Classes.html" accesskey="U">Leap.Unity Namespace</a>&raquo;
+    <a href="Unity_Classes.html" accesskey="U">Unity Script Reference</a>&raquo;
   FingerModel
 </span> -->
         
   <div class="section" id="fingermodel">
 <h1>FingerModel<a class="headerlink" href="#fingermodel" title="Permalink to this headline">¶</a></h1>
 <p>FingerModel is the base class for all the other finger scripts. If you are creating your own fingers and need a custom finger script, extend FingerModel and implement the <tt class="docutils literal"><span class="pre">Init()</span></tt> and <tt class="docutils literal"><span class="pre">Update()</span></tt> methods.</p>
-<div class="line-block" id="unitycorea00073">
-<div class="line"><em>class</em> <strong>Leap::Unity::FingerModel</strong></div>
+<div class="line-block" id="unitycorea00007">
+<div class="line"><em>class</em> <strong>FingerModel</strong></div>
 </div>
 <blockquote>
 <div><p>The base class for all fingers. </p>
-<p><p>This class serves as the interface between the HandController object, the parent Hand object and the concrete finger objects.</p>
-<p>Subclasses of <a class="reference internal" href="#unitycorea00073"><em>FingerModel</em></a> must implement <a class="reference internal" href="#unitycorea00073_1a27b24f96e9e709625779cc24bd5d72f3"><em>InitFinger()</em></a> and <a class="reference internal" href="#unitycorea00073_1a9103f063172a8f99a9aa083407ada2a2"><em>UpdateFinger()</em></a>. The InitHand() function is typically called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> InitHand() method; likewise, the <a class="reference internal" href="#unitycorea00073_1a9103f063172a8f99a9aa083407ada2a2"><em>UpdateFinger()</em></a> function is typically called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> UpdateHand() function. </p>
+<p><p>This class serves as the interface between the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> object, the parent Hand object and the concrete finger objects.</p>
+<p>Subclasses of <a class="reference internal" href="#unitycorea00007"><em>FingerModel</em></a> must implement <a class="reference internal" href="#unitycorea00007_1a2832ed1154015858764a52d9bd5f9557"><em>InitFinger()</em></a> and <a class="reference internal" href="#unitycorea00007_1a28ec53b6e6c6ab3926efea1a6c2f24dc"><em>UpdateFinger()</em></a>. The InitHand() function is typically called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> InitHand() method; likewise, the <a class="reference internal" href="#unitycorea00007_1a28ec53b6e6c6ab3926efea1a6c2f24dc"><em>UpdateFinger()</em></a> function is typically called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> UpdateHand() function. </p>
 </p>
 <em>Public Functions</em><blockquote>
-<div><p><span class="target" id="unitycorea00073_1a660b8448f1f9f6ea0b5ffe773b110925"></span><div class="line-block">
+<div><p><span class="target" id="unitycorea00007_1a53d903c4050544544587136d3411d044"></span><div class="line-block">
 <div class="line">Vector3 <strong>GetBoneCenter</strong>(int bone_type)</div>
 </div>
 </p>
 <blockquote>
-<div><p>Returns the center of the given bone on the finger. </p>
+<div><p>Returns the center of the given bone on the finger in relation to the controller. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a66f77c83bb90b02c1b46692d5f824ae3"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a069110720f8b5f6ef2f8e44ffeeb78ed"></span><div class="line-block">
 <div class="line">Vector3 <strong>GetBoneDirection</strong>(int bone_type)</div>
 </div>
 </p>
 <blockquote>
-<div><p>Returns the direction the given bone is facing on the finger. </p>
+<div><p>Returns the direction the given bone is facing on the finger in relation to the controller. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1acd58685c52b4bf4dc85e19597dc4de56"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a8ea9aa780051b1c4514bd90b85f643fe"></span><div class="line-block">
 <div class="line">float <strong>GetBoneLength</strong>(int bone_type)</div>
 </div>
 </p>
@@ -312,15 +310,15 @@ function doneWithSearch(){
 <div><p>Returns the length of the finger bone. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a1d84c11cb9e8a1096225718bcd759ceb"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a57800fe1e1e92adf4b71ece9651b5b38"></span><div class="line-block">
 <div class="line">Quaternion <strong>GetBoneRotation</strong>(int bone_type)</div>
 </div>
 </p>
 <blockquote>
-<div><p>Returns the rotation quaternion of the given bone. </p>
+<div><p>Returns the rotation quaternion of the given bone in relation to the controller. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1ae6f5843758fb9c6e1f08affba6b4be72"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a857f8f24a09d61e5ff07bbbeceedeea8"></span><div class="line-block">
 <div class="line">float <strong>GetBoneWidth</strong>(int bone_type)</div>
 </div>
 </p>
@@ -328,7 +326,15 @@ function doneWithSearch(){
 <div><p>Returns the width of the finger bone. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a6abf370a3ddeb4675801eeec6378a375"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1ab66d9f78c502a1fcdf24824459d86734"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> <strong>GetController</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>The parent <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> instance. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unitycorea00007_1a263c2debcbfcab04c4796bbec7868696"></span><div class="line-block">
 <div class="line">float <strong>GetFingerJointSpreadMecanim</strong>()</div>
 </div>
 </p>
@@ -336,7 +342,7 @@ function doneWithSearch(){
 <div><p>Returns Mecanim spread angle, which only applies to joint_type = 0 NOTE: Positive spread is towards thumb for index and middle, but is in the opposite direction for the ring and pinky. </p>
 <p>For the thumb negative spread rotates the thumb in to the palm. </p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a054cf50d19d911d50ddae0b0dcc40026"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a89b80b9d363e7ad951cb04158e209c69"></span><div class="line-block">
 <div class="line">float <strong>GetFingerJointStretchMecanim</strong>(int joint_type)</div>
 </div>
 </p>
@@ -344,15 +350,15 @@ function doneWithSearch(){
 <div><p>Returns Mecanim stretch angle in the range (-180, +180] NOTE: Positive stretch opens the hand. </p>
 <p>For the thumb this moves it away from the palm. </p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1acc14a2149a5a1c8d7277f64db41af544"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1ab62c5f299c1be79a9653162a87317a68"></span><div class="line-block">
 <div class="line">Vector3 <strong>GetJointPosition</strong>(int joint)</div>
 </div>
 </p>
 <blockquote>
-<div><p>Returns the location of the given joint on the finger. </p>
+<div><p>Returns the location of the given joint on the finger in relation to the controller. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a053d0477db4bbb6c3353350b769089b3"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a6bc6a9368d470162b72cecd4666da906"></span><div class="line-block">
 <div class="line">Finger <strong>GetLeapFinger</strong>()</div>
 </div>
 </p>
@@ -360,7 +366,7 @@ function doneWithSearch(){
 <div><p>The Leap Finger object. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a4247dfc727b2b1d05c16a81c440ed22d"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a4c053e62e22549e0746d5842f3295bd5"></span><div class="line-block">
 <div class="line">Hand <strong>GetLeapHand</strong>()</div>
 </div>
 </p>
@@ -368,7 +374,15 @@ function doneWithSearch(){
 <div><p>The Leap Hand object. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a88e07c014c2ac4cfa7403760bc1d2dd7"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a3fe234a4b3ccba6b31d2b9d3974aaccf"></span><div class="line-block">
+<div class="line">Vector3 <strong>GetOffset</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Returns any additional movement the finger needs because of non-relative palm movement. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unitycorea00007_1a5d336a3f3289cefc5a2444b82526ea47"></span><div class="line-block">
 <div class="line">Ray <strong>GetRay</strong>()</div>
 </div>
 </p>
@@ -376,56 +390,88 @@ function doneWithSearch(){
 <div><p>Returns a ray from the tip of the finger in the direction it is pointing. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a16b8b56d0d1d8f2876fede7df4914143"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1aaef8a45fd9f558b744e4a1891ccb2a3b"></span><div class="line-block">
 <div class="line">Vector3 <strong>GetTipPosition</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>Returns the location of the tip of the finger. </p>
+<div><p>Returns the location of the tip of the finger in relation to the controller. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a27b24f96e9e709625779cc24bd5d72f3"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a2832ed1154015858764a52d9bd5f9557"></span><div class="line-block">
 <div class="line">void <strong>InitFinger</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>Implement this function to initialize this finger after it is created. </p>
-<p>Typically, this function is called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> object. </p>
+<p>Typically, this function is called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> object. </p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a5f8a0bc34c12092d53249cbdb2e19b75"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1a97f27f4cd1f7fa77e24860f4c8ca7cdd"></span><div class="line-block">
+<div class="line">void <strong>MirrorZAxis</strong>(bool mirror = true)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Sets the mirror z-axis flag for this Finger Model. </p>
+<p>Mirroring the z axis reverses the hand so that they face the opposite direction  as if in a mirror. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">mirror</span></tt> - <p>Set true, the default value to mirror; false for normal rendering. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unitycorea00007_1a76a783865eeaea591e853945eb254eac"></span><div class="line-block">
+<div class="line">void <strong>SetController</strong>(<a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> controller)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Assigns the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> parent for this <a class="reference internal" href="#unitycorea00007"><em>FingerModel</em></a> object. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unitycorea00007_1afc186b9d847b1119c125597ddfb1e222"></span><div class="line-block">
 <div class="line">void <strong>SetLeapHand</strong>(Hand hand)</div>
 </div>
 </p>
 <blockquote>
 <div><p>Sets the Leap Hand and Leap Finger for this finger. </p>
-<p>Note that Leap Hand and Finger objects are recreated every frame. The parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> object calls this function to set or update the underlying finger. The tracking data in the Leap objects are used to update the <a class="reference internal" href="#unitycorea00073"><em>FingerModel</em></a>. </p>
+<p>Note that Leap Hand and Finger objects are recreated every frame. The parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> object calls this function to set or update the underlying finger. The tracking data in the Leap objects are used to update the <a class="reference internal" href="#unitycorea00007"><em>FingerModel</em></a>. </p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a9103f063172a8f99a9aa083407ada2a2"></span><div class="line-block">
+<p><span class="target" id="unitycorea00007_1aeeabfcfab53242b1b0f34c5222a3a362"></span><div class="line-block">
+<div class="line">void <strong>SetOffset</strong>(Vector3 offset)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Sets an offset vector to displace the finger from its normally calculated position relative to the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a>. </p>
+<p>Typically, this offset is used to give the virtual hands a larger range of motion then they would have based on their scaled size in the Unity scene. </p>
+</div></blockquote>
+<p><span class="target" id="unitycorea00007_1a28ec53b6e6c6ab3926efea1a6c2f24dc"></span><div class="line-block">
 <div class="line">abstract void <strong>UpdateFinger</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>Implement this function to update this finger once per game loop. </p>
-<p>Typically, this function is called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> object&#8217;s UpdateHand() function, which is called in the Unity Update() phase for graphics hand models and in the FixedUpdate() phase for physics hand models. </p>
+<p>Typically, this function is called by the parent <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> object&#8217;s UpdateHand() function, which is called in the Unity Update() phase for graphics hand models and in the FixedUpdate() phase for physics hand models. </p>
 </div></blockquote>
 </div></blockquote>
 <em>Public Members</em><blockquote>
-<div><p><span class="target" id="unitycorea00073_1a9dc2230af982027edd82f9952a1267a6"></span>Transform[] <strong>bones</strong></p>
+<div><p><span class="target" id="unitycorea00007_1a9f1a35a763b47ba4f6df34abfd77b62e"></span>Transform[] <strong>bones</strong></p>
 <blockquote>
-<div><p>Bones positioned and rotated by <a class="reference internal" href="#unitycorea00073"><em>FingerModel</em></a>. </p>
+<div><p>Bones positioned and rotated by <a class="reference internal" href="#unitycorea00007"><em>FingerModel</em></a>. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1ac4bafebe19d4651bf35e95a52288aa24"></span>Transform[] <strong>joints</strong></p>
+<p><span class="target" id="unitycorea00007_1a4e2c8aa6ce8a1387d9b4a37fd794751c"></span>Transform[] <strong>joints</strong></p>
 <blockquote>
-<div><p>Joints positioned and rotated by <a class="reference internal" href="#unitycorea00073"><em>FingerModel</em></a>. </p>
+<div><p>Joints positioned and rotated by <a class="reference internal" href="#unitycorea00007"><em>FingerModel</em></a>. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a35043ac951361f61a591a5a69083ab8c"></span>const int <strong>NUM_BONES</strong></p>
+<p><span class="target" id="unitycorea00007_1ae29486deb023a3b3c6820a9555cd142f"></span>const int <strong>NUM_BONES</strong></p>
 <blockquote>
 <div><p>The number of bones in a finger. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00073_1a7c3698c9580cdab983d5273b88c6d288"></span>const int <strong>NUM_JOINTS</strong></p>
+<p><span class="target" id="unitycorea00007_1ae848a97b083702729969343c7c493a71"></span>const int <strong>NUM_JOINTS</strong></p>
 <blockquote>
 <div><p>The number of joints in a finger. </p>
 <p></p>
@@ -442,56 +488,34 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Unity_Classes.html">Leap.Unity Namespace</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapHandController.html">LeapHandController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapProvider.html">LeapProvider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapServiceProvider.html">LeapServiceProvider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapImageRetriever.html">LeapImageRetriever</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandFactory.html">HandFactory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandPool.html">HandPool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandProxy.html">HandProxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandRepresentation.html">HandRepresentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.IHandModel.html">IHandModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandModel.html">HandModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity_HandBehaviors.html">Hand Behaviors</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">FingerModel</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Unity.RiggedFinger.html">RiggedFinger</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Unity.SkeletalFinger.html">SkeletalFinger</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Unity.RigidFinger.html">RigidFinger (Physics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Unity_Classes.html">Unity Script Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Unity.HandController.html">HandController</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.HandModel.html">HandModel</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">FingerModel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Unity.DebugFinger.html">DebugFinger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Unity.PolyFinger.html">PolyFinger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Unity.RiggedFinger.html">RiggedFinger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Unity.SkeletalFinger.html">SkeletalFinger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Unity.RigidFinger.html">RigidFinger (Physics)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.Detector.html">Detector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.DisconnectionNotice.html">DisconnectionNotice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapUnityExtensions.html">LeapUnityExtensions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapDeviceInfo.html">LeapDeviceInfo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.FrameRateControls.html">FrameRateControls</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.Utils.html">Utils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.EyeType.html">EyeType</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapVRCameraControl.html">LeapVRCameraControl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapVRTemporalWarping.html">LeapVRTemporalWarping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.VRHeightOffset.html">SmoothedFoat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.TestHandFactory.html">TestHandFactory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedFloat.html">SmoothedFloat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedQuaternion.html">SmoothedQuaternion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedVector.html">SmoothedVector3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.ToolModel.html">ToolModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.ConfidenceTransparency.html">ConfidenceTransparency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.DisconnectionNotice.html">DisconnectionNotice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.LeapRecorder.html">LeapRecorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.LeapUnityExtensions.html">LeapUnityExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.MagneticPinch.html">MagneticPinch</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Unity_Leap_Namespace.html">Leap namespace</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -509,7 +533,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

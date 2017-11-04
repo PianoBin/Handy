@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hand Assets &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Hand Assets &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
-    <link rel="next" title="Hand Rigging" href="Unity_Hand_Rigging.html" />
-    <link rel="prev" title="CameraFollower" href="Unity.CameraFollower.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="next" title="Creating Your Own Hand Prefabs" href="Unity_MakeDiscreteHand.html" />
+    <link rel="prev" title="Getting Started With the Image Hand Assets" href="Unity_Image_Hand.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -151,9 +151,9 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Unity.CameraFollower.html");    }
+            window.location.assign("Unity_Image_Hand.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Unity_Hand_Rigging.html");
+            window.location.assign("Unity_MakeDiscreteHand.html");
     }
 
 }
@@ -300,11 +300,12 @@ function doneWithSearch(){
         
   <div class="section" id="hand-assets">
 <h1>Hand Assets<a class="headerlink" href="#hand-assets" title="Permalink to this headline">¶</a></h1>
-<p>The Leap Motion assets for Unity include hand prefabs that you can use as-is or as examples for building your own hand prefabs.</p>
-<p>There are a few different approaches to creating hands, including creating discrete components for the parts of the hands and moving these parts individually, creating mesh hands rigged with bone armatures and deforming the mesh by rotating the bones, and even creating code-driven hands that procedurally create their own graphics.</p>
-<p>The LeapHandController class orchestrates the acquisition and application of tracking data to the hands and fingers. The HandModel and FingerModel classes serve as base classes for hand and finger animation.</p>
+<p>The Leap Motion core assets for Unity include a number of pre-made hand prefabs assets.
+You can use these prefabs as-is, modify them, or create your own.</p>
+<p>There are a few different approaches to creating hands, including creating discrete components for the parts of the hands and moving these parts individually, creating mesh hands rigged with bone armatures and deforming the mesh by rotating the bones, and even creating code-driven hands that procedurally create their own graphics. The existing prefabs use all three of these approaches.</p>
+<p>The HandController class orchestrates the acquisition and application of tracking data to the hands and fingers. The HandModel and FingerModel classes serves as the base for animating the hand and fingers. There are several classes extending HandModel and FingerModel to implement the specific types of animation. These specific classes, like SkeletalHand/Finger and RiggedHand/Finger, can be used for multiple hand designs as long as the objects to which they are attached follow the same basic structure.</p>
+<p>The graphics and physics hands are separated into two different prefabs. You can use whichever physics hand prefab best fits your hand graphics model. For example. RigidFullHand includes a rigid body and collider for the arm, so you can use it with graphics models that include an arm &#8211; when you want the arm to collide with other objects in the scene.</p>
 <table border="1" class="docutils">
-<caption>Hand Assets</caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -314,55 +315,53 @@ function doneWithSearch(){
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Hand Type</th>
 <th class="head">Prefabs</th>
-<th class="head">Location</th>
+<th class="head">Scripts</th>
 <th class="head">Example</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Capsule</td>
-<td>CapsuleHand</td>
-<td>Core Assets</td>
-<td><img alt="unity/../../../images/unity/Unity_CapsuleHand.png" class="first last" src="unity/../../../images/unity/Unity_CapsuleHand.png" />
+<tr class="row-even"><td>Image Hands</td>
+<td>ImageFullHand</td>
+<td>RiggedHand/Finger</td>
+<td><img alt="unity/../../../images/unity/Unity_ImageHand.png" class="first last" src="unity/../../../images/unity/Unity_ImageHand.png" />
 </td>
 </tr>
 <tr class="row-odd"><td>Procedural Hands</td>
-<td>PolyHand1/2/3</td>
-<td>Hand Module</td>
+<td>PolyHand1/2/3, DebugHand</td>
+<td>PolyHand/Finger, DebugHand/Finger</td>
 <td><img alt="unity/../../../images/unity/Unity_PolyHand.jpg" class="first last" src="unity/../../../images/unity/Unity_PolyHand.jpg" />
 </td>
 </tr>
-<tr class="row-even"><td>Rigged Hands</td>
-<td>PepperBaseCut, PepperBaseFull</td>
-<td>Hands Module</td>
-<td><img alt="unity/../../../images/unity/Unity_UntexturedHand.jpg" class="first last" src="unity/../../../images/unity/Unity_UntexturedHand.jpg" />
+<tr class="row-even"><td>Component Hands</td>
+<td>MinimalHand, CleanRobotHand, GlowRobotHand</td>
+<td>SkeletalHand/Finger</td>
+<td><img alt="unity/../../../images/unity/Unity_RobotHand.jpg" class="first last" src="unity/../../../images/unity/Unity_RobotHand.jpg" />
 </td>
 </tr>
-<tr class="row-odd"><td>Low Polygon Hands</td>
-<td>LoPoly_Rigged_Hand</td>
-<td>Hands Module</td>
-<td><img alt="unity/../../../images/unity/Unity_LoPolyHand.jpg" class="first last" src="unity/../../../images/unity/Unity_LoPolyHand.jpg" />
+<tr class="row-odd"><td>Rigged Hands</td>
+<td>All the human models</td>
+<td>RiggedHand/Finger</td>
+<td><img alt="unity/../../../images/unity/Unity_SaltLightHand.jpg" class="first last" src="unity/../../../images/unity/Unity_SaltLightHand.jpg" />
 </td>
 </tr>
 <tr class="row-even"><td>Physics Hands</td>
 <td>RigidHand, RigidFullHand, RigidRoundHand, ThickRigidHand</td>
-<td>Core Assets</td>
+<td>RigidHand/Finger</td>
 <td><img alt="unity/../../../images/unity/Unity_RigidHand.png" class="first last" src="unity/../../../images/unity/Unity_RigidHand.png" />
-</td>
-</tr>
-<tr class="row-odd"><td>Interaction Hands</td>
-<td>BrushHand</td>
-<td>Interaction Engine Module</td>
-<td>(invisible)</td>
-</tr>
-<tr class="row-even"><td>Attachment Hands</td>
-<td>HandAttachments</td>
-<td>Attachments Module</td>
-<td><img alt="unity/../../../images/unity/Unity_HandAttachment.png" class="first last" src="unity/../../../images/unity/Unity_HandAttachment.png" />
 </td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="setting-up-hand-assets-in-the-hand-controller">
+<h2>Setting Up Hand Assets in the Hand Controller<a class="headerlink" href="#setting-up-hand-assets-in-the-hand-controller" title="Permalink to this headline">¶</a></h2>
+<p>After adding a HandController to a scene, you can set the graphics model by dragging the desired hand prefab to the Hand Graphics Model slots.</p>
+<img alt="unity/../../../images/unity/Unity_HandControllerGraphics.png" src="unity/../../../images/unity/Unity_HandControllerGraphics.png" />
+<p>If the Separate Left/Right setting is checked, you can use different prefabs for the right and left hands. Otherwise, the HandController mirrors a single model for both hands. The existing hand prefabs are all labeled &#8220;right&#8221; or &#8220;left&#8221; where it makes a difference (if you use the wrong hand model, the error will be obvious).</p>
+<p>Change the size of the hands using the HandController Scale value. A scale of 1.0 is life-size, but that is often too small. It really depends on your scene. The edges of the default Unity cube, for example, are 1 meter long and would dwarf a life-size hand. Scaling the hands larger also increases their range of motion. You can further increase the range of motion without making the hands larger by increasing the HandController Hand Movement Scale values.</p>
+<p>Setting the Is Head Mounted will provide a hint to the Leap Motion service that hands are viewed from the head-mounted position and improve hand recognition. The setting does not automatically rotate the hands in the game to appear in front of the HandController rather than above it. To do that, you can set the HandController rotation values to {x=270, y=180, z=0}.</p>
+<p><strong>Note:</strong> The Image Hand assets are designed for AR/VR use. These assets also have several script, shader, and game object dependencies. Simply adding ImageFullHands to a HandController object is not sufficient. See <a class="reference internal" href="Unity_Image_Hand.html"><em>Getting Started With the Image Hand Assets</em></a> for information about using the image hand assets.</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -372,24 +371,22 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Hand Assets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Unity_Hand_Rigging.html">Hand Rigging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Unity_AutoRigging.html">Autorigging Hand Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Unity_MakeDiscreteHand.html">Creating Your Own Hand Prefabs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-hand-assets-in-the-hand-controller">Setting Up Hand Assets in the Hand Controller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Unity_MakeDiscreteHand.html">Creating Your Own Hand Prefabs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -407,7 +404,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

@@ -2518,10 +2518,6 @@ a.reference tt.literal span.pre {
 	line-height:90%;
 }
 
-dt > code.descname {
-    font-size:0.9em;
-}
-
 @charset "US-ASCII";
 /*
  * sprockets default directives mess up variables.

@@ -16,22 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using the Tracking API &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>Using the Tracking API &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
+    <link rel="next" title="Connecting to the Controller" href="Leap_Controllers.html" />
+    <link rel="prev" title="System Architecture" href="Leap_Architecture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +76,7 @@
     var pageAPI = 'csharp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -152,8 +155,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap_Architecture.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap_Controllers.html");
     }
 
 }
@@ -320,15 +325,24 @@ function doneWithSearch(){
 <td>Tracking hands.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="Leap_Pointables.html"><em>Fingers</em></a></td>
-<td>Tracking Fingers.</td>
+<td>Tracking Fingers and Tools.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Leap_Coordinate_Mapping.html"><em>Coordinate Systems</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="Leap_Gestures.html"><em>Gestures</em></a></td>
+<td>Working with gestures.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap_Touch_Emulation.html"><em>Touch Emulation</em></a></td>
+<td>Working with the virtual touch plane.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap_Motions.html"><em>Motions</em></a></td>
+<td>Working with motion factors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap_Coordinate_Mapping.html"><em>Coordinate Systems</em></a></td>
 <td>Converting from Leap Motion to application coordinates.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="Leap_Images.html"><em>Camera Images</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="Leap_Images.html"><em>Camera Images</em></a></td>
 <td>Accessing raw images from the Leap Motion sensors.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="Leap_Serialization.html"><em>Serializing Tracking Data</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="Leap_Serialization.html"><em>Serializing Tracking Data</em></a></td>
 <td>Saving and loading tracking data using the <tt class="docutils literal"><span class="pre">Frame</span></tt> serialization API.</td>
 </tr>
 </tbody>
@@ -343,10 +357,26 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Using the Tracking API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Controllers.html">Connecting to the Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Tracking.html">Tracking Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id1">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id1">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
@@ -369,7 +399,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

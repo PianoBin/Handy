@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pointable &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Pointable &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="PointableList" href="Leap.PointableList.html" />
     <link rel="prev" title="Matrix" href="Leap.Matrix.html" />
@@ -77,10 +77,12 @@
     var pageAPI = 'python';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
     hasAPI.python = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -193,11 +195,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/api/Leap.Pointable.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.Pointable.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -278,8 +280,8 @@ function doneWithSearch(){
   Pointable
 </span> -->
         
-  <div class="section" id="id24">
-<h1>Pointable<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id4">
+<h1>Pointable<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -287,7 +289,6 @@ function doneWithSearch(){
 <li><a class="reference internal" href="#Leap.Pointable.frame" title="Leap.Pointable.frame"><tt class="xref py py-attr docutils literal"><span class="pre">frame</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Pointable.hand" title="Leap.Pointable.hand"><tt class="xref py py-attr docutils literal"><span class="pre">hand</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Pointable.id" title="Leap.Pointable.id"><tt class="xref py py-attr docutils literal"><span class="pre">id</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Pointable.is_extended" title="Leap.Pointable.is_extended"><tt class="xref py py-attr docutils literal"><span class="pre">is_extended</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Pointable.is_finger" title="Leap.Pointable.is_finger"><tt class="xref py py-attr docutils literal"><span class="pre">is_finger</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Pointable.is_tool" title="Leap.Pointable.is_tool"><tt class="xref py py-attr docutils literal"><span class="pre">is_tool</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Pointable.is_valid" title="Leap.Pointable.is_valid"><tt class="xref py py-attr docutils literal"><span class="pre">is_valid</span></tt></a></li>
@@ -305,14 +306,14 @@ function doneWithSearch(){
 <div class="members container">
 <ul class="simple">
 <li><a class="reference internal" href="#Leap.Pointable.ZONE_HOVERING" title="Leap.Pointable.ZONE_HOVERING"><tt class="xref py py-data docutils literal"><span class="pre">ZONE_HOVERING</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Pointable.ZONE_NONE" title="Leap.Pointable.ZONE_NONE"><tt class="xref py py-data docutils literal"><span class="pre">ZONE_NONE</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Pointable.ZONE_TOUCHING" title="Leap.Pointable.ZONE_TOUCHING"><tt class="xref py py-data docutils literal"><span class="pre">ZONE_TOUCHING</span></tt></a></li>
+<li>:py:data:<a href="#id5"><span class="problematic" id="id6">`</span></a>~.Pointable.ZONE_NONE</li>
+<li>:py:data:<a href="#id7"><span class="problematic" id="id8">`</span></a>~.Pointable.ZONE_TOUCHING</li>
 </ul>
 </div>
 <dl class="class">
 <dt id="Leap.Pointable">
 <em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Pointable</tt><a class="headerlink" href="#Leap.Pointable" title="Permalink to this definition">¶</a></dt>
-<dd><p>The Pointable class reports the physical characteristics of a detected finger.</p>
+<dd><p>The Pointable class reports the physical characteristics of a detected finger or tool.</p>
 <p>Get Pointable objects from <a class="reference internal" href="Leap.Frame.html#Leap.Frame" title="Leap.Frame"><tt class="xref py py-class docutils literal"><span class="pre">Frame</span></tt></a> or <a class="reference internal" href="Leap.Hand.html#Leap.Hand" title="Leap.Hand"><tt class="xref py py-class docutils literal"><span class="pre">Hand</span></tt></a> objects.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#All from frame:</span>
 <span class="n">frame_pointables</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">pointables</span>
@@ -327,6 +328,16 @@ function doneWithSearch(){
 <span class="n">known_pointable</span> <span class="o">=</span> <span class="n">hand</span><span class="o">.</span><span class="n">pointable</span><span class="p">(</span><span class="n">known_id</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Both fingers and tools are classified as Pointable objects. Use <a class="reference internal" href="#Leap.Pointable.is_finger" title="Leap.Pointable.is_finger"><tt class="xref py py-attr docutils literal"><span class="pre">is_finger</span></tt></a>
+to determine whether a Pointable object represents a finger. Use
+<a class="reference internal" href="#Leap.Pointable.is_tool" title="Leap.Pointable.is_tool"><tt class="xref py py-attr docutils literal"><span class="pre">is_tool</span></tt></a> to determine whether a Pointable object represents a tool.
+The Leap Motion software classifies a detected entity as a tool when it is thinner, straighter, and longer
+than a typical finger.</p>
+<p>To provide touch emulation, the Leap Motion software associates a floating touch
+plane that adapts to the user&#8217;s finger movement and hand posture. The Leap Motion
+interprets purposeful movements toward this plane as potential touch points.
+The Pointable class reports
+touch state with the <a class="reference internal" href="#Leap.Pointable.touch_zone" title="Leap.Pointable.touch_zone"><tt class="xref py py-attr docutils literal"><span class="pre">touch_zone</span></tt></a> and <a class="reference internal" href="#Leap.Pointable.touch_distance" title="Leap.Pointable.touch_distance"><tt class="xref py py-attr docutils literal"><span class="pre">touch_distance</span></tt></a> values.</p>
 <p>Note that Pointable objects can be invalid, which means that they do not contain
 valid tracking data and do not correspond to a physical entity. Invalid Pointable
 objects can be the result of asking for a Pointable object using an ID from an
@@ -471,7 +482,7 @@ IDs of -1 are used until an ID in the defined range is available.</p>
 </tr>
 </tbody>
 </table>
-<p>The direction in which this finger is pointing.</p>
+<p>The direction in which this finger or tool is pointing.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">direction</span> <span class="o">=</span> <span class="n">pointable</span><span class="o">.</span><span class="n">direction</span>
 </pre></div>
 </div>
@@ -494,12 +505,12 @@ direction as the tip.</p>
 </tr>
 </tbody>
 </table>
-<p>The estimated width of the finger in millimeters.</p>
+<p>The estimated width of the finger or tool in millimeters.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">width</span> <span class="o">=</span> <span class="n">pointable</span><span class="o">.</span><span class="n">width</span>
 </pre></div>
 </div>
 <p>The reported width is the average width of the visible portion of the
-finger. If the width isn&#8217;t known,
+finger or tool. If the width isn&#8217;t known,
 then a value of 0 is returned.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.0.</span></p>
@@ -517,29 +528,12 @@ then a value of 0 is returned.</p>
 </tr>
 </tbody>
 </table>
-<p>The estimated length of the finger in millimeters.</p>
+<p>The estimated length of the finger or tool in millimeters.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">length</span> <span class="o">=</span> <span class="n">pointable</span><span class="o">.</span><span class="n">length</span>
 </pre></div>
 </div>
-<p>The reported length is the visible length of the finger. If the
+<p>The reported length is the visible length of the finger or tool. If the
 length isn&#8217;t known, then a value of 0 is returned.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 1.0.</span></p>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Leap.Pointable.is_extended">
-<tt class="descname">is_extended</tt><a class="headerlink" href="#Leap.Pointable.is_extended" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-<p>Whether or not the Pointable is more or less straight.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.0.</span></p>
 </div>
@@ -577,8 +571,11 @@ length isn&#8217;t known, then a value of 0 is returned.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
 <p>Whether or not the Pointable is classified as a tool.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">pointable</span><span class="o">.</span><span class="n">is_tool</span><span class="p">:</span>
+    <span class="n">tool</span> <span class="o">=</span> <span class="n">Leap</span><span class="o">.</span><span class="n">Tool</span><span class="p">(</span><span class="n">pointable</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.0.</span></p>
 </div>
@@ -912,33 +909,40 @@ exact same physical entities in the same frame and both Pointable objects are va
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id23">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id27">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id16">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id32">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id26">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id31">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id46">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id18">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id37">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id8">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id5">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id20">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id56">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id29">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id53">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id5">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -963,7 +967,7 @@ exact same physical entities in the same frame and both Pointable objects are va
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

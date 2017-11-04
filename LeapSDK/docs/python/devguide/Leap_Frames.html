@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Frames &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Frames &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Hands" href="Leap_Hand.html" />
     <link rel="prev" title="Tracking Model" href="Leap_Tracking.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'python';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Frames.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -314,7 +315,7 @@ function doneWithSearch(){
 <p>Polling the <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object for frames is the simplest and often best strategy when your application has a natural frame rate. You just call the <tt class="docutils literal"><span class="pre">Controller</span></tt> <tt class="docutils literal"><span class="pre">frame()</span></tt> function when your application is ready to process a frame of data.</p>
 <p>When you use polling, there is a chance that you will get the same frame twice in a row (if the application frame rate exceeds the Leap frame rate) or skip a frame (if the Leap frame rate exceeds the application frame rate). In many cases, missed or duplicated frames are not important. For example, if you are moving an object on the screen in response to hand movement, the movement should still be smooth (assuming the overall frame rate of your application is high enough). In those cases where it does matter, you can use the <tt class="docutils literal"><span class="pre">history</span></tt> parameter of the <tt class="docutils literal"><span class="pre">frame()</span></tt> function.</p>
 <p>To detect whether you have already processed a frame, save the ID value assigned to the last frame processed and compare it to the current frame:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">lastFrameID</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">lastFrameID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">def</span> <span class="nf">processFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
     <span class="k">if</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastFrameID</span><span class="p">):</span>
         <span class="k">return</span>
@@ -325,10 +326,10 @@ function doneWithSearch(){
 <p>If your application has skipped frames, use the <cite>history</cite> parameter of the <cite>frame()</cite> function to access the skipped frames (as long as the <tt class="docutils literal"><span class="pre">Frame</span></tt> object is still in the history buffer):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">lastProcessedFrameID</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">def</span> <span class="nf">nextFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
-    <span class="n">currentID</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">frame</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+    <span class="n">currentID</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">frame</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
     <span class="k">for</span> <span class="n">history</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">currentID</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastProcessedFrameID</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">processFrame</span><span class="p">(</span><span class="n">controller</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">history</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lastProcessedFrameID</span> <span class="o">=</span> <span class="n">currentID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastProcessedFrameID</span> <span class="o">=</span> <span class="n">currentID</span><span class="p">;</span>
 
 <span class="k">def</span> <span class="nf">processNextFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span> <span class="p">):</span>
     <span class="k">if</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">is_valid</span><span class="p">):</span>
@@ -388,8 +389,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -407,6 +409,9 @@ function doneWithSearch(){
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id13">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id19">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
@@ -434,7 +439,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

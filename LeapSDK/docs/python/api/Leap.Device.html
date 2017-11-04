@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Device &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Device &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="DeviceList" href="Leap.DeviceList.html" />
     <link rel="prev" title="Controller" href="Leap.Controller.html" />
@@ -285,15 +285,11 @@ function doneWithSearch(){
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
-<li><a class="reference internal" href="#Leap.Device.baseline" title="Leap.Device.baseline"><tt class="xref py py-attr docutils literal"><span class="pre">baseline</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Device.horizontal_view_angle" title="Leap.Device.horizontal_view_angle"><tt class="xref py py-attr docutils literal"><span class="pre">horizontal_view_angle</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Device.is_embedded" title="Leap.Device.is_embedded"><tt class="xref py py-attr docutils literal"><span class="pre">is_embedded</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Device.is_lighting_bad" title="Leap.Device.is_lighting_bad"><tt class="xref py py-attr docutils literal"><span class="pre">is_lighting_bad</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Device.is_streaming" title="Leap.Device.is_streaming"><tt class="xref py py-attr docutils literal"><span class="pre">is_streaming</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Device.is_valid" title="Leap.Device.is_valid"><tt class="xref py py-attr docutils literal"><span class="pre">is_valid</span></tt></a></li>
+<li><a class="reference internal" href="#Leap.Device.vertical_view_angle" title="Leap.Device.vertical_view_angle"><tt class="xref py py-attr docutils literal"><span class="pre">vertical_view_angle</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Device.range" title="Leap.Device.range"><tt class="xref py py-attr docutils literal"><span class="pre">range</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Device.serial_number" title="Leap.Device.serial_number"><tt class="xref py py-attr docutils literal"><span class="pre">serial_number</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Device.vertical_view_angle" title="Leap.Device.vertical_view_angle"><tt class="xref py py-attr docutils literal"><span class="pre">vertical_view_angle</span></tt></a></li>
+<li><a class="reference internal" href="#Leap.Device.is_valid" title="Leap.Device.is_valid"><tt class="xref py py-attr docutils literal"><span class="pre">is_valid</span></tt></a></li>
 </ul>
 </div>
 <p><strong>Methods:</strong></p>
@@ -332,24 +328,6 @@ Get valid Device objects from a DeviceList object obtained using the
 
 </div>
 <div class="attributes container">
-<dl class="attribute">
-<dt id="Leap.Device.baseline">
-<tt class="descname">baseline</tt><a class="headerlink" href="#Leap.Device.baseline" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
-<p>The distance between the center points of the stereo sensors, in millimeters.</p>
-<p>The baseline value, together with the maximum resolution, influence the maximum range.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.2.5.</span></p>
-</div>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="Leap.Device.horizontal_view_angle">
 <tt class="descname">horizontal_view_angle</tt><a class="headerlink" href="#Leap.Device.horizontal_view_angle" title="Permalink to this definition">¶</a></dt>
@@ -413,8 +391,7 @@ reports the view angle along the short dimension of the device.</p>
 <p>The range reports the maximum recommended distance from the device center
 for which tracking is expected to be reliable. This distance is not a hard limit.
 Tracking may be still be functional above this distance or begin to degrade slightly
-before this distance depending on calibration and extreme environmental conditions.
-The range is not computed dynamically; it is based on the hardware model.</p>
+before this distance depending on calibration and extreme environmental conditions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">max_range</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">range</span>
 </pre></div>
 </div>
@@ -440,82 +417,6 @@ The range is not computed dynamically; it is based on the hardware model.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.2.2.</span></p>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Leap.Device.is_embedded">
-<tt class="descname">is_embedded</tt><a class="headerlink" href="#Leap.Device.is_embedded" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-<p>Reports whether this device is embedded in another computer or computer peripheral.
-True, if this device is embedded in a laptop, keyboard, or other computer component;
-false, if this device is a standalone controller.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 1.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Leap.Device.is_lighting_bad">
-<tt class="descname">is_lighting_bad</tt><a class="headerlink" href="#Leap.Device.is_lighting_bad" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-<p>The software has detected excessive IR illumination, which may interfere with tracking.
-If robust mode is enabled, the system will enter robust mode when is_lighting_bad is true.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Leap.Device.is_smudged">
-<tt class="descname">is_smudged</tt><a class="headerlink" href="#Leap.Device.is_smudged" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-<p>The software has detected a possible smudge on the translucent cover over the Leap Motion cameras.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Leap.Device.is_streaming">
-<tt class="descname">is_streaming</tt><a class="headerlink" href="#Leap.Device.is_streaming" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-<p>Reports whether this device is streaming data to your application.</p>
-</div></blockquote>
-<p>Currently only one controller can provide data at a time.</p>
-<blockquote>
-<div><div class="versionadded">
-<p><span class="versionmodified">New in version 1.2.</span></p>
-</div>
-</div></blockquote>
 </dd></dl>
 
 <dl class="attribute">
@@ -611,33 +512,40 @@ exact same Device and both Devices are valid.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id23">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id27">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id16">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id32">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id26">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id31">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id46">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id18">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id37">Controller</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id8">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id5">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id20">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id56">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id29">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id53">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id5">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id24">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id4">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -662,7 +570,7 @@ exact same Device and both Devices are valid.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

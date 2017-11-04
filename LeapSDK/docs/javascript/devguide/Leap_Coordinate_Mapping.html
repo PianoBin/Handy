@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Coordinate Systems &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Coordinate Systems &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Camera Images" href="Leap_Images.html" />
-    <link rel="prev" title="Fingers" href="Leap_Pointables.html" />
+    <link rel="prev" title="Motions" href="Leap_Motions.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -77,6 +77,7 @@
     var pageAPI = 'javascript';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -130,7 +131,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap_Pointables.html");    }
+            window.location.assign("Leap_Motions.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap_Images.html");
     }
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Coordinate_Mapping.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -358,7 +359,7 @@ abs.anim.start();
 <img alt="devguide/../../../images/CoordinateThermometer.png" src="devguide/../../../images/CoordinateThermometer.png" />
 <p>You can use this formula to make the conversion:</p>
 <div class="math">
-\[x_{app} = (x_{leap} - Leap_{start})\frac{App_{range}}{Leap_{range}} + App_{start}\]</div>
+\[x_{app} = (x_{leap} - Leap_{start})\frac{Leap_{range}}{App_{range}} + App_{start}\]</div>
 <p>where:</p>
 <div class="math">
 \[Leap_{range} = Leap_{end} - Leap_{start}\]\[App_{range} = App_{end} - App_{start}\]</div>
@@ -937,8 +938,9 @@ to canvas painting as well.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -948,6 +950,9 @@ to canvas painting as well.</p>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html#id482">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id19">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id28">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Coordinate Systems</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#leap-motion-coordinates">Leap Motion Coordinates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mapping-coordinates-to-your-application">Mapping Coordinates to your Application</a></li>
@@ -967,7 +972,6 @@ to canvas painting as well.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html#id482">Serializing Tracking Data</a></li>
 </ul>
 </li>
@@ -995,7 +999,7 @@ to canvas painting as well.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

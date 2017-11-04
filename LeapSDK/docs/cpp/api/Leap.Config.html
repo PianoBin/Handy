@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Config &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Config &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Controller" href="Leap.Controller.html" />
-    <link rel="prev" title="Bone" href="Leap.Bone.html" />
+    <link rel="prev" title="CircleGesture" href="Leap.CircleGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Bone.html");    }
+            window.location.assign("Leap.CircleGesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Controller.html");
     }
@@ -393,65 +393,6 @@ function doneWithSearch(){
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_config_1ad9971b6ef33e02ba2c75d19c1d2518a1"></span><strong>ValueType enum</strong></p>
-<blockquote>
-<div><p>Enumerates the possible data types for configuration values. </p>
-<p>The <a class="reference internal" href="#cppclass_leap_1_1_config_1a688695558ba99efbd5f453a08670aab1"><em>Config::type()</em></a> function returns an item from the ValueType enumeration. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">TYPE_UNKNOWN</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - <p>The data type is unknown. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_BOOLEAN</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - <p>A boolean value. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_INT32</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - <p>A 32-bit integer. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_FLOAT</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">6</span></tt> - <p>A floating-point number. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_STRING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">8</span></tt> - <p>A string of characters. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_config_1a539a941e29cde8d13e413c515d9801cd"></span><div class="line-block">
 <div class="line"> <strong>Config</strong>()</div>
@@ -568,8 +509,7 @@ bool success = controller.config().save();
 <blockquote>
 <div><p>Sets the boolean representation for the specified key. </p>
 <p><p><pre class="literal-block">
-controller.config().setBool(&quot;tracking_tool_enabled&quot;, true);
-controller.config().save();
+controller.config().setBool(&quot;Key.For.Bool.Setting&quot;, true);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -589,7 +529,6 @@ controller.config().save();
 <div><p>Sets the floating point representation for the specified key. </p>
 <p><p><pre class="literal-block">
 controller.config().setFloat(&quot;Gesture.Circle.MinRadius&quot;, 15);
-controller.config().save();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -608,8 +547,7 @@ controller.config().save();
 <blockquote>
 <div><p>Sets the 32-bit integer representation for the specified key. </p>
 <p><p><pre class="literal-block">
-controller.config().setInt32(&quot;background_app_mode&quot;, 2);
-controller.config().save();
+controller.config().setInt32(&quot;Key.For.Integer.Setting&quot;, 12);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -629,7 +567,6 @@ controller.config().save();
 <div><p>Sets the string representation for the specified key. </p>
 <p><p><pre class="literal-block">
 controller.config().setString(&quot;Key.For.String.Setting&quot;, &quot;A String&quot;);
-controller.config().save();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -642,13 +579,13 @@ controller.config().save();
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_config_1a688695558ba99efbd5f453a08670aab1"></span><div class="line-block">
-<div class="line">ValueType <strong>type</strong>(const std::string &amp; key)</div>
+<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_config_1ad9971b6ef33e02ba2c75d19c1d2518a1"><em>ValueType</em></a> <strong>type</strong>(const std::string &amp; key)</div>
 </div>
 </p>
 <blockquote>
 <div><p>Reports the natural data type for the value related to the specified key. </p>
 <p><p><pre class="literal-block">
-Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap.MinDistance&quot;);
+<a class="reference internal" href="#cppclass_leap_1_1_config_1ad9971b6ef33e02ba2c75d19c1d2518a1"><em>Leap::Config::ValueType</em></a> dataType = controller.config().type(&quot;Gesture.KeyTap.MinDistance&quot;);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -725,6 +662,11 @@ Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap
 </dl>
 </p>
 </li>
+<li><tt class="first docutils literal"><span class="pre">TYPEUNKNOWN</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">TYPE_UNKNOWN</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPEBOOLEAN</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">TYPE_BOOLEAN</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPEINT32</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">TYPE_INT32</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPEFLOAT</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">TYPE_FLOAT</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPESTRING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">TYPE_STRING</span></tt> - </li>
 </ul>
 </div></blockquote>
 </div>
@@ -736,8 +678,9 @@ Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -745,6 +688,7 @@ Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Config</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#value-type">Value Type</a></li>
 </ul>
@@ -752,20 +696,28 @@ Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -790,7 +742,7 @@ Leap::Config::ValueType dataType = controller.config().type(&quot;Gesture.KeyTap
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

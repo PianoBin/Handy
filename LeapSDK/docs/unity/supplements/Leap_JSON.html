@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>WebSocket Communication &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>WebSocket Communication &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Appendices" href="Leap_Supplements.html" />
     <link rel="next" title="Leap Motion Release Notes" href="SDK_Release_Notes.html" />
     <link rel="prev" title="Using the Diagnostic Visualizer" href="Leap_Visualizer.html" />
@@ -302,8 +302,8 @@ function doneWithSearch(){
 <li><p class="first">Server to client</p>
 <p><tt class="docutils literal"><span class="pre">version</span></tt></p>
 <blockquote>
-<div><p>Indicates the version numbers of the Leap Motion service and WebSocket subprotocol:</p>
-<div class="code javascript highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;serviceVersion&quot;</span><span class="p">:</span><span class="s">&quot;2.3.1+33747&quot;</span><span class="p">,</span> <span class="s">&quot;version&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">}</span>
+<div><p>Indicates the version of the Leap Motion subprotocol:</p>
+<div class="code javascript highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="n">version</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -354,22 +354,29 @@ function doneWithSearch(){
 <dl class="docutils">
 <dt><tt class="docutils literal"><span class="pre">background</span></tt></dt>
 <dd><p class="first">Specifies whether the client wants to receive frames when it is not the <tt class="docutils literal"><span class="pre">focused</span></tt> application:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;background&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
-<span class="p">{</span><span class="s">&quot;background&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="n">background</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+<span class="p">{</span><span class="n">background</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
 </pre></div>
 </div>
 </dd>
 <dt><tt class="docutils literal"><span class="pre">focused</span></tt></dt>
 <dd><p class="first">Specifies whether the application is active. Setting <tt class="docutils literal"><span class="pre">focused</span></tt> to true, stops other WebSocket clients from getting data. Setting <tt class="docutils literal"><span class="pre">focused</span></tt> to false stops your WebSocket client from getting data (and potentially unwanted input):</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;focused&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
-<span class="p">{</span><span class="s">&quot;focused&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="n">focused</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+<span class="p">{</span><span class="n">focused</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">enableGestures</span></tt></dt>
+<dd><p class="first">Enables or disables gesture recognition data:</p>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="n">enableGestures</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+<span class="p">{</span><span class="n">enableGestures</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
 </pre></div>
 </div>
 </dd>
 <dt><tt class="docutils literal"><span class="pre">optimizeHMD</span></tt></dt>
 <dd><p class="first">Specifies whether the client application expects the Leap Motion hardware to be attached to a head-mounted display:</p>
-<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;optimizeHMD&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
-<span class="p">{</span><span class="s">&quot;optimizeHMD&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+<div class="code javascript last highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="n">optimizeHMD</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+<span class="p">{</span><span class="n">optimizeHMD</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
 </pre></div>
 </div>
 </dd>
@@ -385,7 +392,7 @@ function doneWithSearch(){
 </div>
 <div class="section" id="json-tracking-data-format">
 <h2>JSON tracking data format<a class="headerlink" href="#json-tracking-data-format" title="Permalink to this headline">¶</a></h2>
-<p>Each frame of data from the WebSocket server contains JSON defining a frame. The attributes of a frame in the JSON message are similar, but not identical to those of a <a href="#id55"><span class="problematic" id="id56">|Frame|_</span></a> object obtained through the native library. They include:</p>
+<p>Each frame of data from the WebSocket server contains JSON defining a frame. The attributes of a frame in the JSON message are similar, but not identical to those of a <a href="#id57"><span class="problematic" id="id58">|Frame|_</span></a> object obtained through the native library. They include:</p>
 <pre class="literal-block">
 &quot;<a class="reference external" href="../../javascript/api/Leap.Frame.html#currentFrameRate">currentFrameRate</a>&quot;: float
 &quot;<a class="reference external" href="../../javascript/api/Leap.Frame.html#id">id</a>&quot;: float
@@ -393,7 +400,6 @@ function doneWithSearch(){
 &quot;<a class="reference internal" href="#scale"><em>s</em></a>&quot;: float
 &quot;<a class="reference internal" href="#translation"><em>t</em></a>&quot;:  array of floats (vector)
 &quot;<a class="reference external" href="../../javascript/api/Leap.Frame.html#timestamp">timestamp</a>&quot;: integer
-&quot;devices&quot;: not implemented (always an empty array)
 
 &quot;gestures&quot;: array of Gesture objects
     (Attributes vary by gesture type)
@@ -467,7 +473,7 @@ function doneWithSearch(){
 </ul>
 <div class="section" id="motion-factors">
 <h3>Motion factors<a class="headerlink" href="#motion-factors" title="Permalink to this headline">¶</a></h3>
-<p>The motion factors, r, s, t, attached to Hand and Frame objects are snapshots of the motion occuring across frames. These factors must be combined with those of a previous frame to derive the relative motion.</p>
+<p>The motion factors, r, s, t, attached to Hand and <a href="#id55"><span class="problematic" id="id56">|Frame|</span></a> objects are snapshots of the motion occuring across frames. These factors must be combined with those of a previous frame to derive the relative motion.</p>
 <ul class="simple">
 <li>r &#8211; a 3x3 rotation matrix</li>
 <li>s &#8211; a scale factor</li>
@@ -591,19 +597,16 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Supplements.html">Appendices</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap_Application.html">Using the Leap Motion Control Panel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Visualizer.html">Using the Diagnostic Visualizer</a></li>
@@ -644,7 +647,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

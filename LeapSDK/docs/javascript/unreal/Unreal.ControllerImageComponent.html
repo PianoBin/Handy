@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Leap Motion Controller Image Component &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Leap Motion Controller Image Component &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -296,10 +296,115 @@ function doneWithSearch(){
         
   <div class="section" id="leap-motion-controller-image-component">
 <h1>Leap Motion Controller Image Component<a class="headerlink" href="#leap-motion-controller-image-component" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">doxygenclass: Unable to find project &#8216;unreal&#8217; in breathe_projects dictionary</p>
+<div class="line-block" id="unreala00008">
+<div class="line"><em>class</em> <strong>ULeapMotionImageComponent</strong></div>
 </div>
+<blockquote>
+<div><p>Add this component to any actor to allow image from Leap Motion device&#8217;s cameras to be displayed in the background of the scene. </p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p><span class="target" id="unreala00008_1ab01a8f1331f9e771328f3a9c2b41a67d"></span><div class="line-block">
+<div class="line">void <strong>AttachDisplaySurface</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Called when the display surface is attached to the PlayerCameraManager. </p>
+<p>You can overwrite the mesh type and its scene placement here, </p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1ad23ae6f2fd1f6d7564f21e0382f23c0d"></span><div class="line-block">
+<div class="line">UTexture2D * <strong>BuildDistortionTextures</strong>(const Leap::Image &amp; Image)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Creates the distortion texture resources. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1aad867946cbc1a3054fb122fa529dc9db"></span><div class="line-block">
+<div class="line">void <strong>InitializeComponent</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Called when the component is created. </p>
+<p>Creates the dynamic material instance used to display the images and assigns it to the display surface. If the Leap Motion hardware is connected, sets the image policy. </p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1a1486f2a3a922069f6e23819453f60e53"></span><div class="line-block">
+<div class="line">void <strong>TickComponent</strong>(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Called every game frame. </p>
+<p>Updates image textures unless images are paused. </p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1af00a4a97b4ed08c080e3e8dbf8a63dab"></span><div class="line-block">
+<div class="line">void <strong>UpdateDistortionTextures</strong>(const Leap::Image &amp; Image, UTexture2D * DistortionTexture)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Updates the distorition textures. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1a683bb046faa3619660fa69056d69fb3e"></span><div class="line-block">
+<div class="line">void <strong>UpdateImageTexture</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Updates the image and distortion textures using the latest Leap Motion data. </p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p><span class="target" id="unreala00008_1a7580f10def297f1bba3c017da1d571a2"></span>bool <strong>bIsPaused</strong></p>
+<blockquote>
+<div><p>Whether the images are updated. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1ac558c056f41be7ef35fd506a22e4ca30"></span>bool <strong>bIsVisible</strong></p>
+<blockquote>
+<div><p>Whether the image is displayed. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1ab5050ed64c0e12826df5ea62f2a80be2"></span>UStaticMeshComponent * <strong>DisplaySurfaceComponent</strong></p>
+<blockquote>
+<div><p>The mesh component used as the image display surface. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1a714308c53c76ac29a3140cac570f84a4"></span>float <strong>DisplaySurfaceDistance</strong></p>
+<blockquote>
+<div><p>The distance between the PlayerCameraManager and the surface on which the image is displayed. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1aa5ba795e3e83ac52ecbbe50e5d637793"></span>UTexture2D * <strong>DistortionTextureLeft</strong></p>
+<blockquote>
+<div><p>Texture encoding lens distortion for the left camera. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1abedef2fc23e1f0dbd381606fedb93fba"></span>UTexture2D * <strong>DistortionTextureRight</strong></p>
+<blockquote>
+<div><p>Texture encoding lens distortion for the right camera. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1ab4d22e4f5edafbf14855512786f7b34e"></span>UMaterialInstanceDynamic * <strong>DynamicPassthroughMaterial</strong></p>
+<blockquote>
+<div><p>The dynamic instance of the passthrough material. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1a4105d4bdf58e4a5042e3f32bbec82c65"></span>UTexture2D * <strong>ImagePassthroughLeft</strong></p>
+<blockquote>
+<div><p>The left raw image from the Leap device. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1a7cf4a0c637353a19636ce5ea5e0cd2b3"></span>UTexture2D * <strong>ImagePassthroughRight</strong></p>
+<blockquote>
+<div><p>Right raw image from the Leap device. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00008_1abbbde48c2520a9cd7d01089b9fa8f11e"></span>UMaterialInterface * <strong>PassthroughMaterial</strong></p>
+<blockquote>
+<div><p>The material template used to display the passthrough image. </p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 
 
@@ -308,8 +413,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -338,7 +444,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

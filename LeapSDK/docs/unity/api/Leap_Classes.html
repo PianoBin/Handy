@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Unity Scripting Reference &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>C# API Reference &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
-    <link rel="next" title="Leap.Unity Namespace" href="../unity/Unity_Classes.html" />
-    <link rel="prev" title="PhysicsUI" href="../unity/Unity.PhysicsUI.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="next" title="Arm" href="Leap.Arm.html" />
+    <link rel="prev" title="MagneticPinch" href="../unity/Unity.MagneticPinch.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -157,9 +157,9 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("../unity/Unity.PhysicsUI.html");    }
+            window.location.assign("../unity/Unity.MagneticPinch.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("../unity/Unity_Classes.html");
+            window.location.assign("Leap.Arm.html");
     }
 
 }
@@ -301,46 +301,84 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
-  Unity Scripting Reference
+  C# API Reference
 </span> -->
         
-  <div class="section" id="unity-scripting-reference">
-<h1>Unity Scripting Reference<a class="headerlink" href="#unity-scripting-reference" title="Permalink to this headline">¶</a></h1>
-<p>The Leap Motion Unity scripts take the hand tracking data from the Leap Motion device and allow your hands to interact with a virtual scene.</p>
-<p><strong>Leap.Unity Namespace</strong></p>
-<p>The classes in the <a class="reference internal" href="../unity/Unity_Classes.html"><em>Leap.Unity</em></a> namespace interact directly with GameObjects and other UnityEngine components. These scripts take tracking data and put it to use in Unity. The classes and objects you are most likely to use directly are:</p>
-<ul class="simple">
-<li><a class="reference external" href="../unity/Unity.LeapServiceProvider.html"><tt class="docutils literal"><span class="pre">LeapServiceProvider</span></tt></a> &#8211; provides access to the tracking data and images as well as access to the Leap.|Controller|_ object. The <tt class="docutils literal"><span class="pre">LeapServiceProvider</span></tt> transforms the tracking data so that the coordinates are relative to the transform of the Unity GameObject to which it is attached. For example, if you rotate the GameObject, the hands are also rotated in the Unity scene. Likewise, a hand 200mm above the Leap Motion device is placed 200mm above the GameObject in the Unity scene. The <tt class="docutils literal"><span class="pre">LeapServiceProvider</span></tt> also converts the coordinate system from the right-handed convention used by the Leap Motion software to the left-handed convention used by Unity.</li>
-<li><a class="reference external" href="../unity/Unity.IHandModel.html"><tt class="docutils literal"><span class="pre">IHandModel</span></tt></a>, <a class="reference external" href="../unity/Unity.HandModel.html"><tt class="docutils literal"><span class="pre">HandModel</span></tt></a>, or one of its subclasses like <a class="reference external" href="../unity/Unity.CapsuleHand.html"><tt class="docutils literal"><span class="pre">CapsuleHand</span></tt></a> &#8211; all the hands included in the asset packages are based on these. If you create your own hands you must implement <tt class="docutils literal"><span class="pre">IHandModel</span></tt> or extend <tt class="docutils literal"><span class="pre">HandModel</span></tt>.</li>
-<li><a class="reference external" href="../unity/Unity.LeapHandController.html"><tt class="docutils literal"><span class="pre">LeapHandController</span></tt></a> &#8211; provides access to the active hand graphics and physics objects.</li>
-</ul>
-<p><strong>Leap.Unity Module Namespaces</strong></p>
-<p>Modules that work in concert with the core assets have their own <a class="reference internal" href="../unity/Unity_Modules.html"><em>namespaces</em></a>. Modules include:</p>
-<ul class="simple">
-<li>Hand Module &#8211; Additional hand models and scripts.</li>
-<li>UI Input module &#8211; Aids for creating interactable UIs.</li>
-</ul>
-<p><strong>Note:</strong> The earlier PinchUtilities module has been superceded. The main LeapPinchUtility class has been rolled into the core assets (as <a href="#id280"><span class="problematic" id="id281">|PinchUtility|_</span></a>). The example scenes and scripts are now in the DetectionExamples module.</p>
-<p><strong>Leap Namespace</strong></p>
-<p>Classes in the <a class="reference internal" href="../unity/Unity_Leap_Namespace.html"><em>Leap namespace</em></a> define the Leap Motion tracking objects:</p>
-<ul class="simple">
-<li>A <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> is a set of data recorded at a specific moment in time. A <tt class="docutils literal"><span class="pre">Frame</span></tt> contains <tt class="docutils literal"><span class="pre">Hand</span></tt> objects</li>
-<li>A <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> object represents a tracked hand. A <tt class="docutils literal"><span class="pre">Hand</span></tt> (always) has five <tt class="docutils literal"><span class="pre">Finger</span></tt> objects and properties like <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a3760f0d03c577bd8a45779cf3f9a46a8">Direction</a>, <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a78b4d8f8df965c03f22912aafb402233">PalmPosition</a>, and <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1af94d6f6f19c7acba0ca3ceec3c911d64">Basis</a> (orientation).</li>
-<li>A <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> object represents a tracked finger or thumb of a hand. A <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> has four bones.</li>
-<li>A <a class="reference external" href="../api/Leap.Bone.html"><tt class="docutils literal"><span class="pre">Bone</span></tt></a> object represents a segment of a tracked finger and provides position, size, and orientation data.</li>
-<li>An <a class="reference external" href="../api/Leap.Arm.html"><tt class="docutils literal"><span class="pre">Arm</span></tt></a> object is a specialized bone that tracks the forearm.</li>
-</ul>
-<p>Scripts in the Leap namespace are not specific to Unity and can be used in any C# application. When using these classes in Unity there is an important difference: you should always get <tt class="docutils literal"><span class="pre">Frame</span></tt> objects from a <a class="reference external" href="../unity/Unity.LeapProvider.html"><tt class="docutils literal"><span class="pre">LeapProvider</span></tt></a> — not from a <tt class="docutils literal"><span class="pre">Controller</span></tt> object. The <a class="reference external" href="../unity/Unity.LeapProvider.html"><tt class="docutils literal"><span class="pre">LeapProvider</span></tt></a> converts the coordinates from Leap Motion space to Unity space and transforms them so that the hands appear in Unity relative to the GameObject to which the  <tt class="docutils literal"><span class="pre">LeapProvider</span></tt> is attached (typically the <a class="reference external" href="../unity/Unity.LeapHandController.html"><tt class="docutils literal"><span class="pre">LeapHandController</span></tt></a>). If you get a <tt class="docutils literal"><span class="pre">Frame</span></tt> directly from a <tt class="docutils literal"><span class="pre">Controller</span></tt>, you must handle the conversion yourself.</p>
-<p>The Leap Motion and Unity APIs define their own classes for vectors and transforms. You can convert from these Leap Motion classes to their Unity equivalents as shown in the following examples:</p>
-<div class="code csharp highlight-python"><div class="highlight"><pre>Vector3 unityVector = leapVector.ToVector3();
-Quaternion unityRotation = leapMatrix.Rotation();
-Vector3 unityTranslation = leapMatrix.origin.ToVector3();
-Vector3 unityScale = new Vector3(leapMatrix.xBasis.Magnitude,
-                                 leapMatrix.yBasis.Magnitude,
-                                 leapMatrix.zBasis.Magnitude);
+  <div class="section" id="c-api-reference">
+<h1>C# API Reference<a class="headerlink" href="#c-api-reference" title="Permalink to this headline">¶</a></h1>
+<p>The C# API Reference provides details on all the classes which make up the Leap Motion API.</p>
+<p>Note that any coordinates, directions, and transformations reported by these classes are expressed relative to the Leap Motion coordinate system, not your Unity game world. To convert position vectors to Unity coordinates, use the Vector class extension <tt class="docutils literal"><span class="pre">ToUnityScaled()</span></tt>. To convert direction vectors to Unity coordinates, use <tt class="docutils literal"><span class="pre">ToUnity()</span></tt>. These scripts are defined in a C# script included with our Unity core asset package, <a class="reference internal" href="../unity/Unity.LeapUnityExtensions.html"><em>LeapUnityExtensions</em></a>.</p>
+<p>You can convert a transform expressed as a matrix from the Leap Motion API to a Unity Quaternion rotation with the Matrix class extension <tt class="docutils literal"><span class="pre">Rotation()</span></tt> and a Vector3 translation with <tt class="docutils literal"><span class="pre">Translation()</span></tt> (also defined in the script <a class="reference internal" href="../unity/Unity.LeapUnityExtensions.html"><em>LeapUnityExtensions</em></a>).</p>
+<p>When you get Vectors from the <a class="reference internal" href="../unity/Unity.HandModel.html"><em>Hand scripts</em></a>, these vectors have already been transformed into Unity world space relative to the <a class="reference internal" href="../unity/Unity.HandController.html"><em>HandController</em></a> object. In other words, if you rotate the controller object in the scene, the hand positions are also rotated. You can transform points from Leap Motion coordinates to Unity world coordinates in the same way using the Unity <tt class="docutils literal"><span class="pre">Transform.TransformPoint()</span></tt> function after calling <tt class="docutils literal"><span class="pre">ToUnityScaled()</span></tt>:</p>
+<div class="code csharp highlight-python"><div class="highlight"><pre>Leap.Vector position = finger.TipPosition;
+Vector3 unityPosition = position.ToUnityScaled(false);
+Vector3 worldPosition = handController.transform.TransformPoint(unityPosition);
 </pre></div>
 </div>
+<p>You can do the same for direction vectors with <tt class="docutils literal"><span class="pre">TransformDirection()</span></tt>:</p>
+<div class="code csharp highlight-python"><div class="highlight"><pre>Leap.Vector direction = finger.Direction;
+Vector3 unityDirection = direction.ToUnity(false)
+Vector3 worldDirection = handController.transform.TransformDirection(unityDirection);
+</pre></div>
+</div>
+<p>To convert a rotation relative to the controller object in the scene, multiply the the rotation by the rotation of the controller:</p>
+<div class="code csharp highlight-python"><div class="highlight"><pre>Quaternion leapRotation = arm.Basis.Rotation(false);
+Quaternion finalRotation = controller.transform.rotation * leapRotation;
+</pre></div>
+</div>
+<div class="section" id="leap-motion-api-classes">
+<h2>Leap Motion API Classes<a class="headerlink" href="#leap-motion-api-classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="Leap.Arm.html"><em>Arm</em></a></td>
+<td><a class="reference internal" href="Leap.Gesture.html"><em>Gesture</em></a></td>
+<td><a class="reference internal" href="Leap.Mask.html"><em>Mask</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Bone.html"><em>Bone</em></a></td>
+<td><a class="reference internal" href="Leap.GestureList.html"><em>GestureList</em></a></td>
+<td><a class="reference internal" href="Leap.MaskList.html"><em>MaskList</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.CircleGesture.html"><em>CircleGesture</em></a></td>
+<td><a class="reference internal" href="Leap.Hand.html"><em>Hand</em></a></td>
+<td><a class="reference internal" href="Leap.Pointable.html"><em>Pointable</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Config.html"><em>Config</em></a></td>
+<td><a class="reference internal" href="Leap.HandList.html"><em>HandList</em></a></td>
+<td><a class="reference internal" href="Leap.PointableList.html"><em>PointableList</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.Controller.html"><em>Controller</em></a></td>
+<td><a class="reference internal" href="Leap.Image.html"><em>Image</em></a></td>
+<td><a class="reference internal" href="Leap.ScreenTapGesture.html"><em>ScreenTapGesture</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Device.html"><em>Device</em></a></td>
+<td><a class="reference internal" href="Leap.ImageList.html"><em>ImageList</em></a></td>
+<td><a class="reference internal" href="Leap.SwipeGesture.html"><em>SwipeGesture</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.DeviceList.html"><em>DeviceList</em></a></td>
+<td><a class="reference internal" href="Leap.InteractionBox.html"><em>InteractionBox</em></a></td>
+<td><a class="reference internal" href="Leap.Tool.html"><em>Tool</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Finger.html"><em>Finger</em></a></td>
+<td><a class="reference internal" href="Leap.KeyTapGesture.html"><em>KeyTapGesture</em></a></td>
+<td><a class="reference internal" href="Leap.ToolList.html"><em>ToolList</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="Leap.FingerList.html"><em>FingerList</em></a></td>
+<td><a class="reference internal" href="Leap.Listener.html"><em>Listener</em></a></td>
+<td><a class="reference internal" href="Leap.TrackedQuad.html"><em>TrackedQuad</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="Leap.Frame.html"><em>Frame</em></a></td>
+<td><a class="reference internal" href="Leap.Matrix.html"><em>Matrix</em></a></td>
+<td><a class="reference internal" href="Leap.Vector.html"><em>Vector</em></a></td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -350,23 +388,51 @@ Vector3 unityScale = new Vector3(leapMatrix.xBasis.Magnitude,
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Unity Scripting Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../unity/Unity_Classes.html">Leap.Unity Namespace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unity/Unity_Leap_Namespace.html">Leap namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">C# API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#leap-motion-api-classes">Leap Motion API Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Arm.html#id3">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id3">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id3">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Config.html#id2">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id2">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Device.html">Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id5">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id1">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id1">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -384,7 +450,7 @@ Vector3 unityScale = new Vector3(leapMatrix.xBasis.Magnitude,
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

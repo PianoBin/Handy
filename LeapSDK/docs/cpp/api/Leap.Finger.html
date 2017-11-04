@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Finger &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Finger &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="FingerList" href="Leap.FingerList.html" />
-    <link rel="prev" title="FailedDeviceList" href="Leap.FailedDeviceList.html" />
+    <link rel="prev" title="DeviceList" href="Leap.DeviceList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.FailedDeviceList.html");    }
+            window.location.assign("Leap.DeviceList.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.FingerList.html");
     }
@@ -293,11 +293,32 @@ function doneWithSearch(){
 <ul class="simple">
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1aa6e4212ca6d56bbc5c01a59e6f458e24">Finger()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1ae96d96f0e1a0313dcdfb9be6e5fdb47f">Finger(const Pointable &amp;)</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a398664eabda6168d32738ac4fc92577f">Pointable()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1a1c96d488ec00ab0c488c8e9153ead9c7">bone(Bone::Type boneIx) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a8cf9153b5f55c95ea44d0e0a3bdc8a75">direction() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a43fd476e22d0607d5caae64402b2cffa">frame() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1aa6736e994b5c12c0394547eba1147478">hand() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a87daef5bdd8501be1f113684cfc61074">id() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1adfb20279e1364c3ab729b37c23a768e7">invalid()</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a1ed7fc6712c3df546cf4be4e7f6cd17e">invalid()</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a28538a21a1788ca33c2c11102b5c027b">isExtended() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a216198547ba0bc21376818472aa1fd8b">isFinger() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ae4edd5b99b7cea5c821a544973a8f48f">isTool() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1a9a2e26e0e75e53b096b9d93513ff5007">jointPosition(Joint jointIx) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a7c7f525adfb7ab1af7df4b0b6b34d4eb">length() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a1f30e62fd522806db3f6d1b48d3d2685">operator!=(const Pointable &amp;) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a7cec59cd6a5a6883fb83b84bcd6ebf90">operator==(const Pointable &amp;) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a0eb08fd21d3c4ccb1f9a0f566f122532">stabilizedTipPosition() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a2e8c627e2f2709b42b2ff60d898345c5">timeVisible() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a495779027d8771a7980b3ca08335f017">tipPosition() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ac2cee5b1aa59eaeedbdd8485ba763bdd">tipVelocity() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1adc22c57be56d3de9b8f1344b382c4f33">touchDistance() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1ae8381b545ad04f3c7b6ef9a15c6da526">touchZone() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_finger_1afbd0fa31db28593e9669c3c56711c0a7">type() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_pointable_1a49775584c76a5ecbefa51065cadbc304">width() const</a></li>
 </ul>
 </div>
 <div class="line-block" id="cppclass_leap_1_1_finger">
@@ -313,57 +334,21 @@ function doneWithSearch(){
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_finger_1ac59007d612b1e2624efd27182f4362f5"></span><strong>Joint enum</strong></p>
-<blockquote>
-<div><p>Deprecated as of version 2.0. </p>
-<p></p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">JOINT_MCP</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">JOINT_PIP</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">JOINT_DIP</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">JOINT_TIP</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">3</span></tt> - </li>
-</ul>
-</div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_finger_1a1d1cfd8ffb84e947f82999c682b666a7"></span><strong>Type enum</strong></p>
-<blockquote>
-<div><p>Enumerates the names of the fingers. </p>
-<p>Members of this enumeration are returned by <a class="reference internal" href="#cppclass_leap_1_1_finger_1afbd0fa31db28593e9669c3c56711c0a7"><em>Finger::type()</em></a> to identify a <a class="reference internal" href="#cppclass_leap_1_1_finger"><em>Finger</em></a> object. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>2.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">TYPE_THUMB</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - <p>The thumb. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_INDEX</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - <p>The index or fore-finger. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_MIDDLE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - <p>The middle finger. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_RING</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">3</span></tt> - <p>The ring finger. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_PINKY</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">4</span></tt> - <p>The pinky or little finger. </p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_finger_1a1c96d488ec00ab0c488c8e9153ead9c7"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone"><em>Bone</em></a> <strong>bone</strong>(Bone::Type boneIx)</div>
+<div class="line"><a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone"><em>Bone</em></a> <strong>bone</strong>(<a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Bone::Type</em></a> boneIx)</div>
 </div>
 </p>
 <blockquote>
 <div><p>The bone at a given bone index on this finger. </p>
 <p><p><pre class="literal-block">
 <a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list"><em>Leap::FingerList</em></a> fingers = frame.<a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame_1a788e21d8ff5d1f54209e75f14a27110b"><em>hands</em></a>()[0].fingers();
-for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a97db28c9a35b564655712df999d32d27"><em>Leap::FingerList::const_iterator</em></a> fl = fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1aa4b02d4f1a8500fb07a551069060709f"><em>begin</em></a>(); fl != fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a350132543d80a1c1e5be844e6d2878ea"><em>end</em></a>(); fl++){
+for(Leap::FingerList::const_iterator fl = fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1aa4b02d4f1a8500fb07a551069060709f"><em>begin</em></a>(); fl != fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a350132543d80a1c1e5be844e6d2878ea"><em>end</em></a>(); fl++){
     <a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone"><em>Leap::Bone</em></a> <a class="reference internal" href="#cppclass_leap_1_1_finger_1a1c96d488ec00ab0c488c8e9153ead9c7"><em>bone</em></a>;
-    Leap::Bone::Type boneType;
+    <a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Bone::Type</em></a> boneType;
     for(int b = 0; b &lt; 4; b++)
     {
-        boneType = static_cast&lt;Leap::Bone::Type&gt;(b);
+        boneType = static_cast&lt;<a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Bone::Type</em></a>&gt;(b);
         bone = (*fl).bone(boneType);
         std::cout &lt;&lt; &quot;Finger index: &quot; &lt;&lt; (*fl).<a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>() &lt;&lt; &quot; &quot; &lt;&lt; bone &lt;&lt; std::endl;
     }
@@ -377,7 +362,7 @@ for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_f
 <dd>2.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">boneIx</span></tt> - <p>An index value from the Bone::Type enumeration identifying the bone of interest. </p>
+<li><tt class="first docutils literal"><span class="pre">boneIx</span></tt> - <p>An index value from the <a class="reference internal" href="Leap.Bone.html#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Bone::Type</em></a> enumeration identifying the bone of interest. </p>
 </li>
 </ul>
 </dd>
@@ -415,7 +400,7 @@ for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_f
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_finger_1a9a2e26e0e75e53b096b9d93513ff5007"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> <strong>jointPosition</strong>(<a class="reference internal" href="#cppclass_leap_1_1_finger_1ac59007d612b1e2624efd27182f4362f5"><em>Joint</em></a> jointIx)</div>
+<div class="line"><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> <strong>jointPosition</strong>(Joint jointIx)</div>
 </div>
 </p>
 <blockquote>
@@ -442,18 +427,18 @@ std::string description = finger.<a class="reference internal" href="#cppclass_l
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_finger_1afbd0fa31db28593e9669c3c56711c0a7"></span><div class="line-block">
-<div class="line">Type <strong>type</strong>()</div>
+<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_finger_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Type</em></a> <strong>type</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>The name of this finger. </p>
 <p><p><pre class="literal-block">
-Leap::Finger::Type fingerType = finger.<a class="reference internal" href="#cppclass_leap_1_1_finger_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>();
+<a class="reference internal" href="#cppclass_leap_1_1_finger_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Finger::Type</em></a> fingerType = finger.<a class="reference internal" href="#cppclass_leap_1_1_finger_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>The anatomical type of this finger as a member of the Finger::Type enumeration. </dd>
+<dd>The anatomical type of this finger as a member of the <a class="reference internal" href="#cppclass_leap_1_1_finger_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Finger::Type</em></a> enumeration. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
@@ -517,8 +502,9 @@ Leap::Finger::Type fingerType = finger.<a class="reference internal" href="#cppc
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -526,27 +512,36 @@ Leap::Finger::Type fingerType = finger.<a class="reference internal" href="#cppc
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Finger</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#finger-names">Finger Names</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -571,7 +566,7 @@ Leap::Finger::Type fingerType = finger.<a class="reference internal" href="#cppc
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

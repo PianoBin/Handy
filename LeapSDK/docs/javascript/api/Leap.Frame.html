@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>LeapFrame &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Frame &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="LeapHand" href="Leap.Hand.html" />
+    <link rel="next" title="Gesture" href="Leap.Gesture.html" />
     <link rel="prev" title="Finger" href="Leap.Finger.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
@@ -134,7 +134,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap.Finger.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Hand.html");
+            window.location.assign("Leap.Gesture.html");
     }
 
 }
@@ -277,11 +277,12 @@ function doneWithSearch(){
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
     <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
-  LeapFrame
+  Frame
 </span> -->
         
-  <div class="section" id="id30">
-<h1>Frame<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="frame">
+<h1>Frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h1>
+</div>
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -318,7 +319,7 @@ function doneWithSearch(){
 <em class="property">class </em><tt class="descname">Frame</tt><big>(</big><big>)</big><a class="headerlink" href="#Frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Frame class represents a set of hand and finger tracking data
 detected in a single frame.</p>
-<p>The Leap detects hands and fingers within the tracking area,
+<p>The Leap detects hands, fingers and tools within the tracking area,
 reporting their positions, orientations and motions in frames at the
 Leap frame rate.</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;p&gt;</span>Framerate: <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;leapFPS&quot;</span><span class="nt">&gt;</span>FPS<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
@@ -412,10 +413,13 @@ order. The list can be empty if no fingers are detected.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Notice</strong> Gestures are deprecated in version 3.0 and may not behave the same
-as they did in earlier versions.</p>
 <p>The list of Gesture objects detected in this frame, given in arbitrary
 order. The list can be empty if no gestures are detected.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">g</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">g</span> <span class="o">&lt;</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">gestures</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">g</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">gesture</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">gestures</span><span class="p">[</span><span class="nx">g</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Circle and swipe gestures are updated every frame. Tap gestures only
 appear in the list for a single frame.</p>
 <p class="version">Leap Motion 1.0 and LeapJS 0.3.0</p>
@@ -549,8 +553,9 @@ in each frame.</p>
 </tr>
 </tbody>
 </table>
-<p>The list of Pointable objects detected in this
-frame, given in arbitrary order. The list can be empty if no fingers are detected.</p>
+<p>The list of Pointable objects (fingers and tools) detected in this
+frame, given in arbitrary order. The list can be empty if no fingers or
+tools are detected.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">p</span> <span class="o">&lt;</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">pointables</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">p</span><span class="o">++</span><span class="p">){</span>
     <span class="kd">var</span> <span class="nx">pointable</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">pointables</span><span class="p">[</span><span class="nx">p</span><span class="p">];</span>
 <span class="p">}</span>
@@ -589,9 +594,13 @@ in time guaranteed to be before your application started.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
 <p>The list of Tool objects detected in this frame, given in arbitrary
 order. The list can be empty if no tools are detected.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">t</span> <span class="o">&lt;</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">tools</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">t</span><span class="o">++</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">tool</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">tools</span><span class="p">[</span><span class="nx">t</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p class="version">Leap Motion 1.0 and LeapJS 0.3.0</p>
 </dd></dl>
 
@@ -627,8 +636,8 @@ the returned Finger instance is valid.)</p>
 <dl class="function">
 <dt id="Frame.dump">
 <tt class="descclassname">Frame.</tt><tt class="descname">dump</tt><big>(</big><big>)</big><a class="headerlink" href="#Frame.dump" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a JSON-formatted string containing the hands, and pointables
-in this frame.</p>
+<dd><p>Returns a JSON-formatted string containing the hands, pointables and
+gestures in this frame.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">dump</span><span class="p">());</span>
 </pre></div>
 </div>
@@ -722,7 +731,7 @@ otherwise, an invalid Hand object is returned.</p>
 <dd><p>The Pointable object with the specified ID in this frame.</p>
 <p>Use the Frame pointable() function to retrieve the Pointable object from
 this frame using an ID value obtained from a previous frame. This
-function always returns a Pointable object, but if no finger
+function always returns a Pointable object, but if no finger or tool
 with the specified ID is present, an invalid Pointable object is
 returned.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">pointable</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">pointable</span><span class="p">(</span><span class="nx">pointableID</span><span class="p">);</span>
@@ -891,12 +900,14 @@ change ratio between the current frame and that specified in the
 <dl class="function">
 <dt id="Frame.tool">
 <tt class="descclassname">Frame.</tt><tt class="descname">tool</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#Frame.tool" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
-<p>The tool with the specified ID in this frame.</p>
+<dd><p>The tool with the specified ID in this frame.</p>
 <p>Use the Frame tool() function to retrieve a tool from this frame using
 an ID value obtained from a previous frame. This function always returns
 a Pointable object, but if no tool with the specified ID is present, an
 invalid Pointable object is returned.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">tool</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">tool</span><span class="p">(</span><span class="nx">toolID</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>Note that ID values persist across frames, but only until tracking of a
 particular tool is lost. If tracking of a tool is lost and
 subsequently regained, the new Pointable object representing the tool
@@ -995,7 +1006,6 @@ js:attr:<cite>valid</cite> property.)</p>
 </div>
 </dd></dl>
 
-</div>
 
 
            <!-- get_disqus_sso -->
@@ -1003,22 +1013,28 @@ js:attr:<cite>valid</cite> property.)</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://developer.leapmotion.com/downloads/javascript#plugins">LeapJS Plug-ins</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id28">Bone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id33">Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id21">Finger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html#id54">Hand</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id32">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id47">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id38">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id57">Finger</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id6">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id25">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id9">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
@@ -1047,7 +1063,7 @@ js:attr:<cite>valid</cite> property.)</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

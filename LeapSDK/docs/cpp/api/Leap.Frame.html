@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>LeapFrame &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Frame &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="LeapHand" href="Leap.Hand.html" />
+    <link rel="next" title="Gesture" href="Leap.Gesture.html" />
     <link rel="prev" title="FingerList" href="Leap.FingerList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
@@ -134,7 +134,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap.FingerList.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Hand.html");
+            window.location.assign("Leap.Gesture.html");
     }
 
 }
@@ -277,11 +277,12 @@ function doneWithSearch(){
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
     <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
-  LeapFrame
+  Frame
 </span> -->
         
   <div class="section" id="frame">
 <h1>Frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h1>
+</div>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -310,7 +311,6 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1acac49f1bef175836ba4a5de19893e2f6">operator==(const Frame &amp;) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a47b471f61ee1b7514d37747bd7b95e73">pointable(int32_t id) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a9b73aa8053337ed8d142fc912703e43e">pointables() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_frame_1a6111d1167ae69e1b5358fbe861aafa99">rawImages() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a0cbf95036199c5e627ff43562c8d68ba">rotationAngle(const Frame &amp;sinceFrame) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1acd2e2bc18122afe55573b7615ea13919">rotationAngle(const Frame &amp;sinceFrame, const Vector &amp;axis) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a96f629de9655ab1fca1a153d5dbac99b">rotationAxis(const Frame &amp;sinceFrame) const</a></li>
@@ -323,6 +323,7 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a9dbfeb0a32af8f68e94a5f9f29b08b63">tool(int32_t id) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a05cba9e8a5f3db32fb66f3ba60fb514c">tools() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_frame_1ac4c435ac90d041e6a74647a8d0a625b2">trackedQuad() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1aa8ab3b10320b326d3f1b90615da21016">translation(const Frame &amp;sinceFrame) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_frame_1a98e57401c2c211333f94cdb4848daabb">translationProbability(const Frame &amp;sinceFrame) const</a></li>
 </ul>
@@ -354,8 +355,8 @@ if( controller.<a class="reference internal" href="Leap.Controller.html#cppclass
 </div>
 </p>
 <blockquote>
-<div><p>The instantaneous frame rate. </p>
-<p><p>The rate at which the Leap Motion software is providing frames of data (in frames per second). The frame rate can fluctuate depending on available computing resources, activity within the device field of view, software tracking settings, and other factors.</p>
+<div><p>The instantaneous framerate. </p>
+<p><p>The rate at which the Leap Motion software is providing frames of data (in frames per second). The framerate can fluctuate depending on available computing resources, activity within the device field of view, software tracking settings, and other factors.</p>
 <p><pre class="literal-block">
 float instantaneousFrameRate = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a1547e5c5dc8a0d7f88691a6d53fc214f"><em>currentFramesPerSecond</em></a>();
 </pre>
@@ -385,7 +386,7 @@ std::string frameData((std::istreambuf_iterator&lt;char&gt;(inputFile)), std::is
 reconstructedFrame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1adff8cf1970aee948138c9cd4406025e2"><em>deserialize</em></a>(frameData);
 </pre>
 </p>
-<p><strong>Note:</strong> The behavior when calling functions which take another <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object as a parameter is undefined when either frame has been deserialized.</p>
+<p><strong>Note:</strong> The behavior when calling functions which take another <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object as a parameter is undefined when either frame has been deserialized. For example, calling <tt class="docutils literal"><span class="pre">gestures(sinceFrame)</span></tt> on a deserialized frame or with a deserialized frame as parameter (or both) does not necessarily return all gestures that occurred between the two frames. Motion functions, like <tt class="docutils literal"><span class="pre">scaleFactor(startFrame)</span></tt>, are more likely to return reasonable results, but could return anomalous values in some cases.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>2.1.0 </dd>
@@ -473,13 +474,16 @@ reconstructedFrame.<a class="reference internal" href="#cppclass_leap_1_1_frame_
 </p>
 <blockquote>
 <div><p>The <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object with the specified ID in this frame. </p>
-<p><p><pre class="literal-block">
+<p><p>Use the <a class="reference internal" href="#cppclass_leap_1_1_frame_1a138683bff90b364b998c1b508469c308"><em>Frame::gesture()</em></a> function to return a <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object in this frame using an ID obtained in an earlier frame. The function always returns a <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object, but if there was no update for the gesture in this frame, then an invalid <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object is returned.</p>
+<p><pre class="literal-block">
 <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Leap::Gesture</em></a> gestureOfInterest = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a138683bff90b364b998c1b508469c308"><em>gesture</em></a>(gestureID);
 </pre>
 </p>
-<p><dl class="docutils">
+<p>All <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> objects representing the same recognized movement share the same ID. <dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object in the frame with the specified ID if one exists; Otherwise, an Invalid <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">id</span></tt> - <p>The ID of an <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> object from a previous frame. </p>
@@ -500,9 +504,12 @@ reconstructedFrame.<a class="reference internal" href="#cppclass_leap_1_1_frame_
 <a class="reference internal" href="Leap.GestureList.html#cppclass_leap_1_1_gesture_list"><em>Leap::GestureList</em></a> gesturesInFrame = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1aff7d79842325405f41784cddf0c979db"><em>gestures</em></a>();
 </pre>
 </p>
+<p>Circle and swipe gestures are updated every frame. Tap gestures only appear in the list for a single frame.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd><a class="reference internal" href="Leap.GestureList.html#cppclass_leap_1_1_gesture_list"><em>GestureList</em></a> the list of gestures. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -520,6 +527,8 @@ reconstructedFrame.<a class="reference internal" href="#cppclass_leap_1_1_frame_
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd><a class="reference internal" href="Leap.GestureList.html#cppclass_leap_1_1_gesture_list"><em>GestureList</em></a> The list of the <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture"><em>Gesture</em></a> objects that have occurred since the specified frame. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>An earlier <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object. The starting frame must still be in the frame history cache, which has a default length of 60 frames. </p>
@@ -632,13 +641,13 @@ void processNextFrame( <a class="reference internal" href="#cppclass_leap_1_1_fr
 </div>
 </p>
 <blockquote>
-<div><p>The list of IR images from the Leap Motion cameras. </p>
-<p><p>If the system is in Robust mode, these will be slightly post processed</p>
+<div><p>The list of images from the Leap Motion cameras. </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>An <a class="reference internal" href="Leap.ImageList.html#cppclass_leap_1_1_image_list"><em>ImageList</em></a> object containing the camera images analyzed to create this <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a>. </dd>
+<dt><strong>Since</strong></dt>
+<dd>2.1 </dd>
 </dl>
-</p>
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_frame_1ab407fe57c95dff2a43d4bf53fd780c4e"></span><div class="line-block">
@@ -764,35 +773,24 @@ thisFrame == thatFrame;
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_frame_1a6111d1167ae69e1b5358fbe861aafa99"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="Leap.ImageList.html#cppclass_leap_1_1_image_list"><em>ImageList</em></a> <strong>rawImages</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>The list of Raw images from the Leap Motion cameras. </p>
-<p><p>These will never be postprocessed and closely match the raw sensor output.</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>An <a class="reference internal" href="Leap.ImageList.html#cppclass_leap_1_1_image_list"><em>ImageList</em></a> object containing the camera images analyzed to create this <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a>. </dd>
-<dt><strong>Since</strong></dt>
-<dd>2.3 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_frame_1a0cbf95036199c5e627ff43562c8d68ba"></span><div class="line-block">
 <div class="line">float <strong>rotationAngle</strong>(const  <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a>  &amp; sinceFrame)</div>
 </div>
 </p>
 <blockquote>
 <div><p>The angle of rotation around the rotation axis derived from the overall rotational motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The returned angle is expressed in radians measured clockwise around the rotation axis (using the right-hand rule) between the start and end frames. The value is always between 0 and pi radians (0 and 180 degrees).</p>
+<p><pre class="literal-block">
 float rotationInFrame = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives frame rotation from the relative change in position and orientation of all objects detected in the field of view.</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then the angle of rotation is zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A positive value containing the heuristically determined rotational change between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -809,13 +807,18 @@ float rotationInFrame = frame.<a class="reference internal" href="#cppclass_leap
 </p>
 <blockquote>
 <div><p>The angle of rotation around the specified axis derived from the overall rotational motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
-float rotationAroundXAxis = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame, Leap::Vector::xAxis());
+<p><p>The returned angle is expressed in radians measured clockwise around the rotation axis (using the right-hand rule) between the start and end frames. The value is always between -pi and pi radians (-180 and 180 degrees).</p>
+<p><pre class="literal-block">
+float rotationAroundXAxis = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame, <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1acae644750c6bca9dd9949fe8dfab2838"><em>Leap::Vector::xAxis</em></a>());
 </pre>
 </p>
+<p>The Leap Motion software derives frame rotation from the relative change in position and orientation of all objects detected in the field of view.</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then the angle of rotation is zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value containing the heuristically determined rotational change between the current frame and that specified in the sinceFrame parameter around the given axis. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -834,13 +837,18 @@ float rotationAroundXAxis = frame.<a class="reference internal" href="#cppclass_
 </p>
 <blockquote>
 <div><p>The axis of rotation derived from the overall rotational motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The returned direction vector is normalized.</p>
+<p><pre class="literal-block">
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> axisOfRotation = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a96f629de9655ab1fca1a153d5dbac99b"><em>rotationAxis</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives frame rotation from the relative change in position and orientation of all objects detected in the field of view.</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, or if no rotation is detected between the two frames, a zero vector is returned.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A normalized direction <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> representing the axis of the heuristically determined rotational change between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -861,9 +869,13 @@ float rotationAroundXAxis = frame.<a class="reference internal" href="#cppclass_
 <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Leap::Matrix</em></a> rotationTransform = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a305bc1f67a6a8d34d4292c3d2d8ba933"><em>rotationMatrix</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives frame rotation from the relative change in position and orientation of all objects detected in the field of view.</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns an identity matrix.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A transformation <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Matrix</em></a> containing the heuristically determined rotational change between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -884,9 +896,12 @@ float rotationAroundXAxis = frame.<a class="reference internal" href="#cppclass_
 float rotationDominance = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a98ca8e1c8efc5858fe213198012697dc"><em>rotationProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the overall motion between the current frame and the specified frame is intended to be a rotating motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -903,13 +918,18 @@ float rotationDominance = frame.<a class="reference internal" href="#cppclass_le
 </p>
 <blockquote>
 <div><p>The scale factor derived from the overall motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The scale factor is always positive. A value of 1.0 indicates no scaling took place. Values between 0.0 and 1.0 indicate contraction and values greater than 1.0 indicate expansion.</p>
+<p><pre class="literal-block">
 float zoomFactor = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a5c97d459821c0b36fb11c6a2b74f5d4c"><em>scaleFactor</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives scaling from the relative inward or outward motion of all objects detected in the field of view (independent of translation and rotation).</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns 1.0.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A positive value representing the heuristically determined scaling change ratio between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative scaling. </p>
@@ -930,9 +950,12 @@ float zoomFactor = frame.<a class="reference internal" href="#cppclass_leap_1_1_
 float scaleDominance = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a424b5e4459b1f2707500ec8d8362fd4d"><em>scaleProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the overall motion between the current frame and the specified frame is intended to be a scaling motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative scaling. </p>
@@ -991,9 +1014,17 @@ float framePeriod = frame.<a class="reference internal" href="#cppclass_leap_1_1
 </p>
 <blockquote>
 <div><p>The <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object with the specified ID in this frame. </p>
+<p><p>Use the <a class="reference internal" href="#cppclass_leap_1_1_frame_1a9dbfeb0a32af8f68e94a5f9f29b08b63"><em>Frame::tool()</em></a> function to retrieve the <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object from this frame using an ID value obtained from a previous frame. This function always returns a <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object, but if no tool with the specified ID is present, an invalid <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object is returned.</p>
+<p><pre class="literal-block">
+<a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Leap::Tool</em></a> toolOfInterest = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a9dbfeb0a32af8f68e94a5f9f29b08b63"><em>tool</em></a>(toolID);
+</pre>
+</p>
+<p>Note that ID values persist across frames, but only until tracking of a particular object is lost. If tracking of a tool is lost and subsequently regained, the new <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object representing that tool may have a different ID than that representing the tool in an earlier frame.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object with the matching ID if one exists in this frame; otherwise, an invalid <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object is returned. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">id</span></tt> - <p>The ID value of a <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object from a previous frame. </p>
@@ -1001,6 +1032,7 @@ float framePeriod = frame.<a class="reference internal" href="#cppclass_leap_1_1
 </ul>
 </dd>
 </dl>
+</p>
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_frame_1a05cba9e8a5f3db32fb66f3ba60fb514c"></span><div class="line-block">
@@ -1017,6 +1049,8 @@ float framePeriod = frame.<a class="reference internal" href="#cppclass_leap_1_1
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The <a class="reference internal" href="Leap.ToolList.html#cppclass_leap_1_1_tool_list"><em>ToolList</em></a> containing all <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> objects detected in this frame. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 </dl>
 </p>
 </p>
@@ -1035,19 +1069,42 @@ float framePeriod = frame.<a class="reference internal" href="#cppclass_leap_1_1
 </dl>
 </p>
 </div></blockquote>
+<p><span class="target" id="cppclass_leap_1_1_frame_1ac4c435ac90d041e6a74647a8d0a625b2"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.TrackedQuad.html#cppclass_leap_1_1_tracked_quad"><em>TrackedQuad</em></a> <strong>trackedQuad</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Note: This class is an experimental API for internal use only. </p>
+<p><p>It may be removed without warning.</p>
+<p>Returns information about the currently detected quad in the scene.</p>
+<p> If no quad is being tracked, then an invalid <a class="reference internal" href="Leap.TrackedQuad.html#cppclass_leap_1_1_tracked_quad"><em>TrackedQuad</em></a> is returned. <div class="highlight-python"><div class="highlight"><pre>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>2.2.6 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_frame_1aa8ab3b10320b326d3f1b90615da21016"></span><div class="line-block">
 <div class="line"><a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> <strong>translation</strong>(const  <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a>  &amp; sinceFrame)</div>
 </div>
 </p>
 <blockquote>
 <div><p>The change of position derived from the overall linear motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The returned translation vector provides the magnitude and direction of the movement in millimeters.</p>
+<p><pre class="literal-block">
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> linearMovement = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1aa8ab3b10320b326d3f1b90615da21016"><em>translation</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives frame translation from the linear motion of all objects detected in the field of view.</p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns a zero vector.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> representing the heuristically determined change in position of all objects between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative translation. </p>
@@ -1068,9 +1125,12 @@ float framePeriod = frame.<a class="reference internal" href="#cppclass_leap_1_1
 float translationDominance = frame.<a class="reference internal" href="#cppclass_leap_1_1_frame_1a98e57401c2c211333f94cdb4848daabb"><em>translationProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If either this frame or sinceFrame is an invalid <a class="reference internal" href="#cppclass_leap_1_1_frame"><em>Frame</em></a> object, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the overall motion between the current frame and the specified frame is intended to be a translating motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the translation. </p>
@@ -1118,7 +1178,6 @@ average /= count;
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-</div>
 
 
            <!-- get_disqus_sso -->
@@ -1126,33 +1185,43 @@ average /= count;
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -1177,7 +1246,7 @@ average /= count;
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Menu Design Guidelines &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Menu Design Guidelines &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Guidelines" href="Leap_Practices.html" />
     <link rel="next" title="User Orientation and Tutorial Guidelines" href="Leap_Orientation_and_Tutorial_Guidelines.html" />
     <link rel="prev" title="Guidelines" href="Leap_Practices.html" />
@@ -325,7 +325,8 @@ mis-tapping another.</p>
 highlight/depressed state</li>
 <li>Buttons use high contrast colors and the text/font are very legible</li>
 <li>The Exit button is easily accessible and clearly indicated</li>
-<li>Required hand motions, gestures or poses are displayed using easy to read iconography..</li>
+<li>Required gestures are displayed using easy to read iconography. The
+recommended gesture for menus is the touch-zone or “poke”.</li>
 </ol>
 </div>
 <div class="section" id="proximity-based-highlighting">
@@ -335,7 +336,8 @@ provide a proximity-based highlighting scheme. This would highlight the
 closest item to the user’s cursor, without having to actually be over
 it. In the example below, the five possible actions are outlined to show
 how this might work. The user’s cursor is in the upper left quadrant so
-therefore the Play button is lit. Anticipating what the user might want in these
+therefore the Play button is lit. Performing a tap gesture would
+activate the Play button. Anticipating what the user might want in these
 contexts can save time and eliminate frustration.</p>
 <div class="line-block">
 <div class="line"><img alt="image1" src="practices/../../../images/Menus_Zones.jpg" /></div>
@@ -460,7 +462,7 @@ selections, the easier it will be for them to complete each task.</p>
 <div class="line"><img alt="image19" src="practices/../../../images/FrogDissection_lit.jpg" /></div>
 <div class="line-block">
 <div class="line">Frog Dissection uses large buttons that highlight and magnify when
-indicated and a simple z-axis &#8220;poke gesture&#8221; to tap/select.</div>
+indicated and a simple z-axis poke gesture to tap/select.</div>
 </div>
 </div>
 <div class="line-block">
@@ -471,6 +473,13 @@ z-axis. Filling the button selects it. This can be done quickly based on
 the speed of your push.</div>
 </div>
 </div>
+<p>As recommended previously, these two applications use the Leap Motion
+Touch Zone API to handle the button “tap”. For more on the
+implementation of this API, please <a class="reference internal" href="../devguide/Leap_Touch_Emulation.html"><em>review this section of our
+documentation</em></a>
+and this excellent <a class="reference external" href="http://adamleaps.tumblr.com/post/59536096658/recognizing-taps-with-the-leap-motion-api">blog post from one of our
+developers</a>
+on how to implement touch zones.</p>
 </div>
 </div>
 
@@ -480,8 +489,9 @@ the speed of your push.</div>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Practices.html">Guidelines</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Menu Design Guidelines</a><ul>
@@ -495,6 +505,7 @@ the speed of your push.</div>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Orientation_and_Tutorial_Guidelines.html">User Orientation and Tutorial Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="App_Assets_and_Marketing_Guidelines.html">Application Asset and Marketing Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_UX_Guidelines.html">User Experience Guidelines</a></li>
 </ul>
 </li>
@@ -524,7 +535,7 @@ the speed of your push.</div>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

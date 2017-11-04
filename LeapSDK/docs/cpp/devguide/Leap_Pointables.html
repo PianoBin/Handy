@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fingers &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Fingers &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
-    <link rel="next" title="Coordinate Systems" href="Leap_Coordinate_Mapping.html" />
+    <link rel="next" title="Gestures" href="Leap_Gestures.html" />
     <link rel="prev" title="Hands" href="Leap_Hand.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
@@ -77,6 +77,7 @@
     var pageAPI = 'cpp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.python = true;
@@ -131,7 +132,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap_Hand.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap_Coordinate_Mapping.html");
+            window.location.assign("Leap_Gestures.html");
     }
 
 }
@@ -196,7 +197,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Pointables.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -279,26 +280,31 @@ function doneWithSearch(){
         
   <div class="section" id="fingers">
 <h1>Fingers<a class="headerlink" href="#fingers" title="Permalink to this headline">¶</a></h1>
-<p>Fingers are represented by <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> objects. In addition, a separate <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> class specializes the <tt class="docutils literal"><span class="pre">Pointable</span></tt> class to provide specific finger information.</p>
+<p>Fingers and tools — things that can be pointed — are represented by <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> objects. In addition, separate <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> and <a class="reference external" href="../api/Leap.Tool.html"><tt class="docutils literal"><span class="pre">Tool</span></tt></a> classes specialize the <tt class="docutils literal"><span class="pre">Pointable</span></tt> class to provide specific information.</p>
 <div class="section" id="getting-pointable-objects">
 <h2>Getting Pointable Objects<a class="headerlink" href="#getting-pointable-objects" title="Permalink to this headline">¶</a></h2>
-<p>You can get the fingers associated with a particular hand from the <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> object. You can also get all detected pointables (fingers) from a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object.</p>
+<p>You can get the fingers associated with a particular hand from the <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> object. You can also get all detected pointables (fingers and tools) from a <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object.</p>
 </div>
 <div class="section" id="pointable-object-characteristics">
 <h2>Pointable Object Characteristics<a class="headerlink" href="#pointable-object-characteristics" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">Pointable</span></tt> objects have many attributes describing the characteristics of the represented finger.</p>
+<p><tt class="docutils literal"><span class="pre">Pointable</span></tt> objects have many attributes describing the characteristics of the represented finger or tool.</p>
 <div class="figure">
 <img alt="devguide/../../../images/Leap_Finger_Model.png" src="devguide/../../../images/Leap_Finger_Model.png" />
 <p class="caption"><a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> <tt class="docutils literal"><span class="pre">tipPosition</span></tt> and <tt class="docutils literal"><span class="pre">direction</span></tt> vectors provide the positions of the finger tips and the directions in which the fingers are pointing.</p>
+</div>
+<p>The Leap Motion software classifies a detected pointable object as either a finger or a tool. Use the <tt class="docutils literal"><span class="pre">Pointable::isTool()</span></tt> function to determine which one a <tt class="docutils literal"><span class="pre">Pointable</span></tt> object represents.</p>
+<div class="figure">
+<img alt="devguide/../../../images/Leap_Tool.png" src="devguide/../../../images/Leap_Tool.png" />
+<p class="caption">A <a class="reference external" href="../api/Leap.Tool.html"><tt class="docutils literal"><span class="pre">Tool</span></tt></a> is longer, thinner, and straighter than a finger.</p>
 </div>
 <ul class="simple">
 <li>Tip position — the instantaneous position in mm from the Leap Motion origin.</li>
 <li>Tip velocity — the instantaneous velocity in mm/s.</li>
 <li>Stabilized tip position — the position filtered and stabilized using velocity and past positions.</li>
 <li>Direction — the current pointing direction vector.</li>
-<li>Length — the apparent length of the finger.</li>
+<li>Length — the apparent length of the finger or tool.</li>
 <li>Width — the average width.</li>
-<li>Touch distance — the normalized distance from the virtual touch plane. See <tt class="xref doc docutils literal"><span class="pre">Leap_Touch_Emulation</span></tt>.</li>
+<li>Touch distance — the normalized distance from the virtual touch plane. See <a class="reference internal" href="Leap_Touch_Emulation.html"><em>Touch Emulation</em></a>.</li>
 <li>Touch zone — the pointable&#8217;s current relation to the virtual touch plane.</li>
 </ul>
 <p>The following example illustrates how to get a pointable object from a frame and access its basic characteristics:</p>
@@ -314,10 +320,9 @@ function doneWithSearch(){
 </pre></div>
 </div>
 </div>
-<div class="section" id="converting-a-pointable-instance-to-a-finger-instance">
-<h2>Converting a Pointable Instance to a Finger Instance<a class="headerlink" href="#converting-a-pointable-instance-to-a-finger-instance" title="Permalink to this headline">¶</a></h2>
-<p>To convert a <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> object to its <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> subclass, use the <tt class="docutils literal"><span class="pre">Finger</span></tt> constructor
-(one of the few times that you should use the constructor for a Leap class).</p>
+<div class="section" id="converting-a-pointable-object-to-a-finger-or-tool">
+<h2>Converting a Pointable Object to a Finger or Tool<a class="headerlink" href="#converting-a-pointable-object-to-a-finger-or-tool" title="Permalink to this headline">¶</a></h2>
+<p>To convert a <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> object to its proper <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a> or <a class="reference external" href="../api/Leap.Tool.html"><tt class="docutils literal"><span class="pre">Tool</span></tt></a> subclass, use the appropriate <tt class="docutils literal"><span class="pre">Finger</span></tt> or <tt class="docutils literal"><span class="pre">Tool</span></tt> constructor (one of the few times that you should use the constructor for a Leap class).</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">pointable</span><span class="p">.</span><span class="n">isTool</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">Leap</span><span class="o">::</span><span class="n">Tool</span> <span class="n">tool</span> <span class="o">=</span> <span class="n">Leap</span><span class="o">::</span><span class="n">Tool</span><span class="p">(</span><span class="n">pointable</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -332,15 +337,15 @@ function doneWithSearch(){
 <p>As of version 2.0 of the Leap Motion SDK, all five fingers are are always present in the list of fingers for a hand. The Leap Motion software estimates positions for fingers and bones that it cannot track clearly. Thus subtle movements of fingers against or behind the hand (as seen from the Leap Motion sensor&#8217;s point of view) may not be reflected in the data.</p>
 <p>Fingers can be identified by type, e.g. the index, thumb, pinky. Finger IDs are assigned based on the hand ID. If a hand has an ID of &#8220;5&#8221;, then its fingers are assigned IDs 50 to 55, ordered from thumb to pinky.</p>
 </div>
-<div class="section" id="pointable-and-finger-lists">
-<h2>Pointable and Finger Lists<a class="headerlink" href="#pointable-and-finger-lists" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="../api/Leap.PointableList.html"><tt class="docutils literal"><span class="pre">PointableList</span></tt></a> and <a class="reference external" href="../api/Leap.FingerList.html"><tt class="docutils literal"><span class="pre">FingerList</span></tt></a> classes all have a similar structure. They are designed to act like vector-style arrays and support iterators. You cannot remove or alter the member objects of lists received from the Leap API, but you can combine lists of the same object type.</p>
+<div class="section" id="pointable-finger-and-tool-lists">
+<h2><tt class="docutils literal"><span class="pre">Pointable</span></tt>, <tt class="docutils literal"><span class="pre">Finger</span></tt>, and <tt class="docutils literal"><span class="pre">Tool</span></tt> Lists<a class="headerlink" href="#pointable-finger-and-tool-lists" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="../api/Leap.PointableList.html"><tt class="docutils literal"><span class="pre">PointableList</span></tt></a>, <a class="reference external" href="../api/Leap.FingerList.html"><tt class="docutils literal"><span class="pre">FingerList</span></tt></a>, and <a class="reference external" href="../api/Leap.ToolList.html"><tt class="docutils literal"><span class="pre">ToolList</span></tt></a> classes all have a similar structure. They are designed to act like vector-style arrays and support iterators. You cannot remove or alter the member objects of lists received from the Leap API, but you can combine lists of the same object type.</p>
 <p>To use an iterator with one of these lists:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="n">HandList</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">hl</span> <span class="o">=</span> <span class="n">handList</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">hl</span> <span class="o">!=</span> <span class="n">handList</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">hl</span><span class="o">++</span><span class="p">)</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">hl</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="../api/Leap.PointableList.html"><tt class="docutils literal"><span class="pre">PointableList</span></tt></a> and <a class="reference external" href="../api/Leap.FingerList.html"><tt class="docutils literal"><span class="pre">FingerList</span></tt></a> classes define additional functions for getting members of the list based on their relative position within the Leap coordinate system. These functions include <cite>leftmost()</cite>, <cite>rightmost()</cite>, and <cite>frontmost()</cite>. The following snippet illustrates a few ways to use these functions:</p>
+<p>The <a class="reference external" href="../api/Leap.PointableList.html"><tt class="docutils literal"><span class="pre">PointableList</span></tt></a>, <a class="reference external" href="../api/Leap.FingerList.html"><tt class="docutils literal"><span class="pre">FingerList</span></tt></a>, and <a class="reference external" href="../api/Leap.ToolList.html"><tt class="docutils literal"><span class="pre">ToolList</span></tt></a> classes define additional functions for getting members of the list based on their relative position within the Leap coordinate system. These functions include <cite>leftmost()</cite>, <cite>rightmost()</cite>, and <cite>frontmost()</cite>. The following snippet illustrates a few ways to use these functions:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span class="n">Leap</span><span class="o">::</span><span class="n">Finger</span> <span class="n">farLeft</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">fingers</span><span class="p">().</span><span class="n">leftmost</span><span class="p">();</span>
 <span class="n">Leap</span><span class="o">::</span><span class="n">Finger</span> <span class="n">mostForwardOnHand</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">hands</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">fingers</span><span class="p">().</span><span class="n">frontmost</span><span class="p">();</span>
 <span class="n">Leap</span><span class="o">::</span><span class="n">Tool</span> <span class="n">rightTool</span> <span class="o">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">tools</span><span class="p">().</span><span class="n">rightmost</span><span class="p">();</span>
@@ -355,8 +360,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -368,11 +374,14 @@ function doneWithSearch(){
 <li class="toctree-l2 current"><a class="current reference internal" href="">Fingers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#getting-pointable-objects">Getting Pointable Objects</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pointable-object-characteristics">Pointable Object Characteristics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#converting-a-pointable-instance-to-a-finger-instance">Converting a Pointable Instance to a Finger Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-a-pointable-object-to-a-finger-or-tool">Converting a Pointable Object to a Finger or Tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Fingers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pointable-and-finger-lists">Pointable and Finger Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pointable-finger-and-tool-lists"><tt class="docutils literal"><span class="pre">Pointable</span></tt>, <tt class="docutils literal"><span class="pre">Finger</span></tt>, and <tt class="docutils literal"><span class="pre">Tool</span></tt> Lists</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
@@ -400,7 +409,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

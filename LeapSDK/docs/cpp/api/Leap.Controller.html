@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Controller &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Device" href="Leap.Device.html" />
     <link rel="prev" title="Config" href="Leap.Config.html" />
@@ -298,21 +298,19 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1af75c5cdc0275a4af12a841369592e5f2">config() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a54659799281c4b8839bc7531fb2d8552">devices() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a771d9c0aa2093b63124a55b3daa8d39e">enableGesture(Gesture::Type type, bool enable=true) const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_controller_1a44b969a03cd7dff28965a1aac1be1766">failedDevices() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a1a25f3894cf82667f423dad20d7d6b62">frame(int history=0) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1aeec44e083a954233dffcb64615c8061c">hasFocus() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a85588dbb02a8ff793cf2ced9067f8263">images() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a180fa55a4bf36580963bed9e3e09c227">isConnected() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a7b842601adce8a11214e0058ab3c4d86">isGestureEnabled(Gesture::Type type) const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_controller_1a0eaf52e4ed386823bd1051f44d511fe6">isPaused() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a033ebfdf3fe02566075be65269938313">isPolicySet(PolicyFlag policy) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a43d650dd9a40aec97b774ff6f0849ff1">isServiceConnected() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a629420c35d3c1192bc44e61f64d1e461">now() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a0fb10f7d2f159d77bf9f25718b7e6dc5">policyFlags() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a49ca389d1a7f610e7f11833a1fd4c678">removeListener(Listener &amp;listener)</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_controller_1aafab2fafdec7ae38b9da6676ccf01e77">setPaused(bool pause)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f">setPolicy(PolicyFlag policy) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_controller_1a83fe28bd0d9de4aaad86596ea476e1fd">setPolicyFlags(PolicyFlag flags) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_controller_1ac4c435ac90d041e6a74647a8d0a625b2">trackedQuad() const</a></li>
 </ul>
 </div>
 <div class="line-block" id="cppclass_leap_1_1_controller">
@@ -331,77 +329,6 @@ function doneWithSearch(){
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"></span><strong>PolicyFlag enum</strong></p>
-<blockquote>
-<div><p>The supported controller policies. </p>
-<p><p>The supported policy flags are:</p>
-<p><strong>POLICY_BACKGROUND_FRAMES</strong>  requests that your application receives frames when it is not the foreground application for user input.</p>
-<p>The background frames policy determines whether an application receives frames of tracking data while in the background. By default, the Leap Motion software only sends tracking data to the foreground application. Only applications that need this ability should request the background frames policy. The &#8220;Allow Background Apps&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
-<p><strong>POLICY_IMAGES</strong>  request that your application receives images from the device cameras. The &#8220;Allow Images&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
-<p>The images policy determines whether an application receives image data from the Leap Motion sensors with each frame of data. By default, this data is not sent. Only applications that use the image data should request this policy.</p>
-<p><strong>POLICY_OPTIMIZE_HMD</strong>  request that the tracking be optimized for head-mounted tracking.</p>
-<p>The optimize HMD policy improves tracking in situations where the Leap Motion hardware is attached to a head-mounted display. This policy is not granted for devices that cannot be mounted to an HMD, such as Leap Motion controllers embedded in a laptop or keyboard.</p>
-<p><strong>POLICY_ALLOW_PAUSE_RESUME</strong>  request that the application be allowed to pause and unpause the Leap Motion service.</p>
-<p>Some policies can be denied if the user has disabled the feature on their Leap Motion control panel.</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.0 </dd>
-</dl>
-</p>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">POLICY_DEFAULT</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - <p>The default policy. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_BACKGROUND_FRAMES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span></tt> - <p>Receive background frames. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_IMAGES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></tt> - <p>Receive images from sensor cameras. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>2.1.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_OPTIMIZE_HMD</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span></tt> - <p>Optimize the tracking for head-mounted device. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>2.1.2 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_ALLOW_PAUSE_RESUME</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">3)</span></tt> - <p>Allow pausing and unpausing of the Leap Motion service. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>3.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_RAW_IMAGES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">6)</span></tt> - <p>Receive raw images. </p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_controller_1a147babfb14a3297648d684ea226dc5a2"></span><div class="line-block">
 <div class="line">bool <strong>addListener</strong>(<a class="reference internal" href="Leap.Listener.html#cppclass_leap_1_1_listener"><em>Listener</em></a>  &amp; listener)</div>
@@ -432,7 +359,7 @@ controller.addListener(listener);
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1ac3b46593a96240c7462125a8452667e0"></span><div class="line-block">
-<div class="line">void <strong>clearPolicy</strong>(PolicyFlag policy)</div>
+<div class="line">void <strong>clearPolicy</strong>(<a class="reference internal" href="#cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"><em>PolicyFlag</em></a> policy)</div>
 </div>
 </p>
 <blockquote>
@@ -539,44 +466,30 @@ SampleListener listenerSubclass;
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a771d9c0aa2093b63124a55b3daa8d39e"></span><div class="line-block">
-<div class="line">void <strong>enableGesture</strong>(Gesture::Type type, bool enable = true)</div>
+<div class="line">void <strong>enableGesture</strong>(<a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Gesture::Type</em></a> type, bool enable = true)</div>
 </div>
 </p>
 <blockquote>
 <div><p>Enables or disables reporting of a specified gesture type. </p>
-<p><p><pre class="literal-block">
-controller.enableGesture(Leap::Gesture::TYPE_CIRCLE);
+<p><p>By default, all gesture types are disabled. When disabled, gestures of the disabled type are never reported and will not appear in the frame gesture list.</p>
+<p><pre class="literal-block">
+    controller.enableGesture(Leap::Gesture::TYPE_CIRCLE);
 </pre>
 </p>
+<p>As a performance optimization, only enable recognition for the types of movements that you use in your application.</p>
 <p><dl class="docutils">
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#cppclass_leap_1_1_controller_1a7b842601adce8a11214e0058ab3c4d86"><em>Controller::isGestureEnabled()</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to enable or disable. Must be a member of the Gesture::Type enumeration. </p>
+<li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to enable or disable. Must be a member of the <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Gesture::Type</em></a> enumeration. </p>
 </li>
 <li><tt class="first docutils literal"><span class="pre">enable</span></tt> - <p>True, to enable the specified gesture type; False, to disable. </p>
 </li>
 </ul>
 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_controller_1a44b969a03cd7dff28965a1aac1be1766"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="Leap.FailedDeviceList.html#cppclass_leap_1_1_failed_device_list"><em>FailedDeviceList</em></a> <strong>failedDevices</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>A list of any Leap Motion hardware devices that are physically connected to the client computer, but are not functioning correctly. </p>
-<p><p>The list contains <a class="reference internal" href="Leap.FailedDevice.html#cppclass_leap_1_1_failed_device"><em>FailedDevice</em></a> objects containing the pnpID and the reason for failure. No other device information is available.</p>
-<p><pre class="literal-block">
-<a class="reference internal" href="Leap.FailedDeviceList.html#cppclass_leap_1_1_failed_device_list"><em>Leap::FailedDeviceList</em></a> badDevices = controller.failedDevices();
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
 </dl>
 </p>
 </p>
@@ -691,7 +604,7 @@ if(controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a7b842601adce8a11214e0058ab3c4d86"></span><div class="line-block">
-<div class="line">bool <strong>isGestureEnabled</strong>(Gesture::Type type)</div>
+<div class="line">bool <strong>isGestureEnabled</strong>(<a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Gesture::Type</em></a> type)</div>
 </div>
 </p>
 <blockquote>
@@ -707,9 +620,11 @@ if(!controller.<a class="reference internal" href="#cppclass_leap_1_1_controller
 <dd>True, if the specified type is enabled; false, otherwise. </dd>
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="#cppclass_leap_1_1_controller_1a771d9c0aa2093b63124a55b3daa8d39e"><em>Controller::enableGesture()</em></a> </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to check; a member of the Gesture::Type enumeration. </p>
+<li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of gesture to check; a member of the <a class="reference internal" href="Leap.Gesture.html#cppclass_leap_1_1_gesture_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Gesture::Type</em></a> enumeration. </p>
 </li>
 </ul>
 </dd>
@@ -717,29 +632,8 @@ if(!controller.<a class="reference internal" href="#cppclass_leap_1_1_controller
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_controller_1a0eaf52e4ed386823bd1051f44d511fe6"></span><div class="line-block">
-<div class="line">bool <strong>isPaused</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Reports whether the Leap Motion service is currently paused. </p>
-<p><p><pre class="literal-block">
-if(controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a0eaf52e4ed386823bd1051f44d511fe6"><em>isPaused</em></a>()){
-    //Display message to user.
-}
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>True, if the service is paused; false, otherwise. </dd>
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a033ebfdf3fe02566075be65269938313"></span><div class="line-block">
-<div class="line">bool <strong>isPolicySet</strong>(PolicyFlag policy)</div>
+<div class="line">bool <strong>isPolicySet</strong>(<a class="reference internal" href="#cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"><em>PolicyFlag</em></a> policy)</div>
 </div>
 </p>
 <blockquote>
@@ -792,7 +686,7 @@ bool isImagePolicyActive = controller.<a class="reference internal" href="#cppcl
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a0fb10f7d2f159d77bf9f25718b7e6dc5"></span><div class="line-block">
-<div class="line">PolicyFlag <strong>policyFlags</strong>()</div>
+<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"><em>PolicyFlag</em></a> <strong>policyFlags</strong>()</div>
 </div>
 </p>
 <blockquote>
@@ -829,33 +723,8 @@ leapController.removeListener(listenerObject);
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_controller_1aafab2fafdec7ae38b9da6676ccf01e77"></span><div class="line-block">
-<div class="line">void <strong>setPaused</strong>(bool pause)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Pauses or resumes the Leap Motion service. </p>
-<p><p>When the service is paused no applications receive tracking data and the service itself uses minimal CPU time.</p>
-<p>Before changing the state of the service, you must set the POLICY_ALLOW_PAUSE_RESUME using the <a class="reference internal" href="#cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f"><em>Controller::setPolicy()</em></a> function. Policies must be set every time the application is run.</p>
-<p><pre class="literal-block">
-controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1aafab2fafdec7ae38b9da6676ccf01e77"><em>setPaused</em></a>(true);
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">pause</span></tt> - <p>Set true to pause the service; false to resume. </p>
-</li>
-</ul>
-</dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f"></span><div class="line-block">
-<div class="line">void <strong>setPolicy</strong>(PolicyFlag policy)</div>
+<div class="line">void <strong>setPolicy</strong>(<a class="reference internal" href="#cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"><em>PolicyFlag</em></a> policy)</div>
 </div>
 </p>
 <blockquote>
@@ -880,12 +749,30 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_controller_1a83fe28bd0d9de4aaad86596ea476e1fd"></span><div class="line-block">
-<div class="line">void <strong>setPolicyFlags</strong>(PolicyFlag flags)</div>
+<div class="line">void <strong>setPolicyFlags</strong>(<a class="reference internal" href="#cppclass_leap_1_1_controller_1aef594fa2a5136b5264e9c0682f08daa3"><em>PolicyFlag</em></a> flags)</div>
 </div>
 </p>
 <blockquote>
 <div><p>This function has been deprecated. </p>
 <p>Use <a class="reference internal" href="#cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f"><em>setPolicy()</em></a> and <a class="reference internal" href="#cppclass_leap_1_1_controller_1ac3b46593a96240c7462125a8452667e0"><em>clearPolicy()</em></a> instead. </p>
+</div></blockquote>
+<p><span class="target" id="cppclass_leap_1_1_controller_1ac4c435ac90d041e6a74647a8d0a625b2"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.TrackedQuad.html#cppclass_leap_1_1_tracked_quad"><em>TrackedQuad</em></a> <strong>trackedQuad</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Note: This class is an experimental API for internal use only. </p>
+<p><p>It may be removed without warning.</p>
+<p>Returns information about the currently detected quad in the scene.</p>
+<p> If no quad is being tracked, then an invalid <a class="reference internal" href="Leap.TrackedQuad.html#cppclass_leap_1_1_tracked_quad"><em>TrackedQuad</em></a> is returned. <div class="highlight-python"><div class="highlight"><pre>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>2.2.6 </dd>
+</dl>
+</p>
+</p>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -898,10 +785,9 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 <p><strong>POLICY_BACKGROUND_FRAMES</strong>  requests that your application receives frames when it is not the foreground application for user input.</p>
 <p>The background frames policy determines whether an application receives frames of tracking data while in the background. By default, the Leap Motion software only sends tracking data to the foreground application. Only applications that need this ability should request the background frames policy. The &#8220;Allow Background Apps&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
 <p><strong>POLICY_IMAGES</strong>  request that your application receives images from the device cameras. The &#8220;Allow Images&#8221; checkbox must be enabled in the Leap Motion Control Panel or this policy will be denied.</p>
-<p>The images policy determines whether an application receives image data from the Leap Motion sensors with each frame of data. By default, this data is not sent. Only applications that use the image data should request this policy.</p>
+<p>The images policy determines whether an application receives image data from the Leap Motion sensors which each frame of data. By default, this data is not sent. Only applications that use the image data should request this policy.</p>
 <p><strong>POLICY_OPTIMIZE_HMD</strong>  request that the tracking be optimized for head-mounted tracking.</p>
 <p>The optimize HMD policy improves tracking in situations where the Leap Motion hardware is attached to a head-mounted display. This policy is not granted for devices that cannot be mounted to an HMD, such as Leap Motion controllers embedded in a laptop or keyboard.</p>
-<p><strong>POLICY_ALLOW_PAUSE_RESUME</strong>  request that the application be allowed to pause and unpause the Leap Motion service.</p>
 <p>Some policies can be denied if the user has disabled the feature on their Leap Motion control panel.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
@@ -929,7 +815,7 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 </dl>
 </p>
 </li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_IMAGES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></tt> - <p>Receive images from sensor cameras. </p>
+<li><tt class="first docutils literal"><span class="pre">POLICY_IMAGES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></tt> - <p>Receive raw images from sensor cameras. </p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd><p class="first last"><p>2.1.0 </p>
@@ -947,17 +833,8 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 </dl>
 </p>
 </li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_ALLOW_PAUSE_RESUME</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">3)</span></tt> - <p>Allow pausing and unpausing of the Leap Motion service. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>3.0 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">POLICY_RAW_IMAGES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">6)</span></tt> - <p>Receive raw images. </p>
-</li>
+<li><tt class="first docutils literal"><span class="pre">POLICYDEFAULT</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">POLICY_DEFAULT</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">POLICYBACKGROUNDFRAMES</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">POLICY_BACKGROUND_FRAMES</span></tt> - </li>
 </ul>
 </div></blockquote>
 </div>
@@ -969,8 +846,9 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -978,6 +856,7 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Controller</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#policy-flags">Policy Flags</a></li>
@@ -985,20 +864,28 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -1023,7 +910,7 @@ controller.<a class="reference internal" href="#cppclass_leap_1_1_controller_1a3
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

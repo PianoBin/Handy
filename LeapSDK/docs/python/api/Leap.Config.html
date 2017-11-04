@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Config &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Config &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Controller" href="Leap.Controller.html" />
-    <link rel="prev" title="Bone" href="Leap.Bone.html" />
+    <link rel="prev" title="CircleGesture" href="Leap.CircleGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Bone.html");    }
+            window.location.assign("Leap.CircleGesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Controller.html");
     }
@@ -280,8 +280,8 @@ function doneWithSearch(){
   Config
 </span> -->
         
-  <div class="section" id="id16">
-<h1>Config<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id18">
+<h1>Config<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h1>
 <p><strong>Methods:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -295,12 +295,86 @@ function doneWithSearch(){
 <em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Config</tt><a class="headerlink" href="#Leap.Config" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Config class provides access to Leap Motion system configuration information.</p>
 <p>You can get and set gesture configuration parameters using the Config object
-obtained from a connected Controller object (<a class="reference internal" href="Leap.Controller.html#Leap.Controller.config" title="Leap.Controller.config"><tt class="xref py py-attr docutils literal"><span class="pre">Controller.config</span></tt></a>).</p>
+obtained from a connected Controller object (<a class="reference internal" href="Leap.Controller.html#Leap.Controller.config" title="Leap.Controller.config"><tt class="xref py py-attr docutils literal"><span class="pre">Controller.config</span></tt></a>). The key strings required to
+identify a configuration parameter include:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="15%" />
+<col width="20%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key string</th>
+<th class="head">Value type</th>
+<th class="head">Default value</th>
+<th class="head">Units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Gesture.Circle.MinRadius</td>
+<td>float</td>
+<td>5.0</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.Circle.MinArc</td>
+<td>float</td>
+<td>1.5 * pi</td>
+<td>radians</td>
+</tr>
+<tr class="row-even"><td>Gesture.Swipe.MinLength</td>
+<td>float</td>
+<td>150</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.Swipe.MinVelocity</td>
+<td>float</td>
+<td>1000</td>
+<td>mm/s</td>
+</tr>
+<tr class="row-even"><td>Gesture.KeyTap.MinDownVelocity</td>
+<td>float</td>
+<td>50</td>
+<td>mm/s</td>
+</tr>
+<tr class="row-odd"><td>Gesture.KeyTap.HistorySeconds</td>
+<td>float</td>
+<td>0.1</td>
+<td>s</td>
+</tr>
+<tr class="row-even"><td>Gesture.KeyTap.MinDistance</td>
+<td>float</td>
+<td>3.0</td>
+<td>mm</td>
+</tr>
+<tr class="row-odd"><td>Gesture.ScreenTap.MinForwardVelocity</td>
+<td>float</td>
+<td>50</td>
+<td>mm/s</td>
+</tr>
+<tr class="row-even"><td>Gesture.ScreenTap.HistorySeconds</td>
+<td>float</td>
+<td>0.1</td>
+<td>s</td>
+</tr>
+<tr class="row-odd"><td>Gesture.ScreenTap.MinDistance</td>
+<td>float</td>
+<td>5.0</td>
+<td>mm</td>
+</tr>
+<tr class="row-even"><td>head_mounted_display_mode</td>
+<td>boolean</td>
+<td>false</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
 <p>After setting a configuration value, you must call the <a class="reference internal" href="#Leap.Config.save" title="Leap.Config.save"><tt class="xref py py-func docutils literal"><span class="pre">save()</span></tt></a> method
 to commit the changes. You can call <a class="reference internal" href="#Leap.Config.save" title="Leap.Config.save"><tt class="xref py py-func docutils literal"><span class="pre">save()</span></tt></a> after the Controller has connected to
 the Leap Motion service/daemon. In other words, after the <a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a> has dispatched
 the <tt class="docutils literal"><span class="pre">serviceConnected</span></tt> or <tt class="docutils literal"><span class="pre">connected</span></tt> events or <tt class="xref py py-attr docutils literal"><span class="pre">Controller.isConnected</span></tt> is <tt class="docutils literal"><span class="pre">true</span></tt>.
 The configuration value changes are not persistent; your application needs to set the values everytime it runs.</p>
+<p><strong>Note:</strong> &#8220;head_mounted_display_mode&#8221; is a temporary setting that tells the Leap Motion software to expect hands viewed from the top rather than the bottom. In the long run, we expect that the software will handle both automatically without the need for a flag. This setting can also be set from the Leap Motion control panel.</p>
 <p><strong>See also:</strong></p>
 <ul class="simple">
 <li><a class="reference internal" href="Leap.CircleGesture.html#Leap.CircleGesture" title="Leap.CircleGesture"><tt class="xref py py-class docutils literal"><span class="pre">CircleGesture</span></tt></a></li>
@@ -373,9 +447,7 @@ until the <a class="reference internal" href="#Leap.Config.save" title="Leap.Con
 <dt id="Leap.Config.save">
 <tt class="descname">save</tt><big>(</big><big>)</big><a class="headerlink" href="#Leap.Config.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves the current state of the config.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;Gesture.Circle.MinRadius&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
-<span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;Gesture.Circle.MinArc&quot;</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">);</span>
-<span class="n">success</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save</span><span class="p">();</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Call <tt class="docutils literal"><span class="pre">save()</span></tt> after making a set of configuration changes. The
@@ -409,33 +481,40 @@ not persistent; your application must set the values everytime it runs.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id23">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id27">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id32">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id26">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id31">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id46">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id37">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id8">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id5">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id20">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id56">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id29">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id53">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id5">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id24">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id4">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -460,7 +539,7 @@ not persistent; your application must set the values everytime it runs.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

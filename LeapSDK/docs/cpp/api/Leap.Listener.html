@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Listener &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Listener &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="Matrix" href="Leap.Matrix.html" />
-    <link rel="prev" title="InteractionBox" href="Leap.InteractionBox.html" />
+    <link rel="next" title="Mask" href="Leap.Mask.html" />
+    <link rel="prev" title="KeyTapGesture" href="Leap.KeyTapGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -77,9 +77,11 @@
     var pageAPI = 'cpp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.python = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -129,9 +131,9 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.InteractionBox.html");    }
+            window.location.assign("Leap.KeyTapGesture.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Matrix.html");
+            window.location.assign("Leap.Mask.html");
     }
 
 }
@@ -192,11 +194,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/api/Leap.Listener.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.Listener.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -292,7 +294,6 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a9d5e4fb3349a6d39f973a4c1715f696f">Listener()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a6b0dd62da959d048a3cc7917cca1ccba">onConnect(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1ac4549d8930274ed8178edc003c7f555e">onDeviceChange(const Controller &amp;)</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_listener_1a0a7b9699500d33a6d9a7907efd1f59ef">onDeviceFailure(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a399521092032c7f8c8da9e62636ad6d6">onDisconnect(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1ac2e32940081a691303e0fa83ab098bef">onExit(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1ab341438c051361cdbe9e5ac2c9734e31">onFocusGained(const Controller &amp;)</a></li>
@@ -300,8 +301,6 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1abda5aa2c81ae8cefe01301bc5f87c8d1">onFrame(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1af6b82f6f7fb940f58dccd05ee1090741">onImages(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a40b6cfe4f9679aa0d1334c12fed3b9c3">onInit(const Controller &amp;)</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_listener_1acf4e218ef71341222db60c53d970bd65">onLogMessage(const Controller &amp;, MessageSeverity severity, int64_t timestamp, const char *msg)</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_listener_1a92c6ee18f27472c24dc51f7e262ebc1d">onServiceChange(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a455ff66aa2bf13e717bc9055037d8a63">onServiceConnect(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1a1d6bea3d250cf7094775a2f4f5a31b01">onServiceDisconnect(const Controller &amp;)</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_listener_1ada53738ce6b4084f3589b630e0e77df5">~Listener()</a></li>
@@ -363,8 +362,8 @@ void SampleListener::onConnect(const Controller&amp; controller) {
 </div>
 </p>
 <blockquote>
-<div><p>Called when a Leap Motion controller is plugged in, unplugged, or the device changes state. </p>
-<p><p>State changes include entering or leaving robust mode and low resource mode. Note that there is no direct way to query whether the device is in these modes, although you can use Controller::isLightingBad() to check if there are environmental IR lighting problems.</p>
+<div><p>Called when a Leap Motion controller plugged in, unplugged, or the device changes state. </p>
+<p><p>State changes include changes in frame rate and entering or leaving &#8220;robust&#8221; mode. Note that there is currently no way to query whether a device is in robust mode. You can use Frame::currentFramerate() to get the framerate.</p>
 <p><pre class="literal-block">
 void SampleListener::onDeviceChange(const Controller&amp; controller) {
     std::cout &lt;&lt; &quot;Device change &quot; &lt;&lt; std::endl;
@@ -374,30 +373,6 @@ void SampleListener::onDeviceChange(const Controller&amp; controller) {
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>1.2 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">controller</span></tt> - <p>The <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object invoking this callback function. </p>
-</li>
-</ul>
-</dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_listener_1a0a7b9699500d33a6d9a7907efd1f59ef"></span><div class="line-block">
-<div class="line">void <strong>onDeviceFailure</strong>(const  <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a>  &amp;)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Called when a Leap Motion controller device is plugged into the client computer, but fails to operate properly. </p>
-<p><p>Get the list containing all failed devices using <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller_1a44b969a03cd7dff28965a1aac1be1766"><em>Controller::failedDevices()</em></a>. The members of this list provide the device pnpID and reason for failure.</p>
-<p><div class="highlight-python"><div class="highlight"><pre>
-</pre></div>
-</div>
-</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">controller</span></tt> - <p>The <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object invoking this callback function. </p>
@@ -592,59 +567,6 @@ void SampleListener::onInit(const Controller&amp; controller) {
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_listener_1acf4e218ef71341222db60c53d970bd65"></span><div class="line-block">
-<div class="line">void <strong>onLogMessage</strong>(const  <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a>  &amp;, MessageSeverity severity, int64_t timestamp, const char * msg)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Called when the service emits a log message to report an error, warning, or status change. </p>
-<p><p>Log message text is provided as ASCII-encoded english.</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">controller</span></tt> - <p>The <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object invoking this callback function. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">severity</span></tt> - <p>The severity of the error, if known. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">timestamp</span></tt> - <p>The timestamp of the error in microseconds. (Use <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller_1a629420c35d3c1192bc44e61f64d1e461"><em>Controller::now()</em></a> - timestamp to compute the age of the message.) </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">msg</span></tt> - <p>The log message. </p>
-</li>
-</ul>
-</dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_listener_1a92c6ee18f27472c24dc51f7e262ebc1d"></span><div class="line-block">
-<div class="line">void <strong>onServiceChange</strong>(const  <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a>  &amp;)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Called when the Leap Motion service is paused or resumed or when a controller policy is changed. </p>
-<p><p>The service can change states because the computer user changes settings in the Leap Motion Control Panel application or because an application connected to the service triggers a change. Any application can pause or unpause the service, but only runtime policy changes you make apply to your own application.</p>
-<p><pre class="literal-block">
-void SampleListener::onServiceChange(const Controller&amp; controller) {
-    std::cout &lt;&lt; &quot;Service state change &quot; &lt;&lt; std::endl;
-}
-</pre>
-</p>
-<p>You can query the pause state of the controller with <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller_1a0eaf52e4ed386823bd1051f44d511fe6"><em>Controller::isPaused()</em></a>. You can check the state of those policies you are interested in with <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller_1a033ebfdf3fe02566075be65269938313"><em>Controller::isPolicySet()</em></a>.</p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">controller</span></tt> - <p>The <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a> object invoking this callback function. </p>
-</li>
-</ul>
-</dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_listener_1a455ff66aa2bf13e717bc9055037d8a63"></span><div class="line-block">
 <div class="line">void <strong>onServiceConnect</strong>(const  <a class="reference internal" href="Leap.Controller.html#cppclass_leap_1_1_controller"><em>Controller</em></a>  &amp;)</div>
 </div>
@@ -713,8 +635,9 @@ void SampleListener::onServiceDisconnect(const Controller&amp; controller) {
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -722,24 +645,33 @@ void SampleListener::onServiceDisconnect(const Controller&amp; controller) {
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -764,7 +696,7 @@ void SampleListener::onServiceDisconnect(const Controller&amp; controller) {
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

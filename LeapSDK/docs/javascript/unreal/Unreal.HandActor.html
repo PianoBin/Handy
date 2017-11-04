@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Leap Motion Hand Actor &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Leap Motion Hand Actor &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -296,10 +296,112 @@ function doneWithSearch(){
         
   <div class="section" id="leap-motion-hand-actor">
 <h1>Leap Motion Hand Actor<a class="headerlink" href="#leap-motion-hand-actor" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">doxygenclass: Unable to find project &#8216;unreal&#8217; in breathe_projects dictionary</p>
+<div class="line-block" id="unreala00003">
+<div class="line"><em>class</em> <strong>ALeapMotionHandActor</strong></div>
 </div>
+<blockquote>
+<div><p>This actor is created dynamically by LeapMotionControllerComponent. </p>
+<p>It&#8217;s location is same as the controller, however you can offset it to control hands&#8217; positions independently. To query hand&#8217;s palm location in the Unreal scene, access this actor&#8217;s GetHandBoneActor(ELeapBone::Palm). </p>
+<em>Public Functions</em><blockquote>
+<div><p><span class="target" id="unreala00003_1a1dd99c1cd07fd0995edf639016d07e43"></span><div class="line-block">
+<div class="line">ALeapMotionBoneActor  * <strong>GetBoneActor</strong>(<a class="reference internal" href="Unreal.EnumBoneName.html#unreala00021_1ga5e45b98bc66c9eb67c7529e9cedf2100"><em>ELeapBone</em></a> LeapBone)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Retrieves an individual hand bone. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a15ee1d153e5cf61f18d3a0ff4ad3c883"></span><div class="line-block">
+<div class="line">ULeapMotionControllerComponent  * <strong>GetParentingControllerComponent</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Returns the parenting controller component that created this hand. </p>
+<p>This is based purely on actor/component attachment hierarchy. </p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1af05d76eea3f8cb99e1cac9c14e403fd8"></span><div class="line-block">
+<div class="line">void <strong>Init</strong>(int32 HandIdParam, const TSubclassOf&lt; class  ALeapMotionBoneActor  &gt; &amp; BoneBlueprint)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Initializes hand, creates bone actors &amp; triggers HandAdded delegate. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a5031a38424c48ffbee915c7669975076"></span><div class="line-block">
+<div class="line">void <strong>Update</strong>(float DeltaSeconds)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Updates hand&#8217;s motion from Leap API &amp; triggers HandUpdated delegate. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a0c468c5278468f5f76bb3ed61579cdd4"></span><div class="line-block">
+<div class="line">void <strong>UpdateVisibility</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Updates visibility of hand&#8217;s bones&#8217; mesh &amp; colliding shape. </p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p><span class="target" id="unreala00003_1a266bd721edf17a0f4de7153686154414"></span>bool <strong>bShowArm</strong></p>
+<blockquote>
+<div><p>Show hand&#8217;s arm. </p>
+<p>Don&#8217;t change it. </p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1aa3a41b2dcb16d31d01d28d97f352de1d"></span>bool <strong>bShowCollider</strong></p>
+<blockquote>
+<div><p>Visualizes the hand&#8217;s collider shapes in the game. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a6f0c87d970c9362a5e2d331f061269ff"></span>bool <strong>bShowMesh</strong></p>
+<blockquote>
+<div><p>Visualizes the hand&#8217;s mesh in the game. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1aa4140b64f0ff3f221a9bd527be72198c"></span>float <strong>GrabStrength</strong></p>
+<blockquote>
+<div><p>Hand&#8217;s grabbing strength, as reported by Leap API. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a2c022a43b8c20dfc0742231c9d545abf"></span>int32 <strong>HandId</strong></p>
+<blockquote>
+<div><p>Hand&#8217;s id, as reported by Leap API. </p>
+<p>Don&#8217;t change it. </p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1af619b251375028f9500d2df5f6ef7b5e"></span><a class="reference internal" href="Unreal.EnumSide.html#unreala00021_1ga7388ca8e97f8e6b474de5bb4461df2aa"><em>ELeapSide</em></a> <strong>HandSide</strong></p>
+<blockquote>
+<div><p>Is this a left or a right hand? </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a3f9d2f4640506e848a4562a2b652c828"></span>FLMHandAddedDelegate <strong>OnHandAdded</strong></p>
+<blockquote>
+<div><p>Delegate triggered upon hand&#8217;s creation. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a914f66576b4b854d677474c45fdbaac7"></span>FLMHandRemovedDelegate <strong>OnHandRemoved</strong></p>
+<blockquote>
+<div><p>Delegate triggered upon hand&#8217;s destruction. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a43fe7a51c0df87c9f8034f5b722d9532"></span>FLMHandUpdatedDelegate <strong>OnHandUpdated</strong></p>
+<blockquote>
+<div><p>Delegate triggered once per frame update. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1aae11537371d63adc4fe98768124f7511"></span>float <strong>PinchStrength</strong></p>
+<blockquote>
+<div><p>Hand&#8217;s pinching strength, as reported by Leap API. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00003_1a387a75bb287048cac20819f3ae1b1100"></span>float <strong>Scale</strong></p>
+<blockquote>
+<div><p>Scale of the hand, relative to real-world size. </p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 
 
@@ -308,8 +410,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -338,7 +441,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

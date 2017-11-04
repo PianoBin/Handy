@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DebugHand &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>DebugHand &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -298,14 +298,14 @@ function doneWithSearch(){
 <h1>DebugHand<a class="headerlink" href="#debughand" title="Permalink to this headline">¶</a></h1>
 <p>The DebugHand draws no graphics in a Game view, but draws lines for the parts of the hand in the Scene view. Use the DebugHand when you do not want visible hands, but want to see where the hands are in the Scene view.</p>
 <img alt="unity/../../../images/unity/Unity_DebugHand.png" src="unity/../../../images/unity/Unity_DebugHand.png" />
-<div class="line-block" id="unitycorea00045">
-<div class="line"><em>class</em> <strong>Leap::Unity::DebugHand</strong></div>
+<div class="line-block" id="unitycorea00003">
+<div class="line"><em>class</em> <strong>DebugHand</strong></div>
 </div>
 <blockquote>
-<div><p>A <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> that draws lines for the bones in the hand and its fingers. </p>
+<div><p>A <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> that draws lines for the bones in the hand and its fingers. </p>
 <p>The debugs lines are only drawn in the Editor Scene view (when a hand is tracked) and not in the Game view. Use debug hands when you aren&#8217;t using visible hands in a scene so that you can see where the hands are in the scene view. </p>
 <em>Public Functions</em><blockquote>
-<div><p><span class="target" id="unitycorea00045_1a504064bb8442d990fbd080bda3c1c02c"></span><div class="line-block">
+<div><p><span class="target" id="unitycorea00003_1a4ea48ffa2884bb50c500d0cbcc6061ae"></span><div class="line-block">
 <div class="line">override void <strong>InitHand</strong>()</div>
 </div>
 </p>
@@ -313,15 +313,7 @@ function doneWithSearch(){
 <div><p>Initializes the hand and calls the line drawing function. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00045_1ab2f2c81a42220b3b96cbdabadbfefd17"></span><div class="line-block">
-<div class="line">override bool <strong>SupportsEditorPersistence</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Returns whether or not this hand model supports editor persistence. </p>
-<p>This is false by default and must be opt-in by a developer making their own hand model script if they want editor persistence. </p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00045_1a72947d57d9e6eaabade4aa289d5052bd"></span><div class="line-block">
+<p><span class="target" id="unitycorea00003_1a1d926966feb837567511a14fca9b8cc1"></span><div class="line-block">
 <div class="line">override void <strong>UpdateHand</strong>()</div>
 </div>
 </p>
@@ -339,8 +331,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -367,7 +360,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

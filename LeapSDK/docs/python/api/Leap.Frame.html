@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>LeapFrame &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Frame &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="LeapHand" href="Leap.Hand.html" />
+    <link rel="next" title="Gesture" href="Leap.Gesture.html" />
     <link rel="prev" title="FingerList" href="Leap.FingerList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
@@ -134,7 +134,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap.FingerList.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Hand.html");
+            window.location.assign("Leap.Gesture.html");
     }
 
 }
@@ -277,11 +277,12 @@ function doneWithSearch(){
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
     <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
-  LeapFrame
+  Frame
 </span> -->
         
-  <div class="section" id="id29">
-<h1>Frame<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="frame">
+<h1>Frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h1>
+</div>
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -323,7 +324,7 @@ function doneWithSearch(){
 <em class="property">class </em><tt class="descclassname">Leap.</tt><tt class="descname">Frame</tt><a class="headerlink" href="#Leap.Frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Frame class represents a set of hand and finger tracking data detected
 in a single frame.</p>
-<p>The Leap Motion software detects hands and fingers within the tracking area, reporting
+<p>The Leap Motion software detects hands, fingers and tools within the tracking area, reporting
 their positions, orientations and motions in frames at the Leap Motion frame rate.</p>
 <p>Access Frame objects through an instance of the <a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a> class. You can
 poll for data at your applications natural frame rate or implement a
@@ -450,7 +451,7 @@ compensating for poor lighting &#8211; in which case, two sensor frames are used
 to construct each data frame and the frame ID increases by 2).</p>
 <p>You can use the <tt class="docutils literal"><span class="pre">id</span></tt> value to detect whether this frame has already been processed
 when you are polling the the controller for frames rather than using a listener:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">lastFrameID</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">lastFrameID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">def</span> <span class="nf">processFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
     <span class="k">if</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastFrameID</span><span class="p">):</span>
         <span class="k">return</span>
@@ -559,8 +560,8 @@ returned Finger instance is valid.)</p>
 </tr>
 </tbody>
 </table>
-<p>The list of Pointable objects detected in this frame,
-given in arbitrary order. The list can be empty if no fingers are detected.</p>
+<p>The list of Pointable objects (fingers and tools) detected in this frame,
+given in arbitrary order. The list can be empty if no fingers or tools are detected.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">pointables_for_frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">pointables</span>
 </pre></div>
 </div>
@@ -636,9 +637,11 @@ that exposes the Python buffer interface. See <a class="reference internal" href
 </tr>
 </tbody>
 </table>
-<p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
 <p>The list of Tool objects detected in this frame, given in arbitrary order.
 The list can be empty if no tools are detected.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tools_for_frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">tools</span>
+</pre></div>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.0.</span></p>
 </div>
@@ -651,7 +654,7 @@ The list can be empty if no tools are detected.</p>
 <dt id="Leap.Frame.deserialize">
 <tt class="descname">deserialize</tt><big>(</big><em>frame_data</em><big>)</big><a class="headerlink" href="#Leap.Frame.deserialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decodes a byte array to replace the properties of this Frame.</p>
-<p>A Controller object must be instantiated for this function to succeed, but it does not need to be connected.</p>
+<p>A Controller object must be instantiated for this function to succeed, but it does not need to be connected. To extract gestures from the deserialized frame, you must enable the appropriate gestures first.</p>
 <p>Any existing data in the frame is destroyed. If you have references to child objects (hands, fingers, etc.), these are preserved as long as the references remain in scope.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ctypes</span><span class="o">,</span> <span class="nn">numpy</span>
 
@@ -668,7 +671,7 @@ The list can be empty if no tools are detected.</p>
 </pre></div>
 </div>
 <p>When loading data from a file, you must convert the Python buffer into a <cite>Leap.byte_array</cite> object before passing it into <cite>deserialize</cite>. In addition, <cite>len()</cite> does not work with a <cite>byte_array</cite> object. You must calculate this separately, for example, from the length of the file buffer. The length is provided by the second item in the tuple given by the <a class="reference internal" href="#Leap.Frame.serialize" title="Leap.Frame.serialize"><tt class="xref py py-attr docutils literal"><span class="pre">serialize</span></tt></a> attribute. See <a class="reference internal" href="../devguide/Leap_Serialization.html"><em>Serializing Tracking Data</em></a>.</p>
-<p>Note: The behavior when calling functions which take another Frame object as a parameter is undefined when either frame has been deserialized.</p>
+<p>Note: The behavior when calling functions which take another Frame object as a parameter is undefined when either frame has been deserialized. For example, calling <a class="reference internal" href="#Leap.Frame.gestures" title="Leap.Frame.gestures"><tt class="xref py py-meth docutils literal"><span class="pre">gestures()</span></tt></a> on a deserialized frame or with a deserialized frame as parameter (or both) does not necessarily return all gestures that occured between the two frames. Motion functions, like <a class="reference internal" href="#Leap.Frame.scale_factor" title="Leap.Frame.scale_factor"><tt class="xref py py-meth docutils literal"><span class="pre">scale_factor()</span></tt></a>, are more likely to return reasonable results, but could return anomalous values in some cases.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -747,13 +750,14 @@ otherwise, an invalid Hand object is returned.</td>
 <dl class="method">
 <dt id="Leap.Frame.gesture">
 <tt class="descname">gesture</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#Leap.Frame.gesture" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Notice</strong> Gestures are deprecated in version 3.0 and may not behave the same
-as they did in earlier versions.</p>
-<p>The Gesture object with the specified ID in this frame.</p>
+<dd><p>The Gesture object with the specified ID in this frame.</p>
 <p>Use the <tt class="docutils literal"><span class="pre">gesture</span></tt> function to return a Gesture object in this
 frame using an ID obtained in an earlier frame. The function always
 returns a Gesture object, but if there was no update for the gesture in
 this frame, then an invalid Gesture object is returned.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">gesture</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">gesture</span><span class="p">(</span><span class="n">gesture_ID</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>All Gesture objects representing the same recognized movement share the
 same ID.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -775,10 +779,11 @@ otherwise, an invalid Gesture object is returned.</td>
 <dl class="method">
 <dt id="Leap.Frame.gestures">
 <tt class="descname">gestures</tt><big>(</big><span class="optional">[</span><em>sinceFrame</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#Leap.Frame.gestures" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Notice</strong> Gestures are deprecated in version 3.0 and may not behave the same
-as they did in earlier versions.</p>
-<p>Returns a GestureList containing all gestures that have occured since
+<dd><p>Returns a GestureList containing all gestures that have occured since
 the specified frame.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">gesture_list</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">gestures</span><span class="p">(</span><span class="n">start_frame</span><span class="p">)</span>
+</pre></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -809,9 +814,9 @@ with the specified ID is present, an invalid Pointable object is returned.</p>
 </pre></div>
 </div>
 <p>Note that ID values persist across frames, but only until tracking of a
-particular object is lost. If tracking of a finger is lost and subsequently
-regained, the new Pointable object representing that finger may have
-a different ID than that representing the finger in an earlier frame.</p>
+particular object is lost. If tracking of a finger or tool is lost and subsequently
+regained, the new Pointable object representing that finger or tool may have
+a different ID than that representing the finger or tool in an earlier frame.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1017,12 +1022,14 @@ is intended to be a scaling motion.</td>
 <dl class="method">
 <dt id="Leap.Frame.tool">
 <tt class="descname">tool</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#Leap.Frame.tool" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
-<p>The Tool object with the specified ID in this frame.</p>
+<dd><p>The Tool object with the specified ID in this frame.</p>
 <p>Use this function to retrieve the Tool object from
 this frame using an ID value obtained from a previous frame.
 This function always returns a Tool object, but if no tool
 with the specified ID is present, an invalid Tool object is returned.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tool_of_interest</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">tool</span><span class="p">(</span><span class="n">tool_ID</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Note that ID values persist across frames, but only until tracking of a
 particular object is lost. If tracking of a tool is lost and subsequently
 regained, the new Tool object representing that tool may have a
@@ -1156,7 +1163,6 @@ the exact same frame of tracking data and both Frame objects are valid.</p>
 </div>
 </dd></dl>
 
-</div>
 
 
            <!-- get_disqus_sso -->
@@ -1164,33 +1170,40 @@ the exact same frame of tracking data and both Frame objects are valid.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id23">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id27">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id16">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id32">Controller</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id26">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id31">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id46">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id18">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id37">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id8">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id5">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id20">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id56">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id29">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id53">Hand</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id5">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id24">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id4">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -1215,7 +1228,7 @@ the exact same frame of tracking data and both Frame objects are valid.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

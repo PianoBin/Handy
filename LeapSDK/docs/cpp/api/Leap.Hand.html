@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>LeapHand &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Hand &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="HandList" href="Leap.HandList.html" />
-    <link rel="prev" title="LeapFrame" href="Leap.Frame.html" />
+    <link rel="prev" title="GestureList" href="Leap.GestureList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Frame.html");    }
+            window.location.assign("Leap.GestureList.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.HandList.html");
     }
@@ -277,11 +277,12 @@ function doneWithSearch(){
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
     <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
-  LeapHand
+  Hand
 </span> -->
         
   <div class="section" id="hand">
 <h1>Hand<a class="headerlink" href="#hand" title="Permalink to this headline">¶</a></h1>
+</div>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -299,7 +300,6 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a6b5532f1b733e6f5b42ef0133dd69f2a">finger(int32_t id) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a9f871d62c006a2426fc2164f91584ec4">fingers() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a43fd476e22d0607d5caae64402b2cffa">frame() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_hand_1a2ffd356fc7516480b8e57af783e5bd48">grabAngle() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1ac77a53061c20990ea29824cde3b7cf44">grabStrength() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a87daef5bdd8501be1f113684cfc61074">id() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a6e08b13af6c41d80941e07ba34368a06">invalid()</a></li>
@@ -312,7 +312,6 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a772b123e147f713848da8e6ab5b54d0e">palmPosition() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1ace9569037b8d8eeb6cc2cf544214e77f">palmVelocity() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a0859c194ec91d182f212e1c455f48e17">palmWidth() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_hand_1a6f87b32d50a7a140bd4f8e4047b66955">pinchDistance() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a1c69f496549d2f413121f2d24af5e54a">pinchStrength() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a47b471f61ee1b7514d37747bd7b95e73">pointable(int32_t id) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a9b73aa8053337ed8d142fc912703e43e">pointables() const</a></li>
@@ -328,6 +327,8 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1ab7d9b49810519d7d575c412b6d3d020c">stabilizedPalmPosition() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a2e8c627e2f2709b42b2ff60d898345c5">timeVisible() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a3f23c97b6c9f2a88e1121d1c633ccafa">toString() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_hand_1a9dbfeb0a32af8f68e94a5f9f29b08b63">tool(int32_t id) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_hand_1a05cba9e8a5f3db32fb66f3ba60fb514c">tools() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1aa8ab3b10320b326d3f1b90615da21016">translation(const Frame &amp;sinceFrame) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1a98e57401c2c211333f94cdb4848daabb">translationProbability(const Frame &amp;sinceFrame) const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_hand_1aa90d5afa14da4b4631ee87326cb6c66f">wristPosition() const</a></li>
@@ -386,9 +387,9 @@ function doneWithSearch(){
 <p>Note: Since the left hand is a mirror of the right hand, the basis matrix will be left-handed for left hands.</p>
 <p><pre class="literal-block">
 <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Leap::Matrix</em></a> basis = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a4ff50b291a30106f8306ba26d55ada76"><em>basis</em></a>();
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> xBasis = basis.xBasis;
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> yBasis = basis.yBasis;
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> zBasis = basis.zBasis;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> xBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a521fe0389397e15dcf84417d616b27f5"><em>xBasis</em></a>;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> yBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a060e37e3e8908f190a117ded7be96b26"><em>yBasis</em></a>;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> zBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a9974130b93e5f0980b363ff22fae6b03"><em>zBasis</em></a>;
 </pre>
 </p>
 <p><dl class="docutils">
@@ -427,9 +428,9 @@ float <a class="reference internal" href="#cppclass_leap_1_1_hand_1a1d2a28f942dc
 <p><p>The direction is expressed as a unit vector pointing in the same direction as the directed line from the palm position to the fingers.</p>
 <p>You can use the palm direction vector to compute the pitch and yaw angles of the palm with respect to the horizontal plane:</p>
 <p><pre class="literal-block">
-float pitch = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().pitch();
-float yaw = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().yaw();
-float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a74eac3ae098610a1ce135164a5e99c88"><em>palmNormal</em></a>().roll();
+float pitch = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1a4363cf3fd3813ebd5f143073e7019c39"><em>pitch</em></a>();
+float yaw = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1a1e0f2058889f54c4ff25abcb5b1832e7"><em>yaw</em></a>();
+float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a74eac3ae098610a1ce135164a5e99c88"><em>palmNormal</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1ad8fa97753489849034ed0f6b55c92681"><em>roll</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -480,6 +481,7 @@ float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a
 // hand is a Leap::Hand object
 <a class="reference internal" href="Leap.PointableList.html#cppclass_leap_1_1_pointable_list"><em>Leap::PointableList</em></a> <a class="reference internal" href="#cppclass_leap_1_1_hand_1a9b73aa8053337ed8d142fc912703e43e"><em>pointables</em></a> = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a9b73aa8053337ed8d142fc912703e43e"><em>pointables</em></a>(); // Both fingers and tools
 <a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list"><em>Leap::FingerList</em></a> fingers = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a9f871d62c006a2426fc2164f91584ec4"><em>fingers</em></a>();
+<a class="reference internal" href="Leap.ToolList.html#cppclass_leap_1_1_tool_list"><em>Leap::ToolList</em></a> <a class="reference internal" href="#cppclass_leap_1_1_hand_1a05cba9e8a5f3db32fb66f3ba60fb514c"><em>tools</em></a> = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a05cba9e8a5f3db32fb66f3ba60fb514c"><em>tools</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -510,34 +512,20 @@ float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_hand_1a2ffd356fc7516480b8e57af783e5bd48"></span><div class="line-block">
-<div class="line">float <strong>grabAngle</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>The angle between the fingers and the hand of a grab hand pose. </p>
-<p><p>The angle is computed by looking at the angle between the direction of the 4 fingers and the direction of the hand. Thumb is not considered when computing the angle. The angle is 0 radian for an open hand, and reaches pi radians when the pose is a tight fist.</p>
-<p><div class="highlight-python"><div class="highlight"><pre>
-</pre></div>
-</div>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>The angle of a grab hand pose between 0 and pi radians (0 and 180 degrees). </dd>
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_hand_1ac77a53061c20990ea29824cde3b7cf44"></span><div class="line-block">
 <div class="line">float <strong>grabStrength</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>Deprecated. </p>
-<p><p>Use <a class="reference internal" href="#cppclass_leap_1_1_hand_1a2ffd356fc7516480b8e57af783e5bd48"><em>grabAngle()</em></a> instead.</p>
+<div><p>The strength of a grab hand pose. </p>
+<p><p>The strength is zero for an open hand, and blends to 1.0 when a grabbing hand pose is recognized.</p>
+<p><pre class="literal-block">
+float strength = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1ac77a53061c20990ea29824cde3b7cf44"><em>grabStrength</em></a>();
+</pre>
+</p>
 <p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A float value in the [0..1] range representing the holding strength of the pose. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
@@ -689,9 +677,9 @@ thisHand == thatHand;
 <p>The direction is expressed as a unit vector pointing in the same direction as the palm normal (that is, a vector orthogonal to the palm).</p>
 <p>You can use the palm normal vector to compute the roll angle of the palm with respect to the horizontal plane:</p>
 <p><pre class="literal-block">
-float pitch = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().pitch();
-float yaw = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().yaw();
-float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a74eac3ae098610a1ce135164a5e99c88"><em>palmNormal</em></a>().roll();
+float pitch = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1a4363cf3fd3813ebd5f143073e7019c39"><em>pitch</em></a>();
+float yaw = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a8cf9153b5f55c95ea44d0e0a3bdc8a75"><em>direction</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1a1e0f2058889f54c4ff25abcb5b1832e7"><em>yaw</em></a>();
+float roll = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a74eac3ae098610a1ce135164a5e99c88"><em>palmNormal</em></a>().<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1ad8fa97753489849034ed0f6b55c92681"><em>roll</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -760,34 +748,20 @@ float handWidth = hand.<a class="reference internal" href="#cppclass_leap_1_1_ha
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_hand_1a6f87b32d50a7a140bd4f8e4047b66955"></span><div class="line-block">
-<div class="line">float <strong>pinchDistance</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>The distance between the thumb and index finger of a pinch hand pose. </p>
-<p><p>The distance is computed by looking at the shortest distance between the last 2 phalanges of the thumb and those of the index finger. This pinch measurement only takes thumb and index finger into account.</p>
-<p><div class="highlight-python"><div class="highlight"><pre>
-</pre></div>
-</div>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>The distance between the thumb and index finger of a pinch hand pose in millimeters. </dd>
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-</dl>
-</p>
-</p>
-</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_hand_1a1c69f496549d2f413121f2d24af5e54a"></span><div class="line-block">
 <div class="line">float <strong>pinchStrength</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>Deprecated. </p>
-<p><p>Use <a class="reference internal" href="#cppclass_leap_1_1_hand_1a6f87b32d50a7a140bd4f8e4047b66955"><em>pinchDistance()</em></a> instead.</p>
+<div><p>The holding strength of a pinch hand pose. </p>
+<p><p>The strength is zero for an open hand, and blends to 1.0 when a pinching hand pose is recognized. Pinching can be done between the thumb and any other finger of the same hand.</p>
+<p><pre class="literal-block">
+float pinch = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a1c69f496549d2f413121f2d24af5e54a"><em>pinchStrength</em></a>();
+</pre>
+</p>
 <p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A float value in the [0..1] range representing the holding strength of the pinch pose. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
@@ -833,6 +807,7 @@ float handWidth = hand.<a class="reference internal" href="#cppclass_leap_1_1_ha
 // hand is a Leap::Hand object
 <a class="reference internal" href="Leap.PointableList.html#cppclass_leap_1_1_pointable_list"><em>Leap::PointableList</em></a> pointables = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a9b73aa8053337ed8d142fc912703e43e"><em>pointables</em></a>(); // Both fingers and tools
 <a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list"><em>Leap::FingerList</em></a> fingers = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a9f871d62c006a2426fc2164f91584ec4"><em>fingers</em></a>();
+<a class="reference internal" href="Leap.ToolList.html#cppclass_leap_1_1_tool_list"><em>Leap::ToolList</em></a> tools = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a05cba9e8a5f3db32fb66f3ba60fb514c"><em>tools</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
@@ -854,9 +829,13 @@ float handWidth = hand.<a class="reference internal" href="#cppclass_leap_1_1_ha
 float rotationOfHand = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame);
 </pre>
 </p>
+<p>The returned angle is expressed in radians measured clockwise around the rotation axis (using the right-hand rule) between the start and end frames. The value is always between 0 and pi radians (0 and 180 degrees).</p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then the angle of rotation is zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A positive value representing the heuristically determined rotational change of the hand between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -874,12 +853,16 @@ float rotationOfHand = hand.<a class="reference internal" href="#cppclass_leap_1
 <blockquote>
 <div><p>The angle of rotation around the specified axis derived from the change in orientation of this hand, and any associated fingers, between the current frame and the specified frame. </p>
 <p><p><pre class="literal-block">
-float rotationAroundYAxis = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame, Leap::Vector::yAxis());
+float rotationAroundYAxis = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a0cbf95036199c5e627ff43562c8d68ba"><em>rotationAngle</em></a>(startFrame, <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1a72392cdfddd5dcf24ebd0fc737fb709e"><em>Leap::Vector::yAxis</em></a>());
 </pre>
 </p>
+<p>The returned angle is expressed in radians measured clockwise around the rotation axis (using the right-hand rule) between the start and end frames. The value is always between -pi and pi radians (-180 and 180 degrees).</p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then the angle of rotation is zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value representing the heuristically determined rotational change of the hand between the current frame and that specified in the sinceFrame parameter around the specified axis. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -902,9 +885,13 @@ float rotationAroundYAxis = hand.<a class="reference internal" href="#cppclass_l
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> axisOfHandRotation = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a96f629de9655ab1fca1a153d5dbac99b"><em>rotationAxis</em></a>(startFrame);
 </pre>
 </p>
+<p>The returned direction vector is normalized.</p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns a zero vector.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A normalized direction <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> representing the heuristically determined axis of rotational change of the hand between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -925,9 +912,12 @@ float rotationAroundYAxis = hand.<a class="reference internal" href="#cppclass_l
 <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Leap::Matrix</em></a> handRotationTransform = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a305bc1f67a6a8d34d4292c3d2d8ba933"><em>rotationMatrix</em></a>(startFrame);
 </pre>
 </p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns an identity matrix.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A transformation <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Matrix</em></a> representing the heuristically determined rotational change of the hand between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -948,9 +938,12 @@ float rotationAroundYAxis = hand.<a class="reference internal" href="#cppclass_l
 float rotationIntentFactor = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a98ca8e1c8efc5858fe213198012697dc"><em>rotationProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the hand motion between the current frame and the specified frame is intended to be a rotating motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative rotation. </p>
@@ -967,13 +960,18 @@ float rotationIntentFactor = hand.<a class="reference internal" href="#cppclass_
 </p>
 <blockquote>
 <div><p>The scale factor derived from this hand&#8217;s motion between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The scale factor is always positive. A value of 1.0 indicates no scaling took place. Values between 0.0 and 1.0 indicate contraction and values greater than 1.0 indicate expansion.</p>
+<p><pre class="literal-block">
 float handScaleMotion = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a5c97d459821c0b36fb11c6a2b74f5d4c"><em>scaleFactor</em></a>(startFrame);
 </pre>
 </p>
+<p>The Leap Motion software derives scaling from the relative inward or outward motion of a hand and its associated fingers (independent of translation and rotation).</p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns 1.0.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A positive value representing the heuristically determined scaling change ratio of the hand between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative scaling. </p>
@@ -994,9 +992,12 @@ float handScaleMotion = hand.<a class="reference internal" href="#cppclass_leap_
 float scaleIntentFactor = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a424b5e4459b1f2707500ec8d8362fd4d"><em>scaleProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the hand motion between the current frame and the specified frame is intended to be a scaling motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the relative scaling. </p>
@@ -1087,6 +1088,26 @@ float lifetimeOfThisHandObject = hand.<a class="reference internal" href="#cppcl
 </p>
 </p>
 </div></blockquote>
+<p><span class="target" id="cppclass_leap_1_1_hand_1a9dbfeb0a32af8f68e94a5f9f29b08b63"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> <strong>tool</strong>(int32_t id)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Tools are not associated with hands in version 2+. </p>
+<p><p>This function always returns an invalid <a class="reference internal" href="Leap.Tool.html#cppclass_leap_1_1_tool"><em>Tool</em></a> object.</p>
+<p></p>
+</p>
+</div></blockquote>
+<p><span class="target" id="cppclass_leap_1_1_hand_1a05cba9e8a5f3db32fb66f3ba60fb514c"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.ToolList.html#cppclass_leap_1_1_tool_list"><em>ToolList</em></a> <strong>tools</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Tools are not associated with hands in version 2+. </p>
+<p><p>This list is always empty.</p>
+<p></p>
+</p>
+</div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_hand_1a3f23c97b6c9f2a88e1121d1c633ccafa"></span><div class="line-block">
 <div class="line">std::string <strong>toString</strong>()</div>
 </div>
@@ -1107,13 +1128,17 @@ float lifetimeOfThisHandObject = hand.<a class="reference internal" href="#cppcl
 </p>
 <blockquote>
 <div><p>The change of position of this hand between the current frame and the specified frame. </p>
-<p><p><pre class="literal-block">
+<p><p>The returned translation vector provides the magnitude and direction of the movement in millimeters.</p>
+<p><pre class="literal-block">
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> linearHandMovement = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1aa8ab3b10320b326d3f1b90615da21016"><em>translation</em></a>(startFrame);
 </pre>
 </p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns a zero vector.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> representing the heuristically determined change in hand position between the current frame and that specified in the sinceFrame parameter. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the translation. </p>
@@ -1134,9 +1159,12 @@ float lifetimeOfThisHandObject = hand.<a class="reference internal" href="#cppcl
 float translationIntentFactor = hand.<a class="reference internal" href="#cppclass_leap_1_1_hand_1a98e57401c2c211333f94cdb4848daabb"><em>translationProbability</em></a>(startFrame);
 </pre>
 </p>
+<p>If a corresponding <a class="reference internal" href="#cppclass_leap_1_1_hand"><em>Hand</em></a> object is not found in sinceFrame, or if either this frame or sinceFrame are invalid <a class="reference internal" href="Leap.Frame.html#cppclass_leap_1_1_frame"><em>Frame</em></a> objects, then this method returns zero.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A value between 0 and 1 representing the estimated probability that the hand motion between the current frame and the specified frame is intended to be a translating motion. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last">
 <li><tt class="first docutils literal"><span class="pre">sinceFrame</span></tt> - <p>The starting frame for computing the translation. </p>
@@ -1187,7 +1215,6 @@ if (hand != <a class="reference internal" href="#cppclass_leap_1_1_hand_1a6e08b1
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
-</div>
 
 
            <!-- get_disqus_sso -->
@@ -1195,33 +1222,43 @@ if (hand != <a class="reference internal" href="#cppclass_leap_1_1_hand_1a6e08b1
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -1246,7 +1283,7 @@ if (hand != <a class="reference internal" href="#cppclass_leap_1_1_hand_1a6e08b1
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

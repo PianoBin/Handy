@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Listener &mdash; Leap Motion Python SDK v3.1 documentation</title>
+    <title>Listener &mdash; Leap Motion Python SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Python SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Python SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Matrix" href="Leap.Matrix.html" />
-    <link rel="prev" title="InteractionBox" href="Leap.InteractionBox.html" />
+    <link rel="prev" title="KeyTapGesture" href="Leap.KeyTapGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -77,9 +77,11 @@
     var pageAPI = 'python';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.python = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -129,7 +131,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.InteractionBox.html");    }
+            window.location.assign("Leap.KeyTapGesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Matrix.html");
     }
@@ -192,11 +194,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/api/Leap.Listener.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
-      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.Listener.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -285,8 +287,6 @@ function doneWithSearch(){
 <ul class="simple">
 <li><a class="reference internal" href="#Leap.Listener.on_connect" title="Leap.Listener.on_connect"><tt class="xref py py-meth docutils literal"><span class="pre">on_connect()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_device_change" title="Leap.Listener.on_device_change"><tt class="xref py py-meth docutils literal"><span class="pre">on_device_change()</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Listener.on_device_failure" title="Leap.Listener.on_device_failure"><tt class="xref py py-meth docutils literal"><span class="pre">on_device_failure()</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Listener.on_diagnostic_event" title="Leap.Listener.on_diagnostic_event"><tt class="xref py py-meth docutils literal"><span class="pre">on_diagnostic_event()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_disconnect" title="Leap.Listener.on_disconnect"><tt class="xref py py-meth docutils literal"><span class="pre">on_disconnect()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_exit" title="Leap.Listener.on_exit"><tt class="xref py py-meth docutils literal"><span class="pre">on_exit()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_focus_gained" title="Leap.Listener.on_focus_gained"><tt class="xref py py-meth docutils literal"><span class="pre">on_focus_gained()</span></tt></a></li>
@@ -294,7 +294,6 @@ function doneWithSearch(){
 <li><a class="reference internal" href="#Leap.Listener.on_frame" title="Leap.Listener.on_frame"><tt class="xref py py-meth docutils literal"><span class="pre">on_frame()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_images" title="Leap.Listener.on_images"><tt class="xref py py-meth docutils literal"><span class="pre">on_images()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_init" title="Leap.Listener.on_init"><tt class="xref py py-meth docutils literal"><span class="pre">on_init()</span></tt></a></li>
-<li><a class="reference internal" href="#Leap.Listener.on_service_change" title="Leap.Listener.on_service_change"><tt class="xref py py-meth docutils literal"><span class="pre">on_service_change()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_service_connect" title="Leap.Listener.on_service_connect"><tt class="xref py py-meth docutils literal"><span class="pre">on_service_connect()</span></tt></a></li>
 <li><a class="reference internal" href="#Leap.Listener.on_service_disconnect" title="Leap.Listener.on_service_disconnect"><tt class="xref py py-meth docutils literal"><span class="pre">on_service_disconnect()</span></tt></a></li>
 </ul>
@@ -352,12 +351,8 @@ or when this Listener object is added to a Controller that is already connected.
 <dl class="method">
 <dt id="Leap.Listener.on_device_change">
 <tt class="descname">on_device_change</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_device_change" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when a Leap Motion controller is plugged in, unplugged, or the
-device changes state.</p>
-<p>State changes include entering or leaving robust mode and low resource
-mode. Note that there is no direct way to query whether the device is in
-these modes, although you can use <tt class="xref py py-attr docutils literal"><span class="pre">Controller.is_lighting_bad</span></tt>
-to check if there are environmental IR lighting problems.</p>
+<dd><p>Called when a Leap Motion controller plugged in, unplugged, or the device changes state.</p>
+<p>State changes include changes in frame rate and entering or leaving “robust” mode. Note that there is currently no way to query whether a device is in robust mode. You can use <tt class="xref py py-meth docutils literal"><span class="pre">Frame.current_framerate()</span></tt> to get the framerate.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_device_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>
     <span class="k">print</span> <span class="s">&quot;Device change&quot;</span>
 </pre></div>
@@ -372,45 +367,6 @@ to check if there are environmental IR lighting problems.</p>
 </table>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="Leap.Listener.on_device_failure">
-<tt class="descname">on_device_failure</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_device_failure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when a Leap Motion controller device is plugged into the client
-computer, but fails to operate properly.</p>
-<p>Get the list containing all failed devices using
-<a class="reference internal" href="Leap.Controller.html#Leap.Controller.failed_devices" title="Leap.Controller.failed_devices"><tt class="xref py py-attr docutils literal"><span class="pre">Controller.failed_devices</span></tt></a>. The members of this list provide
-the device pnpID and reason for failure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>controller</strong> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</td>
-</tr>
-</tbody>
-</table>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="Leap.Listener.on_diagnostic_event">
-<tt class="descname">on_diagnostic_event</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_diagnostic_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when the results of a device diagnostic check are available.</p>
-<p>Request a device diagnostic check using <a class="reference internal" href="Leap.Controller.html#Leap.Controller.request_diagnostic" title="Leap.Controller.request_diagnostic"><tt class="xref py py-meth docutils literal"><span class="pre">Controller.request_diagnostic()</span></tt></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>controller</strong> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</td>
-</tr>
-</tbody>
-</table>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.2.</span></p>
 </div>
 </dd></dl>
 
@@ -587,31 +543,6 @@ the ID of the most recent frame with the ID of the last received frame.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Leap.Listener.on_service_change">
-<tt class="descname">on_service_change</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_service_change" title="Permalink to this definition">¶</a></dt>
-<dd><p>Called when the Leap Motion service is paused or resumed or when a controller policy is changed.</p>
-<p>The service can change states because the computer user changes settings
-in the Leap Motion Control Panel application or because an application
-connected to the service triggers a change. Any application can pause or
-unpause the service, but only runtime policy changes you make apply to
-your own application.</p>
-<p>You can query the pause state of the controller with <a class="reference internal" href="Leap.Controller.html#Leap.Controller.is_paused" title="Leap.Controller.is_paused"><tt class="xref py py-meth docutils literal"><span class="pre">Controller.is_paused()</span></tt></a>.
-You can check the state of those policies you are interested in with
-<a class="reference internal" href="Leap.Controller.html#Leap.Controller.is_policy_set" title="Leap.Controller.is_policy_set"><tt class="xref py py-meth docutils literal"><span class="pre">Controller.is_policy_set()</span></tt></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>controller</strong> (<a class="reference internal" href="Leap.Controller.html#Leap.Controller" title="Leap.Controller"><tt class="xref py py-class docutils literal"><span class="pre">Controller</span></tt></a>) &#8211; The Controller object invoking this callback function.</td>
-</tr>
-</tbody>
-</table>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.3.2.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="Leap.Listener.on_service_connect">
 <tt class="descname">on_service_connect</tt><big>(</big><em>controller</em><big>)</big><a class="headerlink" href="#Leap.Listener.on_service_connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when the Leap Motion daemon/service connects to your application :py:class`Controller`.</p>
@@ -664,33 +595,40 @@ You can check the state of those policies you are interested in with
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Python Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Python Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id23">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id27">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id16">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id32">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id26">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id31">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id46">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id18">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id37">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id8">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id5">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id20">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id56">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id29">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id53">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id5">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Listener</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id24">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id4">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -715,7 +653,7 @@ You can check the state of those policies you are interested in with
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

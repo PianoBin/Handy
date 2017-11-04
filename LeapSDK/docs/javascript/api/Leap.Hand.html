@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>LeapHand &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Hand &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="InteractionBox" href="Leap.InteractionBox.html" />
-    <link rel="prev" title="LeapFrame" href="Leap.Frame.html" />
+    <link rel="prev" title="Gesture" href="Leap.Gesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Frame.html");    }
+            window.location.assign("Leap.Gesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.InteractionBox.html");
     }
@@ -277,11 +277,12 @@ function doneWithSearch(){
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
     <a href="Leap_Classes.html" accesskey="U">API Reference</a>&raquo;
-  LeapHand
+  Hand
 </span> -->
         
-  <div class="section" id="id54">
-<h1>Hand<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hand">
+<h1>Hand<a class="headerlink" href="#hand" title="Permalink to this headline">¶</a></h1>
+</div>
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -391,7 +392,7 @@ hand is attached.</p>
 </tbody>
 </table>
 <p>How well the internal hand model fits the observed data.</p>
-<p>A low value indicates that there are significant discrepancies; finger positions, even hand identification could be incorrect. The significance of the confidence value to your application can vary with context.</p>
+<p>A low value indicates that there are significant discrepancies; finger positions, even hand identification could be incorrect. The significance of the confidence value to your application can vary with context. For example, gestures and motions can be valid even without a high confidence in the hand data.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">confidence</span> <span class="o">=</span> <span class="nx">hand</span><span class="p">.</span><span class="nx">confidence</span><span class="p">;</span>
 <span class="k">if</span><span class="p">(</span><span class="nx">confidence</span> <span class="o">&gt;</span> <span class="p">.</span><span class="mi">7</span><span class="p">){</span>
     <span class="c1">//...</span>
@@ -848,7 +849,6 @@ and its stabilized counterpart.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Notice</strong> Tools are deprecated in version 3.0.</p>
 <p>In version 2+, tools are not associated with hands. This list is
 always empty.</p>
 <p>The list of tools detected in this frame that are held by this hand,
@@ -1234,7 +1234,6 @@ given Hand instance is valid or invalid. (You can also use the Hand
 </div>
 </dd></dl>
 
-</div>
 
 
            <!-- get_disqus_sso -->
@@ -1242,22 +1241,28 @@ given Hand instance is valid or invalid. (You can also use the Hand
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://developer.leapmotion.com/downloads/javascript#plugins">LeapJS Plug-ins</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id28">Bone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id33">Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id21">Finger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html#id30">Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id54">Hand</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id32">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id47">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id38">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id57">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id6">Gesture</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Hand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id25">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id9">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
@@ -1286,7 +1291,7 @@ given Hand instance is valid or invalid. (You can also use the Hand
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

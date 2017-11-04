@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Image &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Image &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="ImageList" href="Leap.ImageList.html" />
     <link rel="prev" title="HandList" href="Leap.HandList.html" />
@@ -352,22 +352,6 @@ for(int i = 0; i &lt; 2; i++){
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_image_1a8dcd21376da83902acea50d9deeb5990"></span><strong>FormatType enum</strong></p>
-<blockquote>
-<div><p>Enumerates the possible image formats. </p>
-<p>The <a class="reference internal" href="#cppclass_leap_1_1_image_1aa50869d4b5b25718ba2c23c4c8aeb3d8"><em>Image::format()</em></a> function returns an item from the FormatType enumeration. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>2.2.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">INFRARED</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">IBRG</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - </li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_image_1a2f39586631180c12d005fe1bc76e1010"></span><div class="line-block">
 <div class="line">int <strong>bytesPerPixel</strong>()</div>
@@ -442,8 +426,8 @@ const int <a class="reference internal" href="#cppclass_leap_1_1_image_1ad322752
 const int width = image.width();
 const int <a class="reference internal" href="#cppclass_leap_1_1_image_1ae26bcfe2f33f5873dbdfb6948cf1f59f"><em>height</em></a> = image.<a class="reference internal" href="#cppclass_leap_1_1_image_1ae26bcfe2f33f5873dbdfb6948cf1f59f"><em>height</em></a>();
 
-for (i = 0; i &lt; destinationWidth; i += 1) {
-    for (j = 0; j &lt; destinationHeight; j += 1) {
+for (i = 0; i &lt; destinationWidth; i++) {
+    for (j = 0; j &lt; destinationHeight; j++) {
         //Calculate the position in the calibration map (still with a fractional part)
         calibrationX = 63 * i/destinationWidth;
         calibrationY = 62 * (1 - j/destinationHeight); // The y origin is at the bottom
@@ -467,11 +451,6 @@ for (i = 0; i &lt; destinationWidth; i += 1) {
         dY3 = distortion_buffer[x1 * 2 + y2 * distortionWidth + 1];
         dY4 = distortion_buffer[x2 * 2 + y2 * distortionWidth + 1];
 
-         std::cout &lt;&lt; i &lt;&lt; &quot;, &quot; &lt;&lt; j &lt;&lt; &quot; -- &quot; &lt;&lt; x1 &lt;&lt; &quot;, &quot; &lt;&lt; y1 &lt;&lt; &quot;, &quot; &lt;&lt; x2 &lt;&lt; &quot;, &quot; &lt;&lt; y2 &lt;&lt; &quot; -- &quot;
-                   &lt;&lt; (x1 * 2 + y1 * <a class="reference internal" href="#cppclass_leap_1_1_image_1ad322752e1a1e4126873be710a19c35fe"><em>distortionWidth</em></a>) &lt;&lt; &quot;, &quot;
-                   &lt;&lt; (x1 * 2 + y1 * distortionWidth + 1) &lt;&lt; &quot; -- &quot;
-                   &lt;&lt; (x2 * 2 + y2 * <a class="reference internal" href="#cppclass_leap_1_1_image_1ad322752e1a1e4126873be710a19c35fe"><em>distortionWidth</em></a>) &lt;&lt; &quot;, &quot;
-                   &lt;&lt; (x2 * 2 + y2 * distortionWidth + 1) &lt;&lt; std::endl;
         //Bilinear interpolation of the looked-up values:
         // X value
         dX = dX1 * (1 - weightX) * (1 - weightY) +
@@ -548,7 +527,7 @@ int correctionGridWidth = image.distortionWidth();
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_image_1aa50869d4b5b25718ba2c23c4c8aeb3d8"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_image_1a8dcd21376da83902acea50d9deeb5990"><em>FormatType</em></a> <strong>format</strong>()</div>
+<div class="line">FormatType <strong>format</strong>()</div>
 </div>
 </p>
 <blockquote>
@@ -825,14 +804,14 @@ while(!done){
 float horizontal_slope = tan(65 * Leap::PI/180);
 float vertical_slope = tan(15 * Leap::PI/180);
 <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> pixel = image.warp(<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a>(horizontal_slope, vertical_slope, 0));
-if(pixel.x &gt;= 0 &amp;&amp; pixel.y &gt;= 0 &amp;&amp; pixel.x &lt;= image.width() &amp;&amp; pixel.y &lt;= image.height()){
-    int data_index = floor(pixel.y) * image.width() + floor(pixel.x);
+if(pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1ad0da36b2558901e21e7a30f6c227a45e"><em>x</em></a> &gt;= 0 &amp;&amp; pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1aa4f0d3eebc3c443f9be81bf48561a217"><em>y</em></a> &gt;= 0 &amp;&amp; pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1ad0da36b2558901e21e7a30f6c227a45e"><em>x</em></a> &lt;= image.width() &amp;&amp; pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1aa4f0d3eebc3c443f9be81bf48561a217"><em>y</em></a> &lt;= image.height()){
+    int data_index = floor(pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1aa4f0d3eebc3c443f9be81bf48561a217"><em>y</em></a>) * image.width() + floor(pixel.<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector_1ad0da36b2558901e21e7a30f6c227a45e"><em>x</em></a>);
     unsigned char brightness = image.data()[data_index];
 }
 </pre>
 </p>
 <p>The <tt class="docutils literal"><a class="reference internal" href="#cppclass_leap_1_1_image_1a084e8bb0ebaf71c32fe1ff0f483f0165"><em><span class="pre">warp()</span></em></a></tt> function returns pixel coordinates outside of the image bounds if you project a ray toward a point for which there is no recorded data.</p>
-<p><tt class="docutils literal"><a class="reference internal" href="#cppclass_leap_1_1_image_1a084e8bb0ebaf71c32fe1ff0f483f0165"><em><span class="pre">warp()</span></em></a></tt> is typically not fast enough for realtime distortion correction. For better performance, use a shader program executed on a GPU.</p>
+<p><tt class="docutils literal"><a class="reference internal" href="#cppclass_leap_1_1_image_1a084e8bb0ebaf71c32fe1ff0f483f0165"><em><span class="pre">warp()</span></em></a></tt> is typically not fast enough for realtime distortion correction. For better performance, use a shader program exectued on a GPU.</p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>A <a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Vector</em></a> containing the pixel coordinates [x, y, 0] (with z always zero). </dd>
@@ -892,8 +871,9 @@ int width = image.width();
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -901,24 +881,33 @@ int width = image.width();
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -943,7 +932,7 @@ int width = image.width();
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecting to the Controller &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Connecting to the Controller &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
     <link rel="next" title="Tracking Model" href="Leap_Tracking.html" />
     <link rel="prev" title="Using the Tracking API" href="Leap_Guides2.html" />
@@ -77,6 +77,7 @@
     var pageAPI = 'cpp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -197,7 +198,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Controllers.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -281,7 +282,7 @@ function doneWithSearch(){
   <div class="section" id="connecting-to-the-controller">
 <h1>Connecting to the Controller<a class="headerlink" href="#connecting-to-the-controller" title="Permalink to this headline">¶</a></h1>
 <p>To connect to the Leap Motion device, create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object. The <tt class="docutils literal"><span class="pre">Controller</span></tt> object automatically establishes a connection to the Leap Motion daemon or service which then passes tracking data, in the form of <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> objects to your application.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span class="n">Leap</span><span class="o">::</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
+<div class="highlight-cpp"><div class="highlight"><pre>    <span class="n">Leap</span><span class="o">::</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Use the <tt class="docutils literal"><span class="pre">Controller</span></tt> object to get information about the state of the connection and connected hardware and to set connection options for your application.</p>
@@ -308,9 +309,17 @@ has the operating system input focus.</p>
 <h2>Access to Images<a class="headerlink" href="#access-to-images" title="Permalink to this headline">¶</a></h2>
 <p>In order for your application to receive images from the Leap Motion cameras, you must set the <strong>Images</strong> policy. The <strong>Allow Images</strong> setting in the Leap Motion control panel must be checked or the attempt to set the policy is denied. See <a class="reference internal" href="Leap_Images.html"><em>Camera Images</em></a>.</p>
 </div>
+<div class="section" id="enabling-gestures">
+<h2>Enabling Gestures<a class="headerlink" href="#enabling-gestures" title="Permalink to this headline">¶</a></h2>
+<p>To use the built-in gestures, you must enable them first using <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a771d9c0aa2093b63124a55b3daa8d39e">Controller.enableGesture()</a>:</p>
+<div class="highlight-cpp"><div class="highlight"><pre>    <span class="n">controller</span><span class="p">.</span><span class="n">enableGesture</span><span class="p">(</span><span class="n">Leap</span><span class="o">::</span><span class="n">Gesture</span><span class="o">::</span><span class="n">TYPE_CIRCLE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Enable only those gestures that your application uses.</p>
+</div>
 <div class="section" id="connection-state">
 <h2>Connection State<a class="headerlink" href="#connection-state" title="Permalink to this headline">¶</a></h2>
-<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id517"><span class="problematic" id="id518">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a180fa55a4bf36580963bed9e3e09c227">Controller.isConnected()</a> property changes to true.</p>
+<p>When you create a <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a>, the object attempts to establish a connection to the Leap Motion service/daemon. If it succeeds, the <a href="#id524"><span class="problematic" id="id525">|Controller.isServiceConnected|_</span></a> property changes to true. Likewise, if the Leap Motion hardware is plugged in and detected by the service/daemon, the <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a180fa55a4bf36580963bed9e3e09c227">Controller.isConnected()</a> property changes to true.</p>
 <p>The isServiceConnected() and isConnected() properties can change while your application is running. You can monitor their values or <a class="reference external" href="ListeningforControllerEvents">listen for events</a> dispatched by the controller when the connection status changes.</p>
 </div>
 <div class="section" id="listening-for-controller-events">
@@ -410,8 +419,9 @@ has the operating system input focus.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -420,6 +430,7 @@ has the operating system input focus.</p>
 <li class="toctree-l3"><a class="reference internal" href="#getting-frames">Getting Frames</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#foreground-and-background-applications">Foreground and Background Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-to-images">Access to Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-gestures">Enabling Gestures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-state">Connection State</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-for-controller-events">Listening for Controller Events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#device-types">Device Types</a></li>
@@ -429,6 +440,9 @@ has the operating system input focus.</p>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html">Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
@@ -456,7 +470,7 @@ has the operating system input focus.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

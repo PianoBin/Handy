@@ -16,23 +16,23 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Java SDK Documentation &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Java SDK Documentation &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="./../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="./../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="./../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="#" />
-    <link rel="next" title="API Overview" href="devguide/Leap_Overview.html" />
+      <script type="text/javascript" src="./../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="#" />
+    <link rel="next" title="Introducing the Skeletal Tracking Model" href="devguide/Intro_Skeleton_API.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -159,7 +159,7 @@ function handleKeyInput(e)
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){    }
     else if( character == "K" & e.altKey){
-            window.location.assign("devguide/Leap_Overview.html");
+            window.location.assign("devguide/Intro_Skeleton_API.html");
     }
 
 }
@@ -303,7 +303,7 @@ function doneWithSearch(){
   <div class="section" id="proglang-sdk-documentation">
 <h1>Java SDK Documentation<a class="headerlink" href="#proglang-sdk-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="sidebar">
-<p class="first sidebar-title">Release Notes for SDK version 3.1</p>
+<p class="first sidebar-title">Release Notes for SDK version 2.3</p>
 <p class="last">For changes in this version of the SDK, see the <a class="reference internal" href="supplements/SDK_Release_Notes.html"><em>Leap Motion Release Notes</em></a>.</p>
 </div>
 <div class="section" id="first-steps">
@@ -328,6 +328,7 @@ function doneWithSearch(){
 <li><a class="reference external" href="https://developer.leapmotion.com/articles/designing-intuitive-applications">Designing Intuitive Applications</a></li>
 <li><a class="reference internal" href="practices/Leap_Menu_Design_Guidelines.html"><em>Menu Design Guidelines</em></a></li>
 <li><a class="reference internal" href="practices/Leap_Orientation_and_Tutorial_Guidelines.html"><em>User Orientation and Tutorial Guidelines</em></a></li>
+<li><a class="reference internal" href="practices/App_Assets_and_Marketing_Guidelines.html"><em>Application Asset and Marketing Guidelines</em></a></li>
 <li><a class="reference internal" href="practices/Leap_UX_Guidelines.html"><em>User Experience Guidelines</em></a></li>
 </ul>
 </div>
@@ -340,6 +341,9 @@ function doneWithSearch(){
 <li><a class="reference internal" href="devguide/Leap_Frames.html"><em>Frames</em></a></li>
 <li><a class="reference internal" href="devguide/Leap_Hand.html"><em>Hands</em></a></li>
 <li><a class="reference internal" href="devguide/Leap_Pointables.html"><em>Fingers</em></a></li>
+<li><a class="reference internal" href="devguide/Leap_Gestures.html"><em>Gestures</em></a></li>
+<li><a class="reference internal" href="devguide/Leap_Touch_Emulation.html"><em>Touch Emulation</em></a></li>
+<li><a class="reference internal" href="devguide/Leap_Motions.html"><em>Motions</em></a></li>
 <li><a class="reference internal" href="devguide/Leap_Coordinate_Mapping.html"><em>Coordinate Systems</em></a></li>
 <li><a class="reference internal" href="devguide/Leap_Images.html"><em>Camera Images</em></a></li>
 <li><a class="reference internal" href="devguide/Leap_Serialization.html"><em>Serializing Tracking Data</em></a></li>
@@ -356,36 +360,44 @@ function doneWithSearch(){
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="api/Leap.Arm.html"><em>Arm</em></a></td>
-<td><a class="reference internal" href="api/Leap.Finger.html"><em>Finger</em></a></td>
-<td><a class="reference internal" href="api/Leap.Listener.html"><em>Listener</em></a></td>
+<td><a class="reference internal" href="api/Leap.Gesture.html"><em>Gesture</em></a></td>
+<td><a class="reference internal" href="api/Leap.Mask.html"><em>Mask</em></a></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="api/Leap.Bone.html"><em>Bone</em></a></td>
-<td><a class="reference internal" href="api/Leap.FingerList.html"><em>FingerList</em></a></td>
-<td><a class="reference internal" href="api/Leap.Matrix.html"><em>Matrix</em></a></td>
+<td><a class="reference internal" href="api/Leap.GestureList.html"><em>GestureList</em></a></td>
+<td><a class="reference internal" href="api/Leap.MaskList.html"><em>MaskList</em></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Leap.Config.html"><em>Config</em></a></td>
-<td><a class="reference internal" href="api/Leap.Frame.html"><em>LeapFrame</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="api/Leap.CircleGesture.html"><em>CircleGesture</em></a></td>
+<td><a class="reference internal" href="api/Leap.Hand.html"><em>Hand</em></a></td>
 <td><a class="reference internal" href="api/Leap.Pointable.html"><em>Pointable</em></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Leap.Controller.html"><em>Controller</em></a></td>
-<td><a class="reference internal" href="api/Leap.Hand.html"><em>LeapHand</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="api/Leap.Config.html"><em>Config</em></a></td>
+<td><a class="reference internal" href="api/Leap.HandList.html"><em>HandList</em></a></td>
 <td><a class="reference internal" href="api/Leap.PointableList.html"><em>PointableList</em></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Leap.Device.html"><em>Device</em></a></td>
-<td><a class="reference internal" href="api/Leap.HandList.html"><em>HandList</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="api/Leap.Controller.html"><em>Controller</em></a></td>
+<td><a class="reference internal" href="api/Leap.Image.html"><em>Image</em></a></td>
+<td><a class="reference internal" href="api/Leap.ScreenTapGesture.html"><em>ScreenTapGesture</em></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="api/Leap.Device.html"><em>Device</em></a></td>
+<td><a class="reference internal" href="api/Leap.ImageList.html"><em>ImageList</em></a></td>
+<td><a class="reference internal" href="api/Leap.SwipeGesture.html"><em>SwipeGesture</em></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="api/Leap.DeviceList.html"><em>DeviceList</em></a></td>
+<td><a class="reference internal" href="api/Leap.InteractionBox.html"><em>InteractionBox</em></a></td>
 <td><a class="reference internal" href="api/Leap.Tool.html"><em>Tool</em></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Leap.DeviceList.html"><em>DeviceList</em></a></td>
-<td><a class="reference internal" href="api/Leap.Image.html"><em>Image</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="api/Leap.Finger.html"><em>Finger</em></a></td>
+<td><a class="reference internal" href="api/Leap.KeyTapGesture.html"><em>KeyTapGesture</em></a></td>
 <td><a class="reference internal" href="api/Leap.ToolList.html"><em>ToolList</em></a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="api/Leap.FailedDevice.html"><em>FailedDevice</em></a></td>
-<td><a class="reference internal" href="api/Leap.ImageList.html"><em>ImageList</em></a></td>
-<td><a class="reference internal" href="api/Leap.Vector.html"><em>Vector</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="api/Leap.FingerList.html"><em>FingerList</em></a></td>
+<td><a class="reference internal" href="api/Leap.Listener.html"><em>Listener</em></a></td>
+<td><a class="reference internal" href="api/Leap.TrackedQuad.html"><em>TrackedQuad</em></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="api/Leap.FailedDeviceList.html"><em>FailedDeviceList</em></a></td>
-<td><a class="reference internal" href="api/Leap.InteractionBox.html"><em>InteractionBox</em></a></td>
-<td>&nbsp;</td>
+<tr class="row-even"><td><a class="reference internal" href="api/Leap.Frame.html"><em>Frame</em></a></td>
+<td><a class="reference internal" href="api/Leap.Matrix.html"><em>Matrix</em></a></td>
+<td><a class="reference internal" href="api/Leap.Vector.html"><em>Vector</em></a></td>
 </tr>
 </tbody>
 </table>
@@ -406,8 +418,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="#" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="#" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devguide/Leap_Guides.html">Application Development</a></li>
@@ -434,7 +447,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

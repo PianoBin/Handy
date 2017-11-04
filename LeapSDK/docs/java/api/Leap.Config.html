@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Config &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Config &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Controller" href="Leap.Controller.html" />
-    <link rel="prev" title="Bone" href="Leap.Bone.html" />
+    <link rel="prev" title="CircleGesture" href="Leap.CircleGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Bone.html");    }
+            window.location.assign("Leap.CircleGesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Controller.html");
     }
@@ -280,8 +280,8 @@ function doneWithSearch(){
   Config
 </span> -->
         
-  <div class="section" id="id5">
-<h1>Config<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id7">
+<h1>Config<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -381,7 +381,7 @@ function doneWithSearch(){
 <p>After setting a configuration value, you must call the <a class="reference internal" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_config_1a75fe2eda0719b6f59906abb7d23bbcd8"><em>Config::save()</em></a> method to commit the changes. You can save after the <a class="reference internal" href="Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a> has connected to the Leap Motion service/daemon. In other words, after the <a class="reference internal" href="Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller"><em>Controller</em></a> has dispatched the serviceConnected or connected events or <a class="reference internal" href="Leap.Controller.html#javaclasscom_1_1leapmotion_1_1leap_1_1_controller_1afbf4768f0408a85337dbb9f1413d611a"><em>Controller::isConnected</em></a> is true. The configuration value changes are not persistent; your application needs to set the values every time it runs.</p>
 <p><dl class="docutils">
 <dt><strong>See</strong></dt>
-<dd>CircleGesture </dd>
+<dd><a class="reference internal" href="Leap.CircleGesture.html#javaclasscom_1_1leapmotion_1_1leap_1_1_circle_gesture"><em>CircleGesture</em></a> </dd>
 <dt><strong>See</strong></dt>
 <dd><a class="reference internal" href="Leap.KeyTapGesture.html#javaclasscom_1_1leapmotion_1_1leap_1_1_key_tap_gesture"><em>KeyTapGesture</em></a> </dd>
 <dt><strong>See</strong></dt>
@@ -419,7 +419,7 @@ function doneWithSearch(){
 <blockquote>
 <div><p>Gets the boolean representation for the specified key. </p>
 <p><p><pre class="literal-block">
-Boolean booleanValue = controller.config().getBool(&quot;Key.For.boolean.Setting&quot;);
+Boolean booleanValue = controller.config().getBool(&quot;Key.For.Bool.Setting&quot;);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -509,7 +509,7 @@ Boolean success = controller.config().save();
 <blockquote>
 <div><p>Sets the boolean representation for the specified key. </p>
 <p><p><pre class="literal-block">
-controller.config().setBool(&quot;Key.For.boolean.Setting&quot;, true);
+controller.config().setBool(&quot;Key.For.Bool.Setting&quot;, true);
 </pre>
 </p>
 <p><dl class="docutils">
@@ -612,17 +612,6 @@ controller.config().setString(&quot;Key.For.String.Setting&quot;, &quot;A String
 <dd>1.0 </dd>
 </dl>
 </p>
-<em>Public Members</em><blockquote>
-<div><p><span class="target" id="javaenumcom_1_1leapmotion_1_1leap_1_1_config_1_1_value_type_1a374bc13735d65556f84446e961a0a3ce"></span> <strong>TYPE_UNKNOWN</strong></p>
-<blockquote>
-<div><p>The data type is unknown. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.0 </dd>
-</dl>
-</p>
-</div></blockquote>
-</div></blockquote>
 </div></blockquote>
 </p>
 </div></blockquote>
@@ -634,33 +623,43 @@ controller.config().setString(&quot;Key.For.String.Setting&quot;, &quot;A String
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id12">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id14">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id12">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id14">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id17">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id23">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id17">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id3">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id3">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id15">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html#id30">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id12">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id24">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id4">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id5">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id3">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -685,7 +684,7 @@ controller.config().setString(&quot;Key.For.String.Setting&quot;, &quot;A String
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

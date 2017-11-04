@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Device &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Device &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="DeviceList" href="Leap.DeviceList.html" />
     <link rel="prev" title="Controller" href="Leap.Controller.html" />
@@ -294,10 +294,11 @@ function doneWithSearch(){
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1afa648f68f895115c17392ee4f18d2ecf">Device()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1abe3726043f9e89ba5c8412b728b5da2a">baseline() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1ab3cf9896125ce23f4dde2ea9bbacbdbf">distanceToBoundary(const Vector &amp;position) const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_device_1ad73ed7a2e61292b2d165172331f255e7">hasInterference() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1a1c25d50c48b4a24c3bfa0818933a33b9">horizontalViewAngle() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1a7b26c1690d628d26ecf950086fc0f1f9">invalid()</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1aff2f71cf45a8b2923f6c30362682831b">isEmbedded() const</a></li>
-<li><a class="reference external" href="#cppclass_leap_1_1_device_1ae0a767cacba4a4fb4273535056ba6303">isLightingBad() const</a></li>
+<li><a class="reference external" href="#cppclass_leap_1_1_device_1a9c75c0dc7931161bee8194e65c786990">isFlipped() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1aaeba01d1cee7cdf5c8fcfb83825ded26">isSmudged() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1a4832273044ac75dec5c8cbeeeedc2d69">isStreaming() const</a></li>
 <li><a class="reference external" href="#cppclass_leap_1_1_device_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid() const</a></li>
@@ -323,35 +324,6 @@ function doneWithSearch(){
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_device_1a1d1cfd8ffb84e947f82999c682b666a7"></span><strong>Type enum</strong></p>
-<blockquote>
-<div><p>The available types of Leap Motion controllers. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>1.2 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">TYPE_PERIPHERAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0x0003</span></tt> - <p>A standalone USB peripheral. </p>
-<p>The original Leap Motion controller device. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd><p class="first last"><p>1.2 </p>
-</p>
-</dd>
-</dl>
-</p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_HP_LEGACY</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0x1001</span></tt> - <p></p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_KEYBOARD</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0x1002</span></tt> - <p></p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_LAPTOP</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0x1003</span></tt> - <p></p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_device_1abe3726043f9e89ba5c8412b728b5da2a"></span><div class="line-block">
 <div class="line">float <strong>baseline</strong>()</div>
@@ -435,37 +407,30 @@ float angleOnLongDimension = device.<a class="reference internal" href="#cppclas
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_device_1ae0a767cacba4a4fb4273535056ba6303"></span><div class="line-block">
-<div class="line">bool <strong>isLightingBad</strong>()</div>
+<p><span class="target" id="cppclass_leap_1_1_device_1aff2f71cf45a8b2923f6c30362682831b"></span><div class="line-block">
+<div class="line">bool <strong>isEmbedded</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>The software has detected excessive IR illumination, which may interfere with tracking. </p>
-<p><p>If robust mode is enabled, the system will enter robust mode when <a class="reference internal" href="#cppclass_leap_1_1_device_1ae0a767cacba4a4fb4273535056ba6303"><em>isLightingBad()</em></a> is true.</p>
-<p><pre class="literal-block">
-bool tooBright = device.<a class="reference internal" href="#cppclass_leap_1_1_device_1ae0a767cacba4a4fb4273535056ba6303"><em>isLightingBad</em></a>();
-</pre>
-</p>
+<div><p>Reports whether this device is embedded in another computer or computer peripheral. </p>
 <p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if this device is embedded in a laptop, keyboard, or other computer component; false, if this device is a standalone controller. </dd>
 <dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
+<dd>1.2 </dd>
 </dl>
 </p>
-</p>
 </div></blockquote>
-<p><span class="target" id="cppclass_leap_1_1_device_1aaeba01d1cee7cdf5c8fcfb83825ded26"></span><div class="line-block">
-<div class="line">bool <strong>isSmudged</strong>()</div>
+<p><span class="target" id="cppclass_leap_1_1_device_1a9c75c0dc7931161bee8194e65c786990"></span><div class="line-block">
+<div class="line">bool <strong>isFlipped</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>The software has detected a possible smudge on the translucent cover over the Leap Motion cameras. </p>
-<p><p><pre class="literal-block">
-bool dirty = device.<a class="reference internal" href="#cppclass_leap_1_1_device_1aaeba01d1cee7cdf5c8fcfb83825ded26"><em>isSmudged</em></a>();
-</pre>
-</p>
+<div><p>Deprecated. </p>
+<p><p>Always reports false.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
+<dd>2.1 </dd>
 </dl>
 </p>
 </p>
@@ -586,7 +551,7 @@ float <a class="reference internal" href="#cppclass_leap_1_1_device_1a8f79178ef3
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_device_1afbd0fa31db28593e9669c3c56711c0a7"></span><div class="line-block">
-<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_device_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Type</em></a> <strong>type</strong>()</div>
+<div class="line">Type <strong>type</strong>()</div>
 </div>
 </p>
 <blockquote>
@@ -632,7 +597,7 @@ float angleOnShortDimension = device.<a class="reference internal" href="#cppcla
 <div><p>Returns an invalid <a class="reference internal" href="#cppclass_leap_1_1_device"><em>Device</em></a> object. </p>
 <p><p>You can use the instance returned by this function in comparisons testing whether a given <a class="reference internal" href="#cppclass_leap_1_1_device"><em>Device</em></a> instance is valid or invalid. (You can also use the <a class="reference internal" href="#cppclass_leap_1_1_device_1aac1b70a2ed67ead038c4d3f5ac4d8a81"><em>Device::isValid()</em></a> function.)</p>
 <p><pre class="literal-block">
-if (device != <a class="reference internal" href="#cppclass_leap_1_1_device_1a7b26c1690d628d26ecf950086fc0f1f9"><em>Leap::Device::invalid</em></a>()) {
+    if (device != <a class="reference internal" href="#cppclass_leap_1_1_device_1a7b26c1690d628d26ecf950086fc0f1f9"><em>Leap::Device::invalid</em></a>()) {
     float trackingRange = device.<a class="reference internal" href="#cppclass_leap_1_1_device_1a8f79178ef33bc878c1fd88bb584bfae3"><em>range</em></a>();
 }
 </pre>
@@ -655,8 +620,9 @@ if (device != <a class="reference internal" href="#cppclass_leap_1_1_device_1a7b
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -664,24 +630,33 @@ if (device != <a class="reference internal" href="#cppclass_leap_1_1_device_1a7b
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html">Arm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -706,7 +681,7 @@ if (device != <a class="reference internal" href="#cppclass_leap_1_1_device_1a7b
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

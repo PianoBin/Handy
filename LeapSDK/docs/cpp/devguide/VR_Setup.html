@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setting Up Virtual and Augmented Reality Scenes &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Setting Up Virtual and Augmented Reality Scenes &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -394,8 +394,8 @@ Leap::Vector worldDirection = modelMatrix.transformDirection(direction);
 \[M_{tabletop{\mapsto}mounted} = T_{mounted} \times R_{mounted}\]</div>
 </div>
 </div>
-<div class="section" id="converting-coordinate-systems">
-<h2>Converting Coordinate Systems<a class="headerlink" href="#converting-coordinate-systems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="translating-coordinate-systems">
+<h2>Translating Coordinate Systems<a class="headerlink" href="#translating-coordinate-systems" title="Permalink to this headline">¶</a></h2>
 <p>The Leap Motion coordinate system uses a right-handed convention and units of millimeters. Positive y is up; z is front-to-back; x is right-to-left. Your world might use a different set of conventions and units. For example, Unity3D uses a left-handed convention and units of meters, but also oriented with positive y facing up. Unreal Engine uses a left-handed convention and units of centimeters, and with positive z facing up. Three.js, a popular WebGL library uses the same conventions as the Leap Motion, but has no intrinsic convention for units.</p>
 <blockquote>
 <div><em>Note:</em> the scripts in the Unity asset package and the Unreal Engine plugin transform the coordinate systems automatically.</div></blockquote>
@@ -502,7 +502,7 @@ M_{tabletop{mapsto}mounted}</dd>
 <h2>Camera Placement in an AR scene<a class="headerlink" href="#camera-placement-in-an-ar-scene" title="Permalink to this headline">¶</a></h2>
 <p>For a VR scene (without camera images), proper placement of the cameras is straightforward: each camera should be at the user&#8217;s corresponding eyepoint.</p>
 <p>For an AR scene (using camera images), proper placement is a judgement call. Images from the Leap Motion cameras are 2D representations taken from a particular point of view and, unlike 3D data, you cannot simply apply a transformation to change the view to a different vantage point. In order to make the camera images match the 3D tracking data, you must move the cameras forward by the same amount that the physical Leap device is forward of the user&#8217;s eyes (i.e. 8cm for the Oculus) and move them closer together &#8211; the Leap cameras are 40mm apart, while the typical distance between human pupils is 64mm. However, moving the cameras closer together changes the stereo disparity and will make objects appear to be larger then they are in real life.</p>
-<p>You can put the scene cameras at the user&#8217;s pupils to maximize 3D accuracy or you can move them forward and closer to maximize alignment between the images and the 3D objects. You can also compromise and place the cameras between these two extremes. It really depends on which aspect is more important to your content.</p>
+<p>You can put the scene cameras at the user&#8217;s pupils to maximize 3D accuracy or you can move the forward and closer to maximize alignment between the images and the 3D objects. You can also compromise and place the cameras between these two extremes. It really depends on which aspect is more important to your content.</p>
 <img alt="../_images/VR_Oculus_Leap.png" src="../_images/VR_Oculus_Leap.png" />
 <p>A quick and dirty trick to matching 3D hands and other objects without changing the position of scene cameras, is to scale the objects by the ratio of the user&#8217;s interpupillary distance (IPD), which averages 64mm, and the Leap Motion camera offset (40mm). If available from your HMD API, you should use the actual IPD rather than an estimated average. This technique can be used when your code does not control the position of the cameras (such as when using the Oculus rig in Unity).</p>
 </div>
@@ -521,8 +521,9 @@ M_{tabletop{mapsto}mounted}</dd>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
@@ -549,7 +550,7 @@ M_{tabletop{mapsto}mounted}</dd>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

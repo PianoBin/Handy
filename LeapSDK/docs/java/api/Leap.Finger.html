@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Finger &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>Finger &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="FingerList" href="Leap.FingerList.html" />
-    <link rel="prev" title="FailedDeviceList" href="Leap.FailedDeviceList.html" />
+    <link rel="prev" title="DeviceList" href="Leap.DeviceList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.FailedDeviceList.html");    }
+            window.location.assign("Leap.DeviceList.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.FingerList.html");
     }
@@ -280,8 +280,8 @@ function doneWithSearch(){
   Finger
 </span> -->
         
-  <div class="section" id="id15">
-<h1>Finger<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id30">
+<h1>Finger<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h1>
 <style>.members {
      -webkit-column-count:2; /* Chrome, Safari, Opera */
      -moz-column-count:2; /* Firefox */
@@ -293,11 +293,31 @@ function doneWithSearch(){
 <ul class="simple">
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1aa6e4212ca6d56bbc5c01a59e6f458e24">Finger()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1a473cb1f7fe7b2cf824516647e988f32d">Finger(Pointable arg0)</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a398664eabda6168d32738ac4fc92577f">Pointable()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1ac47510eb3931ce418b58319811502526">bone(Bone.Type boneIx)</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1af64662b010bb83b86bed0a30280fabff">direction()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1aca25964504825a090668651d6e29ae1b">equals(Pointable arg0)</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a927587df126a877842a884f4a536dd8c">frame()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a25dea9334ce543e55077a4547becd199">hand()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a4a716406d3d9d4fdbbe46f100e648f3b">id()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1aff12b5715fd9c107afcf65e8755496c1">invalid()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a376708ed9a7b5f6ddbcc4fd9d0405594">invalid()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1ada0cf872bb60b0b7b8d2ab94f4c77047">isExtended()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a5ad53c8d7ea3b606bad4b33446c647ba">isFinger()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a23b423af9addf50644181ed36e530955">isTool()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a487d5f454cff4db530ed7b5b690ec71d">isValid()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1a78152b4726aec8b9c6afff4103bed5be">jointPosition(Finger.Joint jointIx)</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1aaff6176152126e0e2e946d4add73fda0">length()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a911134a7be4d118d320769b3049f0c08">stabilizedTipPosition()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a2b95e667f0c9b2de381c5cc0fd48800c">timeVisible()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a96cf628961be23093d1cb2108622f3f2">tipPosition()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a258f42477d9bffb409703cb82bd08e79">tipVelocity()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1ad146fa8579a5f8a876c4688cc5a68520">toString()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1ad146fa8579a5f8a876c4688cc5a68520">toString()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1ab4ac28124ffbc5e485c76e64b979b918">touchDistance()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1a039ad18771219decb5929d83fa7016c6">touchZone()</a></li>
 <li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_finger_1ae82eaa21b1a38bdc8816432c15add237">type()</a></li>
+<li><a class="reference external" href="#javaclasscom_1_1leapmotion_1_1leap_1_1_pointable_1af97de69a7fb9e061115793fac20ab5d7">width()</a></li>
 </ul>
 </div>
 <div class="line-block" id="javaclasscom_1_1leapmotion_1_1leap_1_1_finger">
@@ -467,33 +487,43 @@ String description = finger.toString();
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id12">Arm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id14">Bone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id5">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id12">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Arm.html#id14">Arm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Bone.html#id17">Bone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html#id23">CircleGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Config.html#id7">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html#id17">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html#id3">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html#id3">FailedDeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">Finger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#id12">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#id24">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html#id4">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id5">Pointable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html#id3">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -518,7 +548,7 @@ String description = finger.toString();
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

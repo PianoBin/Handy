@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Coordinate Systems &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>Coordinate Systems &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
+    <link rel="next" title="Camera Images" href="Leap_Images.html" />
+    <link rel="prev" title="Motions" href="Leap_Motions.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +77,7 @@
     var pageAPI = 'csharp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -107,33 +111,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/devguide/Leap_Coordinate_Mapping.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Guides2.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -152,8 +130,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap_Motions.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap_Images.html");
     }
 
 }
@@ -214,7 +194,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unity/index.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
@@ -238,7 +218,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -295,6 +275,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Guides2.html" accesskey="U">Using the Tracking API</a>&raquo;
   Coordinate Systems
 </span> -->
         
@@ -378,7 +359,7 @@ abs.anim.start();
 <img alt="devguide/../../../images/CoordinateThermometer.png" src="devguide/../../../images/CoordinateThermometer.png" />
 <p>You can use this formula to make the conversion:</p>
 <div class="math">
-\[x_{app} = (x_{leap} - Leap_{start})\frac{App_{range}}{Leap_{range}} + App_{start}\]</div>
+\[x_{app} = (x_{leap} - Leap_{start})\frac{Leap_{range}}{App_{range}} + App_{start}\]</div>
 <p>where:</p>
 <div class="math">
 \[Leap_{range} = Leap_{end} - Leap_{start}\]\[App_{range} = App_{end} - App_{start}\]</div>
@@ -517,7 +498,7 @@ rescale.controls.appendChild(rescale.gui.domElement);
 <h2>The Interaction Box<a class="headerlink" href="#the-interaction-box" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="../api/Leap.InteractionBox.html"><tt class="docutils literal"><span class="pre">InteractionBox</span></tt></a> defines a rectilinear area within the Leap Motion field of view.</p>
 <img alt="devguide/../../../images/Leap_InteractionBox.png" src="devguide/../../../images/Leap_InteractionBox.png" />
-<p>As long as the user&#8217;s hand or finger stays within this box, it is guaranteed to remain in the Leap Motion field of view. You can use this guarantee in your application by mapping the interaction area of your application to the area defined by the InteractionBox instead of mapping to the entire Leap Motion field of view. The <tt class="docutils literal"><span class="pre">InteractionBox</span></tt> class provides the <a class="reference external" href="../api/#csharpstruct_leap_1_1_interaction_box_1a46ab9796adb8e5a4fd24cfe14599effe">NormalizePoint()</a> method to help map Leap Motion coordinates to your application coordinates (by first normalizing them to the range [0..1]).</p>
+<p>As long as the user&#8217;s hand or finger stays within this box, it is guaranteed to remain in the Leap Motion field of view. You can use this guarantee in your application by mapping the interaction area of your application to the area defined by the InteractionBox instead of mapping to the entire Leap Motion field of view. The <tt class="docutils literal"><span class="pre">InteractionBox</span></tt> class provides the <a class="reference external" href="../api/Leap.InteractionBox.html#csharpclass_leap_1_1_interaction_box_1a6c1a49ffe348e97a49cc228f3b5d43f9">NormalizePoint()</a> method to help map Leap Motion coordinates to your application coordinates (by first normalizing them to the range [0..1]).</p>
 <img alt="devguide/../../../images/IBox_Diagram.png" src="devguide/../../../images/IBox_Diagram.png" />
 <p>The size of the <tt class="docutils literal"><span class="pre">InteractionBox</span></tt> is determined by the Leap Motion field of view and the user&#8217;s interaction height setting (in the Leap Motion control panel). The controller software adjusts the size of the box based on the height to keep the bottom corners within the filed of view. If you set the interaction height higher, then the box becomes larger. Users can set the interaction height based on the height they prefer to hold their hands when using the controller. Some users like to hold their hands much higher above the device than others. By using the InteractionBox to map the Leap Motion coordinate system to your application coordinate system, you can accommodate both types of user. A user can also set the interaction height to adjust automatically. If the user moves his or her hands below the current floor of the interaction box, the controller software lowers the height (until it reaches the minimum height); likewise if the user moves above the interaction box, the controller raises the box.</p>
 <p>Because the interaction box can change size and position, every <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object contains an instance of the <tt class="docutils literal"><span class="pre">InteractionBox</span></tt> class. The following example illustrates the behavior of the interaction box. Change your interaction height settings using the Leap Motion control panel to see how it affects the box itself.</p>
@@ -663,7 +644,7 @@ liveBox.boxOrigin.innerText = origin[0].toFixed(2) + ", " + origin[1].toFixed(2)
 
 }
 </script>
-<p>You can use the clamp control in this example to see the affect of clamping coordinates when you use the <a class="reference external" href="../api/#csharpstruct_leap_1_1_interaction_box_1a46ab9796adb8e5a4fd24cfe14599effe">NormalizePoint()</a> function. If you do not clamp, you can get values which are less than zero or greater than one.</p>
+<p>You can use the clamp control in this example to see the affect of clamping coordinates when you use the <a class="reference external" href="../api/Leap.InteractionBox.html#csharpclass_leap_1_1_interaction_box_1a6c1a49ffe348e97a49cc228f3b5d43f9">NormalizePoint()</a> function. If you do not clamp, you can get values which are less than zero or greater than one.</p>
 <p>Because the interaction box can change over time, be aware that the normalized coordinates of a point measured in one frame may not match the normalized coordinates of the same real world point, when normalized using the interaction box provided by another frame. Thus straight lines or perfect circles &#8220;drawn in the air&#8221; by the user may not be straight or smooth if they are normalized across frames. For most applications, this isn&#8217;t a significant problem, but you should test your application with the <em>Automatic Interaction Height</em> setting enabled if you aren&#8217;t sure.</p>
 <div class="figure">
 <img alt="devguide/../../../images/IBox_FOR.png" src="devguide/../../../images/IBox_FOR.png" />
@@ -680,21 +661,18 @@ liveBox.boxOrigin.innerText = origin[0].toFixed(2) + ", " + origin[1].toFixed(2)
 <span class="kt">int</span> <span class="n">appHeight</span> <span class="p">=</span> <span class="m">600</span><span class="p">;</span>
 
 <span class="n">InteractionBox</span> <span class="n">iBox</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">InteractionBox</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">){</span>
-  <span class="n">Hand</span> <span class="n">hand</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Hands</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
-  <span class="n">Finger</span> <span class="n">finger</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+<span class="n">Pointable</span> <span class="n">pointable</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Pointables</span><span class="p">.</span><span class="n">Frontmost</span><span class="p">;</span>
 
-  <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">leapPoint</span> <span class="p">=</span> <span class="n">finger</span><span class="p">.</span><span class="n">StabilizedTipPosition</span><span class="p">;</span>
-  <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">normalizedPoint</span> <span class="p">=</span> <span class="n">iBox</span><span class="p">.</span><span class="n">NormalizePoint</span><span class="p">(</span><span class="n">leapPoint</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
-  
-  <span class="kt">float</span> <span class="n">appX</span> <span class="p">=</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">appWidth</span><span class="p">;</span>
-  <span class="kt">float</span> <span class="n">appY</span> <span class="p">=</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">*</span> <span class="n">appHeight</span><span class="p">;</span>
-  <span class="c1">//The z-coordinate is not used</span>
-<span class="p">}</span>
+<span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">leapPoint</span> <span class="p">=</span> <span class="n">pointable</span><span class="p">.</span><span class="n">StabilizedTipPosition</span><span class="p">;</span>
+<span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">normalizedPoint</span> <span class="p">=</span> <span class="n">iBox</span><span class="p">.</span><span class="n">NormalizePoint</span><span class="p">(</span><span class="n">leapPoint</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="kt">float</span> <span class="n">appX</span> <span class="p">=</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">appWidth</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">appY</span> <span class="p">=</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">*</span> <span class="n">appHeight</span><span class="p">;</span>
+<span class="c1">//The z-coordinate is not used</span>
 </pre></div>
 </div>
 <p>Notice that the example inverts the y-axis by subtracting the normalized y coordinate from one before multiplying by the maximum height.</p>
-<p>If you are using pointable or palm positions in a 2D application, consider using the <a href="#id282"><span class="problematic" id="id283">|Pointable.stabilizedTipPosition|_</span></a> or <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1ae56463bc973143cbabf50523fce9a123">Hand.StabilizedPalmPosition</a>. These attributes have extra stabilization and filtering to help the user interact with a 2D interface. For 3D applications, the unstabilized <a href="#id284"><span class="problematic" id="id285">|Pointable.tipPosition|_</span></a> and <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a78b4d8f8df965c03f22912aafb402233">Hand.PalmPosition</a> are usually more suitable.</p>
+<p>If you are using pointable or palm positions in a 2D application, consider using the <a href="#id412"><span class="problematic" id="id413">|Pointable.stabilizedTipPosition|_</span></a> or <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1ae56463bc973143cbabf50523fce9a123">Hand.StabilizedPalmPosition</a>. These attributes have extra stabilization and filtering to help the user interact with a 2D interface. For 3D applications, the unstabilized <a href="#id414"><span class="problematic" id="id415">|Pointable.tipPosition|_</span></a> and <a class="reference external" href="../api/Leap.Hand.html#csharpclass_leap_1_1_hand_1a78b4d8f8df965c03f22912aafb402233">Hand.PalmPosition</a> are usually more suitable.</p>
 </div>
 <div class="section" id="mapping-to-3d">
 <span id="map3d"></span><h3>Mapping to 3D<a class="headerlink" href="#mapping-to-3d" title="Permalink to this headline">¶</a></h3>
@@ -887,20 +865,17 @@ ibox2d.controls.appendChild(ibox2d.gui.domElement);
 <span class="kt">float</span> <span class="n">appHeight</span> <span class="p">=</span> <span class="m">600</span><span class="p">;</span>
 
 <span class="n">InteractionBox</span> <span class="n">iBox</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">InteractionBox</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">){</span>
-  <span class="n">Hand</span> <span class="n">hand</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Hands</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
-  <span class="n">Finger</span> <span class="n">finger</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+<span class="n">Pointable</span> <span class="n">pointable</span> <span class="p">=</span> <span class="n">leap</span><span class="p">.</span><span class="n">Frame</span><span class="p">().</span><span class="n">Pointables</span><span class="p">.</span><span class="n">Frontmost</span><span class="p">;</span>
 
-  <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">leapPoint</span> <span class="p">=</span> <span class="n">finger</span><span class="p">.</span><span class="n">StabilizedTipPosition</span><span class="p">;</span>
-  <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">normalizedPoint</span> <span class="p">=</span> <span class="n">iBox</span><span class="p">.</span><span class="n">NormalizePoint</span><span class="p">(</span><span class="n">leapPoint</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
-  
-  <span class="n">normalizedPoint</span> <span class="p">*=</span> <span class="m">1.5f</span><span class="p">;</span> <span class="c1">//scale</span>
-  <span class="n">normalizedPoint</span> <span class="p">-=</span> <span class="k">new</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span><span class="p">(.</span><span class="m">25f</span><span class="p">,</span> <span class="p">.</span><span class="m">25f</span><span class="p">,</span> <span class="p">.</span><span class="m">25f</span><span class="p">);</span> <span class="c1">// re-center</span>
-  
-  <span class="kt">float</span> <span class="n">appX</span> <span class="p">=</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">appWidth</span><span class="p">;</span>
-  <span class="kt">float</span> <span class="n">appY</span> <span class="p">=</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">*</span> <span class="n">appHeight</span><span class="p">;</span>
-  <span class="c1">//The z-coordinate is not used</span>
-<span class="p">}</span>
+<span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">leapPoint</span> <span class="p">=</span> <span class="n">pointable</span><span class="p">.</span><span class="n">StabilizedTipPosition</span><span class="p">;</span>
+<span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span> <span class="n">normalizedPoint</span> <span class="p">=</span> <span class="n">iBox</span><span class="p">.</span><span class="n">NormalizePoint</span><span class="p">(</span><span class="n">leapPoint</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="n">normalizedPoint</span> <span class="p">*=</span> <span class="m">1.5f</span><span class="p">;</span> <span class="c1">//scale</span>
+<span class="n">normalizedPoint</span> <span class="p">-=</span> <span class="k">new</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Vector</span><span class="p">(.</span><span class="m">25f</span><span class="p">,</span> <span class="p">.</span><span class="m">25f</span><span class="p">,</span> <span class="p">.</span><span class="m">25f</span><span class="p">);</span> <span class="c1">// re-center</span>
+
+<span class="kt">float</span> <span class="n">appX</span> <span class="p">=</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">x</span> <span class="p">*</span> <span class="n">appWidth</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">appY</span> <span class="p">=</span> <span class="p">(</span><span class="m">1</span> <span class="p">-</span> <span class="n">normalizedPoint</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="p">*</span> <span class="n">appHeight</span><span class="p">;</span>
+<span class="c1">//The z-coordinate is not used</span>
 </pre></div>
 </div>
 <p>You will notice that Setting the <tt class="docutils literal"><span class="pre">clamp</span></tt> parameter to true also no longer keeps the final coordinates within your defined bounds. The user&#8217;s motions can more easily move outside the application&#8217;s interaction area since you are effectively mapping a smaller subset of the interaction box to your application. Providing good visual feedback to keep the user oriented is helpful (as always).</p>
@@ -918,10 +893,39 @@ ibox2d.controls.appendChild(ibox2d.gui.domElement);
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap_Controllers.html">Connecting to the Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Tracking.html">Tracking Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Frames.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id1">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id1">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Coordinate Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#leap-motion-coordinates">Leap Motion Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mapping-coordinates-to-your-application">Mapping Coordinates to your Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-interaction-box">The Interaction Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mapping-coordinates-with-the-interaction-box">Mapping Coordinates with the Interaction Box</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-to-2d">Mapping to 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-to-3d">Mapping to 3D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-right-and-left-hands-differently">Mapping Right and Left Hands Differently</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#increasing-sensitivity">Increasing Sensitivity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mapping-to-unity-coordinates">Mapping to Unity coordinates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
@@ -944,7 +948,7 @@ ibox2d.controls.appendChild(ibox2d.gui.domElement);
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

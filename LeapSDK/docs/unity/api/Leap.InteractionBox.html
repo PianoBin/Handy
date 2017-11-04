@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>InteractionBox &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>InteractionBox &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="C# API Reference" href="Leap_Classes.html" />
+    <link rel="next" title="KeyTapGesture" href="Leap.KeyTapGesture.html" />
+    <link rel="prev" title="ImageList" href="Leap.ImageList.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -109,33 +112,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/api/Leap.InteractionBox.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Classes.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -154,8 +131,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap.ImageList.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap.KeyTapGesture.html");
     }
 
 }
@@ -240,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -297,6 +276,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Classes.html" accesskey="U">C# API Reference</a>&raquo;
   InteractionBox
 </span> -->
         
@@ -312,38 +292,261 @@ function doneWithSearch(){
 </style><p><strong>Properties:</strong></p>
 <div class="members container">
 <ul class="simple">
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a81aeabd750c6ceacb6f34056dea1f154">Center</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1abee176add5c7997b26f3d76612bd199d">Depth</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a0f776a4ace9e9771de0a864193f3de0b">Height</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a62885a2911b2c21274564c3d9e407c2c">IsValid</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1ab1272944bad2e4336494b55157f3346a">Size</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a7de4690b4c35b991ee86032c52d974ab">Width</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a81aeabd750c6ceacb6f34056dea1f154">Center</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1abee176add5c7997b26f3d76612bd199d">Depth</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a0f776a4ace9e9771de0a864193f3de0b">Height</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a8feddd30fea7e59e26d6583721db32fc">Invalid</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a62885a2911b2c21274564c3d9e407c2c">IsValid</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a7de4690b4c35b991ee86032c52d974ab">Width</a></li>
 </ul>
 </div>
 <p><strong>Methods:</strong></p>
 <div class="members container">
 <ul class="simple">
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1ac6300a2fa12b3ee0c5b579f5f8ef185a">DenormalizePoint(Vector normalizedPosition)</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a1f97bc68abae511ccc876c678e6a15e7">Equals(InteractionBox other)</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a5c22d0adce7227dba76f9d841dba56c4">InteractionBox(Vector center, Vector size)</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1a46ab9796adb8e5a4fd24cfe14599effe">NormalizePoint(Vector position, bool clamp=true)</a></li>
-<li><a class="reference external" href="#csharpstruct_leap_1_1_interaction_box_1aa73e7c4dd1df5fd5fbf81c7764ee1533">ToString()</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1ac6300a2fa12b3ee0c5b579f5f8ef185a">DenormalizePoint(Vector normalizedPosition)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a0679ef2cc52f7f79fa552aacacc932cc">Equals(InteractionBox arg0)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a6c1a49ffe348e97a49cc228f3b5d43f9">NormalizePoint(Vector position, bool clamp)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1a2f55791ff5d21a26f76ac8bc673ab021">NormalizePoint(Vector position)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_interaction_box_1aa73e7c4dd1df5fd5fbf81c7764ee1533">ToString()</a></li>
 </ul>
 </div>
-<div class="line-block" id="csharpstruct_leap_1_1_interaction_box">
-<div class="line"><em>struct</em> <strong>Leap::InteractionBox</strong></div>
+<div class="line-block" id="csharpclass_leap_1_1_interaction_box">
+<div class="line"><em>class</em> <strong>Leap::InteractionBox</strong></div>
 </div>
 <blockquote>
-<div><p>The <a class="reference internal" href="#csharpstruct_leap_1_1_interaction_box"><em>InteractionBox</em></a> class represents a box-shaped region completely within the field of view of the Leap Motion controller. </p>
-<p><p>The interaction box is an axis-aligned rectangular prism and provides normalized coordinates for hands, fingers, and tools within this box. The <a class="reference internal" href="#csharpstruct_leap_1_1_interaction_box"><em>InteractionBox</em></a> class can make it easier to map positions in the Leap Motion coordinate system to 2D or 3D coordinate systems used for application drawing.</p>
+<div><p>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> class represents a box-shaped region completely within the field of view of the Leap Motion controller. </p>
+<p><p>The interaction box is an axis-aligned rectangular prism and provides normalized coordinates for hands, fingers, and tools within this box. The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> class can make it easier to map positions in the Leap Motion coordinate system to 2D or 3D coordinate systems used for application drawing.</p>
 <p><img alt="api/../../../images/Leap_InteractionBox.png" src="api/../../../images/Leap_InteractionBox.png" /></p>
-<p>The <a class="reference internal" href="#csharpstruct_leap_1_1_interaction_box"><em>InteractionBox</em></a> region is defined by a center and dimensions along the x, y, and z axes.</p>
-<p>Get an <a class="reference internal" href="#csharpstruct_leap_1_1_interaction_box"><em>InteractionBox</em></a> object from a <a class="reference internal" href="Leap.Frame.html#csharpclass_leap_1_1_frame"><em>Frame</em></a> object. <dl class="docutils">
+<p>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> region is defined by a center and dimensions along the x, y, and z axes.</p>
+<p>Get an <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object from a <a class="reference internal" href="Leap.Frame.html#csharpclass_leap_1_1_frame"><em>Frame</em></a> object. <dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>1.0 </dd>
 </dl>
 </p>
 </p>
+<em>Public Functions</em><blockquote>
+<div><p><span class="target" id="csharpclass_leap_1_1_interaction_box_1ac6300a2fa12b3ee0c5b579f5f8ef185a"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>DenormalizePoint</strong>(<a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> normalizedPosition)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Converts a position defined by normalized <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> coordinates into device coordinates in millimeters. </p>
+<p><p><pre class="literal-block">
+InteractionBox interactionBox = frame.InteractionBox;
+Vector point = new Vector (100, 75, -125);
+Vector normalizedCoordinates = interactionBox.NormalizePoint (point);
+Vector denormalizedCoordinates = interactionBox.DenormalizePoint (normalizedCoordinates);
+// denormalizedCoordinates == point
+</pre>
+</p>
+<p>This function performs the inverse of normalizePoint().</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The corresponding denormalized position in device coordinates. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">normalizedPosition</span></tt> - <p>The input position in <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> coordinates. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a0679ef2cc52f7f79fa552aacacc932cc"></span><div class="line-block">
+<div class="line">bool <strong>Equals</strong>(<a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> arg0)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Compare <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object equality. </p>
+<p><p><pre class="literal-block">
+Boolean isBoxEqual = thisBox == thatBox;
+</pre>
+</p>
+<p>Two <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> objects are equal if and only if both <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> objects represent the exact same <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> and both InteractionBoxes are valid. <dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a6c1a49ffe348e97a49cc228f3b5d43f9"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>NormalizePoint</strong>(<a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> position, bool clamp)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Normalizes the coordinates of a point using the interaction box. </p>
+<p><p><pre class="literal-block">
+Vector normalizedHandPosition = interactionBox.NormalizePoint (hand.PalmPosition);
+</pre>
+</p>
+<p>Coordinates from the Leap Motion frame of reference (millimeters) are converted to a range of [0..1] such that the minimum value of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> maps to 0 and the maximum value of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> maps to 1.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The normalized position. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">position</span></tt> - <p>The input position in device coordinates. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">clamp</span></tt> - <p>Whether or not to limit the output value to the range [0,1] when the input position is outside the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a>. Defaults to true. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a2f55791ff5d21a26f76ac8bc673ab021"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>NormalizePoint</strong>(<a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> position)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Normalizes the coordinates of a point using the interaction box. </p>
+<p><p><pre class="literal-block">
+Vector normalizedHandPosition = interactionBox.NormalizePoint (hand.PalmPosition);
+</pre>
+</p>
+<p>Coordinates from the Leap Motion frame of reference (millimeters) are converted to a range of [0..1] such that the minimum value of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> maps to 0 and the maximum value of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> maps to 1.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The normalized position. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">position</span></tt> - <p>The input position in device coordinates. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">clamp</span></tt> - <p>Whether or not to limit the output value to the range [0,1] when the input position is outside the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a>. Defaults to true. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1aa73e7c4dd1df5fd5fbf81c7764ee1533"></span><div class="line-block">
+<div class="line">override string <strong>ToString</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>A string containing a brief, human readable description of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>A description of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> as a string. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</div></blockquote>
+</div></blockquote>
+<em>Property</em><blockquote>
+<div><p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a81aeabd750c6ceacb6f34056dea1f154"></span><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>Center</strong></p>
+<blockquote>
+<div><p>The center of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> in device coordinates (millimeters). </p>
+<p><p>This point is equidistant from all sides of the box.</p>
+<p><pre class="literal-block">
+Vector boxCenter = interactionBox.Center;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> center in device coordinates. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1abee176add5c7997b26f3d76612bd199d"></span>float <strong>Depth</strong></p>
+<blockquote>
+<div><p>The depth of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> in millimeters, measured along the z-axis. </p>
+<p><p><pre class="literal-block">
+float boxDimensionAlongZAxis = interactionBox.Depth;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> depth in millimeters. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a0f776a4ace9e9771de0a864193f3de0b"></span>float <strong>Height</strong></p>
+<blockquote>
+<div><p>The height of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> in millimeters, measured along the y-axis. </p>
+<p><p><pre class="literal-block">
+float boxDimensionAlongYAxis = interactionBox.Height;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> height in millimeters. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a8feddd30fea7e59e26d6583721db32fc"></span><a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> <strong>Invalid</strong></p>
+<blockquote>
+<div><p>Returns an invalid <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object. </p>
+<p><p>You can use the instance returned by this function in comparisons testing whether a given <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> instance is valid or invalid. (You can also use the InteractionBox::isValid() function.)</p>
+<p><pre class="literal-block">
+if (interactionBox != InteractionBox.Invalid) {
+    //Use the box...
+}
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The invalid <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> instance. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a62885a2911b2c21274564c3d9e407c2c"></span>bool <strong>IsValid</strong></p>
+<blockquote>
+<div><p>Reports whether this is a valid <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object. </p>
+<p><p><pre class="literal-block">
+if (interactionBox.IsValid) {
+    //Use the box...
+}
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if this <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> object contains valid data. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_interaction_box_1a7de4690b4c35b991ee86032c52d974ab"></span>float <strong>Width</strong></p>
+<blockquote>
+<div><p>The width of the <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> in millimeters, measured along the x-axis. </p>
+<p><p><pre class="literal-block">
+float boxDimensionAlongXAxis = interactionBox.Width;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The <a class="reference internal" href="#csharpclass_leap_1_1_interaction_box"><em>InteractionBox</em></a> width in millimeters. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+</div></blockquote>
 </div></blockquote>
 
 
@@ -352,19 +555,51 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
-          </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">C# API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Leap_Classes.html#leap-motion-api-classes">Leap Motion API Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Leap.Arm.html#id3">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id3">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id3">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Config.html#id2">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id2">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Device.html">Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id5">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id1">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">InteractionBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id1">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -382,7 +617,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

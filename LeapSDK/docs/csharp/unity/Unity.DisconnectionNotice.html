@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DisconnectionNotice &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>DisconnectionNotice &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -299,39 +299,39 @@ function doneWithSearch(){
 <p>Displays a notice if the Leap Motion device is not plugged in or the service is not running.</p>
 <img alt="unity/../../../images/unity/Unity_DisconnectionNotice.jpg" src="unity/../../../images/unity/Unity_DisconnectionNotice.jpg" />
 <p>Attach this script to the game object containing a GUI Texture with the image to display. The asset package Textures folder contains example graphics for both peripheral and embedded Leap Motion controllers.</p>
-<div class="line-block" id="unitycorea00052">
-<div class="line"><em>class</em> <strong>Leap::Unity::DisconnectionNotice</strong></div>
+<div class="line-block" id="unitycorea00004">
+<div class="line"><em>class</em> <strong>DisconnectionNotice</strong></div>
 </div>
 <blockquote>
 <div><p>Tracks the connection state of the Leap Motion hardware. </p>
 <p>If the device is unplugged or otherwise not detected, the script fades in a GUITexture object which should communicate the problem to the user. </p>
 <em>Public Members</em><blockquote>
-<div><p><span class="target" id="unitycorea00052_1a7d2e94f752b4f0b6caf264d230377bcd"></span>Sprite <strong>embeddedReplacementImage</strong></p>
+<div><p><span class="target" id="unitycorea00004_1a6b7188898701fbde02a9fbaa82b16979"></span>Texture2D <strong>embeddedReplacementImage</strong></p>
 <blockquote>
 <div><p>An alternative image to use when the hardware is embedded in a keyboard or laptop. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a790ba197bec4ec0a035f01505d3b5cc1"></span>AnimationCurve <strong>fade</strong></p>
+<p><span class="target" id="unitycorea00004_1acb24538c851cc84298ff6858dacea225"></span>AnimationCurve <strong>fade</strong></p>
 <blockquote>
 <div><p>The easing curve. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a5236c20bc41466e9b41791b3ef5c19d6"></span>float <strong>fadeInTime</strong></p>
+<p><span class="target" id="unitycorea00004_1ac41eca0592e1cdfe88ba9699f2327fe1"></span>float <strong>fadeInTime</strong></p>
 <blockquote>
 <div><p>The speed to fade the object alpha from 0 to 1. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1ab0d46e8e760f64e5d576bb5d17647d9c"></span>float <strong>fadeOutTime</strong></p>
+<p><span class="target" id="unitycorea00004_1afb38b242ee93689f42a52176c9b22f91"></span>float <strong>fadeOutTime</strong></p>
 <blockquote>
 <div><p>The speed to fade the object alpha from 1 to 0. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1ab781e52e1da2bc11e38831950e74a619"></span>Color <strong>onColor</strong></p>
+<p><span class="target" id="unitycorea00004_1ac2a6c0300b0c52e4a7a7e196a90f4a31"></span>Color <strong>onColor</strong></p>
 <blockquote>
 <div><p>The fully on texture tint color. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a31b87b2e3c6dde73afd348419356e8d4"></span>int <strong>waitFrames</strong></p>
+<p><span class="target" id="unitycorea00004_1a1b02a27c4d94830235bd05a0ac3226b5"></span>int <strong>waitFrames</strong></p>
 <blockquote>
 <div><p>A delay before beginning the fade-in effect. </p>
 <p></p>
@@ -346,10 +346,13 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
@@ -372,7 +375,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

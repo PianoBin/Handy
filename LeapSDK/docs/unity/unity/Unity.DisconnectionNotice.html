@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DisconnectionNotice &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>DisconnectionNotice &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
-    <link rel="up" title="Leap.Unity Namespace" href="Unity_Classes.html" />
-    <link rel="next" title="LeapUnityExtensions" href="Unity.LeapUnityExtensions.html" />
-    <link rel="prev" title="ProximityDetector" href="Unity.ProximityDetector.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Unity Script Reference" href="Unity_Classes.html" />
+    <link rel="next" title="LeapRecorder" href="Unity.LeapRecorder.html" />
+    <link rel="prev" title="ConfidenceTransparency" href="Unity.ConfidenceTransparency.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -106,7 +106,6 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/unity/Unity.DisconnectionNotice.html";
             } else {
-                    redirectedLocation ="../api/Leap_Classes.html";
                     redirectedLocation ="Unity_Classes.html";
             }
 
@@ -127,9 +126,9 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Unity.ProximityDetector.html");    }
+            window.location.assign("Unity.ConfidenceTransparency.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Unity.LeapUnityExtensions.html");
+            window.location.assign("Unity.LeapRecorder.html");
     }
 
 }
@@ -186,7 +185,7 @@ function handleKeyInput(e)
 
 <ul>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
     
   </li>
   <li>
@@ -194,27 +193,27 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'cpp'">C++</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'cpp'">C++</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'java'">Java</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'java'">Java</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'python'">Python</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'python'">Python</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
     
   </li>
   <li>
-      <a href="../api/Leap_Classes.html?proglang=currentUnity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Unity_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -271,8 +270,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
-    <a href="../api/Leap_Classes.html" accesskey="U">Unity Scripting Reference</a>&raquo;
-    <a href="Unity_Classes.html" accesskey="U">Leap.Unity Namespace</a>&raquo;
+    <a href="Unity_Classes.html" accesskey="U">Unity Script Reference</a>&raquo;
   DisconnectionNotice
 </span> -->
         
@@ -281,39 +279,39 @@ function doneWithSearch(){
 <p>Displays a notice if the Leap Motion device is not plugged in or the service is not running.</p>
 <img alt="unity/../../../images/unity/Unity_DisconnectionNotice.jpg" src="unity/../../../images/unity/Unity_DisconnectionNotice.jpg" />
 <p>Attach this script to the game object containing a GUI Texture with the image to display. The asset package Textures folder contains example graphics for both peripheral and embedded Leap Motion controllers.</p>
-<div class="line-block" id="unitycorea00052">
-<div class="line"><em>class</em> <strong>Leap::Unity::DisconnectionNotice</strong></div>
+<div class="line-block" id="unitycorea00004">
+<div class="line"><em>class</em> <strong>DisconnectionNotice</strong></div>
 </div>
 <blockquote>
 <div><p>Tracks the connection state of the Leap Motion hardware. </p>
 <p>If the device is unplugged or otherwise not detected, the script fades in a GUITexture object which should communicate the problem to the user. </p>
 <em>Public Members</em><blockquote>
-<div><p><span class="target" id="unitycorea00052_1a7d2e94f752b4f0b6caf264d230377bcd"></span>Sprite <strong>embeddedReplacementImage</strong></p>
+<div><p><span class="target" id="unitycorea00004_1a6b7188898701fbde02a9fbaa82b16979"></span>Texture2D <strong>embeddedReplacementImage</strong></p>
 <blockquote>
 <div><p>An alternative image to use when the hardware is embedded in a keyboard or laptop. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a790ba197bec4ec0a035f01505d3b5cc1"></span>AnimationCurve <strong>fade</strong></p>
+<p><span class="target" id="unitycorea00004_1acb24538c851cc84298ff6858dacea225"></span>AnimationCurve <strong>fade</strong></p>
 <blockquote>
 <div><p>The easing curve. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a5236c20bc41466e9b41791b3ef5c19d6"></span>float <strong>fadeInTime</strong></p>
+<p><span class="target" id="unitycorea00004_1ac41eca0592e1cdfe88ba9699f2327fe1"></span>float <strong>fadeInTime</strong></p>
 <blockquote>
 <div><p>The speed to fade the object alpha from 0 to 1. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1ab0d46e8e760f64e5d576bb5d17647d9c"></span>float <strong>fadeOutTime</strong></p>
+<p><span class="target" id="unitycorea00004_1afb38b242ee93689f42a52176c9b22f91"></span>float <strong>fadeOutTime</strong></p>
 <blockquote>
 <div><p>The speed to fade the object alpha from 1 to 0. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1ab781e52e1da2bc11e38831950e74a619"></span>Color <strong>onColor</strong></p>
+<p><span class="target" id="unitycorea00004_1ac2a6c0300b0c52e4a7a7e196a90f4a31"></span>Color <strong>onColor</strong></p>
 <blockquote>
 <div><p>The fully on texture tint color. </p>
 <p></p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00052_1a31b87b2e3c6dde73afd348419356e8d4"></span>int <strong>waitFrames</strong></p>
+<p><span class="target" id="unitycorea00004_1a1b02a27c4d94830235bd05a0ac3226b5"></span>int <strong>waitFrames</strong></p>
 <blockquote>
 <div><p>A delay before beginning the fade-in effect. </p>
 <p></p>
@@ -328,51 +326,27 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Unity_Classes.html">Leap.Unity Namespace</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapHandController.html">LeapHandController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapProvider.html">LeapProvider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapServiceProvider.html">LeapServiceProvider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapImageRetriever.html">LeapImageRetriever</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandFactory.html">HandFactory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandPool.html">HandPool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandProxy.html">HandProxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandRepresentation.html">HandRepresentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.IHandModel.html">IHandModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.HandModel.html">HandModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity_HandBehaviors.html">Hand Behaviors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.FingerModel.html">FingerModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.Detector.html">Detector</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">DisconnectionNotice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapUnityExtensions.html">LeapUnityExtensions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapDeviceInfo.html">LeapDeviceInfo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.FrameRateControls.html">FrameRateControls</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.Utils.html">Utils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.EyeType.html">EyeType</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapVRCameraControl.html">LeapVRCameraControl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.LeapVRTemporalWarping.html">LeapVRTemporalWarping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.VRHeightOffset.html">SmoothedFoat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.TestHandFactory.html">TestHandFactory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedFloat.html">SmoothedFloat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedQuaternion.html">SmoothedQuaternion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Unity.SmoothedVector.html">SmoothedVector3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Unity_Classes.html">Unity Script Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Unity.HandController.html">HandController</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.HandModel.html">HandModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.FingerModel.html">FingerModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.ToolModel.html">ToolModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.ConfidenceTransparency.html">ConfidenceTransparency</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">DisconnectionNotice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.LeapRecorder.html">LeapRecorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.LeapUnityExtensions.html">LeapUnityExtensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Unity.MagneticPinch.html">MagneticPinch</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Unity_Leap_Namespace.html">Leap namespace</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -390,7 +364,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

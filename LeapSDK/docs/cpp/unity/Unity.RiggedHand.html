@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RiggedHand &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>RiggedHand &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -313,78 +313,28 @@ function doneWithSearch(){
 <img alt="unity/../../../images/unity/Unity_SaltMediumFullHand.jpg" src="unity/../../../images/unity/Unity_SaltMediumFullHand.jpg" />
 <p class="caption">SaltMediumFullHand</p>
 </div>
-<div class="line-block" id="unitycorea00263">
-<div class="line"><em>class</em> <strong>Leap::Unity::RiggedHand</strong></div>
+<div class="line-block" id="unitycorea00023">
+<div class="line"><em>class</em> <strong>RiggedHand</strong></div>
 </div>
 <blockquote>
-<div><p>This version of <a class="reference internal" href="Unity.IHandModel.html#unitycorea00128"><em>IHandModel</em></a> supports a hand respresentation based on a skinned and jointed 3D model asset. </p>
+<div><p></p>
 <p></p>
 <em>Public Functions</em><blockquote>
-<div><p><span class="target" id="unitycorea00263_1a919b4e3b967a79eb3bcce6d838a7ef4c"></span><div class="line-block">
-<div class="line">void <strong>AutoRigRiggedHand</strong>(Transform palm, Transform finger1, Transform finger2)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Sets up the rigged hand if <a class="reference internal" href="Unity.RiggedFinger.html#unitycorea00262"><em>RiggedFinger</em></a> scripts have already been assigned using Mecanim values. </p>
-<p></p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00263_1a588b2f58a5ffbbfc451ddf8432228507"></span><div class="line-block">
+<div><p><span class="target" id="unitycorea00023_1ac622d1b284796ef74aeb2a5942704647"></span><div class="line-block">
 <div class="line">override void <strong>InitHand</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>Implement this function to initialise this hand after it is created. </p>
-<p>This function is called by the HandController during the Unity Update() phase when a new hand is detected by the Leap Motion device. </p>
+<p>This function is called by the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> during the Unity Update() phase when a new hand is detected by the Leap Motion device. </p>
 </div></blockquote>
-<p><span class="target" id="unitycorea00263_1aad0ba3eb19fbd881af90b7e5b6ffaf7d"></span><div class="line-block">
-<div class="line">void <strong>RestoreJointsStartPose</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Restores original joint positions, particularly after model has been placed in Leap&#8216;s editor pose. </p>
-<p></p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00263_1a5a1c018bad50c06259998bdccbc2c513"></span><div class="line-block">
-<div class="line">void <strong>SetupRiggedHand</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Sets up the rigged hand by finding base of each finger by name. </p>
-<p></p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00263_1ae59cd89a5a3b39f56be3b8db74030fa5"></span><div class="line-block">
-<div class="line">void <strong>StoreJointsStartPose</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Stores a snapshot of original joint positions. </p>
-<p></p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00263_1aa44bd1ae715125809d5803b293eb1bee"></span><div class="line-block">
-<div class="line">override bool <strong>SupportsEditorPersistence</strong>()</div>
-</div>
-</p>
-<blockquote>
-<div><p>Returns whether or not this hand model supports editor persistence. </p>
-<p>This is false by default and must be opt-in by a developer making their own hand model script if they want editor persistence. </p>
-</div></blockquote>
-<p><span class="target" id="unitycorea00263_1ac4e41fd3965e2d0d56379d3fc6011128"></span><div class="line-block">
+<p><span class="target" id="unitycorea00023_1aeaf488e2dd66af66934cebae576a91ef"></span><div class="line-block">
 <div class="line">override void <strong>UpdateHand</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>Implement this function to update this hand once every game loop. </p>
-<p>For <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> instances assigned to the HandController graphics hand list, the HandController calls this function during the Unity Update() phase. For <a class="reference internal" href="Unity.HandModel.html#unitycorea00108"><em>HandModel</em></a> instances in the physics hand list, the HandController calls this function in the FixedUpdate() phase. </p>
-</div></blockquote>
-</div></blockquote>
-<em>Public Static Functions</em><blockquote>
-<div><p><span class="target" id="unitycorea00263_1a67e0012de184ea7ea1e76cec5a21589b"></span><div class="line-block">
-<div class="line">Vector3 <strong>CalculateZeroedVector</strong>(Vector3 vectorToZero)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Finds nearest cardinal vector to a vector. </p>
-<p></p>
+<p>For <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> instances assigned to the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> graphics hand list, the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> calls this function during the Unity Update() phase. For <a class="reference internal" href="Unity.HandModel.html#unitycorea00013"><em>HandModel</em></a> instances in the physics hand list, the <a class="reference internal" href="Unity.HandController.html#unitycorea00011"><em>HandController</em></a> calls this function in the FixedUpdate() phase. </p>
 </div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -396,8 +346,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -424,7 +375,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

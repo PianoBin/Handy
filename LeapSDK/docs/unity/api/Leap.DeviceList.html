@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>DeviceList &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>DeviceList &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="C# API Reference" href="Leap_Classes.html" />
+    <link rel="next" title="Finger" href="Leap.Finger.html" />
+    <link rel="prev" title="Device" href="Leap.Device.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +77,7 @@
     var pageAPI = 'unity';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.java = true;
     hasAPI.python = true;
     hasAPI.unity = true;
@@ -106,33 +110,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/api/Leap.DeviceList.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Classes.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -151,8 +129,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap.Device.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap.Finger.html");
     }
 
 }
@@ -209,7 +189,7 @@ function handleKeyInput(e)
 
 <ul>
   <li>
-      <a href="../../javascript/index.html?proglang=javascript" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'javascript'">JavaScript</a>
     
   </li>
   <li>
@@ -217,7 +197,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../csharp/index.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/api/Leap.DeviceList.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -233,11 +213,11 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../objc/index.html?proglang=objc" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'objc'">Objective-C</a>
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -294,12 +274,106 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Classes.html" accesskey="U">C# API Reference</a>&raquo;
   DeviceList
 </span> -->
         
   <div class="section" id="devicelist">
 <h1>DeviceList<a class="headerlink" href="#devicelist" title="Permalink to this headline">¶</a></h1>
-<p>In C#, device lists are List&lt;Device&gt; objects.</p>
+<style>.members {
+     -webkit-column-count:2; /* Chrome, Safari, Opera */
+     -moz-column-count:2; /* Firefox */
+     column-count:2;
+     }
+     strong {color:gray;}
+</style><p><strong>Properties:</strong></p>
+<div class="members container">
+<ul class="simple">
+<li><a class="reference external" href="#csharpclass_leap_1_1_device_list_1aad462966ed963f892117056de1eba502">Count</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_device_list_1aaaa6c7dd3bd14dc2ce7f0780de528bb1">IsEmpty</a></li>
+</ul>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="members container">
+<ul class="simple">
+<li><a class="reference external" href="#csharpclass_leap_1_1_device_list_1ac8c3a96f09d7bc4e1f1a1dc9a07dafc5">Append(DeviceList other)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_device_list_1a1f2c3eef901d5a7ce80ae9b88844d7aa">DeviceList()</a></li>
+</ul>
+</div>
+<div class="line-block" id="csharpclass_leap_1_1_device_list">
+<div class="line"><em>class</em> <strong>Leap::DeviceList</strong></div>
+</div>
+<blockquote>
+<div><p>The <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> class represents a list of <a class="reference internal" href="Leap.Device.html#csharpclass_leap_1_1_device"><em>Device</em></a> objects. </p>
+<p>Get a <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> object by calling Controller::devices(). <dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+<em>Public Functions</em><blockquote>
+<div><p><span class="target" id="csharpclass_leap_1_1_device_list_1ac8c3a96f09d7bc4e1f1a1dc9a07dafc5"></span><div class="line-block">
+<div class="line"><a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> <strong>Append</strong>(<a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> other)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Appends the members of the specified <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> to this <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a>. </p>
+<p><dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">other</span></tt> - <p>A <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a> object containing <a class="reference internal" href="Leap.Device.html#csharpclass_leap_1_1_device"><em>Device</em></a> objects to append to the end of this <a class="reference internal" href="#csharpclass_leap_1_1_device_list"><em>DeviceList</em></a>. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_device_list_1a1f2c3eef901d5a7ce80ae9b88844d7aa"></span><div class="line-block">
+<div class="line"> <strong>DeviceList</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Constructs an empty list of devices. </p>
+<p><dl class="docutils">
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</div></blockquote>
+</div></blockquote>
+<em>Property</em><blockquote>
+<div><p><span class="target" id="csharpclass_leap_1_1_device_list_1aad462966ed963f892117056de1eba502"></span>int <strong>Count</strong></p>
+<blockquote>
+<div><p>Returns the number of devices in this list. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The number of devices in this list. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_device_list_1aaaa6c7dd3bd14dc2ce7f0780de528bb1"></span>bool <strong>IsEmpty</strong></p>
+<blockquote>
+<div><p>Reports whether the list is empty. </p>
+<p><p><pre class="literal-block">
+if (!controller.Devices.IsEmpty) {
+    Device leapDevice = controller.Devices [0];
+}
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if the list has no members. </dd>
+<dt><strong>Since</strong></dt>
+<dd>1.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 
 
@@ -308,19 +382,51 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
-          </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Classes.html">C# API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Leap_Classes.html#leap-motion-api-classes">Leap Motion API Classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Leap.Arm.html#id3">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id3">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id3">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Config.html#id2">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id2">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Device.html">Device</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">DeviceList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id5">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id1">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id1">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -338,7 +444,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

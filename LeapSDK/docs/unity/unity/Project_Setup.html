@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setting up a Unity3D project &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Setting up a project in Unity 3D &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -208,14 +208,14 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
-  Setting up a Unity3D project
+  Setting up a project in Unity 3D
 </span> -->
         
-  <div class="section" id="setting-up-a-unity3d-project">
-<h1>Setting up a Unity3D project<a class="headerlink" href="#setting-up-a-unity3d-project" title="Permalink to this headline">¶</a></h1>
-<p>The Leap Motion asset package includes plugin files for using the Leap Motion device on Windows computers. This package includes Hand prefabs, scripts, and demo scenes to help you develop Leap Motion apps quickly.</p>
+  <div class="section" id="setting-up-a-project-in-unity-3d">
+<h1>Setting up a project in Unity 3D<a class="headerlink" href="#setting-up-a-project-in-unity-3d" title="Permalink to this headline">¶</a></h1>
+<p>The Leap Motion asset package includes in plugin files for using the Leap Motion device on Windows and Mac computers. This package includes Hand prefabs, scripts, and demo scenes to help you develop Leap Motion apps quickly.</p>
+<p>Note: As of Unity 5.0, both the Pro and Personal versions of Unity support plugins. You no longer need to use a different asset package or different setup for the &#8220;free&#8221; version of Unity.</p>
 <p>Get the Leap Motion asset package from: <a class="reference external" href="https://developer.leapmotion.com/downloads/unity">https://developer.leapmotion.com/downloads/unity</a>.</p>
-<p>Note that version 4.0+ of the Unity assets are currently available for Windows only and require the Orion Beta service. Earlier versions of the assets are available for both Mac and Windows, but require the earlier 2.3 version of the Leap Motion service. You cannot mix elements from Orion with earlier versions of the assets. They are not compatible.</p>
 <div class="section" id="create-a-project">
 <h2>Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
 <p>First, create a new Unity project in the usual way, i.e.:</p>
@@ -235,128 +235,55 @@ function doneWithSearch(){
 <p>The assets are imported into your project.</p>
 </li>
 </ol>
-<p>If you are importing the assets into a project that already contains Leap Motion assets, it is recommended that you delete the old assets first (make a backup of your project). The Unity import process only adds new files and overwrites changed files. It does not remove obsolete files (and sometimes creates duplicates of existing files instead of overwriting them).</p>
+<p>If you are importing the assets into a project that already contains Leap Motion assets, it is recommended that you delete the old assets first (make a backup). The Unity import process only adds new files and overwrites changed files. It does not remove obsolete files.</p>
 </div>
-<div class="section" id="import-modules">
-<h2>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">¶</a></h2>
-<p>For Orion, we have divided our Unity assets into a core package supported by optional modules. The core package is required to use hand tracking, but you only need those modules containing features you want to use. None of the modules depend on each other. The currently available modules include:</p>
-<ul class="simple">
-<li>Attachments &#8211; provides a utility hand model that makes it easy to attach game objects to various points on the hand.</li>
-<li>Hands &#8211; provides additional graphics hand models and tools for using rigged 3D hand models.</li>
-<li>Interaction Engine &#8211; provides natural interaction physics between hands and virtual 3D objects in a scene and extensible mechanisms for fine tuning interactions for particular shapes and circumstances.</li>
-<li>UI Input &#8211; Enables using hands to control standard Unity UI elements.</li>
-<li>Detection Examples &#8211; Provides examples for using the Detection utilities feature, which is part of the core assets package. This module does not add any new features (though some of the example scripts may be useful).</li>
-</ul>
-<p>Import a module the same way you imported the Leap Motion asset package:</p>
-<ol class="arabic">
-<li><p class="first"><a class="reference external" href="https://developer.leapmotion.com/unity#modules">Download the module.</a></p>
-</li>
-<li><p class="first">Select the Unity <strong>Assets &gt; Import Package &gt; Custom Package</strong> menu command.</p>
-</li>
-<li><p class="first">Locate the downloaded module asset package and click <strong>Open</strong>.</p>
-<p>The module is imported into your project.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="adding-hands-to-a-vr-scene">
-<h2>Adding Hands to a VR Scene<a class="headerlink" href="#adding-hands-to-a-vr-scene" title="Permalink to this headline">¶</a></h2>
-<p>The LMHeadMountedRig must replace any existing camera rigs in your scene.</p>
-<p>Place the LMHeadMountedRig prefab at the position of the users&#8217;s initial viewpoint in the scene. The hands in the scene are positioned at the same position as your real hands relative to the real Leap Motion device.</p>
+<div class="section" id="adding-hands-to-a-scene">
+<h2>Adding Hands to a Scene<a class="headerlink" href="#adding-hands-to-a-scene" title="Permalink to this headline">¶</a></h2>
+<p>Place the HandController prefab below the point at which you want the hands to appear. The hands in the scene are positioned at the same position as your real hands relative to the real Leap Motion device.  You can change the scale of HandController object to change the size of the hands and change the Hand Movement Scale setting to allow the hands to move a within a larger volume.</p>
+<p>Change the hand graphics by dragging a different hand prefab to the Left/Right Graphics Model slot.</p>
 <p>To add hands to a scene:</p>
 <ol class="arabic">
-<li><p class="first">Remove any existing camera or camera rigs.</p>
+<li><p class="first">In the Project panel, locate the HandController prefab in <tt class="docutils literal"><span class="pre">Assets/LeapMotionPrefabs</span></tt></p>
 </li>
-<li><p class="first">Drag the prefab into the scene hierarchy.</p>
-</li>
-<li><p class="first">Position the prefab in the scene. Like any VR camera, the position and orientation of the rig will be the initial view of the scene (as modified by the HMD tracking system).</p>
-</li>
-<li><p class="first">Add your hand models to the Hand Pool in the LeapHandController component:</p>
-<ol class="loweralpha simple">
-<li>Select the LeapHandController in the hierarchy.</li>
-<li>Set the Hand Pool&#8217;s Model Pool size to 2. This will create two elements in the pool.</li>
-<li>Set the name of one element to &#8220;gfx_hands&#8221; (or any suitable name).</li>
-<li>Drag the desired hand prefabs to the left and right model properties.</li>
-<li>Set <strong>Is Enabled</strong> and <strong>Can Duplicate</strong> to true.</li>
-<li>Repeat for the second element, using physics hand prefabs.</li>
-</ol>
-<p>You can use prefabs directly in the hand pool or place the hand models in the scene hierarchy first. If you place the hand models in the scene, note that we no longer recommend placing the models as children of the LeapHandController. The models should go outside the camera hierarchy. Otherwise stuttering can occur during head movement.</p>
-</li>
-<li><p class="first">Play the scene.</p>
-<p>You should see hands appear in the Game view when you put your hands in front of the Leap Motion device. If you don&#8217;t see hands, open the Visualizer from the Leap Motion control panel to make sure your Leap Motion device is connected and sending out tracking data. If the Unity hands are just out of view, you can pause the game and use the Scene view to locate them.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="adding-hands-to-a-desktop-scene">
-<h2>Adding Hands to a &#8220;Desktop&#8221; Scene<a class="headerlink" href="#adding-hands-to-a-desktop-scene" title="Permalink to this headline">¶</a></h2>
-<p>Place the LeapHandController prefab below the point at which you want the hands to appear. The hands in the scene are positioned at the same position as your real hands relative to the real Leap Motion device.  You can change the Hand Movement Scale setting to allow the hands to move a within a larger volume.</p>
-<p>To add hands to a scene:</p>
-<ol class="arabic">
-<li><p class="first">In the Project panel, locate the LeapHandController prefab in <tt class="docutils literal"><span class="pre">Assets/LeapMotion/Prefabs</span></tt></p>
-</li>
-<li><p class="first">Drag the LeapHandController prefab into the Scene view.</p>
+<li><p class="first">Drag the HandController prefab into the Scene view.</p>
 </li>
 <li><p class="first">Set the transform position to the desired location.</p>
-<p>To see hands, the LeapHandController must be within the field of view of the camera.</p>
+<p>To see hands, the HandController must be within the field of view of the camera.</p>
 </li>
-<li><p class="first">Create an empty GameObject and name it &#8220;HandModels&#8221;. This game object should be a sibling of the LeapHandController object, never a child.</p>
+<li><p class="first">Set transform scale to size the hands appropriately to the scene. A scale of 1 means the hands are rendered at their real size (which is often too small).</p>
 </li>
-<li><p class="first">Drag the desired hand prefabs to the HandModels game object. You will need a separate prefab for right and left hands and will typically have at least two sets: one for visual dispaly and one for Unity physics interaction. You can have any number of sets.</p>
-</li>
-<li><p class="first">Select the LeapHandController in the hierarchy.</p>
-</li>
-<li><p class="first">Drag the HandModels GameObject to the ModelsParent propety of the HandPool component of the LeapHandController.</p>
-</li>
-<li><p class="first">Set the Hand Pool&#8217;s Model Pool size to 2. This will create two elements in the pool.</p>
-</li>
-<li><p class="first">Set the name of one element to &#8220;gfx_hands&#8221; (or any suitable name).</p>
-</li>
-<li><p class="first">Drag the graphics hand models from your HandModels game object to the left and right model properties.</p>
-</li>
-<li><p class="first">Set <strong>Is Enabled</strong> and <strong>Can Duplicate</strong> to true.</p>
-</li>
-<li><p class="first">Repeat for the second element, using physics hand prefabs.</p>
-<p>You can use prefabs directly in the hand pool.</p>
-<p><strong>Note:</strong> The CapsuleHand prefabs are designed for 1:1 scale only.</p>
+<li><p class="first">Set the Left and Right Hand Graphics Model properties of the HandController to the desired prefab from the HandModelsHuman or HandModelsNonHuman prefab folders. (There is generally no need to change the physics model from RigidHand.)</p>
 </li>
 <li><p class="first">Play the scene.</p>
-<p>You should see hands appear in the Game view when you put your hands over the Leap Motion device. If you don&#8217;t see hands, open the Visualizer from the Leap Motion control panel to make sure your Leap Motion device is connected and sending out tracking data. If the Unity hands are just out of view, you can pause the game and use the Scene view to locate them.</p>
+<p>You should see hands appear in the Hierarchy panel as well as in the Game view when you put your hands over the Leap Motion device. If you don&#8217;t see hands in the Hierarchy view, open the Visualizer from the Leap Motion control panel to make sure your Leap Motion device is connected and sending out tracking data. If the Unity hands are just out of view, you can pause the game and use the Scene view to locate them.</p>
 </li>
 </ol>
 </div>
 <div class="section" id="accessing-the-leap-motion-api-directly">
 <h2>Accessing the Leap Motion API directly<a class="headerlink" href="#accessing-the-leap-motion-api-directly" title="Permalink to this headline">¶</a></h2>
-<p>In addition to the prefabs and scripts included in the asset package, you can write your own scripts to access tracking data from the Leap Motion API. The Leap Motion classes are defined in the <tt class="docutils literal"><span class="pre">Leap</span></tt> namespace. A basic MonoBehavior class that accesses the Leap Motion API will look something like the following (this script moves the object to which it is attached to just underneath the palm of the left hand):</p>
+<p>In addition to the prefabs and scripts included in the asset package, you can write your own scripts to access tracking data from the Leap Motion API. The Leap Motion classes are defined in the <tt class="docutils literal"><span class="pre">Leap</span></tt> namespace. A basic MonoBehavior class that accesses the Leap Motion API will look something like the following:</p>
 <div class="code csharp highlight-python"><div class="highlight"><pre>using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 using Leap;
 
 public class LeapBehavior : MonoBehaviour {
-    LeapProvider provider;
+    Controller controller;
 
     void Start ()
     {
-        provider = FindObjectOfType&lt;LeapProvider&gt;() as LeapProvider;
+        controller = new Controller();
     }
 
     void Update ()
     {
-        Frame frame = provider.CurrentFrame;
-        foreach (Hand hand in frame.Hands)
-        {
-          if (hand.IsLeft)
-          {
-              transform.position = hand.PalmPosition.ToVector3() +
-                                   hand.PalmNormal.ToVector3() *
-                                  (transform.localScale.y * .5f + .02f);
-              transform.rotation = hand.Basis.Rotation();
-          }
-       }
+        Frame frame = controller.Frame();
+        // do something with the tracking data in the frame...
     }
 }
 </pre></div>
 </div>
-<p>The script, <tt class="docutils literal"><span class="pre">LeapUnityExtensions.cs</span></tt> in Assets/LeapMotion/Scripts/Utils, provides helpful extension functions for converting vectors and matrices from the Leap Motion API classes to the Unity API classes. The functions ToVector3() and Rotation() used above are defined in this script.</p>
-<p><strong>Note:</strong> In almost every case, you should get Frame objects from the scene&#8217;s LeapProvider object. The LeapProvider transforms the frame data into the proper frame of reference. If you get a frame from the Leap.Controller object, the data will still be in the Leap Motion frame of reference and will not match the hands displayed in the scene.</p>
+<p>Note that this example does not use a <tt class="docutils literal"><span class="pre">Leap.Listener</span></tt> subclass. Since a Unity application has a natural frame rate, the <tt class="docutils literal"><span class="pre">Update()</span></tt> function can get the current frame of data from the Leap Motion controller when the function is called by the Unity engine.</p>
+<p>The script, <tt class="docutils literal"><span class="pre">LeapUnityExtensions.cs</span></tt> in Assets/LeapMotion/Scripts/Utils, provides helpful functions for converting vectors and matrices from the Leap Motion API classes to the Unity API classes &#8211; as well as converting the scale and coordinate systems.</p>
 </div>
 </div>
 
@@ -366,19 +293,16 @@ public class LeapBehavior : MonoBehaviour {
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -396,7 +320,7 @@ public class LeapBehavior : MonoBehaviour {
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

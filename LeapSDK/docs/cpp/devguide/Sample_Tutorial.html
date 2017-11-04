@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hello World &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Hello World &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Application Development" href="Leap_Guides.html" />
     <link rel="next" title="Setting Up a Project" href="Project_Setup.html" />
     <link rel="prev" title="SDK Libraries" href="Leap_SDK_Overview.html" />
@@ -287,13 +287,12 @@ function doneWithSearch(){
 <p>The Leap Motion controller encompasses both hardware and software components.</p>
 <p>The Leap Motion hardware consists primarily of a pair of stereo infrared cameras and illumination LEDs. The camera sensors look upward (when the device is in its standard orientation). The following illustration shows how a user&#8217;s hands look from the perspective of the Leap Motion sensor:</p>
 <img alt="devguide/../../../images/Leap_View.jpg" src="devguide/../../../images/Leap_View.jpg" />
-<p>The Leap Motion software receives the sensor data and analyzes this data specifically for hands, fingers, and arms. The software maintains an internal model of the human hand and compares that model to the sensor data to determine the best fit. Sensor data is analyzed frame-by-frame and the service sends each frame of data to Leap Motion-enabled applications. The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object received by your application contains all the known positions, velocities and identities of tracked entities, such as hands and fingers. For an overview for the tracking data provided by the controller, read <a class="reference internal" href="Leap_Overview.html"><em>API Overview</em></a>.</p>
+<p>The Leap Motion software receives the sensor data and analyzes this data specifically for hands, fingers, arms, and tools. (Tracking for other types of objects could be added in the future, but this is the current set of tracked entities). The software maintains an internal model of the human hand and compares that model to the sensor data to determine the best fit. Sensor data is analyzed frame-by-frame and the service sends each frame of data to Leap Motion-enabled applications. The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object received by your application contains all the known positions, velocities and identities of tracked entities, such as hands, fingers, and tools. Constructs such as gestures and motions that span multiple frames are also updated each frame. For an overview for the tracking data provided by the controller, read <a class="reference internal" href="Leap_Overview.html"><em>API Overview</em></a>.</p>
 <p>The Leap Motion software runs as a service (Windows) or daemon (Mac and Linux) on the client computer. Native Leap Motion-enabled applications can connect to this service using the API provide by the Leap Motion dynamic libraries (provided as part of the Leap Motion SDK). Web applications can connect to a WebSocket server hosted by the service. The WebSocket provides tracking data as a JSON-formatted message &#8211; one message per frame of data. A JavaScript library, LeapJS, provides an API wrapping this data. For more information read <a class="reference internal" href="Leap_Architecture.html"><em>System Architecture</em></a>.</p>
 </div>
 <div class="section" id="set-up-the-files">
 <h2>Set Up the Files<a class="headerlink" href="#set-up-the-files" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial also uses command line compilers and linkers (where needed) in order to focus on the code rather than the environment.</p>
-<p>For details on how to set up projects using the Leap Motion SDK in popular IDEs, see <a class="reference internal" href="Project_Setup.html"><em>Setting Up a Project</em></a>.</p>
+<p>This tutorial also uses command line compilers and linkers (where needed) in order to focus on the code rather than the environment. For details on how to set up projects using the Leap Motion SDK in popular IDEs, see <a class="reference internal" href="Project_Setup.html"><em>Setting Up a Project</em></a>.</p>
 <ol class="arabic simple">
 <li>If you haven&#8217;t already, download and unzip the latest Leap Motion SDK from the <a class="reference external" href="https://developer.leapmotion.com">developer site</a> and install the latest Leap Motion service.</li>
 <li>Open a terminal or console window and navigate to the SDK <tt class="docutils literal"><span class="pre">samples</span></tt> folder.</li>
@@ -385,7 +384,13 @@ void SampleListener::onFrame(const Controller&amp; controller) {
 <div class="section" id="on-connect">
 <h2>On Connect<a class="headerlink" href="#on-connect" title="Permalink to this headline">¶</a></h2>
 <p>When your <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object successfully connects to the Leap Motion service/daemon AND the Leap Motion hardware is plugged in, The <tt class="docutils literal"><span class="pre">Controller</span></tt> object changes its isConnected() property to <tt class="docutils literal"><span class="pre">true</span></tt> and invokes your <a class="reference external" href="../api/Leap.Listener.html#cppclass_leap_1_1_listener_1a6b0dd62da959d048a3cc7917cca1ccba">Listener.onConnect()</a> callback (if there is one).</p>
-<p>When the controller connects, you can set controller properties using such methods as <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f">Controller.setPolicy()</a>.</p>
+<p>When the controller connects, you can set controller properties using the <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a771d9c0aa2093b63124a55b3daa8d39e">Controller.enableGesture()</a> and <a class="reference external" href="../api/Leap.Controller.html#cppclass_leap_1_1_controller_1a31b4a8342124b2c29955ce3fc8c0d31f">Controller.setPolicy()</a> methods. For example, you could enable the swipe gesture with the following <tt class="docutils literal"><span class="pre">onConnect()</span></tt> function:</p>
+<div class="code cpp highlight-python"><div class="highlight"><pre>void SampleListener::onConnect(const Controller&amp; controller) {
+    std::cout &lt;&lt; &quot;Connected&quot; &lt;&lt; std::endl;
+    controller.enableGesture(Gesture::TYPE_SWIPE);
+}
+</pre></div>
+</div>
 </div>
 <div class="section" id="on-frame">
 <h2>On Frame<a class="headerlink" href="#on-frame" title="Permalink to this headline">¶</a></h2>
@@ -402,15 +407,17 @@ void SampleListener::onFrame(const Controller&amp; controller) {
     std::cout &lt;&lt; &quot;Frame id: &quot; &lt;&lt; frame.id()
           &lt;&lt; &quot;, timestamp: &quot; &lt;&lt; frame.timestamp()
           &lt;&lt; &quot;, hands: &quot; &lt;&lt; frame.hands().count()
-          &lt;&lt; &quot;, fingers: &quot; &lt;&lt; frame.fingers().count();
+          &lt;&lt; &quot;, fingers: &quot; &lt;&lt; frame.fingers().count()
+          &lt;&lt; &quot;, tools: &quot; &lt;&lt; frame.tools().count()
+          &lt;&lt; &quot;, gestures: &quot; &lt;&lt; frame.gestures().count() &lt;&lt; std::endl;
 }
 </pre></div>
 </div>
 <p>Run your sample again, put a hand or two over the Leap Motion device and you should now see the basic statistics of each frame printed to the console window.</p>
-<p>I&#8217;ll end this tutorial here, but you can look at the rest of the code in the original sample program for examples on how to get all the <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a>, <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a>, <a class="reference external" href="../api/Leap.Arm.html"><tt class="docutils literal"><span class="pre">Arm</span></tt></a>, and <a class="reference external" href="../api/Leap.Bone.html"><tt class="docutils literal"><span class="pre">Bone</span></tt></a> objects in a frame.</p>
+<p>I&#8217;ll end this tutorial here, but you can look at the rest of the code in the original sample program for examples on how to get all the <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a>, <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a>, <a class="reference external" href="../api/Leap.Arm.html"><tt class="docutils literal"><span class="pre">Arm</span></tt></a>, <a class="reference external" href="../api/Leap.Bone.html"><tt class="docutils literal"><span class="pre">Bone</span></tt></a> and <a class="reference external" href="../api/Leap.Gesture.html"><tt class="docutils literal"><span class="pre">Gesture</span></tt></a> objects in a frame.</p>
 </div>
 <div class="section" id="run-sample">
-<span id="id4"></span><h2>Running the Sample<a class="headerlink" href="#run-sample" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Running the Sample<a class="headerlink" href="#run-sample" title="Permalink to this headline">¶</a></h2>
 <p>On Mac and Linux, use <tt class="docutils literal"><span class="pre">make</span></tt> to build your sample program with the <tt class="docutils literal"><span class="pre">makefile</span></tt> included in the SDK samples folder, then execute the result:</p>
 <div class="highlight-python"><div class="highlight"><pre>make
 ./sample
@@ -426,8 +433,9 @@ void SampleListener::onFrame(const Controller&amp; controller) {
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Guides.html">Application Development</a><ul class="current">
@@ -444,8 +452,6 @@ void SampleListener::onFrame(const Controller&amp; controller) {
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Project_Setup.html">Setting Up a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Architecture.html">System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Configuration.html">Runtime Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Policies.html">Controller Policies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a></li>
@@ -471,7 +477,7 @@ void SampleListener::onFrame(const Controller&amp; controller) {
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

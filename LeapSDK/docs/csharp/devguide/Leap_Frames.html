@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Frames &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>Frames &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Using the Tracking API" href="Leap_Guides2.html" />
+    <link rel="next" title="Hands" href="Leap_Hand.html" />
+    <link rel="prev" title="Tracking Model" href="Leap_Tracking.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +77,7 @@
     var pageAPI = 'csharp';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -107,33 +111,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/devguide/Leap_Frames.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Guides2.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -152,8 +130,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap_Tracking.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap_Hand.html");
     }
 
 }
@@ -214,7 +194,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unity/index.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
@@ -238,7 +218,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Guides2.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -295,6 +275,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Guides2.html" accesskey="U">Using the Tracking API</a>&raquo;
   Frames
 </span> -->
         
@@ -322,7 +303,10 @@ function doneWithSearch(){
 <span class="c1">//...</span>
 
 <span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">();</span>
-<span class="n">List</span><span class="p">&lt;</span><span class="n">Hand</span><span class="p">&gt;</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+<span class="n">HandList</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+<span class="n">PointableList</span> <span class="n">pointables</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Pointables</span><span class="p">;</span>
+<span class="n">FingerList</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
+<span class="n">ToolList</span> <span class="n">tools</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Tools</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The objects returned by the <tt class="docutils literal"><span class="pre">Frame</span></tt> object are all read-only. You can safely store them and use them in the future. They are thread-safe. Internally, the objects use the <a class="reference external" href="http://www.boost.org/doc/libs/1_51_0/libs/smart_ptr/shared_ptr.htm#ThreadSafety">C++ Boost library shared pointer class</a>.</p>
@@ -357,7 +341,7 @@ function doneWithSearch(){
 
 <span class="k">void</span> <span class="nf">processNextFrame</span> <span class="p">(</span><span class="n">Frame</span> <span class="n">frame</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">Id</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">//...</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -369,6 +353,17 @@ function doneWithSearch(){
 <p>Alternatively, you can use a <a class="reference external" href="../api/Leap.Listener.html"><tt class="docutils literal"><span class="pre">Listener</span></tt></a> object to get frames at the Leap Motion controller&#8217;s frame rate. The <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object calls the listener&#8217;s <tt class="docutils literal"><span class="pre">onFrame()</span></tt> function when a new frame is available. In the <tt class="docutils literal"><span class="pre">onFrame</span></tt> handler, you can call the <tt class="docutils literal"><span class="pre">Controller</span></tt> <tt class="docutils literal"><span class="pre">frame()</span></tt> function to get the <tt class="docutils literal"><span class="pre">Frame</span></tt> object itself.</p>
 <p>Using listener callbacks is more complex because the callbacks are multi-threaded; each callback is invoked on an independent thread. You must ensure that any application data accessed by multiple threads is handled in a thread-safe manner. Even though the tracking data objects you get from the API are thread safe, other parts of your application may not be. A common problem is updating objects owned by a GUI layer that can only be modified by a specific thread. In such cases you must arrange to update the non-thread safe portions of your application from the appropriate thread rather than from the callback thread.</p>
 <p>The following example defines a minimal Listener subclass that handles new frames of data:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="k">class</span> <span class="nc">FrameListener</span> <span class="p">:</span> <span class="n">Listener</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="nf">onFrame</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span><span class="p">();</span> <span class="c1">//The latest frame</span>
+        <span class="n">Frame</span> <span class="n">previous</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span><span class="p">(</span><span class="m">1</span><span class="p">);</span> <span class="c1">//The previous frame</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 <p>As you can see, getting the tracking data through a <tt class="docutils literal"><span class="pre">Listener</span></tt> object is otherwise the same as polling the controller.</p>
 <p>Note that it is possible to skip a frame even when using <tt class="docutils literal"><span class="pre">Listener</span></tt> callbacks. If your onFrame callback function takes too long to complete, then the next frame is added to the history, but the onFrame callback is skipped. Less commonly, if the Leap software itself cannot finish processing a frame in time, that frame can be abandoned and not added to the history. This problem can occur when a computer is bogged down with too many other computing tasks.</p>
 </div>
@@ -376,9 +371,26 @@ function doneWithSearch(){
 <h2>Following entities across frames<a class="headerlink" href="#following-entities-across-frames" title="Permalink to this headline">¶</a></h2>
 <p>If you have an ID of an entity from a different frame, you can get the object representing that entity in the current frame. Pass the ID to the <tt class="docutils literal"><span class="pre">Frame</span></tt> object function of the appropriate type:</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="n">Hand</span> <span class="n">hand</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hand</span> <span class="p">(</span><span class="n">handID</span><span class="p">);</span>
+<span class="n">Pointable</span> <span class="n">pointable</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Pointable</span> <span class="p">(</span><span class="n">pointableID</span><span class="p">);</span>
+<span class="n">Finger</span> <span class="n">finger</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Finger</span> <span class="p">(</span><span class="n">fingerID</span><span class="p">);</span>
+<span class="n">Tool</span> <span class="n">tool</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Tool</span> <span class="p">(</span><span class="n">toolID</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>If an object with the same ID cannot be found &#8211; perhaps a hand moved out of the field of view &#8211; then a special, invalid object is returned instead. Invalid objects are instances of the appropriate class, but all their members return 0 values, zero vectors, or other invalid objects. This technique makes it more convenient to chain method calls together. For example, the following code snippet averages finger tip positions over several frames:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="c1">//Average a finger position for the last 10 frames</span>
+<span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="n">Vector</span> <span class="n">average</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Vector</span> <span class="p">();</span>
+<span class="n">Finger</span> <span class="n">fingerToAverage</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Fingers</span> <span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="n">Finger</span> <span class="n">fingerFromFrame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">Finger</span> <span class="p">(</span><span class="n">fingerToAverage</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fingerFromFrame</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">average</span> <span class="p">+=</span> <span class="n">fingerFromFrame</span><span class="p">.</span><span class="n">TipPosition</span><span class="p">;</span>
+        <span class="n">count</span><span class="p">++;</span>
+    <span class="p">}</span>
+    <span class="n">average</span> <span class="p">/=</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Without invalid objects, this code would have to check each <tt class="docutils literal"><span class="pre">Frame</span></tt> object before checking the returned Finger objects. Invalid objects reduce the amount of null checking you have to do when accessing Leap Motion tracking data.</p>
 </div>
 <div class="section" id="serialization">
@@ -393,10 +405,34 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
-          </ul><ul>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap_Controllers.html">Connecting to the Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Tracking.html">Tracking Model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Frames</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-data-from-a-frame">Getting Data from a Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-frames-by-polling">Getting Frames by Polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-frames-with-callbacks">Getting Frames with Callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#following-entities-across-frames">Following entities across frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serialization">Serialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Hand.html">Hands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Pointables.html">Fingers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Gestures.html#id1">Gestures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Touch_Emulation.html#id1">Touch Emulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Motions.html">Motions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Coordinate_Mapping.html">Coordinate Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Images.html">Camera Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Serialization.html">Serializing Tracking Data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
@@ -419,7 +455,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

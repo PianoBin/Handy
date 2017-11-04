@@ -16,25 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Controller &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
     <link rel="next" title="Finger" href="Leap.Finger.html" />
-    <link rel="prev" title="Bone" href="Leap.Bone.html" />
+    <link rel="prev" title="CircleGesture" href="Leap.CircleGesture.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -132,7 +132,7 @@ function handleKeyInput(e)
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
     if( character == "J" & e.altKey){
-            window.location.assign("Leap.Bone.html");    }
+            window.location.assign("Leap.CircleGesture.html");    }
     else if( character == "K" & e.altKey){
             window.location.assign("Leap.Finger.html");
     }
@@ -280,8 +280,8 @@ function doneWithSearch(){
   Controller
 </span> -->
         
-  <div class="section" id="id33">
-<h1>Controller<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id38">
+<h1>Controller<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h1>
 <p><strong>Attributes:</strong></p>
 <div class="members container">
 <ul class="simple">
@@ -346,6 +346,7 @@ to set various controller properties.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Leap</span><span class="p">.</span><span class="nx">Controller</span><span class="p">({</span>
   <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
   <span class="nx">port</span><span class="o">:</span> <span class="mi">6437</span><span class="p">,</span>
+  <span class="nx">enableGestures</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">frameEventName</span><span class="o">:</span> <span class="s1">&#39;animationFrame&#39;</span><span class="p">,</span>
   <span class="nx">useAllPlugins</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">});</span>
@@ -911,9 +912,7 @@ depending on the user&#8217;s settings and the available computing power.</p>
 <dl class="attribute">
 <dt id="Controller.Event.gesture">
 <tt class="descclassname">Controller.Event.</tt><tt class="descname">gesture</tt><a class="headerlink" href="#Controller.Event.gesture" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Notice</strong> Gestures are deprecated in version 3.0 and may not behave the same
-as they did in earlier versions.</p>
-<p>Dispatched for each gesture update in a frame.</p>
+<dd><p>Dispatched for each gesture update in a frame.</p>
 <p>The associated <a class="reference internal" href="Leap.Gesture.html#Leap.Gesture" title="Leap.Gesture"><tt class="xref py py-class docutils literal"><span class="pre">Gesture</span></tt></a> and the current <a class="reference internal" href="Leap.Frame.html#Leap.Frame" title="Leap.Frame"><tt class="xref py py-class docutils literal"><span class="pre">Frame</span></tt></a> objects are passed to your
 callback function.</p>
 <p>When the Controller is using the <tt class="docutils literal"><span class="pre">animationFrame</span></tt> loop, which is the default``, any gestures generated in device frames produced between iterations of the <tt class="docutils literal"><span class="pre">animationFrame</span></tt> loop are collected and dispatched at the next iteration. This means that the Frame object passed to your gesture listener function will not always be the frame in which the gesture was recorded.  The position and other physical attributes of the hands and fingers making the gesture may have changed slightly between frames. In some cases, a Hand or Pointable object with the same IDs as those referenced by the Gesture object may not be present at all in the current frame.</p>
@@ -999,7 +998,7 @@ version of the Leap Motion software.</p>
 <dt id="Controller.plugin">
 <tt class="descclassname">Controller.</tt><tt class="descname">plugin</tt><big>(</big><em>pluginName</em>, <em>factory</em><big>)</big><a class="headerlink" href="#Controller.plugin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a plugin, making is accessible to <tt class="docutils literal"><span class="pre">controller.use()</span></tt> later on.</p>
-<p>Valid keys for the object returned by the factory include <tt class="docutils literal"><span class="pre">frame</span></tt>, <tt class="docutils literal"><span class="pre">hand</span></tt>, <tt class="docutils literal"><span class="pre">finger</span></tt>, and <tt class="docutils literal"><span class="pre">pointable</span></tt>.
+<p>Valid keys for the object returned by the factory include <tt class="docutils literal"><span class="pre">frame</span></tt>, <tt class="docutils literal"><span class="pre">hand</span></tt>, <tt class="docutils literal"><span class="pre">finger</span></tt>, <tt class="docutils literal"><span class="pre">tool</span></tt>, and <tt class="docutils literal"><span class="pre">pointable</span></tt>.
 The value of each key can be either a function or an object.  If given a function, that function
 will be called once for every instance of the object, with that instance injected as an
 argument.  This allows decoration of objects with additional data:</p>
@@ -1151,8 +1150,9 @@ and removes any methods added to extend class prototypes.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -1160,13 +1160,18 @@ and removes any methods added to extend class prototypes.</p>
 <li class="toctree-l1"><a class="reference external" href="https://developer.leapmotion.com/downloads/javascript#plugins">LeapJS Plug-ins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Classes.html#leap-namespace">Leap namespace</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id28">Bone</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id33">Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id21">Finger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html#id30">Frame</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html#id54">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Bone.html#id32">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id47">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id57">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id6">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id25">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id9">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
@@ -1195,7 +1200,7 @@ and removes any methods added to extend class prototypes.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

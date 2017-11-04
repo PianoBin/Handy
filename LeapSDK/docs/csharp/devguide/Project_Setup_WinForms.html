@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setting Up a Windows Forms or WPF Project &mdash; Leap Motion C# SDK v3.1 documentation</title>
+    <title>Setting Up a Windows Forms or WPF Project &mdash; Leap Motion C# SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C# SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C# SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -370,246 +370,259 @@ xcopy /yr &quot;$(LEAP_SDK)\lib\x64\LeapCSharp.dll&quot; &quot;$(TargetDir)&quot
 <p>To run either example, your form or window definition must have six Label controls with the names shown in the <tt class="docutils literal"><span class="pre">newFrameHandler()</span></tt> method.</p>
 <div class="section" id="windows-forms">
 <h3>Windows Forms<a class="headerlink" href="#windows-forms" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-csharp"><div class="highlight"><pre><span class="k">using</span> <span class="nn">Leap</span><span class="p">;</span>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Data</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Drawing</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Drawing.Imaging</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Windows.Forms</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Diagnostics</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Leap</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">WinFormSample</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">FrameDataForm</span> <span class="p">:</span> <span class="n">Form</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="nn">WinFormSample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">FrameDataForm</span> <span class="p">:</span> <span class="n">Form</span><span class="p">,</span> <span class="n">ILeapEventDelegate</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">LeapEventListener</span> <span class="n">listener</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nf">FrameDataForm</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">InitializeComponent</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">listener</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LeapEventListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">listener</span><span class="p">);</span>
+        <span class="p">}</span>
 
-    <span class="k">private</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">imagedata</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
-    <span class="k">private</span> <span class="n">Controller</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="p">();</span>
-    <span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bitmap</span> <span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">480</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Imaging</span><span class="p">.</span><span class="n">PixelFormat</span><span class="p">.</span><span class="n">Format8bppIndexed</span><span class="p">);</span>
+        <span class="k">delegate</span> <span class="k">void</span> <span class="nf">LeapEventDelegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">);</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">LeapEventNotification</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">InvokeRequired</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="n">EventName</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">case</span> <span class="s">&quot;onInit&quot;</span><span class="p">:</span>
+                        <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Init&quot;</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">&quot;onConnect&quot;</span><span class="p">:</span>
+                        <span class="k">this</span><span class="p">.</span><span class="n">connectHandler</span><span class="p">();</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">&quot;onFrame&quot;</span><span class="p">:</span>
+                        <span class="k">if</span><span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">Disposing</span><span class="p">)</span> 
+                            <span class="k">this</span><span class="p">.</span><span class="n">newFrameHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Frame</span><span class="p">());</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">BeginInvoke</span><span class="p">(</span><span class="k">new</span> <span class="n">LeapEventDelegate</span><span class="p">(</span><span class="n">LeapEventNotification</span><span class="p">),</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">EventName</span> <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
 
-    <span class="k">public</span> <span class="nf">FrameDataForm</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="n">InitializeComponent</span><span class="p">();</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">EventContext</span> <span class="p">=</span> <span class="n">WindowsFormsSynchronizationContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">FrameReady</span> <span class="p">+=</span> <span class="n">newFrameHandler</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">ImageReady</span> <span class="p">+=</span> <span class="n">onImageReady</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">ImageRequestFailed</span> <span class="p">+=</span> <span class="n">onImageRequestFailed</span><span class="p">;</span>
+        <span class="k">void</span> <span class="nf">connectHandler</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">EnableGesture</span><span class="p">(</span><span class="n">Gesture</span><span class="p">.</span><span class="n">GestureType</span><span class="p">.</span><span class="n">TYPE_CIRCLE</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Config</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&quot;Gesture.Circle.MinRadius&quot;</span><span class="p">,</span> <span class="m">40.0f</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">EnableGesture</span><span class="p">(</span><span class="n">Gesture</span><span class="p">.</span><span class="n">GestureType</span><span class="p">.</span><span class="n">TYPE_SWIPE</span><span class="p">);</span>
+        <span class="p">}</span>
 
-      <span class="c1">//set greyscale palette for image Bitmap object</span>
-      <span class="n">ColorPalette</span> <span class="n">grayscale</span> <span class="p">=</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Palette</span><span class="p">;</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">256</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
-        <span class="n">grayscale</span><span class="p">.</span><span class="n">Entries</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="m">255</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="n">bitmap</span><span class="p">.</span><span class="n">Palette</span> <span class="p">=</span> <span class="n">grayscale</span><span class="p">;</span>
+        <span class="k">void</span> <span class="nf">newFrameHandler</span><span class="p">(</span><span class="n">Frame</span> <span class="n">frame</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//The following are Label controls added in design view for the form</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">CurrentFramesPerSecond</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayIsValid</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">IsValid</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayGestureCount</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Gestures</span><span class="p">().</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayImageCount</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Images</span><span class="p">.</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">(</span><span class="kt">bool</span> <span class="n">disposing</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">disposing</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">components</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="n">components</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+                    <span class="p">}</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">RemoveListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">listener</span><span class="p">);</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">finally</span>
+            <span class="p">{</span>
+                <span class="k">base</span><span class="p">.</span><span class="n">Dispose</span><span class="p">(</span><span class="n">disposing</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">void</span> <span class="nf">newFrameHandler</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">FrameEventArgs</span> <span class="n">eventArgs</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">eventArgs</span><span class="p">.</span><span class="n">frame</span><span class="p">;</span>
-      <span class="c1">//The following are Label controls added in design view for the form</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">CurrentFramesPerSecond</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-
-      <span class="n">controller</span><span class="p">.</span><span class="n">RequestImages</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">ImageType</span><span class="p">.</span><span class="n">DEFAULT</span><span class="p">,</span> <span class="n">imagedata</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ILeapEventDelegate</span>
+    <span class="p">{</span>
+        <span class="k">void</span> <span class="nf">LeapEventNotification</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">void</span> <span class="nf">onImageRequestFailed</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ImageRequestFailedEventArgs</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">reason</span> <span class="p">==</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">RequestFailureReason</span><span class="p">.</span><span class="n">Insufficient_Buffer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">imagedata</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">requiredBufferSize</span><span class="p">];</span>
-      <span class="p">}</span> 
-      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">()</span><span class="s">&quot;Image request failed: &quot;</span> <span class="p">+</span> <span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">LeapEventListener</span> <span class="p">:</span> <span class="n">Listener</span>
+    <span class="p">{</span>
+        <span class="n">ILeapEventDelegate</span> <span class="n">eventDelegate</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">LeapEventListener</span><span class="p">(</span><span class="n">ILeapEventDelegate</span> <span class="n">delegateObject</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span> <span class="p">=</span> <span class="n">delegateObject</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnInit</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onInit&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnConnect</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onConnect&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrame</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onFrame&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnExit</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onExit&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDisconnect</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onDisconnect&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-
-    <span class="k">void</span> <span class="nf">onImageReady</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ImageEventArgs</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">Rectangle</span> <span class="n">lockArea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
-      <span class="n">BitmapData</span> <span class="n">bitmapData</span> <span class="p">=</span> <span class="n">bitmap</span><span class="p">.</span><span class="n">LockBits</span><span class="p">(</span><span class="n">lockArea</span><span class="p">,</span> <span class="n">ImageLockMode</span><span class="p">.</span><span class="n">WriteOnly</span><span class="p">,</span> <span class="n">PixelFormat</span><span class="p">.</span><span class="n">Format8bppIndexed</span><span class="p">);</span>
-      <span class="kt">byte</span><span class="p">[]</span> <span class="n">rawImageData</span> <span class="p">=</span> <span class="n">imagedata</span><span class="p">;</span>
-      <span class="n">System</span><span class="p">.</span><span class="n">Runtime</span><span class="p">.</span><span class="n">InteropServices</span><span class="p">.</span><span class="n">Marshal</span><span class="p">.</span><span class="n">Copy</span><span class="p">(</span><span class="n">rawImageData</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">bitmapData</span><span class="p">.</span><span class="n">Scan0</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">Width</span> <span class="p">*</span> <span class="n">e</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">Height</span> <span class="p">*</span> <span class="m">2</span> <span class="p">*</span> <span class="n">e</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">BytesPerPixel</span><span class="p">);</span>
-      <span class="n">bitmap</span><span class="p">.</span><span class="n">UnlockBits</span><span class="p">(</span><span class="n">bitmapData</span><span class="p">);</span>
-      <span class="n">displayImages</span><span class="p">.</span><span class="n">Image</span> <span class="p">=</span> <span class="n">bitmap</span><span class="p">;</span>
-    <span class="p">}</span>
-
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">namespace</span> <span class="nn">WinFormSample</span> <span class="p">{</span>
-  <span class="k">partial</span> <span class="k">class</span> <span class="nc">FrameDataForm</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">ComponentModel</span><span class="p">.</span><span class="n">IContainer</span> <span class="n">components</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Dispose</span> <span class="p">(</span><span class="kt">bool</span> <span class="n">disposing</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">disposing</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">components</span> <span class="p">!=</span> <span class="k">null</span><span class="p">))</span> <span class="p">{</span>
-        <span class="n">components</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-      <span class="p">}</span>
-      <span class="k">base</span><span class="p">.</span><span class="n">Dispose</span><span class="p">(</span><span class="n">disposing</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cp">#region Windows Form Designer generated code</span>
-
-    <span class="c1">/// &lt;summary&gt;</span>
-    <span class="c1">/// Required method for Designer support - do not modify</span>
-    <span class="c1">/// the contents of this method with the code editor.</span>
-    <span class="c1">/// &lt;/summary&gt;</span>
-    <span class="k">private</span> <span class="k">void</span> <span class="nf">InitializeComponent</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">PictureBox</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">RichTextBox</span><span class="p">();</span>
-      <span class="p">((</span><span class="n">System</span><span class="p">.</span><span class="n">ComponentModel</span><span class="p">.</span><span class="n">ISupportInitialize</span><span class="p">)(</span><span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">)).</span><span class="n">BeginInit</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">SuspendLayout</span><span class="p">();</span>
-      <span class="c1">// </span>
-      <span class="c1">// displayID</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">AutoSize</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="m">9</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;displayID&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">35</span><span class="p">,</span> <span class="m">13</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;label1&quot;</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// displayTimestamp</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">AutoSize</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">111</span><span class="p">,</span> <span class="m">9</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;displayTimestamp&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">35</span><span class="p">,</span> <span class="m">13</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;label2&quot;</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// displayFPS</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">AutoSize</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">222</span><span class="p">,</span> <span class="m">9</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;displayFPS&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">35</span><span class="p">,</span> <span class="m">13</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;label3&quot;</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// displayHandCount</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">AutoSize</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">310</span><span class="p">,</span> <span class="m">9</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;displayHandCount&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">35</span><span class="p">,</span> <span class="m">13</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;label4&quot;</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// displayImages</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">25</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;displayImages&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">480</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">SizeMode</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">PictureBoxSizeMode</span><span class="p">.</span><span class="n">CenterImage</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">4</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">.</span><span class="n">TabStop</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// debugText</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Point</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">511</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;debugText&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">.</span><span class="n">Size</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">165</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">.</span><span class="n">TabIndex</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-      <span class="c1">// </span>
-      <span class="c1">// FrameDataForm</span>
-      <span class="c1">// </span>
-      <span class="k">this</span><span class="p">.</span><span class="n">AutoScaleDimensions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">SizeF</span><span class="p">(</span><span class="m">6F</span><span class="p">,</span> <span class="m">13F</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">AutoScaleMode</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">AutoScaleMode</span><span class="p">.</span><span class="n">Font</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">ClientSize</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Size</span><span class="p">(</span><span class="m">670</span><span class="p">,</span> <span class="m">693</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">debugText</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;FrameDataForm&quot;</span><span class="p">;</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&quot;Frame Data&quot;</span><span class="p">;</span>
-      <span class="p">((</span><span class="n">System</span><span class="p">.</span><span class="n">ComponentModel</span><span class="p">.</span><span class="n">ISupportInitialize</span><span class="p">)(</span><span class="k">this</span><span class="p">.</span><span class="n">displayImages</span><span class="p">)).</span><span class="n">EndInit</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">ResumeLayout</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">PerformLayout</span><span class="p">();</span>
-
-    <span class="p">}</span>
-
-    <span class="cp">#endregion</span>
-
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span> <span class="n">displayID</span><span class="p">;</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span> <span class="n">displayTimestamp</span><span class="p">;</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span> <span class="n">displayFPS</span><span class="p">;</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span> <span class="n">displayHandCount</span><span class="p">;</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">PictureBox</span> <span class="n">displayImages</span><span class="p">;</span>
-    <span class="k">private</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">RichTextBox</span> <span class="n">debugText</span><span class="p">;</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="windows-presentation-foundation">
 <h3>Windows Presentation Foundation<a class="headerlink" href="#windows-presentation-foundation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-csharp"><div class="highlight"><pre><span class="k">using</span> <span class="nn">Leap</span><span class="p">;</span>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Windows</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Controls</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Data</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Windows.Documents</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Input</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Windows.Media</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Windows.Media.Imaging</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Navigation</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Shapes</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Diagnostics</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Leap</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">WPFSample</span> <span class="p">{</span>
-  <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">imagedata</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
-    <span class="k">private</span> <span class="n">Controller</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="p">();</span>
-    <span class="n">WriteableBitmap</span> <span class="n">bitmap</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nn">WPFSample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span><span class="p">,</span> <span class="n">ILeapEventDelegate</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">Controller</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="p">();</span>
+        <span class="k">private</span> <span class="n">LeapEventListener</span> <span class="n">listener</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">Boolean</span> <span class="n">isClosing</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="nf">MainWindow</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="n">InitializeComponent</span><span class="p">();</span>
+        <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">InitializeComponent</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">listener</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LeapEventListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">listener</span><span class="p">);</span>
+        <span class="p">}</span>
 
-      <span class="c1">//set greyscale palette for WriteableBitmap object</span>
-      <span class="n">List</span><span class="p">&lt;</span><span class="n">Color</span><span class="p">&gt;</span> <span class="n">grayscale</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Color</span><span class="p">&gt;();</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kt">byte</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">0</span><span class="n">xff</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
-        <span class="n">grayscale</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="m">0</span><span class="n">xff</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
-      <span class="p">}</span>
-      <span class="n">BitmapPalette</span> <span class="n">palette</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapPalette</span><span class="p">(</span><span class="n">grayscale</span><span class="p">);</span>
-      <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WriteableBitmap</span> <span class="p">(</span><span class="m">640</span><span class="p">,</span> <span class="m">480</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="m">72</span><span class="p">,</span> <span class="n">PixelFormats</span><span class="p">.</span><span class="n">Gray8</span><span class="p">,</span> <span class="n">palette</span><span class="p">);</span>
-      <span class="n">displayImages</span><span class="p">.</span><span class="n">Source</span> <span class="p">=</span> <span class="n">bitmap</span><span class="p">;</span>
+        <span class="k">delegate</span> <span class="k">void</span> <span class="nf">LeapEventDelegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">);</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">LeapEventNotification</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">CheckAccess</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="n">EventName</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">case</span> <span class="s">&quot;onInit&quot;</span><span class="p">:</span>
+                        <span class="n">Debug</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Init&quot;</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">&quot;onConnect&quot;</span><span class="p">:</span>
+                        <span class="k">this</span><span class="p">.</span><span class="n">connectHandler</span><span class="p">();</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">&quot;onFrame&quot;</span><span class="p">:</span>
+                        <span class="k">if</span><span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">isClosing</span><span class="p">)</span>
+                            <span class="k">this</span><span class="p">.</span><span class="n">newFrameHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Frame</span><span class="p">());</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">Dispatcher</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="n">LeapEventDelegate</span><span class="p">(</span><span class="n">LeapEventNotification</span><span class="p">),</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">EventName</span> <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
 
-      <span class="n">controller</span><span class="p">.</span><span class="n">EventContext</span> <span class="p">=</span> <span class="n">SynchronizationContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">FrameReady</span> <span class="p">+=</span> <span class="n">newFrameHandler</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">ImageReady</span> <span class="p">+=</span> <span class="n">onImageReady</span><span class="p">;</span>
-      <span class="n">controller</span><span class="p">.</span><span class="n">ImageRequestFailed</span> <span class="p">+=</span> <span class="n">onImageRequestFailed</span><span class="p">;</span>
+        <span class="k">void</span> <span class="nf">connectHandler</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">SetPolicy</span><span class="p">(</span><span class="n">Controller</span><span class="p">.</span><span class="n">PolicyFlag</span><span class="p">.</span><span class="n">POLICY_IMAGES</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">EnableGesture</span><span class="p">(</span><span class="n">Gesture</span><span class="p">.</span><span class="n">GestureType</span><span class="p">.</span><span class="n">TYPE_SWIPE</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Config</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="s">&quot;Gesture.Swipe.MinLength&quot;</span><span class="p">,</span> <span class="m">100.0f</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">void</span> <span class="nf">newFrameHandler</span><span class="p">(</span><span class="n">Leap</span><span class="p">.</span><span class="n">Frame</span> <span class="n">frame</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">CurrentFramesPerSecond</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayIsValid</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">IsValid</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayGestureCount</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Gestures</span><span class="p">().</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">displayImageCount</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Images</span><span class="p">.</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">void</span> <span class="nf">MainWindow_Closing</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">isClosing</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">RemoveListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">listener</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">controller</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">void</span> <span class="nf">newFrameHandler</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">FrameEventArgs</span> <span class="n">eventArgs</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">Leap</span><span class="p">.</span><span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">eventArgs</span><span class="p">.</span><span class="n">frame</span><span class="p">;</span>
-      <span class="c1">//The following are Label controls added in design view for the form</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayID</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayTimestamp</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayFPS</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">CurrentFramesPerSecond</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-      <span class="k">this</span><span class="p">.</span><span class="n">displayHandCount</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">.</span><span class="n">Count</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-
-      <span class="n">controller</span><span class="p">.</span><span class="n">RequestImages</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">ImageType</span><span class="p">.</span><span class="n">DEFAULT</span><span class="p">,</span> <span class="n">imagedata</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ILeapEventDelegate</span>
+    <span class="p">{</span>
+        <span class="k">void</span> <span class="nf">LeapEventNotification</span><span class="p">(</span><span class="kt">string</span> <span class="n">EventName</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">void</span> <span class="nf">onImageRequestFailed</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ImageRequestFailedEventArgs</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">reason</span> <span class="p">==</span> <span class="n">Leap</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">RequestFailureReason</span><span class="p">.</span><span class="n">Insufficient_Buffer</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">imagedata</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">requiredBufferSize</span><span class="p">];</span>
-      <span class="p">}</span> 
-      <span class="n">debugText</span><span class="p">.</span><span class="n">AppendText</span><span class="p">(</span><span class="s">&quot;Image request failed: &quot;</span> <span class="p">+</span> <span class="n">e</span><span class="p">.</span><span class="n">message</span> <span class="p">+</span> <span class="s">&quot;\n&quot;</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">LeapEventListener</span> <span class="p">:</span> <span class="n">Listener</span>
+    <span class="p">{</span>
+        <span class="n">ILeapEventDelegate</span> <span class="n">eventDelegate</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">LeapEventListener</span><span class="p">(</span><span class="n">ILeapEventDelegate</span> <span class="n">delegateObject</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span> <span class="p">=</span> <span class="n">delegateObject</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnInit</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onInit&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnConnect</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">SetPolicy</span><span class="p">(</span><span class="n">Controller</span><span class="p">.</span><span class="n">PolicyFlag</span><span class="p">.</span><span class="n">POLICY_IMAGES</span><span class="p">);</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">EnableGesture</span><span class="p">(</span><span class="n">Gesture</span><span class="p">.</span><span class="n">GestureType</span><span class="p">.</span><span class="n">TYPE_SWIPE</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onConnect&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnFrame</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onFrame&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnExit</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onExit&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnDisconnect</span><span class="p">(</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">eventDelegate</span><span class="p">.</span><span class="n">LeapEventNotification</span><span class="p">(</span><span class="s">&quot;onDisconnect&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
     <span class="p">}</span>
 
-    <span class="k">void</span> <span class="nf">onImageReady</span> <span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ImageEventArgs</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">bitmap</span><span class="p">.</span><span class="n">WritePixels</span><span class="p">(</span><span class="k">new</span> <span class="n">Int32Rect</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">640</span><span class="p">,</span> <span class="m">480</span><span class="p">),</span> <span class="n">imagedata</span><span class="p">,</span> <span class="m">640</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
-    <span class="p">}</span>
- <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="p">&lt;</span><span class="n">Window</span> <span class="n">x</span><span class="p">:</span><span class="n">Class</span><span class="p">=</span><span class="s">&quot;WPFSample.MainWindow&quot;</span>
-        <span class="n">xmlns</span><span class="p">=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
-        <span class="n">xmlns</span><span class="p">:</span><span class="n">x</span><span class="p">=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
-        <span class="n">Title</span><span class="p">=</span><span class="s">&quot;Frame Data&quot;</span> <span class="n">Height</span><span class="p">=</span><span class="s">&quot;751.567&quot;</span> <span class="n">Width</span><span class="p">=</span><span class="s">&quot;726.881&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="n">Grid</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;displayID&quot;</span> <span class="n">Content</span><span class="p">=</span><span class="s">&quot;Label&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;35,10,0,0&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span><span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;displayTimestamp&quot;</span> <span class="n">Content</span><span class="p">=</span><span class="s">&quot;Label&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;107,10,0,0&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span><span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;displayFPS&quot;</span> <span class="n">Content</span><span class="p">=</span><span class="s">&quot;Label&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;197,10,0,0&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span><span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;displayHandCount&quot;</span> <span class="n">Content</span><span class="p">=</span><span class="s">&quot;Label&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;287,10,0,0&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span><span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="n">Image</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;displayImages&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Height</span><span class="p">=</span><span class="s">&quot;480&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span> <span class="n">Width</span><span class="p">=</span><span class="s">&quot;640&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;10,36,0,0&quot;</span><span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="n">TextBox</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&quot;debugText&quot;</span> <span class="n">HorizontalAlignment</span><span class="p">=</span><span class="s">&quot;Left&quot;</span> <span class="n">Height</span><span class="p">=</span><span class="s">&quot;178&quot;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&quot;10,533,0,0&quot;</span> <span class="n">TextWrapping</span><span class="p">=</span><span class="s">&quot;Wrap&quot;</span> <span class="n">Text</span><span class="p">=</span><span class="s">&quot;&quot;</span> <span class="n">VerticalAlignment</span><span class="p">=</span><span class="s">&quot;Top&quot;</span> <span class="n">Width</span><span class="p">=</span><span class="s">&quot;699&quot;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;/</span><span class="n">Grid</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="n">Window</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -622,10 +635,13 @@ xcopy /yr &quot;$(LEAP_SDK)\lib\x64\LeapCSharp.dll&quot; &quot;$(TargetDir)&quot
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C# Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C# Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
@@ -648,7 +664,7 @@ xcopy /yr &quot;$(LEAP_SDK)\lib\x64\LeapCSharp.dll&quot; &quot;$(TargetDir)&quot
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

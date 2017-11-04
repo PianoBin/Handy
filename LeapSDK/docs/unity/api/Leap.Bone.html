@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bone &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Bone &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="C# API Reference" href="Leap_Classes.html" />
+    <link rel="next" title="CircleGesture" href="Leap.CircleGesture.html" />
+    <link rel="prev" title="Arm" href="Leap.Arm.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -109,33 +112,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/api/Leap.Bone.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Classes.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -154,8 +131,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap.Arm.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("Leap.CircleGesture.html");
     }
 
 }
@@ -240,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Classes.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -297,6 +276,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Classes.html" accesskey="U">C# API Reference</a>&raquo;
   Bone
 </span> -->
         
@@ -311,13 +291,14 @@ function doneWithSearch(){
 </style><p><strong>Properties:</strong></p>
 <div class="members container">
 <ul class="simple">
-<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1af94d6f6f19c7acba0ca3ceec3c911d64">Basis</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1ae6e994fa39239cd3c745266694cdc0f3">Basis</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a81aeabd750c6ceacb6f34056dea1f154">Center</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a3760f0d03c577bd8a45779cf3f9a46a8">Direction</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1ad34a495f4cc474c1fd82f2f9ac8b815f">Invalid</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a62885a2911b2c21274564c3d9e407c2c">IsValid</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1ab87d04698fba58ca22fe5ebecef0755e">Length</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1ad1607a6b2f5cceb9194ad7d7f88d4b07">NextJoint</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a04c64c1d106da6ad69a2f0ff6b5936fa">PrevJoint</a></li>
-<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a4af8c6bc0d5c72e6711549e958ffb1fa">Rotation</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a034c92ea5bf6a997721a6db36e9c5115">Type</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a7de4690b4c35b991ee86032c52d974ab">Width</a></li>
 </ul>
@@ -326,8 +307,7 @@ function doneWithSearch(){
 <div class="members container">
 <ul class="simple">
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf">Bone()</a></li>
-<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a5ccba5bad45e833bce5bd5c406c15750">Bone(Vector prevJoint, Vector nextJoint, Vector center, Vector direction, float length, float width, Bone.BoneType type, LeapQuaternion rotation)</a></li>
-<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1ac8ddc215b1e19e0694b1cf01782baaa7">Equals(Bone other)</a></li>
+<li><a class="reference external" href="#csharpclass_leap_1_1_bone_1a030efe2f4da59a4672930c887c614d48">Equals(Bone arg0)</a></li>
 <li><a class="reference external" href="#csharpclass_leap_1_1_bone_1aa73e7c4dd1df5fd5fbf81c7764ee1533">ToString()</a></li>
 </ul>
 </div>
@@ -339,7 +319,7 @@ function doneWithSearch(){
 <p><p>All fingers contain 4 bones that make up the anatomy of the finger. Get valid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> objects from a <a class="reference internal" href="Leap.Finger.html#csharpclass_leap_1_1_finger"><em>Finger</em></a> object.</p>
 <p>Bones are ordered from base to tip, indexed from 0 to 3. Additionally, the bone&#8217;s Type enum may be used to index a specific bone anatomically.</p>
 <p><pre class="literal-block">
-List&lt;Finger&gt; fingers = hand.Fingers;
+FingerList fingers = hand.Fingers;
 foreach(Finger finger in fingers){
     <a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a> bone;
     foreach (<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.BoneType boneType in (<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.BoneType[]) Enum.GetValues(typeof(<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.BoneType)))
@@ -350,78 +330,34 @@ foreach(Finger finger in fingers){
 }
 </pre>
 </p>
-<p>The thumb does not have a base metacarpal bone and therefore contains a valid, zero length bone at that location. <dl class="docutils">
+<p>The thumb does not have a base metacarpal bone and therefore contains a valid, zero length bone at that location.</p>
+<p>Note that <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> objects can be invalid, which means that they do not contain valid tracking data and do not correspond to a physical bone. Invalid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> objects can be the result of asking for a <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object from an invalid finger, indexing a bone out of range, or constructing a new bone. Test for validity with the Bone::isValid() function. <dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="csharpclass_leap_1_1_bone_1ac0b6411718b2d0a444dc2fa6c541fc0a"></span><strong>BoneType enum</strong></p>
-<blockquote>
-<div><p>Enumerates the names of the bones. </p>
-<p>Members of this enumeration are returned by Bone::type() to identify a <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>2.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">TYPE_INVALID</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">-1</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_METACARPAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_PROXIMAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_INTERMEDIATE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - </li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_DISTAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">3</span></tt> - </li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"></span><div class="line-block">
 <div class="line"> <strong>Bone</strong>()</div>
 </div>
 </p>
 <blockquote>
-<div><p>Constructs a default <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. </p>
+<div><p>Constructs an invalid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. </p>
+<p><p><pre class="literal-block">
+<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a> bone = <a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.Invalid;
+</pre>
+</p>
+<p>Get valid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> objects from a <a class="reference internal" href="Leap.Finger.html#csharpclass_leap_1_1_finger"><em>Finger</em></a> object.</p>
 <p><dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
 </p>
-</div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1a5ccba5bad45e833bce5bd5c406c15750"></span><div class="line-block">
-<div class="line"> <strong>Bone</strong>(<a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> prevJoint, <a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> nextJoint, <a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> center, <a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> direction, float length, float width, <a class="reference internal" href="#csharpclass_leap_1_1_bone_1ac0b6411718b2d0a444dc2fa6c541fc0a"><em>Bone.BoneType</em></a> type, <a class="reference internal" href="Leap.LeapQuaternion.html#csharpstruct_leap_1_1_leap_quaternion"><em>LeapQuaternion</em></a> rotation)</div>
-</div>
-</p>
-<blockquote>
-<div><p>Constructs a new <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. </p>
-<p><dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>3.0 </dd>
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last">
-<li><tt class="first docutils literal"><span class="pre">prevJoint</span></tt> - <p>The proximal end of the bone (closest to the body) </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">nextJoint</span></tt> - <p>The distal end of the bone (furthest from the body) </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">center</span></tt> - <p>The midpoint of the bone </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">direction</span></tt> - <p>The unit direction vector pointing from prevJoint to nextJoint. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">length</span></tt> - <p>The estimated length of the bone. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">width</span></tt> - <p>The estimated average width of the bone. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">type</span></tt> - <p>The type of finger bone. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">basis</span></tt> - <p>The matrix representing the orientation of the bone. </p>
-</li>
-</ul>
-</dd>
-</dl>
 </p>
 </div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1ac8ddc215b1e19e0694b1cf01782baaa7"></span><div class="line-block">
-<div class="line">bool <strong>Equals</strong>(<a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> other)</div>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1a030efe2f4da59a4672930c887c614d48"></span><div class="line-block">
+<div class="line">bool <strong>Equals</strong>(<a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> arg0)</div>
 </div>
 </p>
 <blockquote>
@@ -452,8 +388,34 @@ String description = bone.ToString();
 </p>
 </div></blockquote>
 </div></blockquote>
-<em>Public Members</em><blockquote>
-<div><p><span class="target" id="csharpclass_leap_1_1_bone_1a81aeabd750c6ceacb6f34056dea1f154"></span><a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> <strong>Center</strong></p>
+<em>Property</em><blockquote>
+<div><p><span class="target" id="csharpclass_leap_1_1_bone_1ae6e994fa39239cd3c745266694cdc0f3"></span><a class="reference internal" href="Leap.Matrix.html#csharpclass_leap_1_1_matrix"><em>Matrix</em></a> <strong>Basis</strong></p>
+<blockquote>
+<div><p>The orthonormal basis vectors for this <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> as a <a class="reference internal" href="Leap.Matrix.html#csharpclass_leap_1_1_matrix"><em>Matrix</em></a>. </p>
+<p><p>Basis vectors specify the orientation of a bone.</p>
+<p><strong>xBasis</strong> Perpendicular to the longitudinal axis of the bone; exits the sides of the finger.</p>
+<p><strong>yBasis or up vector</strong> Perpendicular to the longitudinal axis of the bone; exits the top and bottom of the finger. More positive in the upward direction.</p>
+<p><strong>zBasis</strong> Aligned with the longitudinal axis of the bone. More positive toward the base of the finger.</p>
+<p>The bases provided for the right hand use the right-hand rule; those for the left hand use the left-hand rule. Thus, the positive direction of the x-basis is to the right for the right hand and to the left for the left hand. You can change from right-hand to left-hand rule by multiplying the z basis vector by -1.</p>
+<p>You can use the basis vectors for such purposes as measuring complex finger poses and skeletal animation.</p>
+<p>Note that converting the basis vectors directly into a quaternion representation is not mathematically valid. If you use quaternions, create them from the derived rotation matrix not directly from the bases.</p>
+<p><pre class="literal-block">
+Matrix basis = bone.Basis;
+Vector xBasis = basis.xBasis;
+Vector yBasis = basis.yBasis;
+Vector zBasis = basis.zBasis;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The basis of the bone as a matrix. </dd>
+<dt><strong>Since</strong></dt>
+<dd>2.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1a81aeabd750c6ceacb6f34056dea1f154"></span><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>Center</strong></p>
 <blockquote>
 <div><p>The midpoint of the bone. </p>
 <p><p><pre class="literal-block">
@@ -469,7 +431,7 @@ Vector middle = bone.Center;
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1a3760f0d03c577bd8a45779cf3f9a46a8"></span><a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> <strong>Direction</strong></p>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1a3760f0d03c577bd8a45779cf3f9a46a8"></span><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>Direction</strong></p>
 <blockquote>
 <div><p>The normalized direction of the bone from base to tip. </p>
 <p><p><pre class="literal-block">
@@ -479,6 +441,43 @@ Vector direction = bone.Direction;
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The normalized direction of the bone from base to tip. </dd>
+<dt><strong>Since</strong></dt>
+<dd>2.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1ad34a495f4cc474c1fd82f2f9ac8b815f"></span><a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> <strong>Invalid</strong></p>
+<blockquote>
+<div><p>Returns an invalid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. </p>
+<p><p>You can use the instance returned by this function in comparisons testing whether a given <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> instance is valid or invalid. (You can also use the Bone::isValid() function.)</p>
+<p><pre class="literal-block">
+<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a> bone = <a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.Invalid;
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The invalid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> instance. </dd>
+<dt><strong>Since</strong></dt>
+<dd>2.0 </dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1a62885a2911b2c21274564c3d9e407c2c"></span>bool <strong>IsValid</strong></p>
+<blockquote>
+<div><p>Reports whether this is a valid <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. </p>
+<p><p><pre class="literal-block">
+<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a> bone = finger.Bone(<a class="reference internal" href="#csharpclass_leap_1_1_bone_1aff891d4ef49cda0171377875375ec7bf"><em>Bone</em></a>.BoneType.TYPE_PROXIMAL);
+if(bone.IsValid)
+{
+    // ... Use the bone data
+}
+</pre>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if this <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object contains valid tracking data. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
@@ -501,7 +500,7 @@ float length = bone.Length;
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1ad1607a6b2f5cceb9194ad7d7f88d4b07"></span><a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> <strong>NextJoint</strong></p>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1ad1607a6b2f5cceb9194ad7d7f88d4b07"></span><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>NextJoint</strong></p>
 <blockquote>
 <div><p>The end of the bone, closest to the finger tip. </p>
 <p><p>In anatomical terms, this is the distal end of the bone.</p>
@@ -511,38 +510,28 @@ Vector boneEnd = bone.NextJoint;
 </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>The <a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> containing the coordinates of the next joint position. </dd>
+<dd>The <a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> containing the coordinates of the next joint position. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
 </p>
 </p>
 </div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1a04c64c1d106da6ad69a2f0ff6b5936fa"></span><a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> <strong>PrevJoint</strong></p>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1a04c64c1d106da6ad69a2f0ff6b5936fa"></span><a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> <strong>PrevJoint</strong></p>
 <blockquote>
 <div><p>The base of the bone, closest to the wrist. </p>
-<p><p>In anatomical terms, this is the proximal end of the bone. <pre class="literal-block">
+<p><p>In anatomical terms, this is the proximal end of the bone.</p>
+<p><pre class="literal-block">
 Vector boneStart = bone.PrevJoint;
 </pre>
 </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>The <a class="reference internal" href="Leap.Vector.html#csharpstruct_leap_1_1_vector"><em>Vector</em></a> containing the coordinates of the previous joint position. </dd>
+<dd>The <a class="reference internal" href="Leap.Vector.html#csharpclass_leap_1_1_vector"><em>Vector</em></a> containing the coordinates of the previous joint position. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
 </p>
-</p>
-</div></blockquote>
-<p><span class="target" id="csharpclass_leap_1_1_bone_1a4af8c6bc0d5c72e6711549e958ffb1fa"></span><a class="reference internal" href="Leap.LeapQuaternion.html#csharpstruct_leap_1_1_leap_quaternion"><em>LeapQuaternion</em></a> <strong>Rotation</strong></p>
-<blockquote>
-<div><p>The orientation of this <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> as a Quaternion. </p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>The Quaternion. </dd>
-<dt><strong>Since</strong></dt>
-<dd>2.0 </dd>
-</dl>
 </p>
 </div></blockquote>
 <p><span class="target" id="csharpclass_leap_1_1_bone_1a034c92ea5bf6a997721a6db36e9c5115"></span><a class="reference internal" href="#csharpclass_leap_1_1_bone_1ac0b6411718b2d0a444dc2fa6c541fc0a"><em>Bone.BoneType</em></a> <strong>Type</strong></p>
@@ -578,55 +567,25 @@ float width = bone.Width;
 </p>
 </div></blockquote>
 </div></blockquote>
-<em>Property</em><blockquote>
-<div><p><span class="target" id="csharpclass_leap_1_1_bone_1af94d6f6f19c7acba0ca3ceec3c911d64"></span><a class="reference internal" href="Leap.LeapTransform.html#csharpstruct_leap_1_1_leap_transform"><em>LeapTransform</em></a> <strong>Basis</strong></p>
+</div></blockquote>
+<div class="section" id="id6">
+<h2>Bone Types<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="csharpclass_leap_1_1_bone_1ac0b6411718b2d0a444dc2fa6c541fc0a"></span><strong>BoneType enum</strong></p>
 <blockquote>
-<div><p>The orthonormal basis vectors for this <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> as a Matrix. </p>
-<p><p>The orientation of this <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> as a Quaternion.</p>
-<p>Basis vectors specify the orientation of a bone.</p>
-<p><strong>xBasis</strong> Perpendicular to the longitudinal axis of the bone; exits the sides of the finger.</p>
-<p><strong>yBasis or up vector</strong> Perpendicular to the longitudinal axis of the bone; exits the top and bottom of the finger. More positive in the upward direction.</p>
-<p><strong>zBasis</strong> Aligned with the longitudinal axis of the bone. More positive toward the base of the finger.</p>
-<p>The bases provided for the right hand use the right-hand rule; those for the left hand use the left-hand rule. Thus, the positive direction of the x-basis is to the right for the right hand and to the left for the left hand. You can change from right-hand to left-hand rule by multiplying the z basis vector by -1.</p>
-<p>You can use the basis vectors for such purposes as measuring complex finger poses and skeletal animation.</p>
-<p>Note that converting the basis vectors directly into a quaternion representation is not mathematically valid. If you use quaternions, create them from the derived rotation matrix not directly from the bases.</p>
-<p><pre class="literal-block">
-LeapTransform basis = bone.Basis;
-Vector xBasis = basis.xBasis;
-Vector yBasis = basis.yBasis;
-Vector zBasis = basis.zBasis;
-</pre>
-</p>
-<p><dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>The basis of the bone as a matrix. </dd>
-<dt><strong>Return</strong></dt>
-<dd>The Quaternion. </dd>
+<div><p>Enumerates the names of the bones. </p>
+<p>Members of this enumeration are returned by Bone::type() to identify a <a class="reference internal" href="#csharpclass_leap_1_1_bone"><em>Bone</em></a> object. <dl class="docutils">
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
 </p>
-</p>
+<p><em>Values:</em></p>
+<ul class="breatheenumvalues">
+<li><tt class="first docutils literal"><span class="pre">TYPE_METACARPAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPE_PROXIMAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPE_INTERMEDIATE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - </li>
+<li><tt class="first docutils literal"><span class="pre">TYPE_DISTAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">3</span></tt> - </li>
+</ul>
 </div></blockquote>
-</div></blockquote>
-</div></blockquote>
-<div class="section" id="extension-functions">
-<h2>Extension Functions<a class="headerlink" href="#extension-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="public-static-bone-copyfrom-this-bone-bone-bone-source">
-<h3>public static Bone CopyFrom(this Bone bone, Bone source)<a class="headerlink" href="#public-static-bone-copyfrom-this-bone-bone-bone-source" title="Permalink to this headline">¶</a></h3>
-<p>Copies the data from a source bone into this bone.  After the operation is complete, the bone will be identical to the source bone.</p>
-<p>Parameter: <tt class="docutils literal"><span class="pre">source</span></tt> The source bone that is copied into this bone.</p>
-</div>
-<div class="section" id="public-static-bone-transform-this-bone-bone-leaptransform-transform">
-<h3>public static Bone Transform(this Bone bone, LeapTransform transform)<a class="headerlink" href="#public-static-bone-transform-this-bone-bone-leaptransform-transform" title="Permalink to this headline">¶</a></h3>
-<p>Does an in-place, rigid transformation of this Bone.</p>
-<p>Parameter: <tt class="docutils literal"><span class="pre">transform</span></tt> A LeapTransform containing the desired translation, rotation, and scale to be applied to this Bone.</p>
-</div>
-<div class="section" id="public-static-bone-transformedcopy-this-bone-bone-leaptransform-transform">
-<h3>public static Bone TransformedCopy(this Bone bone, LeapTransform transform)<a class="headerlink" href="#public-static-bone-transformedcopy-this-bone-bone-leaptransform-transform" title="Permalink to this headline">¶</a></h3>
-<p>Returns a new bone that is a copy of this bone, with an additional rigid transformation applied to it.</p>
-<p>Parameter: <tt class="docutils literal"><span class="pre">transform</span></tt> The transformation to be applied to the copied bone.</p>
-</div>
 </div>
 </div>
 
@@ -636,19 +595,54 @@ Vector zBasis = basis.zBasis;
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Leap_Classes.html">C# API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Leap_Classes.html#leap-motion-api-classes">Leap Motion API Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Arm.html#id3">Arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Bone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Bone Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.CircleGesture.html#id3">CircleGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Config.html#id2">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Controller.html#id2">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Device.html">Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Finger.html#id5">Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Gesture.html#id1">Gesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Pointable.html#id1">Pointable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -666,7 +660,7 @@ Vector zBasis = basis.zBasis;
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

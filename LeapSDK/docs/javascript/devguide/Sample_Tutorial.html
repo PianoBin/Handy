@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hello World &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Hello World &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Application Development" href="Leap_Guides.html" />
     <link rel="next" title="Setting Up a Project" href="Project_Setup.html" />
     <link rel="prev" title="SDK Libraries" href="Leap_SDK_Overview.html" />
@@ -278,22 +278,23 @@ function doneWithSearch(){
   Hello World
 </span> -->
         
-  <div class="section" id="id47">
-<h1>Hello World<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id56">
+<h1>Hello World<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h1>
 <p>This article discusses the JavaScript sample application included with the Leap SDK. After reading this article, you should be ready to access Leap Motion hand tracking data from your own Web applications.</p>
 <p>In the Leap SDK folder, you can find the following file used for this article:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">LeapSDK/samples/Sample.html</span></tt> — JavaScript sample application</li>
 </ul>
 <p>You will also need the Leap JavaScript client library available from <a class="reference external" href="https://github.com/leapmotion/leapjs">Leap Motion&#8217;s LeapJS repository on GitHub</a>.</p>
-<div class="section" id="id48">
-<h2>Overview<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id57">
+<h2>Overview<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h2>
 <p>In a nutshell, the Leap Motion tracking device detects and tracks hands and fingers placed within its field of view. The Leap captures this data one <em>frame</em> at a time. Web applications can use the Leap Motion JavaScript API to access this data. The Leap Motion controller sends tracking information through the socket connection as a JSON formatted message. The JavaScript API takes the JSON message and evaluates it into proper objects.</p>
 <p>The sample application demonstrates how to use the Leap Motion JavaScript API. The example is contained in a single Web page, <tt class="docutils literal"><span class="pre">Sample.html</span></tt>. The application displays several properties from the key tracking data objects in the Leap Motion API, including:</p>
 <ul class="simple">
 <li><a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> — contains a set of hand and pointable tracking data</li>
 <li><a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> — contains tracking data for a detected hand</li>
-<li><a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> — contains tracking data for a detected finger</li>
+<li><a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> — contains tracking data for a detected finger or tool</li>
+<li><a class="reference external" href="../api/Leap.Gesture.html"><tt class="docutils literal"><span class="pre">Gesture</span></tt></a> — represents a recognized gesture</li>
 </ul>
 </div>
 <div class="section" id="javascript-client-library">
@@ -318,9 +319,11 @@ function doneWithSearch(){
       &lt;h3&gt;Hand data:&lt;/h3&gt;
       &lt;div id=&quot;handData&quot;&gt;&lt;/div&gt;
       &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
-      &lt;h3&gt;Finger data:&lt;/h3&gt;
+      &lt;h3&gt;Finger and tool data:&lt;/h3&gt;
       &lt;div id=&quot;pointableData&quot;&gt;&lt;/div&gt;
       &lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+      &lt;h3&gt;Gesture data:&lt;/h3&gt;
+      &lt;div id=&quot;gestureData&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -333,7 +336,7 @@ function doneWithSearch(){
 <p>Since the Leap Motion controller provides data continuously, you need to set up an event loop to handle individual frames of data. You can either set up a loop that handles the data as the Leap Motion controller produces each frame, or you can set up a loop that handles the data when your application is ready to do something with it. The Leap Motion JavaScript client library supports both options.</p>
 <p>This example demonstrates the second method since there is no need in this app to process the data faster than the browser can draw it to the screen. The Leap Motion API provides the <tt class="docutils literal"><span class="pre">Leap.loop()</span></tt> function, which invokes a callback function you provide whenever the browser is ready to draw. In this sample, the callback is an anonymous function that prints out the tracking data to the body of the web page. The first parameter of the <tt class="docutils literal"><span class="pre">loop()</span></tt> function contains optional settings parameters that are passed to the <a class="reference external" href="../api/Leap.Controller.html"><tt class="docutils literal"><span class="pre">Controller</span></tt></a> object. This is the skeleton of the function:</p>
 <div class="code js highlight-python"><div class="highlight"><pre>// Setup Leap loop with frame callback function
-var controllerOptions = {};
+var controllerOptions = {enableGestures: true};
 
 Leap.loop(controllerOptions, function(frame) {
   // Body of callback function
@@ -344,16 +347,39 @@ Leap.loop(controllerOptions, function(frame) {
 </div>
 <div class="section" id="accessing-tracking-data">
 <h2>Accessing tracking data<a class="headerlink" href="#accessing-tracking-data" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object passed to the <tt class="docutils literal"><span class="pre">loop()</span></tt> callback function as the <tt class="docutils literal"><span class="pre">frame</span></tt> parameter is root of the tracking data model and provides access to all the tracked objects, like hands and fingers. To display the data, the example creates a string of HTML containing the object properties and assigns the string to a <tt class="docutils literal"><span class="pre">div</span></tt> element on the page.</p>
+<p>The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object passed to the <tt class="docutils literal"><span class="pre">loop()</span></tt> callback function as the <tt class="docutils literal"><span class="pre">frame</span></tt> parameter is root of the tracking data model and provides access to all the tracked objects, like hands, fingers, and tools. To display the data, the example creates a string of HTML containing the object properties and assigns the string to a <tt class="docutils literal"><span class="pre">div</span></tt> element on the page.</p>
 <div class="section" id="frame-data">
 <h3>Frame data<a class="headerlink" href="#frame-data" title="Permalink to this headline">¶</a></h3>
 <p>Displaying the basic frame data is a simple matter of constructing a string using the <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object properties:</p>
 <div class="code js highlight-python"><div class="highlight"><pre>var frameString = &quot;Frame ID: &quot; + frame.id  + &quot;&lt;br /&gt;&quot;
                 + &quot;Timestamp: &quot; + frame.timestamp + &quot; &amp;micro;s&lt;br /&gt;&quot;
                 + &quot;Hands: &quot; + frame.hands.length + &quot;&lt;br /&gt;&quot;
-                + &quot;Fingers: &quot; + frame.fingers.length + &quot;&lt;br /&gt;&quot;;
+                + &quot;Fingers: &quot; + frame.fingers.length + &quot;&lt;br /&gt;&quot;
+                + &quot;Tools: &quot; + frame.tools.length + &quot;&lt;br /&gt;&quot;
+                + &quot;Gestures: &quot; + frame.gestures.length + &quot;&lt;br /&gt;&quot;;
 </pre></div>
 </div>
+</div>
+<div class="section" id="motion-data">
+<h3>Motion data<a class="headerlink" href="#motion-data" title="Permalink to this headline">¶</a></h3>
+<p>Motion data, which the Leap Motion controller provides for the scene as a whole and for each hand individually, requires a frame to serve as the basis for comparison. This example stores a reference to the previous frame (in a variable named <tt class="docutils literal"><span class="pre">previousFrame</span></tt>) and passes that reference to each of the motion functions. The example displays the frame translation, rotation axis, rotation angle, and scale factor; there are a few other methods available as well. The motion functions of the <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object describe the motion of the overall scene. The example displays the motion data as follows:</p>
+<div class="code js highlight-python"><div class="highlight"><pre>// Frame motion factors
+if (previousFrame) {
+  var translation = frame.translation(previousFrame);
+  frameString += &quot;Translation: &quot; + vectorToString(translation) + &quot; mm &lt;br /&gt;&quot;;
+
+  var rotationAxis = frame.rotationAxis(previousFrame);
+  var rotationAngle = frame.rotationAngle(previousFrame);
+  frameString += &quot;Rotation axis: &quot; + vectorToString(rotationAxis, 2) + &quot;&lt;br /&gt;&quot;;
+  frameString += &quot;Rotation angle: &quot; + rotationAngle.toFixed(2) + &quot; radians&lt;br /&gt;&quot;;
+
+  var scaleFactor = frame.scaleFactor(previousFrame);
+  frameString += &quot;Scale factor: &quot; + scaleFactor.toFixed(2) + &quot;&lt;br /&gt;&quot;;
+}
+</pre></div>
+</div>
+<p>When you access a value that represents a vector, the Leap JavaScript API expresses the vector as a standard Array object containing three elements. This is the case with the result of the <tt class="docutils literal"><span class="pre">translation()</span></tt> function, above. The element, <tt class="docutils literal"><span class="pre">translation[0]</span></tt>, for example represents the <cite>x</cite>-coordinate of the vector. For convenience, the <tt class="docutils literal"><span class="pre">vectorToString()</span></tt> function converts a vector array to a human-readable format.</p>
+<p>At the end of the callback function, remember to assign the current frame to the <tt class="docutils literal"><span class="pre">previousFrame</span></tt> variable to serve as the point of reference for motions in the next frame. This provides frame-by-frame motions. You can also grab a frame at the start of an interaction and use that as the reference frame until the interaction ends.</p>
 </div>
 <div class="section" id="hand-data">
 <h3>Hand data<a class="headerlink" href="#hand-data" title="Permalink to this headline">¶</a></h3>
@@ -378,10 +404,10 @@ if (frame.hands.length &gt; 0) {
 </pre></div>
 </div>
 </div>
-<div class="section" id="finger-data">
-<h3>Finger data<a class="headerlink" href="#finger-data" title="Permalink to this headline">¶</a></h3>
-<p>Fingers are represented by <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> objects in the JavaScript API. The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object provides a <tt class="docutils literal"><span class="pre">pointables</span></tt> property, which is an array containing all the fingers detected in that frame. <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> objects also contain a <tt class="docutils literal"><span class="pre">pointables</span></tt> list, which contains only the pointable objects representing the fingers of that hand.</p>
-<div class="code js highlight-python"><div class="highlight"><pre>// Display Pointable (finger) object data
+<div class="section" id="finger-and-tool-data">
+<h3>Finger and Tool data<a class="headerlink" href="#finger-and-tool-data" title="Permalink to this headline">¶</a></h3>
+<p>Fingers and tools are represented by <a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a> objects in the JavaScript API. (You can use the <tt class="docutils literal"><span class="pre">Pointable.tool</span></tt> property to tell which type an object represents.) The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object provides a <tt class="docutils literal"><span class="pre">pointables</span></tt> property, which is an array containing all the fingers and tools detected in that frame. <a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a> objects also contain a <tt class="docutils literal"><span class="pre">pointables</span></tt> list, which contains only the pointable objects representing the fingers of that hand.</p>
+<div class="code js highlight-python"><div class="highlight"><pre>// Display Pointable (finger and tool) object data
 var pointableString = &quot;&quot;;
 if (frame.pointables.length &gt; 0) {
   for (var i = 0; i &lt; frame.pointables.length; i++) {
@@ -389,8 +415,17 @@ if (frame.pointables.length &gt; 0) {
 
     pointableString += &quot;Pointable ID: &quot; + pointable.id + &quot;&lt;br /&gt;&quot;;
     pointableString += &quot;Belongs to hand with ID: &quot; + pointable.handId + &quot;&lt;br /&gt;&quot;;
-    pointableString += &quot;Length: &quot; + pointable.length.toFixed(1) + &quot; mm&lt;br /&gt;&quot;;
-    pointableString += &quot;Width: &quot;  + pointable.width.toFixed(1) + &quot; mm&lt;br /&gt;&quot;;
+
+    if (pointable.tool) {
+      pointableString += &quot;Classified as a tool &lt;br /&gt;&quot;;
+      pointableString += &quot;Length: &quot; + pointable.length.toFixed(1) + &quot; mm&lt;br /&gt;&quot;;
+      pointableString += &quot;Width: &quot;  + pointable.width.toFixed(1) + &quot; mm&lt;br /&gt;&quot;;
+    }
+    else {
+      pointableString += &quot;Classified as a finger&lt;br /&gt;&quot;;
+      pointableString += &quot;Length: &quot; + pointable.length.toFixed(1) + &quot; mm&lt;br /&gt;&quot;;
+    }
+
     pointableString += &quot;Direction: &quot; + vectorToString(pointable.direction, 2) + &quot;&lt;br /&gt;&quot;;
     pointableString += &quot;Tip position: &quot; + vectorToString(pointable.tipPosition) + &quot; mm&lt;br /&gt;&quot;;
     pointableString += &quot;Tip velocity: &quot; + vectorToString(pointable.tipVelocity) + &quot; mm/s&lt;br /&gt;&quot;;
@@ -399,9 +434,61 @@ if (frame.pointables.length &gt; 0) {
 </pre></div>
 </div>
 </div>
+<div class="section" id="gesture-data">
+<h3>Gesture data<a class="headerlink" href="#gesture-data" title="Permalink to this headline">¶</a></h3>
+<p>To receive gestures from the Leap, you first have to enable gesture recognition. Enable gestures when you call the <tt class="docutils literal"><span class="pre">Leap.loop()</span></tt> function by passing in an options object:</p>
+<div class="code js highlight-python"><div class="highlight"><pre>// Setup Leap loop with frame callback function
+var controllerOptions = {enableGestures: true};
+
+Leap.loop(controllerOptions, function(frame) {
+  // Body of callback function
+})
+</pre></div>
 </div>
-<div class="section" id="id49">
-<h2>Running the sample<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h2>
+<p>The Leap Motion controller adds <a class="reference external" href="../api/Leap.Gesture.html"><tt class="docutils literal"><span class="pre">Gesture</span></tt></a> objects representing each recognized movement pattern to the gestures list in the <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object. The sample application loops through the gesture list and prints information about each one to the standard output. This operation is performed with a standard for-loop and switch statement.</p>
+<p>The full code for the gesture loop is:</p>
+<div class="code js highlight-python"><div class="highlight"><pre>// Display Gesture object data
+var gestureString = &quot;&quot;;
+if (frame.gestures.length &gt; 0) {
+  for (var i = 0; i &lt; frame.gestures.length; i++) {
+    var gesture = frame.gestures[i];
+    gestureString += &quot;Gesture ID: &quot; + gesture.id + &quot;, &quot;
+                  + &quot;type: &quot; + gesture.type + &quot;, &quot;
+                  + &quot;state: &quot; + gesture.state + &quot;, &quot;
+                  + &quot;hand IDs: &quot; + gesture.handIds.join(&quot;, &quot;) + &quot;, &quot;
+                  + &quot;pointable IDs: &quot; + gesture.pointableIds.join(&quot;, &quot;) + &quot;, &quot;
+                  + &quot;duration: &quot; + gesture.duration + &quot; &amp;micro;s, &quot;;
+
+    switch (gesture.type) {
+      case &quot;circle&quot;:
+        gestureString += &quot;center: &quot; + vectorToString(gesture.center) + &quot; mm, &quot;
+                      + &quot;normal: &quot; + vectorToString(gesture.normal, 2) + &quot;, &quot;
+                      + &quot;radius: &quot; + gesture.radius.toFixed(1) + &quot; mm, &quot;
+                      + &quot;progress: &quot; + gesture.progress.toFixed(2) + &quot; rotations&quot;;
+        break;
+      case &quot;swipe&quot;:
+        gestureString += &quot;start position: &quot; + vectorToString(gesture.startPosition) + &quot; mm, &quot;
+                      + &quot;current position: &quot; + vectorToString(gesture.position) + &quot; mm, &quot;
+                      + &quot;direction: &quot; + vectorToString(gesture.direction, 2) + &quot;, &quot;
+                      + &quot;speed: &quot; + gesture.speed.toFixed(1) + &quot; mm/s&quot;;
+        break;
+      case &quot;screenTap&quot;:
+      case &quot;keyTap&quot;:
+        gestureString += &quot;position: &quot; + vectorToString(gesture.position) + &quot; mm, &quot;
+                      + &quot;direction: &quot; + vectorToString(gesture.direction, 2);
+        break;
+      default:
+        gestureString += &quot;unknown gesture type&quot;;
+    }
+    gestureString += &quot;&lt;br /&gt;&quot;;
+  }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id58">
+<h2>Running the sample<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h2>
 <p>To run the sample application:</p>
 <ol class="arabic">
 <li><p class="first">Plug the Leap device into a USB port and place it in front of you.</p>
@@ -414,7 +501,7 @@ if (frame.pointables.length &gt; 0) {
 <li><p class="first">Open Sample.html in a browser that supports WebSockets.</p>
 </li>
 </ol>
-<p>When you place a hand above the Leap, you should see the Frame, Hand, and Finger information printed out on the page.</p>
+<p>When you place a hand above the Leap, you should see the Frame, Hand, and Finger information printed out on the page. When you make a gesture, you should also see the appropriate Gesture information.</p>
 <p>Now that you have seen how to access motion tracking data with the Leap Motion API, you can begin developing your own JavaScript applications that integrate the Leap Motion controller.</p>
 </div>
 </div>
@@ -425,24 +512,27 @@ if (frame.pointables.length &gt; 0) {
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Leap_SDK_Overview.html">SDK Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id47">Hello World</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id48">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id56">Hello World</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id57">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#javascript-client-library">JavaScript client library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-page">Setting up the page</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-event-loop">Setting up the event loop</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-tracking-data">Accessing tracking data</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#frame-data">Frame data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motion-data">Motion data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hand-data">Hand data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#finger-data">Finger data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finger-and-tool-data">Finger and Tool data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gesture-data">Gesture data</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">Running the sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">Running the sample</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Project_Setup.html#id14">Setting Up a Project</a></li>
@@ -474,7 +564,7 @@ if (frame.pointables.length &gt; 0) {
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

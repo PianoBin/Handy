@@ -341,7 +341,7 @@ ul.auto-toc {
 <div class="document" id="leap-motion-release-notes">
 <h1 class="title">Leap Motion Release Notes</h1>
 
-<p><em>Version 3.2.0 Orion</em></p>
+<p><em>Version 2.3.1</em></p>
 <div class="contents topic" id="topics">
 <p class="topic-title first">Topics:</p>
 <ul class="simple">
@@ -361,43 +361,37 @@ ul.auto-toc {
 <div class="section" id="what-s-new">
 <h1><a class="toc-backref" href="#id1">What's New</a></h1>
 <ul class="simple">
-<li>Improved initialization speed</li>
-<li>Improved stability of tracking some poses</li>
-<li>Better tracking and initialization in desktop mode</li>
-<li>Updated Unity Visualizer to fix a latency issue</li>
-<li>Official LeapC documentation in the SDK package</li>
-<li>Various changes to LeapC including:<ul>
-<li>Added LeapPixelToRectilinear()</li>
-<li>Added LeapRectilinearToPixel()</li>
-<li>Added invalid and unknown device types</li>
-<li>Renamed eLeapDeviceType to eLeapPID</li>
-<li>Added record to file and playback from file</li>
-<li>Added 3x3 Matrix struct</li>
-<li>Added quaternion to LEAP_PALM to represent orientation</li>
-<li>Added LeapInterpolateFrameFromTime() function</li>
-</ul>
-</li>
+<li>Fix for service crash after disconnecting/reconnecting in HMD mode</li>
+<li>Fix for gradual climb in latency in apps</li>
+<li>Fix for errant disk full message in App Home</li>
 </ul>
 </div>
 <div class="section" id="known-issues">
 <h1><a class="toc-backref" href="#id2">Known issues</a></h1>
 <ul class="simple">
-<li>Our software auto-updating feature will not work when updating from any release prior to 3.2.0. This will work again when going from 3.2.0 to any future updates. You will need to manually update via our developer portal.</li>
-<li>Some legacy applications are no longer supported on Orion. These apps are Digit Duel, NY Times, Google Earth, Out of the Blocks, PWN9, and TVO Kids Caterpillar Count. These apps will still be available for V2 users.</li>
-<li>Some poses are not currently tracked as well as V2; this can be seen in the form of occasional bad initialization/reinitialization, right/left misinterpretation, and wrong poses</li>
-<li>The skeleton hand can shift slightly away from the hand as you move left or right; most noticeable in apps that use Image Hands and also display the skeletal hands</li>
-<li>Tracking may not work as well with bracelets, watches, sleeves, etc</li>
-<li>Although very much improved, occluded hands can still get killed at times</li>
-<li>Devices embedded in HP laptops and keyboards are not supported on Orion</li>
-<li>Hand confidence is currently always 1.0 and does not fluctuate; a new solution is on the horizon</li>
-<li>Tools are not currently supported in Orion</li>
-<li>Automatic controller orientation can in rare cases stop functioning. A Leap Motion service restart will fix this or you can manually orient the controller from the Leap Motion Control Panel.</li>
-<li>Tracking along the x-axis may appear slightly skewed</li>
-<li>Desktop mode initialization is not as reliable as HMD mode initialization</li>
 <li>Pausing/Resuming Tracking can cause the FPS to drop. The workaround is to disconnect and then reconnect the device to bring the FPS back to normal</li>
+<li>Bone direction vector points in the wrong direction. It should point toward the distal end of the bone</li>
+<li>Stop-state gesture objects are sometimes not dispatched for swipe and circle gestures</li>
+<li>Swipes with a completely vertical hand are unreliable</li>
+<li>Serialized invalid frames are marked as valid when deserialized</li>
+<li>Cannot set the Interaction height manually. The workaround is to turn on the <strong>Automatic Interaction Height</strong> setting and then move your hand up or down to change the interaction height as shown in the settings panel. When the desired height is achieved, turn off the automatic setting and click <strong>Apply</strong></li>
+<li>Images cannot be extracted from serialized frames</li>
+<li>Device.isFlipped is always false</li>
+<li>Secure Websocket on Firefox requires Firefox version 32 or higher</li>
+<li>In some situations when it appears the Leap Service is not running, it is stuck in a loop consuming a full core's CPU. If this happens, restart the service</li>
 <li>Avast! Antivirus can interfere with Leap Motion Service installation (disable shields to work around)</li>
+<li>Secure WebSocket (TLS) on Linux Chrome requires running with --ignore-certificate-errors (caution: this also affects non-WebSocket services)</li>
+<li>Chrome on Windows 7 sometimes fails to respond to emulated touch points – to fix this, click inside the program with a mouse</li>
+<li>JavaScript client library and WebSocket protocol do not support setting gesture parameters</li>
+<li>The sphereRadius and sphereCenter functions of the Hand class are unstable when the hand is fully open</li>
+<li>Tracking quality is lower when making a fist or with only one finger extended</li>
+<li>Tracking may not work as well with bracelets, rings, watches, sleeves, etc</li>
+<li>A tap gesture may register when a small circle gesture is made</li>
+<li>Linux does not support background apps or onFocus callbacks</li>
 <li>The latest version of the Oculus firmware limits bandwidth for the DK2’s built-in USB port, which harms the controller’s performance. For now, we recommend using the free cable extender bundled with the mount to connect the controller directly to the computer</li>
-<li>Tracking performance may degrade when closely facing large reflective surfaces like white walls or infrared-reflective curtains.</li>
+<li>Tracking performance may degrade when closely facing large reflective surfaces like white walls or infrared-reflective curtains. (This is a broader issue with V2 tracking that we’re constantly improving on)</li>
+<li>Tracking degrades when arms are held directly away from the body (i.e. elbows straight)</li>
+<li>Some poses are not currently tracked reliably in head-mounted display (HMD) mode (e.g. pinch/rotate, 3- and 4-finger poses)</li>
 <li>Minimized or out-of-focus applications using the HMD policy flag can affect the service state. Close such programs before switching back to non-VR apps</li>
 </ul>
 </div>
@@ -502,172 +496,63 @@ ul.auto-toc {
 <div class="contents local topic" id="versions">
 <p class="topic-title first">Versions</p>
 <ul class="simple">
-<li><a class="reference internal" href="#version-3-2-0" id="id12">Version 3.2.0</a></li>
-<li><a class="reference internal" href="#version-3-1-3" id="id13">Version 3.1.3</a></li>
-<li><a class="reference internal" href="#version-3-1-2" id="id14">Version 3.1.2</a></li>
-<li><a class="reference internal" href="#version-3-1-1" id="id15">Version 3.1.1</a></li>
-<li><a class="reference internal" href="#version-3-1-0" id="id16">Version 3.1.0</a></li>
-<li><a class="reference internal" href="#version-3-0-0" id="id17">Version 3.0.0</a></li>
-<li><a class="reference internal" href="#version-2-3-1" id="id18">Version 2.3.1</a></li>
-<li><a class="reference internal" href="#version-2-3-0" id="id19">Version 2.3.0</a></li>
-<li><a class="reference internal" href="#version-2-2-7" id="id20">Version 2.2.7</a></li>
-<li><a class="reference internal" href="#version-2-2-6" id="id21">Version 2.2.6</a></li>
-<li><a class="reference internal" href="#version-2-2-4" id="id22">Version 2.2.4</a></li>
-<li><a class="reference internal" href="#version-2-2-3" id="id23">Version 2.2.3</a></li>
-<li><a class="reference internal" href="#version-2-2-2" id="id24">Version 2.2.2</a></li>
-<li><a class="reference internal" href="#version-2-2-1" id="id25">Version 2.2.1</a></li>
-<li><a class="reference internal" href="#version-2-2-0" id="id26">Version 2.2.0</a></li>
-<li><a class="reference internal" href="#version-2-1-6" id="id27">Version 2.1.6</a></li>
-<li><a class="reference internal" href="#version-2-1-5" id="id28">Version 2.1.5</a></li>
-<li><a class="reference internal" href="#version-2-1-4" id="id29">Version 2.1.4</a></li>
-<li><a class="reference internal" href="#version-2-1-3-beta" id="id30">Version 2.1.3 Beta</a></li>
-<li><a class="reference internal" href="#version-2-1-2-beta" id="id31">Version 2.1.2 Beta</a></li>
-<li><a class="reference internal" href="#version-2-1-1-beta" id="id32">Version 2.1.1 Beta</a></li>
-<li><a class="reference internal" href="#version-2-1-0-beta" id="id33">Version 2.1.0 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-5-beta" id="id34">Version 2.0.5 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-4-beta" id="id35">Version 2.0.4 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-3-beta" id="id36">Version 2.0.3 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-2-beta" id="id37">Version 2.0.2 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-1-beta" id="id38">Version 2.0.1 Beta</a></li>
-<li><a class="reference internal" href="#version-2-0-0-beta" id="id39">Version 2.0.0 Beta</a></li>
-<li><a class="reference internal" href="#version-1-2-0" id="id40">Version 1.2.0</a></li>
-<li><a class="reference internal" href="#version-1-0-9" id="id41">Version 1.0.9</a></li>
-<li><a class="reference internal" href="#version-1-0-8" id="id42">Version 1.0.8</a></li>
-<li><a class="reference internal" href="#version-0-8-2" id="id43">Version 0.8.2</a></li>
-<li><a class="reference internal" href="#version-0-8-1" id="id44">Version 0.8.1</a></li>
-<li><a class="reference internal" href="#version-0-8-0" id="id45">Version 0.8.0</a></li>
-<li><a class="reference internal" href="#version-0-7-9" id="id46">Version 0.7.9</a></li>
-<li><a class="reference internal" href="#version-0-7-8" id="id47">Version 0.7.8</a></li>
-<li><a class="reference internal" href="#version-0-7-7" id="id48">Version 0.7.7</a></li>
-<li><a class="reference internal" href="#version-0-7-6" id="id49">Version 0.7.6</a></li>
-<li><a class="reference internal" href="#version-0-7-5" id="id50">Version 0.7.5</a></li>
-<li><a class="reference internal" href="#version-0-7-4" id="id51">Version 0.7.4</a></li>
-<li><a class="reference internal" href="#version-0-7-3" id="id52">Version 0.7.3</a></li>
-<li><a class="reference internal" href="#version-0-7-2" id="id53">Version 0.7.2</a></li>
-<li><a class="reference internal" href="#version-0-7-1" id="id54">Version 0.7.1</a></li>
-<li><a class="reference internal" href="#version-0-7-0" id="id55">Version 0.7.0</a></li>
-<li><a class="reference internal" href="#version-0-6-6" id="id56">Version 0.6.6</a></li>
-<li><a class="reference internal" href="#version-0-6-5" id="id57">Version 0.6.5</a></li>
-<li><a class="reference internal" href="#version-0-6-4" id="id58">Version 0.6.4</a></li>
-<li><a class="reference internal" href="#version-0-6-3" id="id59">Version 0.6.3</a></li>
-<li><a class="reference internal" href="#version-0-6-2" id="id60">Version 0.6.2</a></li>
-<li><a class="reference internal" href="#version-0-6-1" id="id61">Version 0.6.1</a></li>
-<li><a class="reference internal" href="#version-0-6-0" id="id62">Version 0.6.0</a></li>
-</ul>
-</div>
-<div class="section" id="version-3-2-0">
-<h2><a class="toc-backref" href="#id12">Version 3.2.0</a></h2>
-<ul class="simple">
-<li>Improved initialization speed and tracking of some poses</li>
-<li>Better tracking and initialization in desktop mode</li>
-<li>Updated Unity Visualizer to fix a latency issue</li>
-<li>Official LeapC documentation in the SDK package</li>
-<li>Various changes to LeapC including:</li>
-</ul>
-<blockquote>
-<ul class="simple">
-<li>Added LeapPixelToRectilinear()</li>
-<li>Added LeapRectilinearToPixel()</li>
-<li>Added invalid and unknown device types</li>
-<li>Renamed eLeapDeviceType to eLeapPID</li>
-<li>Added record to file and playback from file</li>
-<li>Added 3x3 Matrix struct</li>
-<li>Added quaternion to LEAP_PALM to represent orientation</li>
-<li>Added LeapInterpolateFrameFromTime() function</li>
-</ul>
-</blockquote>
-</div>
-<div class="section" id="version-3-1-3">
-<h2><a class="toc-backref" href="#id13">Version 3.1.3</a></h2>
-<ul class="simple">
-<li>Significantly reduced the number of false hands appearing on background objects</li>
-<li>Improved initialization in complex backgrounds and at longer distances</li>
-<li>Addressed an issue where the hand can become detached at higher hand velocities</li>
-<li>Addressed a rare service hang while idling for several hours</li>
-<li>Addressed an issue with the VR Visualizer showing destop mode when using HMDs</li>
-<li>Addressed a rare crash issue when restarting the service</li>
-<li>Addressed a small memory leak after pausing/unpausing the service many times</li>
-</ul>
-</div>
-<div class="section" id="version-3-1-2">
-<h2><a class="toc-backref" href="#id14">Version 3.1.2</a></h2>
-<ul class="simple">
-<li>Added in the LeapCSharp .NET 3.5, 4.0 and 4.5 DLLs</li>
-<li>Addressed a judder issue in LeapC when application render FPS and tracking FPS were out of sync</li>
-<li>Improved initialization when running at lower frame rates</li>
-<li>Better tracking and higher FPS while in robust mode</li>
-<li>Improved tracking on the edge of the field of view</li>
-<li>Adjusted the gamma in the VR Visualizer when in Robust Mode</li>
-<li>Added an FPS counter in the VR Visualizer</li>
-<li>Updated the VR Visualizer to support Oculus 1.3</li>
-<li>Also updated the VR Visualizer to support HTC Vive</li>
-</ul>
-</div>
-<div class="section" id="version-3-1-1">
-<h2><a class="toc-backref" href="#id15">Version 3.1.1</a></h2>
-<ul class="simple">
-<li>Fixed a service crash when triggering device auto-orientation after disconnect/reconnect</li>
-<li>Fixed a communication issue with the service and control panel after closing the Unity Editor</li>
-<li>Fixed a Unity crash after editing scripts in Unity Editor while a Leap scene is running</li>
-<li>Report Software Issue in the Troubleshooting section of the control panel functions properly again</li>
-<li>Resolved an issue that caused device auto-orientation to stop working occasionally</li>
-<li>Manual device orientation button from the control panel functions again</li>
-<li>Software log reports device orientation and when HMD/Desktop mode is triggered</li>
-</ul>
-</div>
-<div class="section" id="version-3-1-0">
-<h2><a class="toc-backref" href="#id16">Version 3.1.0</a></h2>
-<ul class="simple">
-<li>Rewrote the .NET API wrapper around LeapC</li>
-<li>Better tracking when hands are occluded or touching</li>
-<li>LeapC PinchAPI and GrabAPI values no longer return 0</li>
-<li>Resolved the corrupt characters appearing in software log</li>
-<li>Resolved the hitching issue seen when running apps</li>
-<li>Resolved a crash when multiple clients were connected at service start</li>
-<li>Resolved a crash related to calibration</li>
-</ul>
-</div>
-<div class="section" id="version-3-0-0">
-<h2><a class="toc-backref" href="#id17">Version 3.0.0</a></h2>
-<ul class="simple">
-<li>Greater robustness to cluttered backgrounds and ambient light interference</li>
-<li>Enhanced tracking range that extends to the full length of your arms</li>
-<li>Faster and better initialization for all hands</li>
-<li>Lower latency</li>
-<li>Significantly improved grab-and-drop interactions</li>
-<li>Lower overall CPU usage</li>
-<li>Much better finger flexibility allowing for better poses</li>
-<li>Better tracking on the edge of the field of view</li>
-<li>Added a VR and PC visualizer to the tray menu</li>
-<li>Various control panel updates</li>
-<li>The Unity assets now use a C# binding to a C-language library rather than the SWIG-generated C++ bindings. The new C# API is slightly different then the previous one, especially for images. Currently this new C# API is only used in Unity</li>
-<li>Deprecated Tools</li>
-<li>Deprecated Gestures</li>
-<li>Deprecated Motion APIs (Frame and Hand translation, rotation, scale and related probability estimates)</li>
-<li>Tracking now automatically resumes after recalibration on Windows</li>
-<li>Added the setPaused() API</li>
-<li>Added the isLightingBad() API</li>
-<li>Added the isSmudged() API</li>
-<li>Added onLogMessage API to LeapListener</li>
-<li>A new 'start_paused' config flag has been added</li>
-<li>Fixed touch compatibility for Recalibrate</li>
-<li>Fixed Recalibrate not being resizable</li>
-<li>Improved behavior when detecting smudges</li>
-<li>Apps should now always correctly detect reconnection</li>
-<li>Updated the C++ sample with examples of the new APIs</li>
-<li>Removed unneeded Windows DLLs from the SDK</li>
+<li><a class="reference internal" href="#version-2-3-1" id="id12">Version 2.3.1</a></li>
+<li><a class="reference internal" href="#version-2-3-0" id="id13">Version 2.3.0</a></li>
+<li><a class="reference internal" href="#version-2-2-7" id="id14">Version 2.2.7</a></li>
+<li><a class="reference internal" href="#version-2-2-6" id="id15">Version 2.2.6</a></li>
+<li><a class="reference internal" href="#version-2-2-4" id="id16">Version 2.2.4</a></li>
+<li><a class="reference internal" href="#version-2-2-3" id="id17">Version 2.2.3</a></li>
+<li><a class="reference internal" href="#version-2-2-2" id="id18">Version 2.2.2</a></li>
+<li><a class="reference internal" href="#version-2-2-1" id="id19">Version 2.2.1</a></li>
+<li><a class="reference internal" href="#version-2-2-0" id="id20">Version 2.2.0</a></li>
+<li><a class="reference internal" href="#version-2-1-6" id="id21">Version 2.1.6</a></li>
+<li><a class="reference internal" href="#version-2-1-5" id="id22">Version 2.1.5</a></li>
+<li><a class="reference internal" href="#version-2-1-4" id="id23">Version 2.1.4</a></li>
+<li><a class="reference internal" href="#version-2-1-3-beta" id="id24">Version 2.1.3 Beta</a></li>
+<li><a class="reference internal" href="#version-2-1-2-beta" id="id25">Version 2.1.2 Beta</a></li>
+<li><a class="reference internal" href="#version-2-1-1-beta" id="id26">Version 2.1.1 Beta</a></li>
+<li><a class="reference internal" href="#version-2-1-0-beta" id="id27">Version 2.1.0 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-5-beta" id="id28">Version 2.0.5 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-4-beta" id="id29">Version 2.0.4 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-3-beta" id="id30">Version 2.0.3 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-2-beta" id="id31">Version 2.0.2 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-1-beta" id="id32">Version 2.0.1 Beta</a></li>
+<li><a class="reference internal" href="#version-2-0-0-beta" id="id33">Version 2.0.0 Beta</a></li>
+<li><a class="reference internal" href="#version-1-2-0" id="id34">Version 1.2.0</a></li>
+<li><a class="reference internal" href="#version-1-0-9" id="id35">Version 1.0.9</a></li>
+<li><a class="reference internal" href="#version-1-0-8" id="id36">Version 1.0.8</a></li>
+<li><a class="reference internal" href="#version-0-8-2" id="id37">Version 0.8.2</a></li>
+<li><a class="reference internal" href="#version-0-8-1" id="id38">Version 0.8.1</a></li>
+<li><a class="reference internal" href="#version-0-8-0" id="id39">Version 0.8.0</a></li>
+<li><a class="reference internal" href="#version-0-7-9" id="id40">Version 0.7.9</a></li>
+<li><a class="reference internal" href="#version-0-7-8" id="id41">Version 0.7.8</a></li>
+<li><a class="reference internal" href="#version-0-7-7" id="id42">Version 0.7.7</a></li>
+<li><a class="reference internal" href="#version-0-7-6" id="id43">Version 0.7.6</a></li>
+<li><a class="reference internal" href="#version-0-7-5" id="id44">Version 0.7.5</a></li>
+<li><a class="reference internal" href="#version-0-7-4" id="id45">Version 0.7.4</a></li>
+<li><a class="reference internal" href="#version-0-7-3" id="id46">Version 0.7.3</a></li>
+<li><a class="reference internal" href="#version-0-7-2" id="id47">Version 0.7.2</a></li>
+<li><a class="reference internal" href="#version-0-7-1" id="id48">Version 0.7.1</a></li>
+<li><a class="reference internal" href="#version-0-7-0" id="id49">Version 0.7.0</a></li>
+<li><a class="reference internal" href="#version-0-6-6" id="id50">Version 0.6.6</a></li>
+<li><a class="reference internal" href="#version-0-6-5" id="id51">Version 0.6.5</a></li>
+<li><a class="reference internal" href="#version-0-6-4" id="id52">Version 0.6.4</a></li>
+<li><a class="reference internal" href="#version-0-6-3" id="id53">Version 0.6.3</a></li>
+<li><a class="reference internal" href="#version-0-6-2" id="id54">Version 0.6.2</a></li>
+<li><a class="reference internal" href="#version-0-6-1" id="id55">Version 0.6.1</a></li>
+<li><a class="reference internal" href="#version-0-6-0" id="id56">Version 0.6.0</a></li>
 </ul>
 </div>
 <div class="section" id="version-2-3-1">
-<h2><a class="toc-backref" href="#id18">Version 2.3.1</a></h2>
+<h2><a class="toc-backref" href="#id12">Version 2.3.1</a></h2>
 <ul class="simple">
-<li>Resolved issue that caused tracking latency within apps to increase over time</li>
 <li>Fix for service crash after disconnecting/reconnecting in HMD mode</li>
-<li>Fix for errant disk full message in App Home on Windows</li>
+<li>Fix for gradual climb in latency in apps</li>
+<li>Fix for errant disk full message in App Home</li>
 </ul>
 </div>
 <div class="section" id="version-2-3-0">
-<h2><a class="toc-backref" href="#id19">Version 2.3.0</a></h2>
+<h2><a class="toc-backref" href="#id13">Version 2.3.0</a></h2>
 <ul class="simple">
 <li>Fix tracking hang in apps that use Image API</li>
 <li>Tracking is more accurate while in Robust Mode</li>
@@ -680,7 +565,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-7">
-<h2><a class="toc-backref" href="#id20">Version 2.2.7</a></h2>
+<h2><a class="toc-backref" href="#id14">Version 2.2.7</a></h2>
 <ul class="simple">
 <li>Images are now on by default</li>
 <li>Fixed gesture parameters in C#/Unity</li>
@@ -691,7 +576,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-6">
-<h2><a class="toc-backref" href="#id21">Version 2.2.6</a></h2>
+<h2><a class="toc-backref" href="#id15">Version 2.2.6</a></h2>
 <ul class="simple">
 <li>Added an image.data_pointer hook for faster image API access in Python</li>
 <li>Fix for device.serial_number in Python</li>
@@ -706,7 +591,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-4">
-<h2><a class="toc-backref" href="#id22">Version 2.2.4</a></h2>
+<h2><a class="toc-backref" href="#id16">Version 2.2.4</a></h2>
 <ul class="simple">
 <li>Added support for Unity 5</li>
 <li>Improved latency of the Image Api in C# by 2ms</li>
@@ -716,7 +601,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-3">
-<h2><a class="toc-backref" href="#id23">Version 2.2.3</a></h2>
+<h2><a class="toc-backref" href="#id17">Version 2.2.3</a></h2>
 <ul class="simple">
 <li>Removed libstdc++ version of libLeap.dylib from the OS X SDK. Mac developers must update their projects to use libc++ if they used this library</li>
 <li>Removed the debug library, Leapd.dll, from the Windows SDK. Windows developers who used Leapd.dll must update their projects to use Leap.dll for both debug and release configurations</li>
@@ -727,7 +612,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-2">
-<h2><a class="toc-backref" href="#id24">Version 2.2.2</a></h2>
+<h2><a class="toc-backref" href="#id18">Version 2.2.2</a></h2>
 <ul class="simple">
 <li>Added serialNumber to the Device and LeapDevice classes</li>
 <li>In C# (and Unity), changed Controller.Images from a method to a property</li>
@@ -738,7 +623,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-1">
-<h2><a class="toc-backref" href="#id25">Version 2.2.1</a></h2>
+<h2><a class="toc-backref" href="#id19">Version 2.2.1</a></h2>
 <ul class="simple">
 <li>Added APIs for all language bindings (except JavaScript):<ul>
 <li>Controller.images()</li>
@@ -750,7 +635,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-2-0">
-<h2><a class="toc-backref" href="#id26">Version 2.2.0</a></h2>
+<h2><a class="toc-backref" href="#id20">Version 2.2.0</a></h2>
 <ul class="simple">
 <li>Began compiling the language bindings for Python, Java and C# against libc++ by default rather than libstdc++</li>
 <li>In the Mac SDK, the version of libLeap.dylib found in the SDK <tt class="docutils literal">lib</tt> folder is compiled against libc++. A version compiled against libstdc++ is now available in the SDK lib/libstdc++ folder</li>
@@ -760,7 +645,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-1-6">
-<h2><a class="toc-backref" href="#id27">Version 2.1.6</a></h2>
+<h2><a class="toc-backref" href="#id21">Version 2.1.6</a></h2>
 <ul class="simple">
 <li>VR improvements</li>
 <li>Screen and Key Taps function better in HMD mode</li>
@@ -774,13 +659,13 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-1-5">
-<h2><a class="toc-backref" href="#id28">Version 2.1.5</a></h2>
+<h2><a class="toc-backref" href="#id22">Version 2.1.5</a></h2>
 <ul class="simple">
 <li>Added support for the Image API to Objective-C</li>
 </ul>
 </div>
 <div class="section" id="version-2-1-4">
-<h2><a class="toc-backref" href="#id29">Version 2.1.4</a></h2>
+<h2><a class="toc-backref" href="#id23">Version 2.1.4</a></h2>
 <ul class="simple">
 <li>Newly rebranded App Store and App Home</li>
 <li>Introducing 2 new apps created by the Leap Motion team: Shortcuts and Playground</li>
@@ -798,14 +683,14 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-1-3-beta">
-<h2><a class="toc-backref" href="#id30">Version 2.1.3 Beta</a></h2>
+<h2><a class="toc-backref" href="#id24">Version 2.1.3 Beta</a></h2>
 <ul class="simple">
 <li>Important: &quot;Optimize for head-mounted tracking&quot; is now controlled by the API policy flag (introduced in 2.1.2) rather than a user checkbox or configuration setting. Apps must be updated accordingly</li>
 <li>Various bug fixes and performance improvements</li>
 </ul>
 </div>
 <div class="section" id="version-2-1-2-beta">
-<h2><a class="toc-backref" href="#id31">Version 2.1.2 Beta</a></h2>
+<h2><a class="toc-backref" href="#id25">Version 2.1.2 Beta</a></h2>
 <ul class="simple">
 <li>V1 applications are now compatible with V2 tracking (beta)</li>
 <li>Airspace Home renamed to App Home (beta)</li>
@@ -818,7 +703,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-1-1-beta">
-<h2><a class="toc-backref" href="#id32">Version 2.1.1 Beta</a></h2>
+<h2><a class="toc-backref" href="#id26">Version 2.1.1 Beta</a></h2>
 <ul class="simple">
 <li>Greater stability and better initializations to top down tracking</li>
 <li>Better finger bending to top down tracking</li>
@@ -835,7 +720,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-1-0-beta">
-<h2><a class="toc-backref" href="#id33">Version 2.1.0 Beta</a></h2>
+<h2><a class="toc-backref" href="#id27">Version 2.1.0 Beta</a></h2>
 <ul class="simple">
 <li>New Image API allows for image pass-through (off by default; switch setting in Leap Motion Control Panel)</li>
 <li>New Serialization API, Frame::serialize() and Frame::deserialize(), for recording and replaying tracking data</li>
@@ -848,7 +733,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-0-5-beta">
-<h2><a class="toc-backref" href="#id34">Version 2.0.5 Beta</a></h2>
+<h2><a class="toc-backref" href="#id28">Version 2.0.5 Beta</a></h2>
 <ul class="simple">
 <li>Reduced number of sockets used by client library</li>
 <li>Fixed crash on OS X 10.10 Yosemite</li>
@@ -857,13 +742,13 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-0-4-beta">
-<h2><a class="toc-backref" href="#id35">Version 2.0.4 Beta</a></h2>
+<h2><a class="toc-backref" href="#id29">Version 2.0.4 Beta</a></h2>
 <ul class="simple">
 <li>Arm property added to Hand class in JavaScript. The Arm is a type of Bone</li>
 </ul>
 </div>
 <div class="section" id="version-2-0-3-beta">
-<h2><a class="toc-backref" href="#id36">Version 2.0.3 Beta</a></h2>
+<h2><a class="toc-backref" href="#id30">Version 2.0.3 Beta</a></h2>
 <ul class="simple">
 <li>Added Arm class to represent the arm to whch a hand is attached</li>
 <li>Added Hand.arm</li>
@@ -872,13 +757,13 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-0-2-beta">
-<h2><a class="toc-backref" href="#id37">Version 2.0.2 Beta</a></h2>
+<h2><a class="toc-backref" href="#id31">Version 2.0.2 Beta</a></h2>
 <ul class="simple">
 <li>Stability and performance enhancements</li>
 </ul>
 </div>
 <div class="section" id="version-2-0-1-beta">
-<h2><a class="toc-backref" href="#id38">Version 2.0.1 Beta</a></h2>
+<h2><a class="toc-backref" href="#id32">Version 2.0.1 Beta</a></h2>
 <ul class="simple">
 <li>Added LeapBone and related APIs to Objective-C</li>
 <li>Improved initial hand recognition</li>
@@ -893,7 +778,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-2-0-0-beta">
-<h2><a class="toc-backref" href="#id39">Version 2.0.0 Beta</a></h2>
+<h2><a class="toc-backref" href="#id33">Version 2.0.0 Beta</a></h2>
 <p>Build 15462 fixed the following issues:</p>
 <ul class="simple">
 <li>Some problems with initial hand recognition and identification</li>
@@ -982,7 +867,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-1-2-0">
-<h2><a class="toc-backref" href="#id40">Version 1.2.0</a></h2>
+<h2><a class="toc-backref" href="#id34">Version 1.2.0</a></h2>
 <ul class="simple">
 <li>Added support for detecting whether a Leap Motion controller is a standalone USB peripheral or whether it is embedded in a laptop or keyboard<ul>
 <li><tt class="docutils literal">Device.isEmbedded</tt></li>
@@ -1007,7 +892,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-1-0-9">
-<h2><a class="toc-backref" href="#id41">Version 1.0.9</a></h2>
+<h2><a class="toc-backref" href="#id35">Version 1.0.9</a></h2>
 <ul class="simple">
 <li>Better support for localization in the installer</li>
 <li>General stability fixes</li>
@@ -1017,7 +902,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-1-0-8">
-<h2><a class="toc-backref" href="#id42">Version 1.0.8</a></h2>
+<h2><a class="toc-backref" href="#id36">Version 1.0.8</a></h2>
 <ul class="simple">
 <li>The first version 1.0 release of the Leap Motion software development kit</li>
 <li>Background applications no longer receive frames of tracking data when a Leap-enabled application has operating system focus. They do, however, still receive frames when a non-Leap-enabled application has focus, provided the user has enabled background applications in the Leap Motion Control Panel</li>
@@ -1036,7 +921,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-8-2">
-<h2><a class="toc-backref" href="#id43">Version 0.8.2</a></h2>
+<h2><a class="toc-backref" href="#id37">Version 0.8.2</a></h2>
 <ul class="simple">
 <li>Separated the OS Interaction multitouch and mouse emulation feature into a separate application, downloadable from the Airspace Store</li>
 <li>Reorganized the Leap Motion Control Panel to simplify and streamline the settings available to consumers</li>
@@ -1046,7 +931,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-8-1">
-<h2><a class="toc-backref" href="#id44">Version 0.8.1</a></h2>
+<h2><a class="toc-backref" href="#id38">Version 0.8.1</a></h2>
 <ul class="simple">
 <li>Added the Airspace Home application, the desktop portion of the Airspace Store. (Launch from the Leap Motion task/menu bar icon's menu)</li>
 <li>Added OS Interaction controls providing multitouch and mouse emulation. (Enable on the OS Interaction page of the Leap Motion Settings dialog)</li>
@@ -1063,7 +948,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-8-0">
-<h2><a class="toc-backref" href="#id45">Version 0.8.0</a></h2>
+<h2><a class="toc-backref" href="#id39">Version 0.8.0</a></h2>
 <ul class="simple">
 <li>Separated the Leap Motion software into two components: a service (Windows) or daemon (Mac/Linux) process and a task bar (Windows) or menu bar (Mac/Linux) icon application</li>
 <li>Added a .pkg installer (Mac only) that installs both components of the Leap Motion software</li>
@@ -1080,7 +965,7 @@ ul.auto-toc {
 <p><em>Note:</em> The Leap Motion JavaScript library (available on the <a class="reference external" href="https://developer.leapmotion.com/leapjs/cdn">LeapJS CDN</a>) does not currently support the <tt class="docutils literal">Device</tt> and <tt class="docutils literal">DeviceList</tt> classes.</p>
 </div>
 <div class="section" id="version-0-7-9">
-<h2><a class="toc-backref" href="#id46">Version 0.7.9</a></h2>
+<h2><a class="toc-backref" href="#id40">Version 0.7.9</a></h2>
 <ul class="simple">
 <li>Added support for background applications (Mac and Windows only):<ul>
 <li>Added the <tt class="docutils literal"><span class="pre">Controller::PolicyFlag</span></tt> enumeration.</li>
@@ -1098,7 +983,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-8">
-<h2><a class="toc-backref" href="#id47">Version 0.7.8</a></h2>
+<h2><a class="toc-backref" href="#id41">Version 0.7.8</a></h2>
 <ul class="simple">
 <li>Applications no longer receive empty frames of data when they don't have operating system focus (Mac and Windows only).</li>
 <li>Added an Objective-C documentation set that can be installed in Xcode and provide context-sensitive help (Mac only).</li>
@@ -1110,7 +995,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-7">
-<h2><a class="toc-backref" href="#id48">Version 0.7.7</a></h2>
+<h2><a class="toc-backref" href="#id42">Version 0.7.7</a></h2>
 <ul class="simple">
 <li>Improved hand/palm tracking robustness and noise rejection.</li>
 <li>Added methods to the <tt class="docutils literal">Frame</tt> and <tt class="docutils literal">Hand</tt> classes that report probabilities that a frame or hand's motion is primarily translation, rotation, or scaling. You can use these probabilities to exclude or dampen unwanted transformations.</li>
@@ -1144,7 +1029,7 @@ ul.auto-toc {
 <p><em>Note:</em> The Leap Motion JavaScript library does not currently support focus events or configuration of gesture recognition parameters.</p>
 </div>
 <div class="section" id="version-0-7-6">
-<h2><a class="toc-backref" href="#id49">Version 0.7.6</a></h2>
+<h2><a class="toc-backref" href="#id43">Version 0.7.6</a></h2>
 <ul class="simple">
 <li>New finger tracking technique that handles a greater variety of finger orientations, such as parallel to the Leap Motion Controller.</li>
 <li>First Linux release of the Leap Motion software, SDK, and example applications.</li>
@@ -1170,7 +1055,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-5">
-<h2><a class="toc-backref" href="#id50">Version 0.7.5</a></h2>
+<h2><a class="toc-backref" href="#id44">Version 0.7.5</a></h2>
 <ul class="simple">
 <li>Added gestures to the WebSocket JSON output and the JavaScript client library (available on the <a class="reference external" href="https://developer.leapmotion.com/leapjs/cdn">LeapJS CDN</a>).</li>
 <li>Added Mac retina display support for Leap Motion application windows.</li>
@@ -1179,7 +1064,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-4">
-<h2><a class="toc-backref" href="#id51">Version 0.7.4</a></h2>
+<h2><a class="toc-backref" href="#id45">Version 0.7.4</a></h2>
 <ul class="simple">
 <li>Added an early-stage Gesture API supporting circle, swipe, and two tap gestures. (Not supported in the WebSocket JSON output or JavaScript client library in this version.)</li>
 <li>Added Gesture visualization to the Visualizer application. Press &quot;O&quot; to turn gestures on and off.</li>
@@ -1193,14 +1078,14 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-3">
-<h2><a class="toc-backref" href="#id52">Version 0.7.3</a></h2>
+<h2><a class="toc-backref" href="#id46">Version 0.7.3</a></h2>
 <ul class="simple">
 <li>Added the Leap Motion Device Recalibration utility to the Leap Motion application.</li>
 <li>Updated device firmware to version 12.</li>
 </ul>
 </div>
 <div class="section" id="version-0-7-2">
-<h2><a class="toc-backref" href="#id53">Version 0.7.2</a></h2>
+<h2><a class="toc-backref" href="#id47">Version 0.7.2</a></h2>
 <ul class="simple">
 <li>Added a Report Bug command to the Leap Motion application menu. This command opens a Bug Report form that allows you to more easily record diagnostics and submit them with bug reports to Leap Motion.</li>
 <li>Added an option to automatically send diagnostic information to Leap Motion when certain types of errors are encountered by the Leap. This option defaults to off, but we encourage you to turn it on to help us improve the Leap Motion software.</li>
@@ -1214,7 +1099,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-7-1">
-<h2><a class="toc-backref" href="#id54">Version 0.7.1</a></h2>
+<h2><a class="toc-backref" href="#id48">Version 0.7.1</a></h2>
 <ul class="simple">
 <li>Added motion properties to <tt class="docutils literal">Hand</tt> and <tt class="docutils literal">Frame</tt> classes, which provide information about the translation, rotation, and scaling of a hand or all objects in a frame.</li>
 <li>Added <tt class="docutils literal">isConnected</tt> method to the to the <tt class="docutils literal">Controller</tt> class, allowing polling-based applications to know when a controller is connected to the Leap Motion application and device.</li>
@@ -1229,7 +1114,7 @@ ul.auto-toc {
 <p><em>Note:</em> The Leap Motion JavaScript library (available on the <a class="reference external" href="https://developer.leapmotion.com/leapjs/cdn">LeapJS CDN</a>) does not currently support the <tt class="docutils literal">Screen</tt> and <tt class="docutils literal">ScreenList</tt> classes.</p>
 </div>
 <div class="section" id="version-0-7-0">
-<h2><a class="toc-backref" href="#id55">Version 0.7.0</a></h2>
+<h2><a class="toc-backref" href="#id49">Version 0.7.0</a></h2>
 <p><strong>Important:</strong> Version 0.7.0 contains several changes to the Leap Motion API that are incompatible with previous versions. When updating from an earlier version, you will have to make code changes and recompile your applications. Applications compiled against earlier versions of the API will not work with version 0.7.0 of the Leap Motion application. See the <a class="reference external" href="https://developer.leapmotion.com/articles/migrating-to-api-version-0-7-0">0.7.0 Migration Guide</a> for tips on updating your application code to work with version 0.7.0 of the Leap Motion API.</p>
 <ul class="simple">
 <li>Added <tt class="docutils literal">LeapMath.h</tt> library containing <tt class="docutils literal">Vector</tt> and <tt class="docutils literal">Matrix</tt> struct definitions.</li>
@@ -1261,7 +1146,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-6">
-<h2><a class="toc-backref" href="#id56">Version 0.6.6</a></h2>
+<h2><a class="toc-backref" href="#id50">Version 0.6.6</a></h2>
 <ul class="simple">
 <li>Added preliminary JavaScript support: the Leap Motion application provides a WebSocket server that sends tracking data as JSON messages.</li>
 <li>Added ability to save Leap Motion application settings between sessions.</li>
@@ -1270,7 +1155,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-5">
-<h2><a class="toc-backref" href="#id57">Version 0.6.5</a></h2>
+<h2><a class="toc-backref" href="#id51">Version 0.6.5</a></h2>
 <ul class="simple">
 <li>Added <tt class="docutils literal">Leapd.lib</tt> and <tt class="docutils literal">Leapd.dll</tt> for Visual Studio debug build configurations.</li>
 <li>Added <tt class="docutils literal">com.leapmotion.leap</tt> package to the Java library.</li>
@@ -1282,7 +1167,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-4">
-<h2><a class="toc-backref" href="#id58">Version 0.6.4</a></h2>
+<h2><a class="toc-backref" href="#id52">Version 0.6.4</a></h2>
 <ul class="simple">
 <li>Added the <tt class="docutils literal"><span class="pre">Leap::Ball</span></tt> class to represent the position and radius of a sphere.</li>
 <li>Added the following member functions to the <tt class="docutils literal"><span class="pre">Leap::Hand</span></tt> class:<ul>
@@ -1313,7 +1198,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-3">
-<h2><a class="toc-backref" href="#id59">Version 0.6.3</a></h2>
+<h2><a class="toc-backref" href="#id53">Version 0.6.3</a></h2>
 <ul class="simple">
 <li>Added robust lighting mode to permit operation in bright environments.</li>
 <li>Added low resource mode to permit operation on slower computers.</li>
@@ -1323,7 +1208,7 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-2">
-<h2><a class="toc-backref" href="#id60">Version 0.6.2</a></h2>
+<h2><a class="toc-backref" href="#id54">Version 0.6.2</a></h2>
 <ul class="simple">
 <li>Improved stability of C# sample application.</li>
 <li>Added support for C# development on Mac with Mono.</li>
@@ -1331,13 +1216,13 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="section" id="version-0-6-1">
-<h2><a class="toc-backref" href="#id61">Version 0.6.1</a></h2>
+<h2><a class="toc-backref" href="#id55">Version 0.6.1</a></h2>
 <ul class="simple">
 <li>Improved stability when switching quality mode.</li>
 </ul>
 </div>
 <div class="section" id="version-0-6-0">
-<h2><a class="toc-backref" href="#id62">Version 0.6.0</a></h2>
+<h2><a class="toc-backref" href="#id56">Version 0.6.0</a></h2>
 <ul class="simple">
 <li>Initial developer beta release of Leap Motion software and SDK.</li>
 </ul>

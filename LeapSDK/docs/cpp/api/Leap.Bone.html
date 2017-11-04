@@ -16,24 +16,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bone &mdash; Leap Motion C++ SDK v3.1 documentation</title>
+    <title>Bone &mdash; Leap Motion C++ SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion C++ SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion C++ SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="Leap_Classes.html" />
-    <link rel="next" title="Config" href="Leap.Config.html" />
+    <link rel="next" title="CircleGesture" href="Leap.CircleGesture.html" />
     <link rel="prev" title="Arm" href="Leap.Arm.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
@@ -134,7 +134,7 @@ function handleKeyInput(e)
     if( character == "J" & e.altKey){
             window.location.assign("Leap.Arm.html");    }
     else if( character == "K" & e.altKey){
-            window.location.assign("Leap.Config.html");
+            window.location.assign("Leap.CircleGesture.html");
     }
 
 }
@@ -316,12 +316,12 @@ function doneWithSearch(){
 <p>Bones are ordered from base to tip, indexed from 0 to 3. Additionally, the bone&#8217;s Type enum may be used to index a specific bone anatomically.</p>
 <p><pre class="literal-block">
 <a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list"><em>Leap::FingerList</em></a> fingers = frame.hands()[0].fingers();
-for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a97db28c9a35b564655712df999d32d27"><em>Leap::FingerList::const_iterator</em></a> fl = fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1aa4b02d4f1a8500fb07a551069060709f"><em>begin</em></a>(); fl != fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a350132543d80a1c1e5be844e6d2878ea"><em>end</em></a>(); fl++){
+for(Leap::FingerList::const_iterator fl = fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1aa4b02d4f1a8500fb07a551069060709f"><em>begin</em></a>(); fl != fingers.<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_finger_list_1a350132543d80a1c1e5be844e6d2878ea"><em>end</em></a>(); fl++){
     <a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Leap::Bone</em></a> bone;
-    Leap::Bone::Type boneType;
+    <a class="reference internal" href="#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Bone::Type</em></a> boneType;
     for(int b = 0; b &lt; 4; b++)
     {
-        boneType = static_cast&lt;Leap::Bone::Type&gt;(b);
+        boneType = static_cast&lt;<a class="reference internal" href="#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Bone::Type</em></a>&gt;(b);
         bone = (*fl).bone(boneType);
         std::cout &lt;&lt; &quot;Finger index: &quot; &lt;&lt; (*fl).<a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>() &lt;&lt; &quot; &quot; &lt;&lt; bone &lt;&lt; std::endl;
     }
@@ -335,28 +335,6 @@ for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_f
 </dl>
 </p>
 </p>
-<em>Public Type</em><blockquote>
-<div><p><span class="target" id="cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"></span><strong>Type enum</strong></p>
-<blockquote>
-<div><p>Enumerates the names of the bones. </p>
-<p>Members of this enumeration are returned by <a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>Bone::type()</em></a> to identify a <a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Bone</em></a> object. <dl class="docutils">
-<dt><strong>Since</strong></dt>
-<dd>2.0 </dd>
-</dl>
-</p>
-<p><em>Values:</em></p>
-<ul class="breatheenumvalues">
-<li><tt class="first docutils literal"><span class="pre">TYPE_METACARPAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">0</span></tt> - <p><a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Bone</em></a> connected to the wrist inside the palm. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_PROXIMAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">1</span></tt> - <p><a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Bone</em></a> connecting to the palm. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_INTERMEDIATE</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">2</span></tt> - <p><a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Bone</em></a> between the tip and the base. </p>
-</li>
-<li><tt class="first docutils literal"><span class="pre">TYPE_DISTAL</span></tt><tt class="docutils literal"> <span class="pre">=</span> <span class="pre">=</span> <span class="pre">3</span></tt> - <p><a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Bone</em></a> at the tip of the finger. </p>
-</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 <em>Public Functions</em><blockquote>
 <div><p><span class="target" id="cppclass_leap_1_1_bone_1a4ff50b291a30106f8306ba26d55ada76"></span><div class="line-block">
 <div class="line"><a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Matrix</em></a> <strong>basis</strong>()</div>
@@ -373,9 +351,9 @@ for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_f
 <p>Note that converting the basis vectors directly into a quaternion representation is not mathematically valid. If you use quaternions, create them from the derived rotation matrix not directly from the bases.</p>
 <p><pre class="literal-block">
 <a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix"><em>Leap::Matrix</em></a> basis = bone.basis();
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> xBasis = basis.xBasis;
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> yBasis = basis.yBasis;
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> zBasis = basis.zBasis;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> xBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a521fe0389397e15dcf84417d616b27f5"><em>xBasis</em></a>;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> yBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a060e37e3e8908f190a117ded7be96b26"><em>yBasis</em></a>;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> zBasis = basis.<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a9974130b93e5f0980b363ff22fae6b03"><em>zBasis</em></a>;
 </pre>
 </p>
 <p><dl class="docutils">
@@ -432,7 +410,7 @@ for(<a class="reference internal" href="Leap.FingerList.html#cppclass_leap_1_1_f
 <div><p>The normalized direction of the bone from base to tip. </p>
 <p><p><pre class="literal-block">
 <a class="reference internal" href="#cppclass_leap_1_1_bone"><em>Leap::Bone</em></a> bone = finger.bone(Leap::Bone::TYPE_DISTAL);
-<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> distalDirection = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1a4ff50b291a30106f8306ba26d55ada76"><em>basis</em></a>().yBasis;
+<a class="reference internal" href="Leap.Vector.html#cppstruct_leap_1_1_vector"><em>Leap::Vector</em></a> distalDirection = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1a4ff50b291a30106f8306ba26d55ada76"><em>basis</em></a>().<a class="reference internal" href="Leap.Matrix.html#cppstruct_leap_1_1_matrix_1a060e37e3e8908f190a117ded7be96b26"><em>yBasis</em></a>;
 </pre>
 </p>
 <p><dl class="docutils">
@@ -570,18 +548,18 @@ std::string description = bone.<a class="reference internal" href="#cppclass_lea
 </p>
 </div></blockquote>
 <p><span class="target" id="cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"></span><div class="line-block">
-<div class="line">Type <strong>type</strong>()</div>
+<div class="line"><a class="reference internal" href="#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Type</em></a> <strong>type</strong>()</div>
 </div>
 </p>
 <blockquote>
 <div><p>The name of this bone. </p>
 <p><p><pre class="literal-block">
-Leap::Bone::Type <a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a> = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>();
+<a class="reference internal" href="#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Leap::Bone::Type</em></a> <a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a> = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1afbd0fa31db28593e9669c3c56711c0a7"><em>type</em></a>();
 </pre>
 </p>
 <p><dl class="docutils">
 <dt><strong>Return</strong></dt>
-<dd>The anatomical type of this bone as a member of the Bone::Type enumeration. </dd>
+<dd>The anatomical type of this bone as a member of the <a class="reference internal" href="#cppclass_leap_1_1_bone_1a1d1cfd8ffb84e947f82999c682b666a7"><em>Bone::Type</em></a> enumeration. </dd>
 <dt><strong>Since</strong></dt>
 <dd>2.0 </dd>
 </dl>
@@ -662,8 +640,9 @@ float width = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">C++ Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">C++ Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -674,24 +653,33 @@ float width = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1
 <li class="toctree-l3"><a class="reference internal" href="#bone-types">Bone Types</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.CircleGesture.html">CircleGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Config.html">Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Controller.html">Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.DeviceList.html">DeviceList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDevice.html">FailedDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.FailedDeviceList.html">FailedDeviceList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Finger.html">Finger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.FingerList.html">FingerList</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html#frame">Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html#hand">Hand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Frame.html">Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Gesture.html">Gesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.GestureList.html">GestureList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Hand.html">Hand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.HandList.html">HandList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Image.html">Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.ImageList.html">ImageList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.InteractionBox.html">InteractionBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.KeyTapGesture.html">KeyTapGesture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Listener.html">Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Mask.html">Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.MaskList.html">MaskList</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Matrix.html">Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Pointable.html">Pointable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.PointableList.html">PointableList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ScreenTapGesture.html">ScreenTapGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.SwipeGesture.html">SwipeGesture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.ToolList.html">ToolList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap.TrackedQuad.html">TrackedQuad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap.Vector.html">Vector</a></li>
 </ul>
 </li>
@@ -716,7 +704,7 @@ float width = bone.<a class="reference internal" href="#cppclass_leap_1_1_bone_1
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

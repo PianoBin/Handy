@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Leap Motion Controller Device &mdash; Leap Motion JavaScript SDK v3.1 documentation</title>
+    <title>Leap Motion Controller Device &mdash; Leap Motion JavaScript SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion JavaScript SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion JavaScript SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -296,10 +296,253 @@ function doneWithSearch(){
         
   <div class="section" id="leap-motion-controller-device">
 <h1>Leap Motion Controller Device<a class="headerlink" href="#leap-motion-controller-device" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">doxygenclass: Unable to find project &#8216;unreal&#8217; in breathe_projects dictionary</p>
+<div class="line-block" id="unreala00005">
+<div class="line"><em>class</em> <strong>FLeapMotionDevice</strong></div>
 </div>
+<blockquote>
+<div><p>Implementation of the Leap Motion device. </p>
+<p>It bridges access to Leap API. You shouldn&#8217;t use this in your code. Use LeapMotionFunctionLibrary, or LeapMotionControllerActor instead. </p>
+<em>Public Functions</em><blockquote>
+<div><p><span class="target" id="unreala00005_1a687440bc8bb06d42198b379b37c588c6"></span><div class="line-block">
+<div class="line">const Leap::Frame <strong>Frame</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Gets the cached reference frame. </p>
+<p><p>Call <a class="reference internal" href="#unreala00005_1adeff24b3f66837164e4a5c5773c80a99"><em>SetReferenceFrameOncePerTick()</em></a> before the first access to this variable during a tick.</p>
+<p>Data in a Leap::Frame object has not been transformed into the Unreal Engine frame of reference or unit system. </p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a4036537fc271da7c90cd93debda1e45d"></span><div class="line-block">
+<div class="line">bool <strong>GetAllHandsIds</strong>(TArray&lt; int32 &gt; &amp; OutAllHandIds)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Returns list of IDs of all hands tracked by the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if the device is connected </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">OutAllHandIds</span></tt> - <p>An output array set to contain the ids of all tracked hands. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a61025f5b22ef2ec7f86bceeec460a5e8"></span><div class="line-block">
+<div class="line">bool <strong>GetBonePostionAndOrientation</strong>(int32 HandId, <a class="reference internal" href="Unreal.EnumBoneName.html#unreala00021_1ga5e45b98bc66c9eb67c7529e9cedf2100"><em>ELeapBone</em></a> LeapBone, FVector &amp; OutPosition, FRotator &amp; OutOrientation)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Gets the position and orientation of the specified hand from the device. </p>
+<p><p>Data returned by this function is relative to the Unreal Engine origin rather than a particular LeapMotionControllerComponent or LeapMotionHandActor instance. Get the properties of a LeapMotionBoneActor instance to get the data relative to that actor&#8217;s parent hand actor and controller component. In this case, use the standard Unreal Actor location and rotation properties.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if a hand with the specified id exists, false otherwise </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">HandId</span></tt> - <p>The id of the hand of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">LeapBone</span></tt> - <p>Which hand bone to get position &amp; orientation for </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutPosition</span></tt> - <p>An FVector set to the relative position of the hand, or zero if the hand wasn&#8217;t detected this frame. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutOrientation</span></tt> - <p>An FRotator set to the relative orientation of the hand, or zero if the hand wasn&#8217;t detected this frame. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a481448047d96819a449582bfe3a5e882"></span><div class="line-block">
+<div class="line">bool <strong>GetBoneWidthAndLength</strong>(int32 HandId, <a class="reference internal" href="Unreal.EnumBoneName.html#unreala00021_1ga5e45b98bc66c9eb67c7529e9cedf2100"><em>ELeapBone</em></a> LeapBone, float &amp; OutWidth, float &amp; OutLength)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Gets the width and length of the specified bone of a hand from the device. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if the hand was detected and bone was identified, false otherwise </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">HandId</span></tt> - <p>The id of the hand of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">LeapBone</span></tt> - <p>The bone of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutWidth</span></tt> - <p>A float set to the bone&#8217;s width (in centimeters). </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutLength</span></tt> - <p>A float set to the bone&#8217;s length (in centimeters). </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1ab1cc6724cb5b0dc2b5e7c0ff8913cc09"></span><div class="line-block">
+<div class="line">bool <strong>GetGrabStrength</strong>(int32 HandId, float &amp; OutGrabStrength)</div>
+</div>
+</p>
+<blockquote>
+<div><p>The grab strength rating of the specified hand. </p>
+<p>Grab strength is a rating of how the hand&#8217;s posture resembles a fist. A strength of 0 is close to an open, flat hand; a strength of 1 is close to a fist. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if the hand with the specified id exists, false otherwise. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">HandId</span></tt> - <p>The id of the hand of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutGrabStrength</span></tt> - <p>A float set to the hand&#8217;s grabbing strength as reported by Leap API. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a590e97ca6c0a25d78ad790ea271594bb"></span><div class="line-block">
+<div class="line">bool <strong>GetIsHandLeft</strong>(int32 HandId, bool &amp; OutIsLeft)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Reports whether the specified hand us identified as a left or a right hand. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if a hand of the specified type exists, false otherwise. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">HandId</span></tt> - <p>The id of the hand of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutIsLeft</span></tt> - <p>A bool set to true if the specified hand is a left hand. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1adf1df4d347c7dfd3d4e7ab45f1b55a56"></span><div class="line-block">
+<div class="line">bool <strong>GetOldestLeftOrRightHandId</strong>(<a class="reference internal" href="Unreal.EnumSide.html#unreala00021_1ga7388ca8e97f8e6b474de5bb4461df2aa"><em>ELeapSide</em></a> LeapSide, int32 &amp; OutHandId)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Returns the oldest left- or right-hand actor, if one exists, nullptr otherwise. </p>
+<p>If more than one left or right hand is being tracked, this function returns the one that has been tracked the longest. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if a hand of the specified type exists, false otherwise. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">LeapSide</span></tt> - <p>Look for a left or a right hand. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutHandId</span></tt> - <p>An integer set to the Leap Motion id of the oldest left or right hand. If no hand is found, this is set to -1. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a218b5ff36e86a0c48da77d4c38b7469d"></span><div class="line-block">
+<div class="line">bool <strong>GetPinchStrength</strong>(int32 HandId, float &amp; OutPinchStrength)</div>
+</div>
+</p>
+<blockquote>
+<div><p>The pinch strength rating of the specified hand. </p>
+<p><p>Pinch strength is a rating of whether the hand is in a pinching posture. Pinch strength starts at 0 and increases to 1 as any finger tip approaches the tip of the thumb. Note that pinch and grab strength are not independent. A grabbing hand will generally have a non-zero pinch strength as well.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True, if the hand with the specified id exists, false otherwise. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">HandId</span></tt> - <p>The id of the hand of interest. </p>
+</li>
+<li><tt class="first docutils literal"><span class="pre">OutPinchStrength</span></tt> - <p>A float set to the hand&#8217;s pinch strength as reported by Leap API </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a060bc0fc2c2a89419a4c7aa70b34d8a2"></span><div class="line-block">
+<div class="line">bool <strong>IsConnected</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Checks whether or not the device is connected and ready to be polled for data. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if controller is connected, false otherwise. </dd>
+</dl>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a261c8f5e87ddbf1d57f574c37a3d72a4"></span><div class="line-block">
+<div class="line">bool <strong>SetHmdPolicy</strong>(bool UseHmdPolicy)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Enables or disables the Leap Motion Controller policy that improves tracking for an HMD-mounted controller. </p>
+<p><p>Note that calling this function does not change the transforms of any LeapMotionControllerComponent instances that may exist.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if the device is connected. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">UseHmdPolicy</span></tt> - <p>True to enable for HMD-mounted mode, false to disable. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a9dd8f439ee9b3b5196b1a7cfd0288f7b"></span><div class="line-block">
+<div class="line">bool <strong>SetImagePolicy</strong>(bool UseImagePolicy)</div>
+</div>
+</p>
+<blockquote>
+<div><p>Enables or disables the Leap Motion Controller policy that transmits image data. </p>
+<p><p>Note that calling this function does not change the transforms of any LeapMotionControllerComponent instances that may exist.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>True if the device is connected. </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last">
+<li><tt class="first docutils literal"><span class="pre">UseImagePolicy</span></tt> - <p>True to enable for image pass-through, false to disable. </p>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1adeff24b3f66837164e4a5c5773c80a99"></span><div class="line-block">
+<div class="line">void <strong>SetReferenceFrameOncePerTick</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Caches the current Leap::Frame as a reference. </p>
+<p><p>Call once per Unreal frame tick, and before any other calls to LeapMotionDevice on that frame tick. The Leap Motion software produces frames of data at a rate independent of the Unreal Engine. Cache the frame so that subsequent calls to get data from the device use the same data.</p>
+<p>Calling the function a second time in the same tick has no affect, but it does need to be called at least once. </p>
+</p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a8aae67d5fe1a871d188ddaf942b9ed00"></span><div class="line-block">
+<div class="line">void <strong>ShutdownDevice</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Tear down the device. </p>
+<p></p>
+</div></blockquote>
+<p><span class="target" id="unreala00005_1a257fe1b5aaa00197450bfb706779b915"></span><div class="line-block">
+<div class="line">bool <strong>StartupDevice</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p>Startup the device, and do any initialization that may be needed. </p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 
 
@@ -308,8 +551,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">JavaScript Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">JavaScript Docs (v2.3)</a></li>
           </ul><ul>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
@@ -338,7 +582,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

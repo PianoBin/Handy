@@ -16,22 +16,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User Orientation and Tutorial Guidelines &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>User Orientation and Tutorial Guidelines &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
+    <link rel="up" title="Guidelines" href="Leap_Practices.html" />
+    <link rel="next" title="Application Asset and Marketing Guidelines" href="App_Assets_and_Marketing_Guidelines.html" />
+    <link rel="prev" title="Menu Design Guidelines" href="Leap_Menu_Design_Guidelines.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -109,33 +112,7 @@
             else if( requestedAPI == 'unreal' && hasAPI.unreal) {
                 redirectedLocation = relPath + "unreal/practices/Leap_Orientation_and_Tutorial_Guidelines.html";
             } else {
-
-                    if( requestedAPI == 'cpp'){
-                        redirectedLocation = relPath + "cpp/index.html?proglang=cpp";
-                    }
-                    else if( requestedAPI == 'csharp'){
-                        redirectedLocation = relPath + "csharp/index.html?proglang=csharp";
-                    }
-                    else if( requestedAPI == 'unity'){
-                        redirectedLocation = relPath + "unity/index.html?proglang=unity";
-                    }
-                    else if( requestedAPI == 'objc'){
-                        redirectedLocation = relPath + "objc/index.html?proglang=objc";
-                    }
-                    else if( requestedAPI == 'java') {
-                        redirectedLocation = relPath + "java/index.html?proglang=java";
-                    }
-                    else if( requestedAPI == 'javascript'){
-                        redirectedLocation = relPath + "javascript/index.html?proglang=javascript";
-                    }
-                    else if( requestedAPI == 'python'){
-                        redirectedLocation = relPath + "python/index.html?proglang=python";
-                    }
-                    else if( requestedAPI == 'unreal') {
-                        redirectedLocation = relPath + "unreal/index.html?proglang=unreal";
-                    } else {
-                        redirectedLocation = relPath + "index.html";
-                    }
+                    redirectedLocation ="Leap_Practices.html";
             }
 
             //Guard against redirecting to the same page (infinitely)
@@ -154,8 +131,10 @@ function handleKeyInput(e)
     if (e.keyCode) code = e.keyCode;
     else if (e.which) code = e.which;
     var character = String.fromCharCode(code);
-    if( character == "J" & e.altKey){    }
+    if( character == "J" & e.altKey){
+            window.location.assign("Leap_Menu_Design_Guidelines.html");    }
     else if( character == "K" & e.altKey){
+            window.location.assign("App_Assets_and_Marketing_Guidelines.html");
     }
 
 }
@@ -240,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../unreal/index.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="Leap_Practices.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -297,6 +276,7 @@ function doneWithSearch(){
  
 <span id="breadcrumbs">
   <a href="../index.html">Home</a>&raquo;
+    <a href="Leap_Practices.html" accesskey="U">Guidelines</a>&raquo;
   User Orientation and Tutorial Guidelines
 </span> -->
         
@@ -319,11 +299,11 @@ leave users frustrated or confused.</p>
 guiding users and teaching them specific interactions within your apps.
 Whichever you choose, make sure your orientations and tutorials are
 easily accessible from any point in the app.</p>
-<div class="section" id="create-a-great-demo-video">
-<h2>Create a Great Demo Video<a class="headerlink" href="#create-a-great-demo-video" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-great-demo-video-for-the-leap-motion-app-store">
+<h2>Create a Great Demo Video for the Leap Motion App Store<a class="headerlink" href="#create-a-great-demo-video-for-the-leap-motion-app-store" title="Permalink to this headline">¶</a></h2>
 <p>One of the first introductions to your app might be the screen shots
-and demo videos that a user sees. It is highly
-recommended that you publish a video which shows off, not only the app
+and video a user sees on your Leap Motion app store detail page. It is highly
+recommended that you include a video which shows off, not only the app
 functionality, but how a user performs the interactions needed for your
 app. The following apps have video demos that help users understand the
 game play and Leap Motion interaction.</p>
@@ -554,19 +534,30 @@ become your biggest fans.</p>
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
-          </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../devguide/Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
+          </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Leap_Practices.html">Guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Leap_Menu_Design_Guidelines.html">Menu Design Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">User Orientation and Tutorial Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-great-demo-video-for-the-leap-motion-app-store">Create a Great Demo Video for the Leap Motion App Store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interaction-keys">Interaction ‘Keys’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#walk-through-tutorials">Walk-Through Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-app-cues-hints">In-App Cues / Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controls-as-demos">Controls As Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help-when-and-where-you-need-it">Help When and Where You Need It</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="App_Assets_and_Marketing_Guidelines.html">Application Asset and Marketing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leap_UX_Guidelines.html">User Experience Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../devguide/Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -584,7 +575,7 @@ become your biggest fans.</p>
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tracking Model &mdash; Leap Motion Unity SDK v3.1 documentation</title>
+    <title>Tracking Model &mdash; Leap Motion Unity SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Unity SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Unity SDK v2.3 documentation" href="../index.html" />
 <script type="text/javascript" src="/assets/standalone-header.js?r9"></script>
 <link rel="stylesheet" href="/assets/standalone-header.css?r9" type="text/css" />
 
@@ -74,6 +74,7 @@
     var pageAPI = 'unity';
     var hasAPI = {};
     hasAPI.cpp = true;
+    hasAPI.csharp = true;
     hasAPI.objc = true;
     hasAPI.java = true;
     hasAPI.javascript = true;
@@ -218,7 +219,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="../../csharp/index.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
+      <a href="../../csharp/devguide/Leap_Tracking.html?proglang=csharp" onclick="localStorage['currentAPI'] = 'csharp'">C#</a>
     
   </li>
   <li>
@@ -309,13 +310,16 @@ function doneWithSearch(){
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a></td>
 <td><p class="first">The <a class="reference external" href="../api/Leap.Frame.html"><tt class="docutils literal"><span class="pre">Frame</span></tt></a> object is essentially the root of the data model and provides access to all the tracked entities. A new <tt class="docutils literal"><span class="pre">Frame</span></tt> is created at each update interval.</p>
-<p>The frame contains lists of the hands and fingers tracked in that frame. (You can also get the fingers for a specific hand from the relevant <tt class="docutils literal"><span class="pre">Hand</span></tt> object.)</p>
+<p>The frame contains lists of the hands, fingers, tools, and gestures tracked in that frame. (You can also get the fingers for a specific hand from the relevant <tt class="docutils literal"><span class="pre">Hand</span></tt> object.)</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="n">Controller</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Controller</span> <span class="p">();</span>
 <span class="c1">// wait until Controller.isConnected() evaluates to true</span>
 <span class="c1">//...</span>
 
 <span class="n">Frame</span> <span class="n">frame</span> <span class="p">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Frame</span> <span class="p">();</span>
-<span class="n">List</span><span class="p">&lt;</span><span class="n">Hand</span><span class="p">&gt;</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+<span class="n">HandList</span> <span class="n">hands</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Hands</span><span class="p">;</span>
+<span class="n">PointableList</span> <span class="n">pointables</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Pointables</span><span class="p">;</span>
+<span class="n">FingerList</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
+<span class="n">ToolList</span> <span class="n">tools</span> <span class="p">=</span> <span class="n">frame</span><span class="p">.</span><span class="n">Tools</span><span class="p">;</span>
 </pre></div>
 </div>
 <p class="last">See <a class="reference internal" href="Leap_Frames.html"><em>Frames</em></a></p>
@@ -324,7 +328,8 @@ function doneWithSearch(){
 <tr class="row-even"><td><a class="reference external" href="../api/Leap.Hand.html"><tt class="docutils literal"><span class="pre">Hand</span></tt></a></td>
 <td><p class="first">The <tt class="docutils literal"><span class="pre">Hand</span></tt> object describes the position and orientation of a hand, tracks its motion between frames and contains lists of the fingers associated with that hand.</p>
 <div class="highlight-csharp"><div class="highlight"><pre><span class="c1">// hand is a Hand object</span>
-<span class="n">List</span><span class="p">&lt;</span><span class="n">Finger</span><span class="p">&gt;</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
+<span class="n">PointableList</span> <span class="n">pointables</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Pointables</span><span class="p">;</span>
+<span class="n">FingerList</span> <span class="n">fingers</span> <span class="p">=</span> <span class="n">hand</span><span class="p">.</span><span class="n">Fingers</span><span class="p">;</span>
 </pre></div>
 </div>
 <p class="last">See <a class="reference internal" href="Leap_Hand.html"><em>Hands</em></a></p>
@@ -333,21 +338,36 @@ function doneWithSearch(){
 <tr class="row-odd"><td><a class="reference external" href="../api/Leap.Arm.html"><tt class="docutils literal"><span class="pre">Arm</span></tt></a></td>
 <td><tt class="docutils literal"><span class="pre">Arm</span></tt> objects describe the position, direction, and orientation of the arm to which a hand is attached. Arms can only be accessed through the <tt class="docutils literal"><span class="pre">Hand</span></tt> object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a>, <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a></td>
-<td><p class="first"><tt class="docutils literal"><span class="pre">Pointable</span></tt> objects define the basic characteristics common to fingers. The <tt class="docutils literal"><span class="pre">Finger</span></tt> class extends <tt class="docutils literal"><span class="pre">Pointable</span></tt> with additional information specific to those entities.</p>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Pointable.html"><tt class="docutils literal"><span class="pre">Pointable</span></tt></a>, <a class="reference external" href="../api/Leap.Finger.html"><tt class="docutils literal"><span class="pre">Finger</span></tt></a>, <a class="reference external" href="../api/Leap.Tool.html"><tt class="docutils literal"><span class="pre">Tool</span></tt></a></td>
+<td><p class="first"><tt class="docutils literal"><span class="pre">Pointable</span></tt> objects define the basic characteristics common to fingers and tools. The <tt class="docutils literal"><span class="pre">Finger</span></tt> and <tt class="docutils literal"><span class="pre">Tool</span></tt> classes extend <tt class="docutils literal"><span class="pre">Pointable</span></tt> with additional information specific to those entities.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">pointable</span><span class="p">.</span><span class="n">IsTool</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Tool</span> <span class="n">tool</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Tool</span> <span class="p">(</span><span class="n">pointable</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">Finger</span> <span class="n">finger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Finger</span> <span class="p">(</span><span class="n">pointable</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p class="last">See <a class="reference internal" href="Leap_Pointables.html"><em>Fingers</em></a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="../api/Leap.Bone.html"><tt class="docutils literal"><span class="pre">Bone</span></tt></a></td>
 <td><tt class="docutils literal"><span class="pre">Bone</span></tt> object represent the position and orientation of a bone. The tracked bones include the metarcarpals and phalanges of the fingers (and thumb).</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../api/Leap.Image.html"><tt class="docutils literal"><span class="pre">Image</span></tt></a></td>
+<tr class="row-even"><td><a class="reference external" href="../api/Leap.Gesture.html"><tt class="docutils literal"><span class="pre">Gesture</span></tt></a></td>
+<td><p class="first">The <tt class="docutils literal"><span class="pre">Gesture</span></tt> class and its subclasses represent a snapshot of one of the four gestures recognized by the Leap Motion software.</p>
+<p class="last">See <a class="reference internal" href="Leap_Gestures.html"><em>Gestures</em></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../api/Leap.Image.html"><tt class="docutils literal"><span class="pre">Image</span></tt></a></td>
 <td><tt class="docutils literal"><span class="pre">Image</span></tt> objects provide the raw sensor data and calibration grid for the Leap Motion cameras. (Not available through the WebSocket server.)</td>
+</tr>
+<tr class="row-even"><td><strong>Lists of Tracked Objects</strong></td>
+<td>The <tt class="docutils literal"><span class="pre">Frame</span></tt> and <tt class="docutils literal"><span class="pre">Hand</span></tt> objects contain lists of the other tracked objects.</td>
 </tr>
 <tr class="row-odd"><td><strong>Utility Classes</strong></td>
 <td><p class="first">The <a class="reference external" href="../api/Leap.Vector.html"><tt class="docutils literal"><span class="pre">Vector</span></tt></a> class describes points and directions. The <tt class="docutils literal"><span class="pre">Vector</span></tt> class also provides several useful math functions for working with vectors.</p>
 <p>Likewise, the <a class="reference external" href="../api/Leap.Matrix.html"><tt class="docutils literal"><span class="pre">Matrix</span></tt></a> class represents things like rotations and other transforms returned by some functions in the API.</p>
-<p class="last">The <a class="reference external" href="../api/Leap.InteractionBox.html"><tt class="docutils literal"><span class="pre">InteractionBox</span></tt></a> class provides functions to help map a rectilinear portion of the Leap Motion controller&#8217;s field of view to either 2D screen space or 3D space. See <tt class="xref doc docutils literal"><span class="pre">Leap_Touch_Emulation</span></tt>.</p>
+<p class="last">The <a class="reference external" href="../api/Leap.InteractionBox.html"><tt class="docutils literal"><span class="pre">InteractionBox</span></tt></a> class provides functions to help map a rectilinear portion of the Leap Motion controller&#8217;s field of view to either 2D screen space or 3D space. See <a class="reference internal" href="Leap_Touch_Emulation.html"><em>Touch Emulation</em></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -360,19 +380,16 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Unity Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Unity Docs (v2.3)</a></li>
           </ul><ul>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Leap Motion Unity Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_VR.html">Hand Tracking in Virtual Reality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Project_Setup.html#setting-up-a-unity3d-project">Setting up a Unity3D project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Prefabs.html">Core Asset Prefabs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Custom_Rig.html">Building a Custom VR Rig</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_DetectionUtilities.html">Detection Utilities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Attachments.html">Attachments Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Overview.html">Unity Plugin Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Image_Hand.html">Getting Started With the Image Hand Assets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Hand_Assets.html">Hand Assets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Interaction_Engine.html">Interaction Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_UIInput.html">UI Input Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">Unity Scripting Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/Unity_Classes.html">Unity Script Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Leap_Classes.html">C# API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Leap_Guides.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplements/Leap_Supplements.html">Appendices</a></li>
 </ul>
 
@@ -390,7 +407,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>

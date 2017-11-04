@@ -16,22 +16,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SDK Libraries &mdash; Leap Motion Java SDK v3.1 documentation</title>
+    <title>SDK Libraries &mdash; Leap Motion Java SDK v2.3 documentation</title>
     
-    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1471552333.css" type="text/css" />
+    <link rel="stylesheet" href="../../cpp/_static/bootstrap-3.0.0/css/documentation-bundle.1439949735.css" type="text/css" />
     
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.1',
+        VERSION:     '2.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
       };
     </script>
-      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1471552333.js"></script>
-    <link rel="top" title="Leap Motion Java SDK v3.1 documentation" href="../index.html" />
+      <script type="text/javascript" src="../../cpp/_static/bootstrap-3.0.0/js/documentation-bundle.1439949735.js"></script>
+    <link rel="top" title="Leap Motion Java SDK v2.3 documentation" href="../index.html" />
     <link rel="up" title="Application Development" href="Leap_Guides.html" />
     <link rel="next" title="Hello World" href="Sample_Tutorial.html" />
     <link rel="prev" title="Application Development" href="Leap_Guides.html" />
@@ -82,6 +82,8 @@
     hasAPI.java = true;
     hasAPI.javascript = true;
     hasAPI.python = true;
+    hasAPI.unreal = true;
+    hasAPI.unity = true;
 
     if(requestedAPI && (requestedAPI != pageAPI))
     {
@@ -194,7 +196,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides.html?proglang=current" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
+      <a href="../../unity/devguide/Leap_SDK_Overview.html?proglang=unity" onclick="localStorage['currentAPI'] = 'unity'">Unity</a>
     
   </li>
   <li>
@@ -218,7 +220,7 @@ function handleKeyInput(e)
     
   </li>
   <li>
-      <a href="Leap_Guides.html?proglang=current" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
+      <a href="../../unreal/devguide/Leap_SDK_Overview.html?proglang=unreal" onclick="localStorage['currentAPI'] = 'unreal'">Unreal</a>
     
   </li>
 </ul>
@@ -281,21 +283,21 @@ function doneWithSearch(){
         
   <div class="section" id="sdk-libraries">
 <h1>SDK Libraries<a class="headerlink" href="#sdk-libraries" title="Permalink to this headline">¶</a></h1>
-<p>The Leap Motion SDK contains two basic libraries that define the API to the Leap Motion tracking data. One library is written in C++, the second is written in C. Wrapper classes for these libraries define language bindings for C# and Objective-C. Language bindings for Java and Python use SWIG, an open source tool. The SWIG-generated bindings translate calls written in the bound programming language to calls into the base C++ Leap Motion library. Each SWIG binding uses two additional libraries. For JavaScript and web application development, Leap Motion provides a WebSocket server and a client-side JavaScript library.</p>
+<p>The Leap Motion library is written in C++. Leap Motion also uses SWIG, an open source tool, to generate language bindings for C#, Java, and Python. The SWIG-generated bindings translate calls written in the bound programming language to calls into the base C++ Leap Motion library. Each SWIG binding uses two additional libraries. For JavaScript and web application development, Leap Motion provides a WebSocket server and a client-side JavaScript library.</p>
 <p>All the library, code, and header files required to develop Leap-enabled applications and plugins are included in the Leap Motion SDK, except the <cite>leap.js</cite> client JavaScript library. You can download the Leap Motion SDK from the Leap Motion Developer Portal. An SDK package is available for each supported operating system. The JavaScript client library is distributed separately and can be downloaded from the <a class="reference external" href="https://github.com/leapmotion/leapjs">LeapJS GitHub repository</a>.</p>
-<p>Plugins for Unity 5 and Unreal Engine 4 are provided separately from the main SDK. The Unreal plugin is included with Unreal Engine 4. The Unity plugin is available at <a class="reference external" href="https://developer.leapmotion.com/downloads/unity">https://developer.leapmotion.com/downloads/unity</a>.</p>
+<p>Plugins for Unity 5 and Unreal Engine 4.9 are provided separately from the main SDK. The Unreal plugin is included with Unreal Engine 4.9+ (source code release only, at this time). The Unity plugin is available at <a class="reference external" href="https://developer.leapmotion.com/downloads/unity">https://developer.leapmotion.com/downloads/unity</a>.</p>
 <div class="section" id="supported-compilers-and-ides">
 <h2>Supported Compilers and IDEs<a class="headerlink" href="#supported-compilers-and-ides" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>C++ on Windows: Visual Studio 2008, 2010, 2012, and 2013</li>
 <li>C++ on Mac: Xcode 3.0+, clang 3.0+, and gcc</li>
 <li>Objective-C: Mac OS 10.7+, Xcode 4.2+ and clang 3.0+</li>
-<li>C# for .NET framework versions 3.5+</li>
+<li>C# for .NET framework versions 3.5 and 4.0</li>
 <li>Mono version 2.10</li>
-<li>Unity Pro and Personal versions 5.3+</li>
+<li>Unity Pro and Personal versions 5.0</li>
 <li>Java versions 6 and 7</li>
 <li>Python version 2.7.3</li>
-<li>UnrealEngine 4.9+</li>
+<li>UnrealEngine 4.9</li>
 </ul>
 </div>
 <div class="section" id="java">
@@ -314,12 +316,11 @@ function doneWithSearch(){
 </div>
 <div class="section" id="id4">
 <h2>C#<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>The C# class definitions are provided in the src directory. To build a Leap-enabled C# application, include the wrapper cs files in your appplication. Your application code should reference the Leap namespace. Also include libLeapC.dylib (Mac), LeapC.dll (Windows), or libLeapC.so (Linux) as a runtime library.</div></blockquote>
+<p>The C# class definitions are provided for .NET 3.5 and .NET 4.0 in separate libraries. Your code can reference either LeapCSharp.NET3.5.dll or LeapCSharp.NET4.0.dll (the same library names are used for this library on all supported operating systems). These libraries load libCSharp.dylib (Mac), LeapCSharp.dll (Windows), or libLeapCSharp.so (Linux). The intermediate libraries load libLeap.dylib, Leap.dll, or libLeap.so (depending on platform).</p>
 </div>
 <div class="section" id="id5">
 <h2>Unity<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>As of Unity 5, both the Pro and Personal versions support plugins. The Unity plugin uses the C# class definitions in LeapC folder of the core assets. This library loads the native LeapC.dll (Windows) library.</p>
+<p>As of Unity 5, both the Pro and Personal versions support plugins. The Unity plugin uses the C# class definitions in LeapCSharp.NET3.5.dll. This library loads the native libCSharp.dylib (Mac) or LeapCSharp.dll (Windows) library. In turn, these intermediate libraries load libLeap.dylib or Leap.dll (depending on platform).</p>
 </div>
 <div class="section" id="id7">
 <h2>Python<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
@@ -345,8 +346,9 @@ function doneWithSearch(){
       <div id="sidebar" class="col-md-3">
         <div class="well-sidebar" data-offset-top="188">
           <ul>
-            <li><a href="../index.html" title="Home">Java Docs (v3.1)</a></li>
+            <li><a href="../index.html" title="Home">Java Docs (v2.3)</a></li>
           </ul><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro_Skeleton_API.html">Introducing the Skeletal Tracking Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Overview.html">API Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../practices/Leap_Practices.html">Guidelines</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Leap_Guides.html">Application Development</a><ul class="current">
@@ -365,11 +367,9 @@ function doneWithSearch(){
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Sample_Tutorial.html#id17">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sample_Tutorial.html#id24">Hello World</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Project_Setup.html#id11">Setting up a project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Processing.html">Using Processing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Leap_Architecture.html">System Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Leap_Configuration.html">Runtime Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Leap_Guides2.html">Using the Tracking API</a></li>
@@ -395,7 +395,7 @@ function doneWithSearch(){
   <div id="footer" class="container">
     <div class="container">
       <div class="copyright">
-        <span>Copyright &copy; 2012 - 2016, Leap Motion, Inc.</span>
+        <span>Copyright &copy; 2012 - 2014, Leap Motion, Inc.</span>
       </div>
     </div>
   </div>
