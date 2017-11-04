@@ -71,6 +71,7 @@ def displayResults():
 	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(yCounterSmall/moveCounter, yCounterGood/moveCounter, yCounterHigh/moveCounter)
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(zCounterSmall/moveCounter, zCounterGood/moveCounter, zCounterHigh/moveCounter)
 
+
 startTime = 0
 beforeTime = 0
 
@@ -122,6 +123,9 @@ def main():
 		sys.stdin.readline()
 	except KeyboardInterrupt:
 		pass
+	finally:
+		# Remove the sample listener when done
+		controller.remove_listener(listener)
 
 if __name__ == "__main__":
     main()
