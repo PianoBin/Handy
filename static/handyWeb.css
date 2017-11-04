@@ -34,19 +34,13 @@ canvas {
 }
 
 #wrapper {
-		width: 500px;
-		border: 1px solid black;
-		position:relative;
+	display: flex;
 }
 
 #firstChart {
-		width:50%;
 		border: 1px;
-		display:inline-block;
 }
 
-		#secondChart {
-		    width:50%;
-		    border: 1px;
-		    display:inline-block;
-		}
+#secondChart {
+		border: 1px;
+}
