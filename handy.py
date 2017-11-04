@@ -8,8 +8,10 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
-def main():
 
+
+def main():
+    controller = Leap.Controller()
     # Keep this process running until Enter is pressed
     print "Press Enter to quit..."
     try:
