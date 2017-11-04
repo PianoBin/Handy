@@ -119,44 +119,52 @@ def fingerPointing(frame):
 		oneFinger = False
 		multiFingers = False
 
+x_speed_mes = ''
+y_speed_mes = ''
+openness = ''
+message_open = ''
+finger_message = ''
+sweetness = ''
+x_speed = 0
+y_speed = 0
+sweet_spot = 0
+
 def displayResults():
 
-    x_speed = 0
-    y_speed = 0
-    x_speed_mes = ''
-    y_speed_mes = ''
 	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
-    if xCounterGood / moveCounter * 100 > 60:
-        x_speed_mes = 'Great speed for hand gestures!'
-    else:
-        if ((xCounterSmall/moveCounter) * 100) > ((xCounterHigh/moveCounter) * 100):
-            x_speed_mes = 'A little to slow or not enough movement.'
-        else:
-            x_speed_mes = 'Slow down there cowboy.'
-    if yCounterGood / moveCounter * 100 > 60:
-        y_speed_mes = 'Great speed for hand gestures!'
-    else:
-        if ((yCounterSmall/moveCounter) * 100) > ((yCounterHigh/moveCounter) * 100):
-            x_speed_mes = 'A little to slow or not enough movement.'
-        else:
-            x_speed_mes = 'Slow down there cowboy.'
-    '''
+	global x_speed_mes, y_speed_mes, openness, message_open, finger_message, sweetness
+	global x_speed, y_speed
+	x_speed = xCounterGood / moveCounter * 100
+	y_speed = yCounterGood / moveCounter * 100
+	if xCounterGood / moveCounter * 100 > 60:
+		x_speed_mes = 'Great speed for hand gestures!'
+	else:
+		if ((xCounterSmall/moveCounter) * 100) > ((xCounterHigh/moveCounter) * 100):
+			x_speed_mes = 'A little to slow or not enough movement.'
+		else:
+			x_speed_mes = 'Slow down there cowboy.'
+	if yCounterGood / moveCounter * 100 > 60:
+		y_speed_mes = 'Great speed for hand gestures!'
+	else:
+		if ((yCounterSmall/moveCounter) * 100) > ((yCounterHigh/moveCounter) * 100):
+			y_speed_mes = 'A little to slow or not enough movement.'
+		else:
+			y_speed_mes = 'Slow down there cowboy.'
+	'''
 	print 'moveCounter is {}'.format(moveCounter)
 	print 'xCounterSmall is {}'.format(xCounterSmall)
 	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((xCounterSmall/moveCounter) * 100, (xCounterGood/moveCounter) * 100, (xCounterHigh/moveCounter) * 100)
 	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
-    '''
+	'''
 
-	openness = ''
-	message_open = ''
 	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
 	if abs(pitch_angle_left/angle_count_left) < 40 and abs(pitch_angle_right/angle_count_right) < 40 and abs(roll_angle_left/angle_count_left) > 90 and abs(roll_angle_right/angle_count_right) > 90:
 		message_open = 'Good job! You kept your palms open.\nThis makes you seem approachable to your crowd.'
-		openess = 'Open'
+		openness = 'Open'
 	else:
 		message_open = 'Work on keeping your palms more open.\nIt makes you instantly more approachable to your audience.'
-        openess = 'Not Open'
+        openness = 'Not Open'
 	'''
 	print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
 	print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
@@ -167,25 +175,23 @@ def displayResults():
     '''
 
 	global fingerCounter, badFingerCounter
-    finger_message = ''
-    if badFingerCounter > 10:
-        finger_message = 'Try not to point too much while talking!\nIt can be seen as agressive by the audience.'
-    else:
-        finger_message = 'Well done. You kept your fingers away from the crowd.'
-    '''
+	if badFingerCounter > 10:
+		finger_message = 'Try not to point too much while talking!\nIt can be seen as agressive by the audience.'
+	else:
+		finger_message = 'Well done. You kept your fingers away from the crowd.'
+	'''
 	print 'fingerCount is {}'.format(fingerCounter)
 	print 'badFingerCounter is {}'.format(badFingerCounter)
 	print 'percent of bad finger pointing {}'.format((badFingerCounter/fingerCounter) * 100)
     '''
 
-	global frame_counter, hands_in_frame_counter
-    sweet_spot = (hands_in_frame_counter/frame_counter)*100
-    sweetness = ''
-    if sweet_spot > 50:
-        sweetness = 'Well done.'
-    else:
-        sweetness = 'Try to keep your hands in the sweet spot.'
-    '''
+	global frame_counter, hands_in_frame_counter, sweet_spot
+	sweet_spot = (hands_in_frame_counter/frame_counter)*100
+	if sweet_spot > 50:
+		sweetness = 'Well done.'
+	else:
+		sweetness = 'Try to keep your hands in the sweet spot.'
+	'''
 	print 'frame_counter is {}'.format(frame_counter)
 	print 'hands_in_frame_counter is {}'.format(hands_in_frame_counter)
 	print 'percentage of time hands are in the sweet spot: %f' % ((hands_in_frame_counter/frame_counter)*100)
@@ -265,7 +271,7 @@ def handy():
 	finally:
 		# Remove the sample listener when done
 		controller.remove_listener(listener)
-	return render_template('handyWeb.html')
+	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot)
 
 if __name__ == "__main__":
 	app.run()
