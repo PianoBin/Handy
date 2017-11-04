@@ -26,3 +26,27 @@ canvas {
         -webkit-user-select: none;
         -ms-user-select: none;
     }
+
+#firstChart, #secondChart{
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+}
+
+#wrapper {
+		width: 500px;
+		border: 1px solid black;
+		position:relative;
+}
+
+#firstChart {
+		width:50%;
+		border: 1px;
+		display:inline-block;
+}
+
+		#secondChart {
+		    width:50%;
+		    border: 1px;
+		    display:inline-block;
+		}
