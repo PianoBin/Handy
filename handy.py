@@ -11,6 +11,7 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 class LeapEventListener(Leap.Listener):
 
+    count = 0
     def on_init(self, controller):
         print "Initialized"
     def on_connect(self, controller):
@@ -26,7 +27,11 @@ class LeapEventListener(Leap.Listener):
     def on_frame(self, controller):
         frame = controller.frame()
         #Process frame data
-        print "Timer: " + str(int(frame.timestamp) * int(1000000))
+        if count == 9:
+            print "Timer: " + str(int(frame.timestamp) / int(1000000))
+            count = 0
+        else:
+            count += 1
 
     def on_exit(self, controller):
         print "Exited"
