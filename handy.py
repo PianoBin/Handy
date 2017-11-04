@@ -26,7 +26,7 @@ class LeapEventListener(Leap.Listener):
     def on_frame(self, controller):
         frame = controller.frame()
         #Process frame data
-        print "Timer: " + frame.timestamp * 1000000
+        print "Timer: " + str(frame.timestamp * 1000000)
 
     def on_exit(self, controller):
         print "Exited"
