@@ -1,5 +1,5 @@
 from __future__ import division
-from flask import render_template
+from flask import Flask, render_template
 app = Flask(__name__)
 import os, sys, inspect, thread, time, timeit
 src_dir = os.path.dirname(inspect.getfile(inspect.currentframe()))
@@ -127,12 +127,12 @@ def displayResults():
 	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
 
-    openness = ''
-    message_open = ''
+	openness = ''
+	message_open = ''
 	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
 	if abs(pitch_angle_left/angle_count_left) < 40 and abs(pitch_angle_right/angle_count_right) < 40 and abs(roll_angle_left/angle_count_left) > 90 and abs(roll_angle_right/angle_count_right) > 90:
 		message_open = 'Good job! You kept your palms open.\nThis makes you seem approachable to your crowd.'
-        openess = 'Open'
+		openess = 'Open'
 	else:
 		message_open = 'Work on keeping your palms more open.\nIt makes you instantly more approachable to your audience.'
         openess = 'Not Open'
@@ -213,9 +213,10 @@ def main():
 		# Remove the sample listener when done
 		controller.remove_listener(listener)
 
-if __name__ == "__main__":
-    main()
-
-@app.route("/handyWeb/")
+@app.route("/")
 def handy():
-	return "The Handy Body-Language Processor"
+	main()
+	return render_template('handyWeb.html')
+
+if __name__ == "__main__":
+	app.run()
