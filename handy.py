@@ -12,6 +12,7 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 def main():
     controller = Leap.Controller()
+    
     # Keep this process running until Enter is pressed
     print "Press Enter to quit..."
     try:
