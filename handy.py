@@ -1,3 +1,4 @@
+from __future__ import division
 import os, sys, inspect, thread, time, timeit
 src_dir = os.path.dirname(inspect.getfile(inspect.currentframe()))
 # Windows and Linux
@@ -67,9 +68,11 @@ def handMovements(frame):
 
 def displayResults():
 	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
-	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(xCounterSmall/moveCounter, xCounterGood/moveCounter, xCounterHigh/moveCounter)
-	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(yCounterSmall/moveCounter, yCounterGood/moveCounter, yCounterHigh/moveCounter)
-	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(zCounterSmall/moveCounter, zCounterGood/moveCounter, zCounterHigh/moveCounter)
+	print 'moveCounter is {}'.format(moveCounter)
+	print 'xCounterSmall is {}'.format(xCounterSmall)
+	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((xCounterSmall/moveCounter) * 100, (xCounterGood/moveCounter) * 100, (xCounterHigh/moveCounter) * 100)
+	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
+	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
 
 
 startTime = 0
