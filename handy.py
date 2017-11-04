@@ -67,6 +67,11 @@ def handMovements(frame):
             else:
             	zCounterGood += 1
 
+def displayResults():
+	global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
+	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(xCounterSmall/moveCounter, xCounterGood/moveCounter, xCounterHigh/moveCounter)
+	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(yCounterSmall/moveCounter, yCounterGood/moveCounter, yCounterHigh/moveCounter)
+	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format(zCounterSmall/moveCounter, zCounterGood/moveCounter, zCounterHigh/moveCounter)
 
 startTime = 0
 beforeTime = 0
@@ -106,6 +111,7 @@ class LeapEventListener(Leap.Listener):
 
     def on_exit(self, controller):
         print "Exited"
+        displayResults()
         #the method where we return our statistics
 
 def main():
