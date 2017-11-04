@@ -20,8 +20,18 @@ zCounterSmall = 0
 zCounterGood = 0
 zCounterHigh = 0
 
+roll_angle_left = 0
+yaw_angle_left = 0
+pitch_angle_left = 0
+roll_angle_right = 0
+yaw_angle_right = 0
+pitch_angle_right = 0
+angle_count_left = 0
+angle_count_right = 0
+
 def hand_placement(frame):
-    count = 0
+
+    global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
     for hand in frame.hands:
         handType = "Left hand" if hand.is_left else "Right hand"
 
@@ -31,6 +41,17 @@ def hand_placement(frame):
         real_roll = normal.yaw * Leap.RAD_TO_DEG
         real_yaw = direction.roll * Leap.RAD_TO_DEG
         real_pitch = direction.pitch * Leap.RAD_TO_DEG
+
+        if handType == "Left hand":
+            angle_count_left += 1
+            roll_angle_left += real_roll
+            yaw_angle_left += real_yaw
+            pitch_angle_left += real_pitch
+        else:
+            angle_count_right += 1
+            roll_angle_right += real_roll
+            yaw_angle_right += real_yaw
+            pitch_angle_right += real_pitch
 
         print "%s roll on the now y-axis: %f" % (handType, real_roll)
         print "%s yaw on the now z-axis: %f" % (handType, real_yaw)
@@ -73,6 +94,14 @@ def displayResults():
 	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((xCounterSmall/moveCounter) * 100, (xCounterGood/moveCounter) * 100, (xCounterHigh/moveCounter) * 100)
 	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
 	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
+
+    global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
+    print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
+    print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
+    print 'yaw average angle left: %f' % (yaw_angle_left/angle_count_left)
+    print 'yaw average angle right: %f' % (yaw_angle_right/angle_count_right)
+    print 'pitch average angle left: %f' % (pitch_angle_left/angle_count_left)
+    print 'pitch average angle right: %f' % (pitch_angle_right/angle_count_right)
 
 
 startTime = 0
