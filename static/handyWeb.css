@@ -1,5 +1,4 @@
 table {
-	font-family: "Trebuchet MS", Arial
 	border-collapse: collapse;
 }
 
@@ -10,7 +9,7 @@ th, td {
 }
 
 th {
-	background-color: #45b548;
+	background-color: rgb(0, 230, 118);
 }
 
 tr:hover{
@@ -19,6 +18,7 @@ tr:hover{
 
 body {
 	background: rgb(178, 192, 234);
+	font-family: 'Open Sans', sans-serif;
 }
 
 canvas {
@@ -43,4 +43,8 @@ canvas {
 
 #secondChart {
 		border: 1px;
+}
+
+h1 {
+	text-align: center;
 }
