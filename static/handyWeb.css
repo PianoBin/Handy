@@ -56,12 +56,12 @@ canvas {
 h1 {
 	text-align: center;
 }
- 
+
 .oval-thought-border {
   position:relative;
   padding:70px 30px;
   margin:1em auto 80px;
-  border:10px solid #c81e2b;
+  border:10px solid #e74c3c;
   text-align:center;
   color:#333;
   background:#fff;
@@ -89,7 +89,7 @@ h1 {
   right:100px;
   width:50px;
   height:50px;
-  border:10px solid #c81e2b;
+  border:10px solid #e74c3c;
   background:#fff;
   /* css3 */
   -webkit-border-radius:50px;
@@ -108,7 +108,7 @@ h1 {
   right:50px;
   width:25px;
   height:25px;
-  border:10px solid #c81e2b;
+  border:10px solid #e74c3c;
   background:#fff;
   /* css3 */
   -webkit-border-radius:25px;
