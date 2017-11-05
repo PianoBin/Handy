@@ -117,3 +117,7 @@ h1 {
   /* reduce the damage in FF3.0 */
   display:block;
 }
+
+#handyImage {
+	mix-blend-mode: multiply;
+}
