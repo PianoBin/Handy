@@ -1,6 +1,17 @@
 # Handy
 The Handy Body-Language Processor
-
+```Python
+      ####################
+      |      ##   ##     |
+      |     #### ####    |
+      |     #### ####    |
+      |      ##   ##     |
+      |  ###         ### |
+      |    ##       ##   |
+      |     ##     ##    |
+      |       #####      |
+      ####################
+```
 What does it do?
 ---
 Using the SDK and API of Leap Motion V2, we have compiled a program to help ordinary people become extraordinary speakers. With a leap motion sensor, our application can sense different aspects of your body-speaking style such as hand placement, hand speed, hand angle, and finger pointing to give you feedback on how to improve your body language so next time you can knock the socks off your audience. Welcome to Handy.
