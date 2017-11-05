@@ -22,7 +22,7 @@
     <div id="secondChart"><canvas id="myChart2" width="300" height="300"></canvas></div>
     <div id="thirdChart"><canvas id="myChart3" width="700" height="300"></canvas></div>
 </div>
-
+<hr>
 <h1>Hand Movement Data</h1>
 <table style="width:100%">
   <tr>
@@ -32,39 +32,39 @@
     <th>Numerical Feedback</th>
   </tr>
   <tr>
-    <td>Horizontal Speed</td>
+    <td id="boldTD">Horizontal Speed</td>
     <td>The percentage of time your hands moved at the proper speed horizontally.</td>
     <td>{{ x_speed_mes }}</td>
     <td>{{ x_speed }}%</td>
   </tr>
   <tr>
-    <td>Vertical Speed</td>
+    <td id="boldTD">Vertical Speed</td>
     <td>The percentage of time your hands moved at the proper speed vertically.</td>
     <td>{{ y_speed_mes }}</td>
     <td>{{ y_speed }}%</td>
   </tr>
   <tr>
-    <td>Palm Openness</td>
+    <td id="boldTD">Palm Openness</td>
     <td>How open you kept your palms throughout speech.</td>
     <td>{{ message_open }}</td>
     <td>{{ open_avg }} degrees</td>
   </tr>
   <tr>
-    <td>Amount of Times Pointed</td>
+    <td id="boldTD">Amount of Times Pointed</td>
     <td>The amount of times you pointed during your speech.</td>
     <td>{{ finger_message }}</td>
     <td>{{ badFingerCounter }} times</td>
   </tr>
   <tr>
-    <td>Percent Sweet Spot</td>
+    <td id="boldTD">Percent Sweet Spot</td>
     <td>The percent of total time your hands spent in the well-established sweet spot.</td>
     <td>{{ sweetness }}</td>
     <td>{{ sweet_spot }}%</td>
   </tr>
 </table>
-
+<hr>
 <blockquote class="oval-thought-border">
-        <p>Great job! Practice makes perfect. Some of this body language may seem insignificant, but I promise, using the right hand gestures at the right time with the right gusto can make a world of a difference. Use Handy to get better with real time data on how you used your hands to speak! Then get out there and crush that next speech. Good luck and have fun!</p>
+        <p>Great job! Practice makes perfect. <br>Some of this body language may seem insignificant, but I promise, using the right hand gestures at the right time with the right gusto can make a world of a difference. Use Handy to get better with real time data on how you used your hands to speak! Then get out there and crush that next speech. <br>Good luck and have fun!</p>
 </blockquote>
 
 <div id='handyImage'><img src='http://www.washyourhandsofthem.com/documents/the-campaign/childrens-pack/childrenspack-handy-a6-print.aspx' alt='Handy the Hand'></div>
@@ -119,7 +119,7 @@
             },
             title: {
                 display: true,
-                text: 'x-speed'
+                text: 'Horizontal Speed'
             },
             animation: {
                 animateScale: true,
@@ -140,7 +140,7 @@
             },
             title: {
                 display: true,
-                text: 'y-speed'
+                text: 'Vertical Speed'
             },
             animation: {
                 animateScale: true,
