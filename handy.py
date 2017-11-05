@@ -230,10 +230,10 @@ class LeapEventListener(Leap.Listener):
         		beforeTime = int(timeit.default_timer() - startTime)
         		percent_sweet_array.append((hands_in_frame_counter/frame_counter)*100)
         		time_counter.append(beforeTime)
+        		fingerPointing(frame)
 
         handMovements(frame)
         hand_placement(frame)
-        fingerPointing(frame)
         hand_in_frames(frame)
 
     def on_exit(self, controller):
