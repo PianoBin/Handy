@@ -31,7 +31,7 @@ canvas {
         -ms-user-select: none;
     }
 
-#firstChart, #secondChart{
+#firstChart, #secondChart, #thirdChart {
 		box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
@@ -47,6 +47,10 @@ canvas {
 
 #secondChart {
 		border: 1px;
+}
+
+#thirdChart {
+	border: 1px;
 }
 
 h1 {

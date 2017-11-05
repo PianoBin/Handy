@@ -33,12 +33,16 @@ angle_count_right = 1
 
 frame_counter = 0
 hands_in_frame_counter = 0
+percent_sweet_array = []
+time_counter = []
 
 def hand_in_frames(frame):
-    global frame_counter, hands_in_frame_counter
+    global frame_counter, hands_in_frame_counter, percent_sweet_array, time_counter
     frame_counter += 2
     for hand in frame.hands:
         hands_in_frame_counter += 1
+    print "hands in frame {}".format(hands_in_frame_counter)
+    print "frames {}".format(frame_counter)
 
 def hand_placement(frame):
 
@@ -64,16 +68,16 @@ def hand_placement(frame):
             yaw_angle_right += real_yaw
             pitch_angle_right += real_pitch
 
-        print "%s roll on the now y-axis: %f" % (handType, real_roll)
-        print "%s yaw on the now z-axis: %f" % (handType, real_yaw)
-        print "%s pitch on the now x-axis: %f" % (handType, real_pitch)
+        #print "%s roll on the now y-axis: %f" % (handType, real_roll)
+        #print "%s yaw on the now z-axis: %f" % (handType, real_yaw)
+        #print "%s pitch on the now x-axis: %f" % (handType, real_pitch)
 
 def handMovements(frame):
 	for hand in frame.hands:
 
             handType = "Left hand" if hand.is_left else "Right hand"
 
-            print "  %s, id %d, velocity: %s" % (handType, hand.id, hand.palm_velocity)
+            #print "  %s, id %d, velocity: %s" % (handType, hand.id, hand.palm_velocity)
 
             global moveCounter, xCounterSmall, xCounterGood, xCounterHigh, yCounterSmall, yCounterGood, yCounterHigh, zCounterSmall, zCounterGood, zCounterHigh
             moveCounter += 1
@@ -108,7 +112,7 @@ def fingerPointing(frame):
 	finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
 	for hand in frame.hands:
 		for finger in hand.fingers:
-			print "finger extended is {}".format(finger.is_extended)
+			#print "finger extended is {}".format(finger.is_extended)
 			if finger.is_extended and not oneFinger:
 				oneFinger = True
 			elif finger.is_extended and oneFinger:
@@ -162,13 +166,6 @@ def displayResults():
 	y_speed_array.append((yCounterSmall/moveCounter) * 100)
 	y_speed_array.append((yCounterGood/moveCounter) * 100)
 	y_speed_array.append(100 - ((yCounterSmall/moveCounter) * 100) - ((yCounterGood/moveCounter) * 100))
-	'''
-	print 'moveCounter is {}'.format(moveCounter)
-	print 'xCounterSmall is {}'.format(xCounterSmall)
-	print 'X-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((xCounterSmall/moveCounter) * 100, (xCounterGood/moveCounter) * 100, (xCounterHigh/moveCounter) * 100)
-	print 'Y-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((yCounterSmall/moveCounter) * 100, (yCounterGood/moveCounter) * 100, (yCounterHigh/moveCounter) * 100)
-	print 'Z-axis percentages are {} for small movement, {} for good movement, and {} for high movement'.format((zCounterSmall/moveCounter) * 100, (zCounterGood/moveCounter) * 100, (zCounterHigh/moveCounter) * 100)
-	'''
 
 	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
 	if abs(pitch_angle_left/angle_count_left) < 40 and abs(pitch_angle_right/angle_count_right) < 40 and abs(roll_angle_left/angle_count_left) > 90 and abs(roll_angle_right/angle_count_right) > 90:
@@ -177,25 +174,12 @@ def displayResults():
 	else:
 		message_open = 'Work on keeping your palms more open.\nIt makes you instantly more approachable to your audience.'
         openness = 'Not Open'
-	'''
-	print 'roll average angle left: %f' % (roll_angle_left/angle_count_left)
-	print 'roll average angle right: %f' % (roll_angle_right/angle_count_right)
-	print 'yaw average angle left: %f' % (yaw_angle_left/angle_count_left)
-	print 'yaw average angle right: %f' % (yaw_angle_right/angle_count_right)
-	print 'pitch average angle left: %f' % (pitch_angle_left/angle_count_left)
-	print 'pitch average angle right: %f' % (pitch_angle_right/angle_count_right)
-    '''
 
 	global fingerCounter, badFingerCounter
 	if badFingerCounter > 10:
 		finger_message = 'Try not to point too much while talking!\nIt can be seen as agressive by the audience.'
 	else:
 		finger_message = 'Well done. You kept your fingers away from the crowd.'
-	'''
-	print 'fingerCount is {}'.format(fingerCounter)
-	print 'badFingerCounter is {}'.format(badFingerCounter)
-	print 'percent of bad finger pointing {}'.format((badFingerCounter/fingerCounter) * 100)
-    '''
 
 	global frame_counter, hands_in_frame_counter, sweet_spot
 	sweet_spot = (hands_in_frame_counter/frame_counter)*100
@@ -204,11 +188,6 @@ def displayResults():
 		sweetness = 'Well done.'
 	else:
 		sweetness = 'Try to keep your hands in the sweet spot.'
-	'''
-	print 'frame_counter is {}'.format(frame_counter)
-	print 'hands_in_frame_counter is {}'.format(hands_in_frame_counter)
-	print 'percentage of time hands are in the sweet spot: %f' % ((hands_in_frame_counter/frame_counter)*100)
-    '''
 
 
 startTime = 0
@@ -237,12 +216,15 @@ class LeapEventListener(Leap.Listener):
         #Show time elapsed
         global startTime
         global beforeTime
+        global percent_sweet_array, time_counter, hands_in_frame_counter, frame_counter
         if startTime == 0:
         	startTime = timeit.default_timer()
         if int ((timeit.default_timer() - startTime) * 10) % 10 == 0:
         	if beforeTime != int(timeit.default_timer() - startTime):
         		print "Elapsed {}".format(int(timeit.default_timer() - startTime))
         		beforeTime = int(timeit.default_timer() - startTime)
+        		percent_sweet_array.append((hands_in_frame_counter/frame_counter)*100)
+        		time_counter.append(beforeTime)
 
         handMovements(frame)
         hand_placement(frame)
@@ -284,7 +266,9 @@ def handy():
 	finally:
 		# Remove the sample listener when done
 		controller.remove_listener(listener)
-	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot, x_speed_array=x_speed_array, y_speed_array=y_speed_array)
+	print percent_sweet_array
+	print time_counter
+	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot, x_speed_array=x_speed_array, y_speed_array=y_speed_array ,percent_sweet_array=percent_sweet_array, time_counter=time_counter)
 
 if __name__ == "__main__":
 	app.run()
