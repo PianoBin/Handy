@@ -221,8 +221,16 @@ h1 {
    }
 
 #readMe {
+	background-color: rgb(178, 192, 255);
 	box-shadow: 0px 0px 30px rgba(0,0,0,0.10),
      0px 20px 30px rgba(0,0,0,0.05),
      0px 30px 30px rgba(0,0,0,0.05),
      0px 40px 30px rgba(0,0,0,0.05);
+}
+
+#textReadMe {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
