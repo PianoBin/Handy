@@ -7,7 +7,7 @@
               src="https://code.jquery.com/jquery-3.2.1.min.js"
               integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
               crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <title>Hands Don't Lie</title>
 </head>
 <body>
@@ -143,7 +143,7 @@
   type: 'line',
   data: {
     labels: time_array,
-    datasets: [{ 
+    datasets: [{
         data: percent_array,
         label: "Sweet Spot",
         borderColor: 'rgb(0, 188, 212)',
@@ -157,21 +157,21 @@
       text: 'Percent in Sweet Spot over Time'
     },
     scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Time (Seconds)'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Sweet Spot Percentage'
-                        }
-                    }]
-                }
+      xAxes: [{
+        display: true,
+        scaleLabel: {
+            display: true,
+            labelString: 'Time (Seconds)'
+        }
+      }],
+      yAxes: [{
+        display: true,
+        scaleLabel: {
+            display: true,
+            labelString: 'Sweet Spot Percentage'
+        }
+      }]
+    }
   }
 });
 
