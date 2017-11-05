@@ -134,6 +134,7 @@ y_speed = 0
 sweet_spot = 0
 x_speed_array = []
 y_speed_array = []
+open_avg = 0
 
 def displayResults():
 
@@ -174,6 +175,10 @@ def displayResults():
 	else:
 		message_open = 'Work on keeping your palms more open.\nIt makes you instantly more approachable to your audience.'
         openness = 'Not Open'
+
+	global open_avg
+	open_avg = (abs(roll_angle_left/angle_count_left) + abs(roll_angle_left/angle_count_left)) / 2
+	open_avg = '{0:.4g}'.format(open_avg)
 
 	global fingerCounter, badFingerCounter
 	if badFingerCounter > 10:
@@ -268,7 +273,7 @@ def handy():
 		controller.remove_listener(listener)
 	print percent_sweet_array
 	print time_counter
-	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, openness=openness, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot, x_speed_array=x_speed_array, y_speed_array=y_speed_array ,percent_sweet_array=percent_sweet_array, time_counter=time_counter)
+	return render_template('handyWeb.html', x_speed_mes=x_speed_mes, y_speed_mes=y_speed_mes, message_open=message_open, finger_message=finger_message, sweetness=sweetness, x_speed=x_speed, y_speed=y_speed, badFingerCounter=badFingerCounter, sweet_spot=sweet_spot, x_speed_array=x_speed_array, y_speed_array=y_speed_array ,percent_sweet_array=percent_sweet_array, time_counter=time_counter, open_avg=open_avg)
 
 if __name__ == "__main__":
 	app.run()
