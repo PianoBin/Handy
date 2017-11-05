@@ -53,8 +53,8 @@ def hand_placement(frame):
         normal = hand.palm_normal
         direction = hand.direction
 
-        real_roll = normal.yaw * Leap.RAD_TO_DEG
-        real_yaw = direction.roll * Leap.RAD_TO_DEG
+        real_roll = normal.roll * Leap.RAD_TO_DEG
+        real_yaw = direction.yaw * Leap.RAD_TO_DEG
         real_pitch = direction.pitch * Leap.RAD_TO_DEG
 
         if handType == "Left hand":
@@ -149,14 +149,14 @@ def displayResults():
 		x_speed_mes = 'Great speed for hand gestures!'
 	else:
 		if ((xCounterSmall/moveCounter) * 100) > ((xCounterHigh/moveCounter) * 100):
-			x_speed_mes = 'A little to slow or not enough movement.'
+			x_speed_mes = 'A little too slow or not enough movement.'
 		else:
 			x_speed_mes = 'Slow down there cowboy.'
 	if yCounterGood / moveCounter * 100 > 60:
 		y_speed_mes = 'Great speed for hand gestures!'
 	else:
 		if ((yCounterSmall/moveCounter) * 100) > ((yCounterHigh/moveCounter) * 100):
-			y_speed_mes = 'A little to slow or not enough movement.'
+			y_speed_mes = 'A little too slow or not enough movement.'
 		else:
 			y_speed_mes = 'Slow down there cowboy.'
 
@@ -169,6 +169,9 @@ def displayResults():
 	y_speed_array.append(100 - ((yCounterSmall/moveCounter) * 100) - ((yCounterGood/moveCounter) * 100))
 
 	global roll_angle_left, yaw_angle_left, pitch_angle_left, roll_angle_right, yaw_angle_right, pitch_angle_right, angle_count_left, angle_count_right
+    print "roll angle on left hand: %f\nroll angle on right hand: %f" % ((roll_angle_left/angle_count_left) * 100, (roll_angle_right/angle_count_right) * 100)
+    print "yaw angle on left hand: %f\nyaw angle on right hand: %f" % ((yaw_angle_left/angle_count_left) * 100, (yaw_angle_right/angle_count_right) * 100)
+    print "pitch angle on left hand: %f\npitch angle on right hand: %f" % ((pitch_angle_left/angle_count_left) * 100, (pitch_angle_right/angle_count_right) * 100)
 	if abs(pitch_angle_left/angle_count_left) < 40 and abs(pitch_angle_right/angle_count_right) < 40 and abs(roll_angle_left/angle_count_left) > 90 and abs(roll_angle_right/angle_count_right) > 90:
 		message_open = 'Good job! You kept your palms open.\nThis makes you seem approachable to your crowd.'
 		openness = 'Open'
